@@ -15,26 +15,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 class Myclass : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString variable READ readVar WRITE writeVar(QString) NOTIFY varChanged())
     Q_PROPERTY(QString version READ readVersion NOTIFY versionChanged())
 
 public:
     explicit Myclass(QObject *parent = 0);
     ~Myclass();
 
-    QString readVar();
     QString readVersion();
 
-    void writeVar(QString);
-
-    Q_INVOKABLE void readInitParams();
 
 signals:
-    void varChanged();
     void versionChanged();
 
-private:
-    QString m_var;
 };
 
 

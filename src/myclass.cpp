@@ -9,15 +9,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include "myclass.h"
-#include <QSettings>
 #include <QCoreApplication>
 
 Myclass::Myclass(QObject *parent) :
     QObject(parent)
 {
-    m_var = "";
-
-    emit versionChanged();
 }
 
 QString Myclass::readVersion()
@@ -25,33 +21,12 @@ QString Myclass::readVersion()
     return APPVERSION;
 }
 
-void Myclass::readInitParams()
-{
-    QSettings settings;
-    m_var = settings.value("var", "").toString();
-
-    emit varChanged();
-}
 
 Myclass::~Myclass()
 {
 }
 
 
-QString Myclass::readVar()
-{
-    return m_var;
-}
-
-void Myclass::writeVar(QString s)
-{
-    m_var = s;
-
-    QSettings settings;
-    settings.setValue("var", m_var);
-
-    emit varChanged();
-}
 
 
 

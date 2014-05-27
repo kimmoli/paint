@@ -1,54 +1,132 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import paint.Myclass 1.0
+
 
 Page
 {
     id: page
 
-    SilicaFlickable
-    {
-        anchors.fill: parent
+    width: 540
+    height: 960
 
-        PullDownMenu
+    property string drawColor: "white"
+    property int drawThickness: 2
+    property bool clearRequest: false
+
+    Row
+    {
+        id: toolBox
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: 64
+
+        IconButton
         {
-            MenuItem
+            icon.source: "image://theme/icon-m-about"
+            onClicked:
             {
-                text: "About..."
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"),
-                                          { "version": myclass.version,
-                                              "year": "2014",
-                                              "name": "paint",
-                                              "imagelocation": "/usr/share/icons/hicolor/86x86/apps/paint.png"} )
+                console.log("About button")
+                pageStack.push(Qt.resolvedUrl("AboutPage.qml"),
+                                      { "version": myclass.version,
+                                        "year": "2014",
+                                        "name": "Paint",
+                                        "imagelocation": "/usr/share/icons/hicolor/86x86/apps/paint.png"} )
             }
         }
-
-        contentHeight: column.height
-
-        Column
+        IconButton
         {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            PageHeader
+            icon.source: "image://theme/icon-m-clear"
+            onClicked:
             {
-                title: "Paint"
+                console.log("Clear button")
+                clearRequest = true
+                canvas.requestPaint()
             }
-            Label
+        }
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-edit"
+            onClicked:
             {
-                x: Theme.paddingLarge
-                text: "Hello you"
-                color: Theme.primaryColor
-                font.pixelSize: Theme.fontSizeExtraLarge
+                console.log("Pen settings button")
+                drawColor = (drawColor == "red" ? "white" : "red")
             }
+        }
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-imaging"
+            onClicked:
+            {
+                console.log("snapshot button")
+                toolBox.opacity = 0.0
+                toolBoxVisibility.start()
+            }
+        }
+        Behavior on opacity
+        {
+            FadeAnimation {}
+        }
+        Timer
+        {
+            id: toolBoxVisibility
+            interval: 1000
+            onTriggered:  toolBox.opacity = 1.0
         }
     }
 
-    Myclass
+    Canvas
     {
-        id: myclass
+        id: canvas
+        width: page.width
+        anchors.bottom: page.bottom
+        height: page.height - toolBox.height
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+
+        property real lastX
+        property real lastY
+        property color color: drawColor
+
+        onPaint:
+        {
+            console.log("onPaint")
+
+            var ctx = getContext('2d')
+
+            if (clearRequest)
+            {
+                ctx.clearRect(0,0,canvas.width, canvas.height);
+                clearRequest = false
+            }
+            else
+            {
+                ctx.lineWidth = drawThickness
+                ctx.strokeStyle = canvas.color
+                ctx.beginPath()
+                ctx.moveTo(lastX, lastY)
+                lastX = area.mouseX
+                lastY = area.mouseY
+                ctx.lineTo(lastX, lastY)
+            }
+            ctx.stroke()
+        }
+
+
+        MouseArea
+        {
+            id: area
+            anchors.fill: canvas
+            onPressed:
+            {
+                canvas.lastX = mouseX
+                canvas.lastY = mouseY
+                console.log("X " + mouseX + " Y " + mouseY)
+            }
+            onPositionChanged:
+            {
+                canvas.requestPaint()
+            }
+        }
     }
 }
-
-

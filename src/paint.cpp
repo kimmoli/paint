@@ -26,11 +26,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationDomain("KimmoLi");
-    QCoreApplication::setOrganizationName("KimmoLi");
-    QCoreApplication::setApplicationName("paint");
-    QCoreApplication::setApplicationVersion("0.1-1");
-
     qmlRegisterType<Myclass>("paint.Myclass", 1, 0, "Myclass");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));

@@ -30,13 +30,19 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "pages"
+import paint.Myclass 1.0
 
 ApplicationWindow
 {
-    initialPage: Component { Paint { } }
+    initialPage: Qt.resolvedUrl("pages/Paint.qml")
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
+
+    Myclass
+    {
+        id: myclass
+    }
+
 }
 
 
