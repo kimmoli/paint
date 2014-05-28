@@ -206,4 +206,6 @@ Page
         }
     }
 
+    Component.onDestruction: canvas.destroy()
+
 }

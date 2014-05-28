@@ -34,13 +34,14 @@ QString Myclass::saveScreenshot()
     QDate ssDate = QDate::currentDate();
     QTime ssTime = QTime::currentTime();
 
-    QString ssFilename = QString("/home/nemo/Pictures/paint-%1%2%3-%4%5%6.png")
+    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.png")
                     .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
                     .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
                     .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'));
+                    .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
+                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
 
     QDBusMessage m = QDBusMessage::createMethodCall("org.nemomobile.lipstick",
                                                     "/org/nemomobile/lipstick/screenshot",
@@ -53,8 +54,8 @@ QString Myclass::saveScreenshot()
 
     if (QDBusConnection::sessionBus().send(m))
     {
-        printf("Screenshot success to %s\n", qPrintable(ssFilename.split('/').at(4)));
-        return ssFilename.split('/').at(4);
+        printf("Screenshot success to %s\n", qPrintable(ssFilename));
+        return ssFilename.split('/').last();
     }
     else
     {
