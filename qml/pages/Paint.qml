@@ -9,9 +9,46 @@ Page
     width: 540
     height: 960
 
-    property string drawColor: "white"
-    property int drawThickness: 2
+    property int drawColor: 0
+    property int drawThickness: 0
     property bool clearRequest: false
+
+    Rectangle
+    {
+        id: messageBox
+        z: 10
+        width: 400
+        height: 200
+        radius: 40
+        opacity: 0.0
+        anchors.centerIn: parent
+        color: Theme.secondaryHighlightColor
+
+        property alias message: messageBoxText.text
+
+        onMessageChanged:
+        {
+            messageBox.opacity = 0.9
+            messageBoxVisibility.start()
+        }
+
+        Label
+        {
+            id: messageBoxText
+            text: ""
+            anchors.centerIn: parent
+        }
+        Behavior on opacity
+        {
+            FadeAnimation {}
+        }
+        Timer
+        {
+            id: messageBoxVisibility
+            interval: 3500
+            onTriggered: messageBox.opacity = 0.0
+        }
+    }
 
     Row
     {
@@ -49,7 +86,13 @@ Page
             onClicked:
             {
                 console.log("Pen settings button")
-                drawColor = (drawColor == "red" ? "white" : "red")
+                var penSettingsDialog = pageStack.push(Qt.resolvedUrl("penSettingsDialog.qml"), {
+                                                           "currentColor": drawColor,
+                                                           "currentThickness": drawThickness })
+                penSettingsDialog.accepted.connect(function() {
+                    drawColor = penSettingsDialog.currentColor
+                    drawThickness = penSettingsDialog.currentThickness
+                })
             }
         }
         IconButton
@@ -70,7 +113,12 @@ Page
         {
             id: toolBoxVisibility
             interval: 1000
-            onTriggered:  toolBox.opacity = 1.0
+            onTriggered:
+            {
+                var fileName = myclass.saveScreenshot()
+                toolBox.opacity = 1.0
+                messageBox.message = fileName
+            }
         }
     }
 
@@ -86,7 +134,7 @@ Page
 
         property real lastX
         property real lastY
-        property color color: drawColor
+        property color color: colors[drawColor]
 
         onPaint:
         {
@@ -101,7 +149,7 @@ Page
             }
             else
             {
-                ctx.lineWidth = drawThickness
+                ctx.lineWidth = thicknesses[drawThickness]
                 ctx.strokeStyle = canvas.color
                 ctx.beginPath()
                 ctx.moveTo(lastX, lastY)

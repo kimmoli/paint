@@ -23,6 +23,8 @@ public:
 
     QString readVersion();
 
+    Q_INVOKABLE QString saveScreenshot();
+
 
 signals:
     void versionChanged();

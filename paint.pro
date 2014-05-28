@@ -10,6 +10,8 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
 message($${DEFINES})
 
+QT += dbus
+
 SOURCES += src/paint.cpp \
 	src/myclass.cpp
 	
@@ -21,5 +23,6 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/AboutPage.qml \
     rpm/paint.spec \
 	paint.png \
-    paint.desktop
+    paint.desktop \
+    qml/pages/penSettingsDialog.qml
 
