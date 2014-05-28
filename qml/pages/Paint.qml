@@ -151,6 +151,7 @@ Page
             {
                 ctx.lineWidth = thicknesses[drawThickness]
                 ctx.strokeStyle = canvas.color
+                ctx.lineJoin = ctx.lineCap = 'round';
                 ctx.beginPath()
                 ctx.moveTo(lastX, lastY)
                 lastX = area.mouseX
