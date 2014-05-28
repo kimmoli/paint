@@ -12,7 +12,7 @@ Page
     property int drawColor: 0
     property int drawThickness: 0
     property bool clearRequest: false
-    property int bgColor: 10
+    property int bgColor: colors.length
 
     Rectangle
     {
@@ -29,7 +29,7 @@ Page
 
         onMessageChanged:
         {
-            messageBox.opacity = 0.9
+            messageBox.opacity = 0.95
             messageBoxVisibility.start()
         }
 
@@ -54,13 +54,15 @@ Page
     Row
     {
         id: toolBox
+        z:8
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        height: 64
+        height: 80
 
         IconButton
         {
             icon.source: buttonimage[0]
+            anchors.verticalCenter: parent.verticalCenter
             onClicked:
             {
                 console.log(buttonhelptext[0])
@@ -74,7 +76,7 @@ Page
         IconButton
         {
             icon.source: buttonimage[1]
-
+            anchors.verticalCenter: parent.verticalCenter
             onClicked:
             {
                 console.log(buttonhelptext[1])
@@ -85,14 +87,14 @@ Page
         IconButton
         {
             icon.source: buttonimage[2]
-
+            anchors.verticalCenter: parent.verticalCenter
             onClicked:
             {
                 console.log(buttonhelptext[2])
                 var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("bgSettingsDialog.qml"), {
                                                            "currentBg": bgColor })
                 bgSettingsDialog.accepted.connect(function() {
-                    bgColor = penSettingsDialog.currentBg
+                    bgColor = bgSettingsDialog.currentBg
                 })
 
             }
@@ -100,7 +102,7 @@ Page
         IconButton
         {
             icon.source: buttonimage[3]
-
+            anchors.verticalCenter: parent.verticalCenter
             onClicked:
             {
                 console.log(buttonhelptext[3])
@@ -116,7 +118,7 @@ Page
         IconButton
         {
             icon.source: buttonimage[4]
-
+            anchors.verticalCenter: parent.verticalCenter
             onClicked:
             {
                 console.log(buttonhelptext[4])
@@ -143,13 +145,16 @@ Page
 
     Rectangle
     {
-        anchors.fill: parent
+        id: bg
+        anchors.fill: (toolBox.opacity == 0.0) ? page : canvas
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
+        z:7
     }
 
     Canvas
     {
         id: canvas
+        z: 9
         width: page.width
         anchors.bottom: page.bottom
         height: page.height - toolBox.height
@@ -180,8 +185,8 @@ Page
                 lastX = area.mouseX
                 lastY = area.mouseY
                 ctx.lineTo(lastX, lastY)
+                ctx.stroke()
             }
-            ctx.stroke()
         }
 
 
