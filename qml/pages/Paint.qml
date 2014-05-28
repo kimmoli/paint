@@ -70,7 +70,7 @@ Page
                                       { "version": myclass.version,
                                         "year": "2014",
                                         "name": "Paint",
-                                        "imagelocation": "/usr/share/icons/hicolor/86x86/apps/paint.png"} )
+                                        "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
             }
         }
         IconButton

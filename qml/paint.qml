@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import paint.Myclass 1.0
+import harbour.paint.Myclass 1.0
 
 ApplicationWindow
 {

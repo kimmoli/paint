@@ -6,7 +6,7 @@ CoverBackground
     Image
     {
         id: im
-        source: "/usr/share/icons/hicolor/86x86/apps/paint.png"
+        source: "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"
         anchors.top: parent.top
         anchors.topMargin: (parent.height - im.height - label.height - label.anchors.topMargin) / 2
         anchors.horizontalCenter: parent.horizontalCenter

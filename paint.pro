@@ -2,7 +2,7 @@
 # Project paint, paint
 #
 
-TARGET = paint
+TARGET = harbour-paint
 
 CONFIG += sailfishapp
 
@@ -22,8 +22,8 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/Paint.qml \
     qml/pages/AboutPage.qml \
     rpm/paint.spec \
-	paint.png \
-    paint.desktop \
     qml/pages/penSettingsDialog.qml \
-    qml/pages/bgSettingsDialog.qml
+    qml/pages/bgSettingsDialog.qml \
+    harbour-paint.desktop \
+    harbour-paint.png
 

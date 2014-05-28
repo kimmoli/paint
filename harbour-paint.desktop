@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=paint
-Icon=paint
-Exec=paint
+Name=Paint
+Icon=harbour-paint
+Exec=harbour-paint
 

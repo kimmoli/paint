@@ -2,13 +2,13 @@
 # spec file for paint, paint
 # 
 
-Name:       paint
+Name:       harbour-paint
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    paint
+Summary:    Paint
 Version:    0.1
 Release:    1
 Group:      Qt/Qt
@@ -26,7 +26,7 @@ BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  desktop-file-utils
 
 %description
-paint
+Really simple native drawing application
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -53,7 +53,7 @@ desktop-file-install --delete-original       \
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 /usr/bin
-/usr/share/paint
+/usr/share/harbour-paint
 /usr/share/applications
 /usr/share/icons/hicolor/86x86/apps
 
