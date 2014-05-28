@@ -26,10 +26,10 @@ Page
             id: column
 
             width: page.width
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingSmall
             PageHeader
             {
-                title: "About " + name
+                title: qsTr("About ") + name
             }
             Label
             {
@@ -67,10 +67,35 @@ Page
             Label
             {
                 x: Theme.paddingLarge
-                text: "Version: " + version
+                text: qsTr("Version: ") + version
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
+            }
+            SectionHeader
+            {
+                text: qsTr("Help")
+            }
+
+            Repeater
+            {
+                model: buttonimage
+                Row
+                {
+                    spacing: 50
+                    x: 90
+                    Image
+                    {
+                        id: bim
+                        source: buttonimage[index]
+                    }
+                    Label
+                    {
+                        text: buttonhelptext[index]
+                        anchors.verticalCenter: bim.verticalCenter
+                    }
+
+                }
             }
         }
     }

@@ -41,6 +41,21 @@ ApplicationWindow
 
     property var thicknesses : [ 2, 5, 10, 15 ]
 
+    property var buttonimage: [
+        "image://theme/icon-m-about",
+        "image://theme/icon-m-delete",
+        "image://theme/icon-m-image",
+        "image://theme/icon-m-edit",
+        "image://theme/icon-m-imaging" ]
+
+
+    property var buttonhelptext: [
+        qsTr("About program"),
+        qsTr("Clear drawing"),
+        qsTr("Select background"),
+        qsTr("Pen settings"),
+        qsTr("Save image") ]
+
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")

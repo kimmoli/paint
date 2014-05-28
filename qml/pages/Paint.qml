@@ -59,10 +59,10 @@ Page
 
         IconButton
         {
-            icon.source: "image://theme/icon-m-about"
+            icon.source: buttonimage[0]
             onClicked:
             {
-                console.log("About button")
+                console.log(buttonhelptext[0])
                 pageStack.push(Qt.resolvedUrl("AboutPage.qml"),
                                       { "version": myclass.version,
                                         "year": "2014",
@@ -72,20 +72,31 @@ Page
         }
         IconButton
         {
-            icon.source: "image://theme/icon-m-clear"
+            icon.source: buttonimage[1]
+
             onClicked:
             {
-                console.log("Clear button")
+                console.log(buttonhelptext[1])
                 clearRequest = true
                 canvas.requestPaint()
             }
         }
         IconButton
         {
-            icon.source: "image://theme/icon-m-edit"
+            icon.source: buttonimage[2]
+
             onClicked:
             {
-                console.log("Pen settings button")
+                console.log(buttonhelptext[2])
+            }
+        }
+        IconButton
+        {
+            icon.source: buttonimage[3]
+
+            onClicked:
+            {
+                console.log(buttonhelptext[3])
                 var penSettingsDialog = pageStack.push(Qt.resolvedUrl("penSettingsDialog.qml"), {
                                                            "currentColor": drawColor,
                                                            "currentThickness": drawThickness })
@@ -97,10 +108,11 @@ Page
         }
         IconButton
         {
-            icon.source: "image://theme/icon-m-imaging"
+            icon.source: buttonimage[4]
+
             onClicked:
             {
-                console.log("snapshot button")
+                console.log(buttonhelptext[4])
                 toolBox.opacity = 0.0
                 toolBoxVisibility.start()
             }
@@ -138,8 +150,6 @@ Page
 
         onPaint:
         {
-            console.log("onPaint")
-
             var ctx = getContext('2d')
 
             if (clearRequest)
@@ -170,7 +180,6 @@ Page
             {
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
-                console.log("X " + mouseX + " Y " + mouseY)
             }
             onPositionChanged:
             {
@@ -178,4 +187,5 @@ Page
             }
         }
     }
+
 }
