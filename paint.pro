@@ -10,6 +10,14 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
 message($${DEFINES})
 
+system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
+system(lrelease $$PWD/i18n/*.ts)
+
+i18n.path = /usr/share/harbour-paint/i18n
+i18n.files = i18n/translations_fi.qm
+
+INSTALLS += i18n
+
 QT += dbus
 
 SOURCES += src/paint.cpp \
@@ -25,5 +33,8 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/penSettingsDialog.qml \
     qml/pages/bgSettingsDialog.qml \
     harbour-paint.desktop \
-    harbour-paint.png
+    harbour-paint.png \
+    i18n/translations_fi.ts
+
+TRANSLATIONS += i18n/translations_fi.ts
 

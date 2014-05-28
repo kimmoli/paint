@@ -29,6 +29,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<Myclass>("harbour.paint.Myclass", 1, 0, "Myclass");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+
+    QTranslator translator;
+    translator.load("translations_" + QLocale::system().name(), "/usr/share/harbour-paint/i18n");
+    app->installTranslator(&translator);
+
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
     view->show();
