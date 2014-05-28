@@ -24,5 +24,6 @@ OTHER_FILES += qml/paint.qml \
     rpm/paint.spec \
 	paint.png \
     paint.desktop \
-    qml/pages/penSettingsDialog.qml
+    qml/pages/penSettingsDialog.qml \
+    qml/pages/bgSettingsDialog.qml
 

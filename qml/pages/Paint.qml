@@ -12,6 +12,7 @@ Page
     property int drawColor: 0
     property int drawThickness: 0
     property bool clearRequest: false
+    property int bgColor: 10
 
     Rectangle
     {
@@ -88,6 +89,12 @@ Page
             onClicked:
             {
                 console.log(buttonhelptext[2])
+                var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("bgSettingsDialog.qml"), {
+                                                           "currentBg": bgColor })
+                bgSettingsDialog.accepted.connect(function() {
+                    bgColor = penSettingsDialog.currentBg
+                })
+
             }
         }
         IconButton
@@ -132,6 +139,12 @@ Page
                 messageBox.message = fileName
             }
         }
+    }
+
+    Rectangle
+    {
+        anchors.fill: parent
+        color: bgColor < colors.length ? colors[bgColor] : "transparent"
     }
 
     Canvas
