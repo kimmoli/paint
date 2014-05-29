@@ -24,10 +24,14 @@ public:
     QString readVersion();
 
     Q_INVOKABLE QString saveScreenshot();
-
+    Q_INVOKABLE QString getSaveMode();
+    Q_INVOKABLE void setSaveMode(QString extension);
 
 signals:
     void versionChanged();
+
+private:
+    QString fileExtension;
 
 };
 

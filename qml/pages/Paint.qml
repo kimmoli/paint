@@ -119,6 +119,20 @@ Page
         {
             icon.source: buttonimage[4]
             anchors.verticalCenter: parent.verticalCenter
+            onPressAndHold:
+            {
+                console.log("long press toggle file format")
+                if (myclass.getSaveMode() === "png")
+                {
+                    myclass.setSaveMode("jpg")
+                    messageBox.message = qsTr("Save format") + " JPG"
+                }
+                else
+                {
+                    myclass.setSaveMode("png")
+                    messageBox.message = qsTr("Save format") + " PNG"
+                }
+            }
             onClicked:
             {
                 console.log(buttonhelptext[4])

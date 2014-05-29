@@ -16,6 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Myclass::Myclass(QObject *parent) :
     QObject(parent)
 {
+    fileExtension = getSaveMode();
 }
 
 QString Myclass::readVersion()
@@ -23,25 +24,24 @@ QString Myclass::readVersion()
     return APPVERSION;
 }
 
-
 Myclass::~Myclass()
 {
 }
-
 
 QString Myclass::saveScreenshot()
 {
     QDate ssDate = QDate::currentDate();
     QTime ssTime = QTime::currentTime();
 
-    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.png")
+    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
                     .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
                     .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
                     .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
-                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
+                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                    .arg(fileExtension);
 
     QDBusMessage m = QDBusMessage::createMethodCall("org.nemomobile.lipstick",
                                                     "/org/nemomobile/lipstick/screenshot",
@@ -66,4 +66,23 @@ QString Myclass::saveScreenshot()
 
 }
 
+QString Myclass::getSaveMode()
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    fileExtension = s.value("fileExtension", "png").toString();
+    s.endGroup();
+
+    return fileExtension;
+}
+
+void Myclass::setSaveMode(QString extension)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    s.setValue("fileExtension", extension);
+    s.endGroup();
+
+    fileExtension = extension;
+}
 
