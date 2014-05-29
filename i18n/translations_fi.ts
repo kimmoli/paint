@@ -20,6 +20,15 @@
     </message>
 </context>
 <context>
+    <name>Paint</name>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="128"/>
+        <location filename="../qml/pages/Paint.qml" line="133"/>
+        <source>Save format</source>
+        <translation>Tallennusmuoto</translation>
+    </message>
+</context>
+<context>
     <name>bgSettingsDialog</name>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="22"/>
