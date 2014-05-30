@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 
 
 Page
@@ -14,41 +15,9 @@ Page
     property bool clearRequest: false
     property int bgColor: colors.length
 
-    Rectangle
+    Messagebox
     {
-        id: messageBox
-        z: 10
-        width: 400
-        height: 200
-        radius: 40
-        opacity: 0.0
-        anchors.centerIn: parent
-        color: Theme.secondaryHighlightColor
-
-        property alias message: messageBoxText.text
-
-        onMessageChanged:
-        {
-            messageBox.opacity = 0.95
-            messageBoxVisibility.start()
-        }
-
-        Label
-        {
-            id: messageBoxText
-            text: ""
-            anchors.centerIn: parent
-        }
-        Behavior on opacity
-        {
-            FadeAnimation {}
-        }
-        Timer
-        {
-            id: messageBoxVisibility
-            interval: 3500
-            onTriggered: messageBox.opacity = 0.0
-        }
+        id: messagebox
     }
 
     Row
@@ -125,12 +94,12 @@ Page
                 if (myclass.getSaveMode() === "png")
                 {
                     myclass.setSaveMode("jpg")
-                    messageBox.message = qsTr("Save format") + " JPG"
+                    messagebox.message = qsTr("Save format") + " JPG"
                 }
                 else
                 {
                     myclass.setSaveMode("png")
-                    messageBox.message = qsTr("Save format") + " PNG"
+                    messagebox.message = qsTr("Save format") + " PNG"
                 }
             }
             onClicked:
@@ -152,7 +121,7 @@ Page
             {
                 var fileName = myclass.saveScreenshot()
                 toolBox.opacity = 1.0
-                messageBox.message = fileName
+                messagebox.message = fileName
             }
         }
     }
