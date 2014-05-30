@@ -24,55 +24,43 @@ Page
     {
         id: toolBox
         onShowMessage: messagebox.showMessage(message)
-        anchors.topMargin: showTooldrawer ? page.height/2 : 0
-
-        Behavior on anchors.topMargin
-        {
-            FadeAnimation {}
-        }
+        anchors.top: drawer.bottom
     }
 
-    Drawer
+    DockedPanel
     {
         id: drawer
         z: 11
 
         open: showTooldrawer
 
-        anchors.fill: parent
-        dock: page.isPortrait ? Dock.Top : Dock.Left
+        width: parent.width
+        height: Theme.itemSizeExtraLarge + Theme.paddingLarge
 
-        background: SilicaListView
+        dock: Dock.Top
+        Flow
         {
-            anchors.fill: parent
-            model: 5
+            anchors.centerIn: parent
 
-            header: PageHeader { title: "Drawer" }
-
-            PullDownMenu
+            IconButton
             {
-                MenuItem
+                icon.source: buttonimage[0]
+
+                onClicked:
                 {
-                    text: "Option 1"
-                }
-                MenuItem
-                {
-                    text: "Option 2"
+                    console.log(buttonhelptext[0])
+                    pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
+                                          { "version": myclass.version,
+                                            "year": "2014",
+                                            "name": "Paint",
+                                            "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
                 }
             }
-            VerticalScrollDecorator {}
-
-            delegate: ListItem
-            {
-                id: listItem
-
-                Label
-                {
-                    x: Theme.paddingLarge
-                    text: "List Item " + modelData
-                    anchors.verticalCenter: parent.verticalCenter
-                    color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
+            Switch {
+                icon.source: "image://theme/icon-l-repeat"
+            }
+            Switch {
+                icon.source: "image://theme/icon-l-share"
             }
         }
     }

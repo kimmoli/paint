@@ -29,8 +29,8 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="91"/>
-        <location filename="../qml/components/Toolbox.qml" line="96"/>
+        <location filename="../qml/components/Toolbox.qml" line="97"/>
+        <location filename="../qml/components/Toolbox.qml" line="102"/>
         <source>Save format</source>
         <translation type="unfinished">Tallennusmuoto</translation>
     </message>

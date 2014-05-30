@@ -11,20 +11,20 @@ Row
 
     signal showMessage(string message)
 
-    IconButton
-    {
-        icon.source: buttonimage[0]
-        anchors.verticalCenter: parent.verticalCenter
-        onClicked:
-        {
-            console.log(buttonhelptext[0])
-            pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
-                                  { "version": myclass.version,
-                                    "year": "2014",
-                                    "name": "Paint",
-                                    "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
-        }
-    }
+//    IconButton
+//    {
+//        icon.source: buttonimage[0]
+//        anchors.verticalCenter: parent.verticalCenter
+//        onClicked:
+//        {
+//            console.log(buttonhelptext[0])
+//            pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
+//                                  { "version": myclass.version,
+//                                    "year": "2014",
+//                                    "name": "Paint",
+//                                    "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
+//        }
+//    }
     IconButton
     {
         icon.source: buttonimage[1]
@@ -56,6 +56,12 @@ Row
         icon.source: buttonimage[3]
         icon.rotation: showTooldrawer ? 180 : 0
         anchors.verticalCenter: parent.verticalCenter
+
+        Behavior on icon.rotation
+        {
+            NumberAnimation { duration: 250 }
+        }
+
         onClicked:
         {
             console.log(buttonhelptext[3])

@@ -7,7 +7,6 @@ Rectangle
     z: 10
     width: parent.width
     height: Theme.itemSizeSmall
-    radius: 40
     opacity: 0.0
     anchors.centerIn: parent
     color: Theme.highlightBackgroundColor
