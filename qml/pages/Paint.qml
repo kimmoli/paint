@@ -20,76 +20,17 @@ Page
         id: messagebox
     }
 
+    Toolpanel
+    {
+        id: toolPanel
+        onShowMessage: messagebox.showMessage(message)
+    }
+
     Toolbox
     {
         id: toolBox
         onShowMessage: messagebox.showMessage(message)
-        anchors.top: drawer.bottom
-    }
-
-
-    DockedPanel
-    {
-        id: drawer
-        z: 11
-
-        open: showTooldrawer
-
-        width: parent.width
-        height: Theme.itemSizeExtraLarge + Theme.paddingLarge
-
-        dock: Dock.Top
-        Row
-        {
-            anchors.centerIn: parent
-            height: parent.height
-
-            IconButton
-            {
-                icon.source: buttonimage[0]
-                anchors.bottom: parent.bottom
-
-                onClicked:
-                {
-                    console.log(buttonhelptext[0])
-                    pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
-                                          { "version": myclass.version,
-                                            "year": "2014",
-                                            "name": "Paint",
-                                            "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
-                }
-            }
-            IconButton
-            {
-                icon.source: buttonimage[6]
-                anchors.bottom: parent.bottom
-
-                onClicked:
-                {
-                    console.log(buttonhelptext[6])
-                    var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"), {"saveFormat": myclass.getSaveMode()} )
-
-                    genSettingsDialog.accepted.connect(function()
-                    {
-                        myclass.setSaveMode(genSettingsDialog.saveFormat)
-                    })
-                }
-            }
-
-            Switch
-            {
-                icon.source: "image://theme/icon-m-repeat"
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 8
-            }
-
-            Switch
-            {
-                icon.source: "image://theme/icon-m-share"
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 8
-            }
-        }
+        anchors.top: toolPanel.bottom
     }
 
     Rectangle
@@ -109,7 +50,6 @@ Page
         height: page.height - toolBox.height
         renderTarget: Canvas.FramebufferObject
         antialiasing: true
-
 
         property real lastX
         property real lastY

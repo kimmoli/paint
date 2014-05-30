@@ -37,7 +37,8 @@ OTHER_FILES += qml/paint.qml \
     i18n/translations_fi.ts \
     qml/components/Messagebox.qml \
     qml/components/Toolbox.qml \
-    qml/pages/genSettings.qml
+    qml/pages/genSettings.qml \
+    qml/components/Toolpanel.qml
 
 TRANSLATIONS += i18n/translations_fi.ts
 

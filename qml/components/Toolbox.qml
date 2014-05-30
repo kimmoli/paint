@@ -11,46 +11,14 @@ Row
 
     signal showMessage(string message)
 
-//    IconButton
-//    {
-//        icon.source: buttonimage[0]
-//        anchors.verticalCenter: parent.verticalCenter
-//        onClicked:
-//        {
-//            console.log(buttonhelptext[0])
-//            pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
-//                                  { "version": myclass.version,
-//                                    "year": "2014",
-//                                    "name": "Paint",
-//                                    "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
-//        }
-//    }
-    IconButton
+    RemorsePopup
     {
-        icon.source: buttonimage[1]
+        id: remorse
+        z: 11
+        opacity: 1.0
         anchors.verticalCenter: parent.verticalCenter
-        onClicked:
-        {
-            console.log(buttonhelptext[1])
-            clearRequest = true
-            canvas.requestPaint()
-        }
     }
-    IconButton
-    {
-        icon.source: buttonimage[2]
-        anchors.verticalCenter: parent.verticalCenter
-        onClicked:
-        {
-            console.log(buttonhelptext[2])
-            var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
-                                                       "currentBg": bgColor })
-            bgSettingsDialog.accepted.connect(function() {
-                bgColor = bgSettingsDialog.currentBg
-            })
 
-        }
-    }
     IconButton
     {
         icon.source: buttonimage[3]
@@ -68,6 +36,22 @@ Row
             showTooldrawer = !showTooldrawer
         }
     }
+
+    IconButton
+    {
+        icon.source: buttonimage[1]
+        anchors.verticalCenter: parent.verticalCenter
+        onClicked:
+        {
+            console.log(buttonhelptext[1])
+            remorse.execute(qsTr("Clearing"), function()
+            {
+                clearRequest = true
+                canvas.requestPaint()
+            })
+        }
+    }
+
     IconButton
     {
         icon.source: buttonimage[4]
@@ -84,28 +68,16 @@ Row
             })
         }
     }
+
     IconButton
     {
         icon.source: buttonimage[5]
         anchors.verticalCenter: parent.verticalCenter
-        onPressAndHold:
-        {
-            console.log("long press toggle file format")
-            if (myclass.getSaveMode() === "png")
-            {
-                myclass.setSaveMode("jpg")
-                showMessage(qsTr("Save format") + " JPG")
-            }
-            else
-            {
-                myclass.setSaveMode("png")
-                showMessage(qsTr("Save format") + " PNG")
-            }
-        }
         onClicked:
         {
             console.log(buttonhelptext[5])
             toolBox.opacity = 0.0
+            showTooldrawer = false
             toolBoxVisibility.start()
         }
     }

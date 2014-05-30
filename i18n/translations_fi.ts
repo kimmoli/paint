@@ -29,10 +29,21 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="97"/>
-        <location filename="../qml/components/Toolbox.qml" line="102"/>
         <source>Save format</source>
-        <translation type="unfinished">Tallennusmuoto</translation>
+        <translation type="obsolete">Tallennusmuoto</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbox.qml" line="47"/>
+        <source>Clearing</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Toolpanel</name>
+    <message>
+        <location filename="../qml/components/Toolpanel.qml" line="50"/>
+        <source>File format</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
