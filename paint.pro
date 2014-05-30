@@ -35,7 +35,8 @@ OTHER_FILES += qml/paint.qml \
     harbour-paint.desktop \
     harbour-paint.png \
     i18n/translations_fi.ts \
-    qml/components/Messagebox.qml
+    qml/components/Messagebox.qml \
+    qml/components/Toolbox.qml
 
 TRANSLATIONS += i18n/translations_fi.ts
 

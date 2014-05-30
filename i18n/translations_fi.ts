@@ -22,8 +22,15 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="97"/>
-        <location filename="../qml/pages/Paint.qml" line="102"/>
+        <source>Save format</source>
+        <translation type="obsolete">Tallennusmuoto</translation>
+    </message>
+</context>
+<context>
+    <name>Toolbox</name>
+    <message>
+        <location filename="../qml/components/Toolbox.qml" line="80"/>
+        <location filename="../qml/components/Toolbox.qml" line="85"/>
         <source>Save format</source>
         <translation>Tallennusmuoto</translation>
     </message>
