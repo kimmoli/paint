@@ -22,8 +22,8 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="128"/>
-        <location filename="../qml/pages/Paint.qml" line="133"/>
+        <location filename="../qml/pages/Paint.qml" line="97"/>
+        <location filename="../qml/pages/Paint.qml" line="102"/>
         <source>Save format</source>
         <translation>Tallennusmuoto</translation>
     </message>
