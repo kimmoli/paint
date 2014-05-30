@@ -20,9 +20,9 @@ Dialog
     DialogHeader
     {
         id: pageHeader
-        title:  qsTr("Pen settings")
-        acceptText: qsTr("Accept")
-        cancelText: qsTr("Cancel")
+        title:  buttonhelptext[4]
+        acceptText: acceptText
+        cancelText: cancelText
     }
 
     Column

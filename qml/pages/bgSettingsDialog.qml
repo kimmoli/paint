@@ -19,9 +19,9 @@ Dialog
     DialogHeader
     {
         id: pageHeader
-        title:  qsTr("Background settings")
-        acceptText: qsTr("Accept")
-        cancelText: qsTr("Cancel")
+        title:  buttonhelptext[2]
+        acceptText: acceptText
+        cancelText: cancelText
     }
 
     Column

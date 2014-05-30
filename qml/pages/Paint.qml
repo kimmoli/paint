@@ -27,6 +27,7 @@ Page
         anchors.top: drawer.bottom
     }
 
+
     DockedPanel
     {
         id: drawer
@@ -38,13 +39,15 @@ Page
         height: Theme.itemSizeExtraLarge + Theme.paddingLarge
 
         dock: Dock.Top
-        Flow
+        Row
         {
             anchors.centerIn: parent
+            height: parent.height
 
             IconButton
             {
                 icon.source: buttonimage[0]
+                anchors.bottom: parent.bottom
 
                 onClicked:
                 {
@@ -56,11 +59,35 @@ Page
                                             "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
                 }
             }
-            Switch {
-                icon.source: "image://theme/icon-l-repeat"
+            IconButton
+            {
+                icon.source: buttonimage[6]
+                anchors.bottom: parent.bottom
+
+                onClicked:
+                {
+                    console.log(buttonhelptext[6])
+                    var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"), {"saveFormat": myclass.getSaveMode()} )
+
+                    genSettingsDialog.accepted.connect(function()
+                    {
+                        myclass.setSaveMode(genSettingsDialog.saveFormat)
+                    })
+                }
             }
-            Switch {
-                icon.source: "image://theme/icon-l-share"
+
+            Switch
+            {
+                icon.source: "image://theme/icon-m-repeat"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 8
+            }
+
+            Switch
+            {
+                icon.source: "image://theme/icon-m-share"
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 8
             }
         }
     }
