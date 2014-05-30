@@ -23,7 +23,58 @@ Page
     Toolbox
     {
         id: toolBox
-        onShowMessage: messagebox.message = message
+        onShowMessage: messagebox.showMessage(message)
+        anchors.topMargin: showTooldrawer ? page.height/2 : 0
+
+        Behavior on anchors.topMargin
+        {
+            FadeAnimation {}
+        }
+    }
+
+    Drawer
+    {
+        id: drawer
+        z: 11
+
+        open: showTooldrawer
+
+        anchors.fill: parent
+        dock: page.isPortrait ? Dock.Top : Dock.Left
+
+        background: SilicaListView
+        {
+            anchors.fill: parent
+            model: 5
+
+            header: PageHeader { title: "Drawer" }
+
+            PullDownMenu
+            {
+                MenuItem
+                {
+                    text: "Option 1"
+                }
+                MenuItem
+                {
+                    text: "Option 2"
+                }
+            }
+            VerticalScrollDecorator {}
+
+            delegate: ListItem
+            {
+                id: listItem
+
+                Label
+                {
+                    x: Theme.paddingLarge
+                    text: "List Item " + modelData
+                    anchors.verticalCenter: parent.verticalCenter
+                    color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                }
+            }
+        }
     }
 
     Rectangle
@@ -39,7 +90,7 @@ Page
         id: canvas
         z: 9
         width: page.width
-        anchors.bottom: page.bottom
+        anchors.top: toolBox.bottom
         height: page.height - toolBox.height
         renderTarget: Canvas.FramebufferObject
         antialiasing: true

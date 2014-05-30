@@ -29,10 +29,10 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="80"/>
-        <location filename="../qml/components/Toolbox.qml" line="85"/>
+        <location filename="../qml/components/Toolbox.qml" line="91"/>
+        <location filename="../qml/components/Toolbox.qml" line="96"/>
         <source>Save format</source>
-        <translation>Tallennusmuoto</translation>
+        <translation type="unfinished">Tallennusmuoto</translation>
     </message>
 </context>
 <context>
@@ -66,27 +66,36 @@
 <context>
     <name>paint</name>
     <message>
-        <location filename="../qml/paint.qml" line="53"/>
+        <location filename="../qml/paint.qml" line="54"/>
         <source>About program</source>
         <translation>Tietoja ohjelmasta</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="54"/>
+        <location filename="../qml/paint.qml" line="55"/>
         <source>Clear drawing</source>
         <translation>Tyhjennä piirrustus</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="55"/>
+        <location filename="../qml/paint.qml" line="56"/>
         <source>Select background</source>
         <translation>Valitse tausta</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="56"/>
-        <source>Pen settings</source>
-        <translation>Kynän asetukset</translation>
+        <location filename="../qml/paint.qml" line="57"/>
+        <source>Show more tools</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="57"/>
+        <location filename="../qml/paint.qml" line="58"/>
+        <source>Tool settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pen settings</source>
+        <translation type="obsolete">Kynän asetukset</translation>
+    </message>
+    <message>
+        <location filename="../qml/paint.qml" line="59"/>
         <source>Save image</source>
         <translation>Tallenna</translation>
     </message>

@@ -18,7 +18,7 @@ Row
         onClicked:
         {
             console.log(buttonhelptext[0])
-            pageStack.push(Qt.resolvedUrl("AboutPage.qml"),
+            pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
                                   { "version": myclass.version,
                                     "year": "2014",
                                     "name": "Paint",
@@ -43,7 +43,7 @@ Row
         onClicked:
         {
             console.log(buttonhelptext[2])
-            var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("bgSettingsDialog.qml"), {
+            var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
                                                        "currentBg": bgColor })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentBg
@@ -54,11 +54,22 @@ Row
     IconButton
     {
         icon.source: buttonimage[3]
+        icon.rotation: showTooldrawer ? 180 : 0
         anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
             console.log(buttonhelptext[3])
-            var penSettingsDialog = pageStack.push(Qt.resolvedUrl("penSettingsDialog.qml"), {
+            showTooldrawer = !showTooldrawer
+        }
+    }
+    IconButton
+    {
+        icon.source: buttonimage[4]
+        anchors.verticalCenter: parent.verticalCenter
+        onClicked:
+        {
+            console.log(buttonhelptext[4])
+            var penSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"), {
                                                        "currentColor": drawColor,
                                                        "currentThickness": drawThickness })
             penSettingsDialog.accepted.connect(function() {
@@ -69,7 +80,7 @@ Row
     }
     IconButton
     {
-        icon.source: buttonimage[4]
+        icon.source: buttonimage[5]
         anchors.verticalCenter: parent.verticalCenter
         onPressAndHold:
         {
@@ -87,7 +98,7 @@ Row
         }
         onClicked:
         {
-            console.log(buttonhelptext[4])
+            console.log(buttonhelptext[5])
             toolBox.opacity = 0.0
             toolBoxVisibility.start()
         }

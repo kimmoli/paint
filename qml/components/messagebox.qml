@@ -5,18 +5,17 @@ Rectangle
 {
     id: messagebox
     z: 10
-    width: 400
-    height: 200
+    width: parent.width
+    height: Theme.itemSizeSmall
     radius: 40
     opacity: 0.0
     anchors.centerIn: parent
-    color: Theme.secondaryHighlightColor
+    color: Theme.highlightBackgroundColor
 
-    property alias message: messageboxText.text
-
-    onMessageChanged:
+    function showMessage(message)
     {
-        messagebox.opacity = 0.95
+        messageboxText.text = message
+        messagebox.opacity = 1.0
         messageboxVisibility.start()
     }
 

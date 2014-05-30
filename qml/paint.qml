@@ -45,6 +45,7 @@ ApplicationWindow
         "image://theme/icon-m-about",
         "image://theme/icon-m-delete",
         "image://theme/icon-m-image",
+        "image://theme/icon-m-down",
         "image://theme/icon-m-edit",
         "image://theme/icon-m-imaging" ]
 
@@ -53,8 +54,11 @@ ApplicationWindow
         qsTr("About program"),
         qsTr("Clear drawing"),
         qsTr("Select background"),
-        qsTr("Pen settings"),
+        qsTr("Show more tools"),
+        qsTr("Tool settings"),
         qsTr("Save image") ]
+
+    property bool showTooldrawer: false
 
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
 
