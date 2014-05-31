@@ -24,7 +24,8 @@ SOURCES += src/paint.cpp \
     src/PainterClass.cpp
 	
 HEADERS += \
-    src/PainterClass.h
+    src/PainterClass.h \
+    src/IconProvider.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
@@ -45,4 +46,6 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-eraser.png
 
 TRANSLATIONS += i18n/translations_fi.ts
+
+RESOURCES +=
 

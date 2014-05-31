@@ -33,7 +33,7 @@ Row
 
     IconButton
     {
-        icon.source: "../icons/icon-m-eraser.png"
+        icon.source: "image://paintIcons/icon-m-eraser"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Eraser
 
@@ -46,7 +46,7 @@ Row
 
     IconButton
     {
-        icon.source: "../icons/icon-m-spray.png"
+        icon.source: "image://paintIcons/icon-m-spray"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Spray
 
