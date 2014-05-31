@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.paint.PainterClass 1.0
 
 Row
 {
@@ -40,44 +41,18 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-edit"
-        anchors.bottom: parent.bottom
-        highlighted: drawMode === Painter.Pen
-
+        icon.source: buttonimage[1]
+        anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
-            console.log("pen mode select")
-            drawMode = Painter.Pen
+            console.log(buttonhelptext[1])
+            remorse.execute(qsTr("Clearing"), function()
+            {
+                clearRequest = true
+                canvas.requestPaint()
+            })
         }
     }
-
-    IconButton
-    {
-        icon.source: "image://theme/icon-m-ambience"
-        anchors.bottom: parent.bottom
-        highlighted: drawMode === Painter.Spray
-
-        onClicked:
-        {
-            console.log("spray mode select")
-            drawMode = Painter.Spray
-        }
-    }
-
-    IconButton
-    {
-        icon.source: "image://theme/icon-m-edit"
-        icon.rotation: 180
-        anchors.bottom: parent.bottom
-        highlighted: drawMode === Painter.Eraser
-
-        onClicked:
-        {
-            console.log("eraser mode select")
-            drawMode = Painter.Eraser
-        }
-    }
-
 
     IconButton
     {
@@ -94,6 +69,34 @@ Row
 
             })
 
+        }
+    }
+
+    IconButton
+    {
+        icon.source: buttonimage[5]
+        anchors.verticalCenter: parent.verticalCenter
+        onClicked:
+        {
+            console.log(buttonhelptext[5])
+            toolBox.opacity = 0.0
+            showTooldrawer = false
+            toolBoxVisibility.start()
+        }
+    }
+    Behavior on opacity
+    {
+        FadeAnimation {}
+    }
+    Timer
+    {
+        id: toolBoxVisibility
+        interval: 1000
+        onTriggered:
+        {
+            var fileName = painter.saveScreenshot()
+            toolBox.opacity = 1.0
+            showMessage(fileName, 0)
         }
     }
 }

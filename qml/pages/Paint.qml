@@ -21,17 +21,11 @@ Page
         id: messagebox
     }
 
-    Toolpanel
-    {
-        id: toolPanel
-        onShowMessage: messagebox.showMessage(message, delay)
-    }
-
     Toolbox
     {
         id: toolBox
         onShowMessage: messagebox.showMessage(message, delay)
-        anchors.top: toolPanel.bottom
+        anchors.top: parent.top
     }
 
     Rectangle
@@ -42,7 +36,8 @@ Page
         z:7
     }
 
-    function getRandomFloat(min, max) {
+    function getRandomFloat(min, max)
+    {
       return Math.random() * (max - min) + min;
     }
 
@@ -85,6 +80,7 @@ Page
                     ctx.lineTo(lastX, lastY)
                     ctx.stroke()
                     break;
+
                 case Painter.Eraser :
                     radius = 10*thicknesses[drawThickness]
                     ctx.strokeStyle = canvas.color
@@ -92,6 +88,7 @@ Page
                     lastX = area.mouseX
                     lastY = area.mouseY
                     break;
+
                 case Painter.Spray :
                     for (var i = density; i--; )
                     {
@@ -103,7 +100,9 @@ Page
                     lastX = area.mouseX
                     lastY = area.mouseY
                     break;
+
                 default:
+                    console.log("Something fishy...")
                     break;
             }
         }

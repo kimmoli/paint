@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.paint.PainterClass 1.0
 
 Row
 {
@@ -7,24 +8,17 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[1]
-        anchors.verticalCenter: parent.verticalCenter
+        icon.source: "image://theme/icon-m-edit"
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Pen
+
         onClicked:
         {
-            console.log(buttonhelptext[1])
-            remorse.execute(qsTr("Clearing"), function()
-            {
-                clearRequest = true
-                canvas.requestPaint()
-            })
+            console.log("pen mode select")
+            drawMode = Painter.Pen
         }
-    }
 
-    IconButton
-    {
-        icon.source: buttonimage[4]
-        anchors.verticalCenter: parent.verticalCenter
-        onClicked:
+        onPressAndHold:
         {
             console.log(buttonhelptext[4])
             var penSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"), {
@@ -39,29 +33,29 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[5]
-        anchors.verticalCenter: parent.verticalCenter
+        icon.source: "image://theme/icon-m-edit"
+        icon.rotation: 180
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Eraser
+
         onClicked:
         {
-            console.log(buttonhelptext[5])
-            toolBox.opacity = 0.0
-            showTooldrawer = false
-            toolBoxVisibility.start()
+            console.log("eraser mode select")
+            drawMode = Painter.Eraser
         }
     }
-    Behavior on opacity
+
+    IconButton
     {
-        FadeAnimation {}
-    }
-    Timer
-    {
-        id: toolBoxVisibility
-        interval: 1000
-        onTriggered:
+        icon.source: "image://theme/icon-m-ambience" /* Todo: better icon */
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Spray
+
+        onClicked:
         {
-            var fileName = painter.saveScreenshot()
-            toolBox.opacity = 1.0
-            showMessage(fileName, 0)
+            console.log("spray mode select")
+            drawMode = Painter.Spray
         }
     }
+
 }

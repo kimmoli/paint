@@ -27,18 +27,15 @@
     </message>
 </context>
 <context>
-    <name>Toolbar1</name>
-    <message>
-        <location filename="../qml/components/Toolbar1.qml" line="15"/>
-        <source>Clearing</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Toolbar2</name>
     <message>
-        <location filename="../qml/components/Toolbar2.qml" line="36"/>
+        <location filename="../qml/components/Toolbar2.qml" line="37"/>
         <source>File format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar2.qml" line="49"/>
+        <source>Clearing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -47,14 +44,6 @@
     <message>
         <source>Save format</source>
         <translation type="obsolete">Tallennusmuoto</translation>
-    </message>
-</context>
-<context>
-    <name>Toolpanel</name>
-    <message>
-        <location filename="../qml/components/Toolpanel.qml" line="51"/>
-        <source>File format</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -10,7 +10,23 @@ Row
     height: 80
     width: parent.width
 
+    property var toolbar
+
+    property int toolbarNumber : 1
+    property int maxToolbars: 2
+
     signal showMessage(string message, int delay)
+
+    function changeToolBar(number)
+    {
+        if (toolbar)
+            toolbar.destroy()
+
+        var toolbarComp = Qt.createComponent(Qt.resolvedUrl("../components/Toolbar" + number + ".qml"))
+        toolbar = toolbarComp.createObject(toolBox)
+    }
+
+    Component.onCompleted: changeToolBar(toolbarNumber)
 
     RemorsePopup
     {
@@ -22,22 +38,21 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[3]
+        icon.source: "image://theme/icon-m-repeat"
         anchors.verticalCenter: parent.verticalCenter
-
-        Behavior on icon.rotation
-        {
-            NumberAnimation { duration: 250 }
-        }
 
         onClicked:
         {
-            console.log(buttonhelptext[3])
-            var x = Qt.createComponent(Qt.resolvedUrl("../components/Toolbar1.qml"))
-            x.createObject(toolBox)
+            console.log("Creating toolbar " + toolbarNumber)
 
+            toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (toolbarNumber + 1)
+            changeToolBar(toolbarNumber)
         }
     }
-
-
+    Rectangle
+    {
+        height: 1
+        width: 16
+        color: "transparent"
+    }
 }

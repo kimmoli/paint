@@ -26,21 +26,19 @@ Rectangle
         text: ""
         anchors.centerIn: parent
     }
-    Behavior on height
-    {
-        NumberAnimation { duration: 100 }
-    }
 
     Behavior on opacity
     {
         FadeAnimation {}
     }
+
     Timer
     {
         id: messageboxVisibility
         interval: 3000
         onTriggered: messagebox.opacity = 0.0
     }
+
     BackgroundItem
     {
 
