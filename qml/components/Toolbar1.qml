@@ -33,8 +33,7 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-edit"
-        icon.rotation: 180
+        icon.source: "../icons/icon-m-eraser.png"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Eraser
 
@@ -47,7 +46,7 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-ambience" /* Todo: better icon */
+        icon.source: "../icons/icon-m-spray.png"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Spray
 

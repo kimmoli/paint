@@ -40,7 +40,9 @@ OTHER_FILES += qml/paint.qml \
     qml/components/Toolbox.qml \
     qml/pages/genSettings.qml \
     qml/components/Toolbar1.qml \
-    qml/components/Toolbar2.qml
+    qml/components/Toolbar2.qml \
+    qml/icons/icon-m-spray.png \
+    qml/icons/icon-m-eraser.png
 
 TRANSLATIONS += i18n/translations_fi.ts
 
