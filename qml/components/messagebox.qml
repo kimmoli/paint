@@ -11,11 +11,12 @@ Rectangle
     anchors.centerIn: parent
     color: Theme.highlightBackgroundColor
 
-    function showMessage(message)
+    function showMessage(message, delay)
     {
         messageboxText.text = message
         messagebox.opacity = 1.0
-        messageboxVisibility.start()
+        messageboxVisibility.interval = (delay>0) ? delay : 3000
+        messageboxVisibility.restart()
     }
 
     Label
@@ -31,8 +32,17 @@ Rectangle
     Timer
     {
         id: messageboxVisibility
-        interval: 3500
+        interval: 3000
         onTriggered: messagebox.opacity = 0.0
+    }
+    BackgroundItem
+    {
+        anchors.fill: parent
+        onClicked:
+        {
+            messageboxVisibility.stop()
+            messagebox.opacity = 0.0
+        }
     }
 }
 

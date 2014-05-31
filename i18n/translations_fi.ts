@@ -45,6 +45,16 @@
         <source>File format</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/components/Toolpanel.qml" line="65"/>
+        <source>Spraying</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolpanel.qml" line="80"/>
+        <source>Eraser</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>bgSettingsDialog</name>

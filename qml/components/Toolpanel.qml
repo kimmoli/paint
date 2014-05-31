@@ -6,7 +6,7 @@ DockedPanel
     id: toolpanel
     z: 11
 
-    signal showMessage(string message)
+    signal showMessage(string message, int delay)
 
     open: showTooldrawer
 
@@ -47,10 +47,40 @@ DockedPanel
                 genSettingsDialog.accepted.connect(function()
                 {
                     myclass.setSaveMode(genSettingsDialog.saveFormat)
-                    showMessage(qsTr("File format") + " " + genSettingsDialog.saveFormat)
+                    showMessage(qsTr("File format") + " " + genSettingsDialog.saveFormat, 1500)
                 })
             }
         }
+
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-ambience"
+            anchors.bottom: parent.bottom
+
+            onClicked:
+            {
+                console.log("spray mode toggle")
+                sprayMode = !sprayMode
+                if (sprayMode)
+                    showMessage(qsTr("Spraying"), 1000)
+            }
+        }
+
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-edit"
+            icon.rotation: 180
+            anchors.bottom: parent.bottom
+
+            onClicked:
+            {
+                console.log("eraser mode toggle")
+                eraserMode = !eraserMode
+                if (eraserMode)
+                    showMessage(qsTr("Eraser"), 1000)
+            }
+        }
+
 
         IconButton
         {
@@ -69,6 +99,7 @@ DockedPanel
 
             }
         }
+
 
 
 //        Switch

@@ -65,6 +65,9 @@ ApplicationWindow
 
     property bool showTooldrawer: false
 
+    property bool sprayMode : false
+    property bool eraserMode : false
+
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")

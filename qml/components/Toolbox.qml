@@ -9,7 +9,7 @@ Row
     anchors.horizontalCenter: parent.horizontalCenter
     height: 80
 
-    signal showMessage(string message)
+    signal showMessage(string message, int delay)
 
     RemorsePopup
     {
@@ -93,7 +93,7 @@ Row
         {
             var fileName = myclass.saveScreenshot()
             toolBox.opacity = 1.0
-            showMessage(fileName)
+            showMessage(fileName, 0)
         }
     }
 }
