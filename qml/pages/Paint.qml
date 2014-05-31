@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.paint.PainterClass 1.0
 import "../components"
 
 
@@ -68,40 +69,42 @@ Page
 
             if (clearRequest)
             {
-                ctx.clearRect(0,0,canvas.width, canvas.height);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 clearRequest = false
             }
-            else if (eraserMode)
+            else switch (drawMode)
             {
-                radius = 10*thicknesses[drawThickness]
-                ctx.strokeStyle = canvas.color
-                ctx.clearRect(lastX - radius/2, lastY - radius/2, radius/2, radius/2);
-                lastX = area.mouseX
-                lastY = area.mouseY
-            }
-            else if (sprayMode)
-            {
-                for (var i = density; i--; )
-                {
-                    angle = getRandomFloat(0, Math.PI*2)
-                    radius = getRandomFloat(0, 10*thicknesses[drawThickness])
+                case Painter.Pen :
+                    ctx.lineWidth = thicknesses[drawThickness]
                     ctx.strokeStyle = canvas.color
-                    ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1, 1)
-                }
-                lastX = area.mouseX
-                lastY = area.mouseY
-            }
-            else
-            {
-                ctx.lineWidth = thicknesses[drawThickness]
-                ctx.strokeStyle = canvas.color
-                ctx.lineJoin = ctx.lineCap = 'round';
-                ctx.beginPath()
-                ctx.moveTo(lastX, lastY)
-                lastX = area.mouseX
-                lastY = area.mouseY
-                ctx.lineTo(lastX, lastY)
-                ctx.stroke()
+                    ctx.lineJoin = ctx.lineCap = 'round';
+                    ctx.beginPath()
+                    ctx.moveTo(lastX, lastY)
+                    lastX = area.mouseX
+                    lastY = area.mouseY
+                    ctx.lineTo(lastX, lastY)
+                    ctx.stroke()
+                    break;
+                case Painter.Eraser :
+                    radius = 10*thicknesses[drawThickness]
+                    ctx.strokeStyle = canvas.color
+                    ctx.clearRect(lastX - radius/2, lastY - radius/2, radius/2, radius/2);
+                    lastX = area.mouseX
+                    lastY = area.mouseY
+                    break;
+                case Painter.Spray :
+                    for (var i = density; i--; )
+                    {
+                        angle = getRandomFloat(0, Math.PI*2)
+                        radius = getRandomFloat(0, 10*thicknesses[drawThickness])
+                        ctx.strokeStyle = canvas.color
+                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1, 1)
+                    }
+                    lastX = area.mouseX
+                    lastY = area.mouseY
+                    break;
+                default:
+                    break;
             }
         }
 

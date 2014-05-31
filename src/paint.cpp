@@ -21,12 +21,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QGuiApplication>
 #include <QQmlContext>
 #include <QCoreApplication>
-#include "myclass.h"
-
+#include "PainterClass.h"
 
 int main(int argc, char *argv[])
 {
-    qmlRegisterType<Myclass>("harbour.paint.Myclass", 1, 0, "Myclass");
+    qmlRegisterType<PainterClass>("harbour.paint.PainterClass", 1, 0, "Painter");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 

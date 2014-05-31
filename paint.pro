@@ -21,9 +21,10 @@ INSTALLS += i18n
 QT += dbus
 
 SOURCES += src/paint.cpp \
-	src/myclass.cpp
+    src/PainterClass.cpp
 	
-HEADERS += src/myclass.h
+HEADERS += \
+    src/PainterClass.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \

@@ -8,27 +8,27 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "myclass.h"
+#include "PainterClass.h"
 #include <QCoreApplication>
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 
-Myclass::Myclass(QObject *parent) :
+PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
 {
     fileExtension = getSaveMode();
 }
 
-QString Myclass::readVersion()
+QString PainterClass::readVersion()
 {
     return APPVERSION;
 }
 
-Myclass::~Myclass()
+PainterClass::~PainterClass()
 {
 }
 
-QString Myclass::saveScreenshot()
+QString PainterClass::saveScreenshot()
 {
     QDate ssDate = QDate::currentDate();
     QTime ssTime = QTime::currentTime();
@@ -66,7 +66,7 @@ QString Myclass::saveScreenshot()
 
 }
 
-QString Myclass::getSaveMode()
+QString PainterClass::getSaveMode()
 {
     QSettings s("harbour-paint", "harbour-paint");
     s.beginGroup("Settings");
@@ -76,7 +76,7 @@ QString Myclass::getSaveMode()
     return fileExtension;
 }
 
-void Myclass::setSaveMode(QString extension)
+void PainterClass::setSaveMode(QString extension)
 {
     QSettings s("harbour-paint", "harbour-paint");
     s.beginGroup("Settings");

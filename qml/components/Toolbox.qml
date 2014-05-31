@@ -91,7 +91,7 @@ Row
         interval: 1000
         onTriggered:
         {
-            var fileName = myclass.saveScreenshot()
+            var fileName = painter.saveScreenshot()
             toolBox.opacity = 1.0
             showMessage(fileName, 0)
         }

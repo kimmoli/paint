@@ -5,7 +5,7 @@ Rectangle
 {
     id: messagebox
     z: 10
-    width: parent.width
+    width: opacity == 1.0 ? parent.width : 0
     height: Theme.itemSizeSmall
     opacity: 0.0
     anchors.centerIn: parent
@@ -13,6 +13,7 @@ Rectangle
 
     function showMessage(message, delay)
     {
+        console.log("Something triggered a message with " + message + " and delay of " + delay)
         messageboxText.text = message
         messagebox.opacity = 1.0
         messageboxVisibility.interval = (delay>0) ? delay : 3000
@@ -25,6 +26,11 @@ Rectangle
         text: ""
         anchors.centerIn: parent
     }
+    Behavior on height
+    {
+        NumberAnimation { duration: 100 }
+    }
+
     Behavior on opacity
     {
         FadeAnimation {}
@@ -37,6 +43,7 @@ Rectangle
     }
     BackgroundItem
     {
+
         anchors.fill: parent
         onClicked:
         {
