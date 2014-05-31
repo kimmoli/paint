@@ -83,10 +83,12 @@ Page
 
                 case Painter.Eraser :
                     radius = 10*thicknesses[drawThickness]
-                    ctx.strokeStyle = canvas.color
-                    ctx.clearRect(lastX - radius/2, lastY - radius/2, radius/2, radius/2);
-                    lastX = area.mouseX
-                    lastY = area.mouseY
+                    ctx.globalCompositeOperation = 'destination-out'
+                    ctx.beginPath()
+                    ctx.arc(area.mouseX, area.mouseY, radius, 0, Math.PI*2, true)
+                    ctx.fill()
+                    ctx.stroke()
+                    ctx.globalCompositeOperation = 'source-over'
                     break;
 
                 case Painter.Spray :
@@ -94,17 +96,17 @@ Page
                     {
                         angle = getRandomFloat(0, Math.PI*2)
                         radius = getRandomFloat(0, 10*thicknesses[drawThickness])
-                        ctx.strokeStyle = canvas.color
+                        ctx.fillStyle = canvas.color
                         ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1, 1)
                     }
-                    lastX = area.mouseX
-                    lastY = area.mouseY
                     break;
 
                 default:
                     console.log("Something fishy...")
                     break;
             }
+            lastX = area.mouseX
+            lastY = area.mouseY
         }
 
         MouseArea
