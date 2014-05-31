@@ -17,7 +17,7 @@ public:
     {
         QStringList parts = id.split('?');
 
-        QPixmap sourcePixmap(SailfishApp::pathTo("qml/icons/" + parts.at(0) + ".png"));
+        QPixmap sourcePixmap(SailfishApp::pathTo("qml/icons/" + parts.at(0) + ".png").toString(QUrl::RemoveScheme));
 
         if (size)
             *size  = sourcePixmap.size();
