@@ -15,6 +15,31 @@ Page
 
     id: page
 
+    ListModel
+    {
+        id: buttonhelp
+    }
+
+    Component.onCompleted:
+    {
+        buttonhelp.append( {"image": "image://theme/icon-m-repeat", "helptext": qsTr("Change toolbar")})
+        buttonhelp.append( {"image": "image://theme/icon-m-edit", "helptext": qsTr("Draw freehand line")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-eraser", "helptext": qsTr("Eraser")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-spray", "helptext": qsTr("Sprayer")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geometrics", "helptext": qsTr("Draw geometric shape")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-toolsettings", "helptext": qsTr("Change color, width")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-line", "helptext": qsTr("Draw line")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-rectangle", "helptext": qsTr("Draw rectangle")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-rectangle-filled", "helptext": qsTr("Draw filled rectangle")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle", "helptext": qsTr("Draw circle")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle-filled", "helptext": qsTr("Draw filled circle")})
+        buttonhelp.append( {"image": "image://theme/icon-m-about", "helptext": qsTr("About Paint")})
+        buttonhelp.append( {"image": "image://theme/icon-m-developer-mode", "helptext": qsTr("Change settings")})
+        buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})
+        buttonhelp.append( {"image": "image://theme/icon-m-image", "helptext": qsTr("Change bacground")})
+        buttonhelp.append( {"image": "image://theme/icon-m-imaging", "helptext": qsTr("Save snapshot")})
+    }
+
     SilicaFlickable
     {
         anchors.fill: parent
@@ -58,13 +83,6 @@ Page
 
             Label
             {
-                text: "PROTO"
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: 100
-            }
-
-            Label
-            {
                 x: Theme.paddingLarge
                 text: "(C) " + year + " kimmoli"
                 color: Theme.primaryColor
@@ -86,19 +104,19 @@ Page
 
             Repeater
             {
-                model: buttonimage
+                model: buttonhelp
                 Row
                 {
                     spacing: 50
-                    x: 90
+                    x: 40
                     Image
                     {
                         id: bim
-                        source: buttonimage[index]
+                        source: image
                     }
                     Label
                     {
-                        text: buttonhelptext[index]
+                        text: helptext
                         anchors.verticalCenter: bim.verticalCenter
                     }
 

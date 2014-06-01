@@ -15,8 +15,6 @@ ApplicationWindow
     property string acceptText : qsTr("Accept")
     property string cancelText : qsTr("Cancel")
 
-    property bool showTooldrawer: false
-
     property int drawMode : Painter.Pen
     property int geometricsMode : Painter.Line
 
