@@ -13,7 +13,6 @@ Page
 
     property int drawColor: 0
     property int drawThickness: 0
-    property bool clearRequest: false
     property int bgColor: colors.length
 
     Messagebox
@@ -41,6 +40,62 @@ Page
       return Math.random() * (max - min) + min;
     }
 
+    function drawLine(ctx, x0,y0,x1,y1)
+    {
+        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.strokeStyle = colors[drawColor]
+
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    Canvas
+    {
+        id: geometryCanvas
+        z: 10
+        anchors.fill: canvas
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+        property real downX
+        property real downY
+        property color color: colors[drawColor]
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
+
+        onPaint:
+        {
+            var ctx = getContext('2d')
+
+            ctx.clearRect(0, 0, width, height);
+            if (clearNow)
+            {
+                clearNow = false
+                return
+            }
+
+            switch(geometricsMode)
+            {
+                case Painter.Line :
+                    drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+
     Canvas
     {
         id: canvas
@@ -53,25 +108,34 @@ Page
 
         property real lastX
         property real lastY
-        property color color: colors[drawColor]
         property int density: 50
         property real angle
         property real radius
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
 
         onPaint:
         {
             var ctx = getContext('2d')
 
-            if (clearRequest)
+            if (clearNow)
             {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                clearRequest = false
+                ctx.clearRect(0, 0, width, height);
+                clearNow = false
+                return
             }
-            else switch (drawMode)
+
+            switch (drawMode)
             {
                 case Painter.Pen :
                     ctx.lineWidth = thicknesses[drawThickness]
-                    ctx.strokeStyle = canvas.color
+                    ctx.strokeStyle = colors[drawColor]
                     ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
                     ctx.moveTo(lastX, lastY)
@@ -96,13 +160,27 @@ Page
                     {
                         angle = getRandomFloat(0, Math.PI*2)
                         radius = getRandomFloat(0, 10*thicknesses[drawThickness])
-                        ctx.fillStyle = canvas.color
+                        ctx.fillStyle = colors[drawColor]
                         ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+drawThickness, 1+drawThickness)
                     }
                     break;
 
+                case Painter.Geometrics :
+                    switch(geometricsMode)
+                    {
+                    case Painter.Line :
+                        drawLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        break;
+
+                    default:
+                        console.log("Sorry, not such geometry available")
+                        break;
+                    }
+
+                    break;
+
                 default:
-                    console.log("Something fishy...")
+                    console.log("You need to code some more...")
                     break;
             }
             lastX = area.mouseX
@@ -115,12 +193,37 @@ Page
             anchors.fill: canvas
             onPressed:
             {
+                console.log("pressed")
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
+                if (drawMode === Painter.Geometrics)
+                {
+                    geometryCanvas.downX = mouseX
+                    geometryCanvas.downY = mouseY
+                }
+                else
+                {
+                    canvas.lastX = mouseX
+                    canvas.lastY = mouseY
+                }
             }
+
+            onReleased:
+            {
+                console.log("released")
+                if (drawMode === Painter.Geometrics)
+                {
+                    canvas.requestPaint()
+                    geometryCanvas.clear()
+                }
+            }
+
             onPositionChanged:
             {
-                canvas.requestPaint()
+                if (drawMode === Painter.Geometrics)
+                    geometryCanvas.requestPaint()
+                else
+                    canvas.requestPaint()
             }
         }
     }

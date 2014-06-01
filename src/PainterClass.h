@@ -17,6 +17,7 @@ class PainterClass : public QObject
     Q_OBJECT
     Q_PROPERTY(QString version READ readVersion NOTIFY versionChanged())
     Q_ENUMS(Mode)
+    Q_ENUMS(GeometricsMode)
 
 public:
     explicit PainterClass(QObject *parent = 0);
@@ -34,6 +35,13 @@ public:
         Pen,
         Spray,
         Geometrics
+    };
+
+    enum GeometricsMode
+    {
+        Line = 0,
+        Rectangle,
+        Circle
     };
 
 signals:

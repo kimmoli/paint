@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 Rectangle
 {
     id: messagebox
-    z: 10
+    z: 20
     width: opacity == 1.0 ? parent.width : 0
     height: Theme.itemSizeSmall
     opacity: 0.0

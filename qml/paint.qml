@@ -37,7 +37,7 @@ ApplicationWindow
     property bool showTooldrawer: false
 
     property int drawMode : Painter.Pen
-
+    property int geometricsMode : Painter.Line
 
     /*****************************************************/
 

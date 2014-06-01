@@ -31,7 +31,7 @@ Row
     RemorsePopup
     {
         id: remorse
-        z: 11
+        z: 21
         opacity: 1.0
         anchors.verticalCenter: parent.verticalCenter
     }

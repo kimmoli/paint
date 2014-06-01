@@ -48,8 +48,7 @@ Row
             console.log(buttonhelptext[1])
             remorse.execute(qsTr("Clearing"), function()
             {
-                clearRequest = true
-                canvas.requestPaint()
+                canvas.clear()
             })
         }
     }
