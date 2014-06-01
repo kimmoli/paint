@@ -63,6 +63,32 @@ Page
         ctx.closePath();
     }
 
+    function drawCircle(ctx, x0,y0,x1,y1)
+    {
+        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.strokeStyle = colors[drawColor]
+
+        var radius = Math.max(Math.abs(x1-x0),Math.abs(y1-y0))
+
+        ctx.beginPath()
+        ctx.arc(x0, y0, radius, 0, Math.PI*2, true)
+        ctx.fill()
+        ctx.stroke()
+    }
+
+    function drawRectangle(ctx, x0,y0,x1,y1)
+    {
+        var x = Math.min(x0, x1),
+            y = Math.min(y0, y1),
+            w = Math.abs(x1-x0),
+            h = Math.abs(y1-y0);
+
+        if (h==0 || w==0)
+            return;
+
+        context.strokeRect(x, y, w, h);
+    }
+
     Canvas
     {
         id: geometryCanvas
@@ -98,6 +124,12 @@ Page
             {
                 case Painter.Line :
                     drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
+                    break;
+                case Painter.Circle :
+                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY)
+                    break;
+                case Painter.Rectangle :
+                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY)
                     break;
 
                 default:
@@ -182,9 +214,15 @@ Page
                     case Painter.Line :
                         drawLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
                         break;
+                    case Painter.Circle :
+                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        break;
+                    case Painter.Rectangle :
+                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        break;
 
                     default:
-                        console.log("Sorry, not such geometry available")
+                        console.log("Sorry, no such geometry implemented")
                         break;
                     }
 
