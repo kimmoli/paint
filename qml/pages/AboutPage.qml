@@ -58,6 +58,13 @@ Page
 
             Label
             {
+                text: "PROTO"
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 100
+            }
+
+            Label
+            {
                 x: Theme.paddingLarge
                 text: "(C) " + year + " kimmoli"
                 color: Theme.primaryColor

@@ -9,12 +9,12 @@
         <translation>Tietoja: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Version: </source>
         <translation>Versio: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutPage.qml" line="84"/>
         <source>Help</source>
         <translation>Pika-apu</translation>
     </message>

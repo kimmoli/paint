@@ -30,14 +30,22 @@ Page
 
     GeometryPopup
     {
-        z:0
+        z:1
         id: geometryPopup
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: toolBox.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
-        onVisibleChanged: z = visible ? 19 : 0
+        onVisibleChanged: z = visible ? 19 : 1
         onHideMe: geometryPopupVisible = false
     }
+    Rectangle
+    {
+        color: "black"
+        anchors.fill: geometryPopup
+        visible: geometryPopup.visible
+        z: geometryPopup.z-1
+    }
+
 
     Rectangle
     {
@@ -77,10 +85,13 @@ Page
         if (fill)
             ctx.fill()
         ctx.stroke()
+        ctx.closePath()
     }
 
     function drawRectangle(ctx, x0,y0,x1,y1, fill)
     {
+        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.strokeStyle = colors[drawColor]
         ctx.fillStyle  = colors[drawColor]
 
         var x = Math.min(x0, x1),
@@ -194,7 +205,7 @@ Page
                     ctx.globalCompositeOperation = 'destination-out'
 
                 case Painter.Pen :
-                    ctx.lineWidth = thicknesses[drawThickness]
+                    ctx.lineWidth = (drawMode === Painter.Eraser) ? 3*thicknesses[drawThickness] : thicknesses[drawThickness]
                     ctx.strokeStyle = colors[drawColor]
                     ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
@@ -210,7 +221,7 @@ Page
                     for (var i = density; i--; )
                     {
                         angle = getRandomFloat(0, Math.PI*2)
-                        radius = getRandomFloat(0, 10*thicknesses[drawThickness])
+                        radius = getRandomFloat(0, 5*thicknesses[drawThickness])
                         ctx.fillStyle = colors[drawColor]
                         ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+drawThickness, 1+drawThickness)
                     }
