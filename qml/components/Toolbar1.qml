@@ -17,18 +17,6 @@ Row
             console.log("pen mode select")
             drawMode = Painter.Pen
         }
-
-        onPressAndHold:
-        {
-            console.log(buttonhelptext[4])
-            var penSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"), {
-                                                       "currentColor": drawColor,
-                                                       "currentThickness": drawThickness })
-            penSettingsDialog.accepted.connect(function() {
-                drawColor = penSettingsDialog.currentColor
-                drawThickness = penSettingsDialog.currentThickness
-            })
-        }
     }
 
     IconButton
@@ -56,5 +44,53 @@ Row
             drawMode = Painter.Spray
         }
     }
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-geometrics"
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Geometrics
+
+        onClicked:
+        {
+            console.log("Geometrics mode select")
+            drawMode = Painter.Geometrics
+        }
+    }
+
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-toolsettings"
+        anchors.bottom: parent.bottom
+
+        onClicked:
+        {
+            var SettingsDialog
+
+            switch (drawMode)
+            {
+                case Painter.Eraser : /* TODO: Own dialogs */
+                case Painter.Spray :
+                case Painter.Geometrics:
+
+                case Painter.Pen :
+                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
+                                                           { "currentColor": drawColor,
+                                                             "currentThickness": drawThickness })
+
+                    SettingsDialog.accepted.connect(function() {
+                        drawColor = SettingsDialog.currentColor
+                        drawThickness = SettingsDialog.currentThickness
+                    })
+
+                    break;
+
+                default :
+                    break;
+            }
+        }
+    }
+
 
 }

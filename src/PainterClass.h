@@ -30,9 +30,10 @@ public:
 
     enum Mode
     {
-        Eraser,
+        Eraser = 0,
         Pen,
-        Spray
+        Spray,
+        Geometrics
     };
 
 signals:

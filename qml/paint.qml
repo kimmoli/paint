@@ -38,6 +38,9 @@ ApplicationWindow
 
     property int drawMode : Painter.Pen
 
+
+    /*****************************************************/
+
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")

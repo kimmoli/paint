@@ -32,7 +32,6 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/Paint.qml \
     qml/pages/AboutPage.qml \
     rpm/paint.spec \
-    qml/pages/penSettingsDialog.qml \
     qml/pages/bgSettingsDialog.qml \
     harbour-paint.desktop \
     harbour-paint.png \
@@ -43,7 +42,10 @@ OTHER_FILES += qml/paint.qml \
     qml/components/Toolbar1.qml \
     qml/components/Toolbar2.qml \
     qml/icons/icon-m-spray.png \
-    qml/icons/icon-m-eraser.png
+    qml/icons/icon-m-eraser.png \
+    qml/pages/penSettingsDialog.qml \
+    qml/icons/icon-m-toolsettings.png \
+    qml/icons/icon-m-geometrics.png
 
 TRANSLATIONS += i18n/translations_fi.ts
 

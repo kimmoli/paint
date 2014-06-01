@@ -39,6 +39,7 @@ Row
     IconButton
     {
         icon.source: "image://theme/icon-m-repeat"
+        icon.scale: 0.6
         anchors.verticalCenter: parent.verticalCenter
 
         onClicked:

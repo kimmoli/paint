@@ -97,7 +97,7 @@ Page
                         angle = getRandomFloat(0, Math.PI*2)
                         radius = getRandomFloat(0, 10*thicknesses[drawThickness])
                         ctx.fillStyle = canvas.color
-                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1, 1)
+                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+drawThickness, 1+drawThickness)
                     }
                     break;
 
