@@ -6,67 +6,67 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="25"/>
         <source>Change toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Byt verktygsfält</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="26"/>
         <source>Draw freehand line</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita frihandslinje</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="27"/>
         <source>Eraser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Radera</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Sprayer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Färgspruta</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Draw geometric shape</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita geometrisk figur</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Change color, width</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ändra färg, tjocklek</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw line</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita linje</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Draw rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita rektangel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw filled rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita fylld rektangel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw circle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita cirkel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled circle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rita fylld cirkel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>About Paint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Om Paint</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Change settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ändra inställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Change bacground</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ändra bakgrund</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Save snapshot</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spara ögonblicksbild</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../qml/components/Toolbar2.qml" line="35"/>
         <source>File format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Filformat</translation>
     </message>
 </context>
 <context>
@@ -112,7 +112,7 @@
     <message>
         <location filename="../qml/components/Toolbox.qml" line="24"/>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rensar</translation>
     </message>
 </context>
 <context>
@@ -138,12 +138,12 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="14"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Allmäna inställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="28"/>
         <source>File format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Filformat</translation>
     </message>
 </context>
 <context>
