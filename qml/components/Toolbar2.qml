@@ -63,7 +63,7 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-imaging"
+        icon.source: "image://paintIcons/icon-m-save"
         anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
