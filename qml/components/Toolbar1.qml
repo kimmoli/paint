@@ -58,8 +58,17 @@ Row
 
             switch (drawMode)
             {
-                case Painter.Eraser : /* TODO: Own dialogs */
-                case Painter.Spray :
+                case Painter.Eraser :
+                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/eraserSettingsDialog.qml"),
+                                                           { "currentThickness": eraserThickness })
+
+                    SettingsDialog.accepted.connect(function() {
+                        eraserThickness = SettingsDialog.currentThickness
+                    })
+
+                    break;
+
+                case Painter.Spray : /* TODO: Own dialogs */
                 case Painter.Geometrics:
 
                 case Painter.Pen :

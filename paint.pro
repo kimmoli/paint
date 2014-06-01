@@ -54,7 +54,9 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-circle.png \
     qml/icons/icon-m-geom-rectangle-filled.png \
     qml/icons/icon-m-geom-circle-filled.png \
-    i18n/translations_sv.ts
+    i18n/translations_sv.ts \
+    qml/pages/eraserSettingsDialog.qml \
+    qml/pages/spraySettingsDialog.qml
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts

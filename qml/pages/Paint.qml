@@ -13,6 +13,7 @@ Page
 
     property int drawColor: 0
     property int drawThickness: 3
+    property int eraserThickness: 15
     property int bgColor: colors.length
 
     Messagebox
@@ -202,10 +203,10 @@ Page
             switch (drawMode)
             {
                 case Painter.Eraser :
-                    ctx.globalCompositeOperation = 'destination-out'
-
                 case Painter.Pen :
-                    ctx.lineWidth = (drawMode === Painter.Eraser) ? 3*drawThickness : drawThickness
+                    if (drawMode === Painter.Eraser)
+                        ctx.globalCompositeOperation = 'destination-out'
+                    ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
                     ctx.strokeStyle = colors[drawColor]
                     ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
