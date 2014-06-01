@@ -11,11 +11,13 @@ Row
     width: parent.width
 
     property var toolbar
+    property var popup
 
     property int toolbarNumber : 1
     property int maxToolbars: 2
 
     signal showMessage(string message, int delay)
+    signal showGeometryPopup()
 
     function changeToolBar(number)
     {

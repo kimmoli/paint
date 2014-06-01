@@ -45,7 +45,11 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-eraser.png \
     qml/pages/penSettingsDialog.qml \
     qml/icons/icon-m-toolsettings.png \
-    qml/icons/icon-m-geometrics.png
+    qml/icons/icon-m-geometrics.png \
+    qml/components/GeometryPopup.qml \
+    qml/icons/icon-m-geom-rectangle.png \
+    qml/icons/icon-m-geom-line.png \
+    qml/icons/icon-m-geom-circle.png
 
 TRANSLATIONS += i18n/translations_fi.ts
 

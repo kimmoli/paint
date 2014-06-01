@@ -24,7 +24,18 @@ Page
     {
         id: toolBox
         onShowMessage: messagebox.showMessage(message, delay)
+        onShowGeometryPopup: geometryPopup.visible = true
         anchors.top: parent.top
+    }
+
+    GeometryPopup
+    {
+        z:0
+        id: geometryPopup
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: toolBox.bottom
+        visible: false
+        onVisibleChanged: z = visible ? 19 : 0
     }
 
     Rectangle
@@ -194,6 +205,8 @@ Page
             onPressed:
             {
                 console.log("pressed")
+                geometryPopup.visible = false
+
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
                 if (drawMode === Painter.Geometrics)

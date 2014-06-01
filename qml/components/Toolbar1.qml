@@ -55,6 +55,7 @@ Row
         {
             console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
+            showGeometryPopup()
         }
     }
 
