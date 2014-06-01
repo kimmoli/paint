@@ -9,6 +9,15 @@ Dialog
     property int currentColor: 0
     property int currentThickness: 0
 
+    onDone:
+    {
+        if (result === DialogResult.Accepted)
+        {
+            currentThickness = thicknessSlider.value
+        }
+    }
+
+
     DialogHeader
     {
         id: pageHeader
@@ -64,33 +73,32 @@ Dialog
             text: qsTr("Pen width")
         }
 
-        Repeater
+        Rectangle
         {
-            model: thicknesses
+            color: "transparent"
+            height: 80
+            width: parent.width
 
-            Row
+            Rectangle
             {
-                spacing: col.width - ts.width - 250
-                TextSwitch
-                {
-                    id: ts
-                    text: thicknesses[index]
-                    checked: index == currentThickness
-                    automaticCheck: false
-                    onDownChanged:
-                    {
-                        if (down)
-                            currentThickness = index
-                    }
-                }
-                Rectangle
-                {
-                    height: thicknesses[index]
-                    width: 250
-                    color: colors[currentColor]
-                    anchors.verticalCenter: ts.verticalCenter
-                }
+                height: thicknessSlider.value
+                width: parent.width - 170
+                color: colors[currentColor]
+                anchors.centerIn: parent
             }
         }
+
+        Slider
+        {
+            id: thicknessSlider
+            value: currentThickness
+            valueText: value
+            minimumValue: 1
+            maximumValue: 25
+            stepSize: 1
+            width: parent.width - 2*Theme.paddingLarge
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
     }
 }

@@ -10,8 +10,6 @@ ApplicationWindow
                              "#00ff80", "#00ffff", "#0000ff", "#8000ff", "#ff00ff",
                              "#000000", "#ffffff" ] // also black and white
 
-    property var thicknesses : [ 2, 5, 10, 15 ]
-
     property string acceptText : qsTr("Accept")
     property string cancelText : qsTr("Cancel")
 

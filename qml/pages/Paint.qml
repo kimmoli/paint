@@ -12,7 +12,7 @@ Page
     height: 960
 
     property int drawColor: 0
-    property int drawThickness: 0
+    property int drawThickness: 3
     property int bgColor: colors.length
 
     Messagebox
@@ -62,7 +62,7 @@ Page
 
     function drawLine(ctx, x0,y0,x1,y1)
     {
-        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.lineWidth = drawThickness
         ctx.strokeStyle = colors[drawColor]
 
         ctx.beginPath();
@@ -74,7 +74,7 @@ Page
 
     function drawCircle(ctx, x0,y0,x1,y1, fill)
     {
-        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.lineWidth = drawThickness
         ctx.strokeStyle = colors[drawColor]
         ctx.fillStyle  = colors[drawColor]
 
@@ -90,7 +90,7 @@ Page
 
     function drawRectangle(ctx, x0,y0,x1,y1, fill)
     {
-        ctx.lineWidth = thicknesses[drawThickness]
+        ctx.lineWidth = drawThickness
         ctx.strokeStyle = colors[drawColor]
         ctx.fillStyle  = colors[drawColor]
 
@@ -205,7 +205,7 @@ Page
                     ctx.globalCompositeOperation = 'destination-out'
 
                 case Painter.Pen :
-                    ctx.lineWidth = (drawMode === Painter.Eraser) ? 3*thicknesses[drawThickness] : thicknesses[drawThickness]
+                    ctx.lineWidth = (drawMode === Painter.Eraser) ? 3*drawThickness : drawThickness
                     ctx.strokeStyle = colors[drawColor]
                     ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
@@ -221,9 +221,9 @@ Page
                     for (var i = density; i--; )
                     {
                         angle = getRandomFloat(0, Math.PI*2)
-                        radius = getRandomFloat(0, 5*thicknesses[drawThickness])
+                        radius = getRandomFloat(0, 5*drawThickness)
                         ctx.fillStyle = colors[drawColor]
-                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+drawThickness, 1+drawThickness)
+                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+Math.floor(radius/10), 1+Math.floor(radius/10))
                     }
                     break;
 
