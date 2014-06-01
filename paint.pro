@@ -49,7 +49,9 @@ OTHER_FILES += qml/paint.qml \
     qml/components/GeometryPopup.qml \
     qml/icons/icon-m-geom-rectangle.png \
     qml/icons/icon-m-geom-line.png \
-    qml/icons/icon-m-geom-circle.png
+    qml/icons/icon-m-geom-circle.png \
+    qml/icons/icon-m-geom-rectangle-filled.png \
+    qml/icons/icon-m-geom-circle-filled.png
 
 TRANSLATIONS += i18n/translations_fi.ts
 

@@ -41,7 +41,9 @@ public:
     {
         Line = 0,
         Rectangle,
-        Circle
+        RectangleFilled,
+        Circle,
+        CircleFilled
     };
 
 signals:

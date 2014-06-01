@@ -6,6 +6,8 @@ Row
 {
     id: geometryPopup
 
+    signal hideMe()
+
     IconButton
     {
         icon.source: "image://paintIcons/icon-m-geom-line"
@@ -17,7 +19,7 @@ Row
             console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Line
-            geometryPopup.visible = false
+            hideMe()
         }
     }
 
@@ -32,9 +34,25 @@ Row
             console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Rectangle
-            geometryPopup.visible = false
+            hideMe()
         }
     }
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-geom-rectangle-filled"
+        anchors.bottom: parent.bottom
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.RectangleFilled)
+
+        onClicked:
+        {
+            console.log("Geometrics mode select")
+            drawMode = Painter.Geometrics
+            geometricsMode = Painter.RectangleFilled
+            hideMe()
+        }
+    }
+
 
     IconButton
     {
@@ -47,7 +65,22 @@ Row
             console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Circle
-            geometryPopup.visible = false
+            hideMe()
+        }
+    }
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-geom-circle-filled"
+        anchors.bottom: parent.bottom
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.CircleFilled)
+
+        onClicked:
+        {
+            console.log("Geometrics mode select")
+            drawMode = Painter.Geometrics
+            geometricsMode = Painter.CircleFilled
+            hideMe()
         }
     }
 

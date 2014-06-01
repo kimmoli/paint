@@ -24,7 +24,7 @@ Page
     {
         id: toolBox
         onShowMessage: messagebox.showMessage(message, delay)
-        onShowGeometryPopup: geometryPopup.visible = true
+        onShowGeometryPopup: geometryPopupVisible = true
         anchors.top: parent.top
     }
 
@@ -34,8 +34,9 @@ Page
         id: geometryPopup
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: toolBox.bottom
-        visible: false
+        visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
         onVisibleChanged: z = visible ? 19 : 0
+        onHideMe: geometryPopupVisible = false
     }
 
     Rectangle
@@ -63,21 +64,25 @@ Page
         ctx.closePath();
     }
 
-    function drawCircle(ctx, x0,y0,x1,y1)
+    function drawCircle(ctx, x0,y0,x1,y1, fill)
     {
         ctx.lineWidth = thicknesses[drawThickness]
         ctx.strokeStyle = colors[drawColor]
+        ctx.fillStyle  = colors[drawColor]
 
         var radius = Math.max(Math.abs(x1-x0),Math.abs(y1-y0))
 
         ctx.beginPath()
         ctx.arc(x0, y0, radius, 0, Math.PI*2, true)
-        ctx.fill()
+        if (fill)
+            ctx.fill()
         ctx.stroke()
     }
 
-    function drawRectangle(ctx, x0,y0,x1,y1)
+    function drawRectangle(ctx, x0,y0,x1,y1, fill)
     {
+        ctx.fillStyle  = colors[drawColor]
+
         var x = Math.min(x0, x1),
             y = Math.min(y0, y1),
             w = Math.abs(x1-x0),
@@ -86,7 +91,10 @@ Page
         if (h==0 || w==0)
             return;
 
-        context.strokeRect(x, y, w, h);
+        if (fill)
+            ctx.fillRect(x, y, w, h);
+        else
+            ctx.strokeRect(x, y, w, h);
     }
 
     Canvas
@@ -126,10 +134,16 @@ Page
                     drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
                     break;
                 case Painter.Circle :
-                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY)
+                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                    break;
+                case Painter.CircleFilled :
+                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, true)
                     break;
                 case Painter.Rectangle :
-                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY)
+                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                    break;
+                case Painter.RectangleFilled :
+                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, true)
                     break;
 
                 default:
@@ -176,6 +190,9 @@ Page
 
             switch (drawMode)
             {
+                case Painter.Eraser :
+                    ctx.globalCompositeOperation = 'destination-out'
+
                 case Painter.Pen :
                     ctx.lineWidth = thicknesses[drawThickness]
                     ctx.strokeStyle = colors[drawColor]
@@ -185,15 +202,6 @@ Page
                     lastX = area.mouseX
                     lastY = area.mouseY
                     ctx.lineTo(lastX, lastY)
-                    ctx.stroke()
-                    break;
-
-                case Painter.Eraser :
-                    radius = 10*thicknesses[drawThickness]
-                    ctx.globalCompositeOperation = 'destination-out'
-                    ctx.beginPath()
-                    ctx.arc(area.mouseX, area.mouseY, radius, 0, Math.PI*2, true)
-                    ctx.fill()
                     ctx.stroke()
                     ctx.globalCompositeOperation = 'source-over'
                     break;
@@ -215,10 +223,16 @@ Page
                         drawLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        break;
+                    case Painter.CircleFilled :
+                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        break;
+                    case Painter.RectangleFilled :
+                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
 
                     default:
@@ -243,7 +257,7 @@ Page
             onPressed:
             {
                 console.log("pressed")
-                geometryPopup.visible = false
+                geometryPopupVisible = false
 
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY

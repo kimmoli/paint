@@ -47,6 +47,7 @@ Row
         onClicked:
         {
             console.log("Creating toolbar " + toolbarNumber)
+            geometryPopupVisible = false
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (toolbarNumber + 1)
             changeToolBar(toolbarNumber)

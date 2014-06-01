@@ -39,6 +39,9 @@ ApplicationWindow
     property int drawMode : Painter.Pen
     property int geometricsMode : Painter.Line
 
+    property bool geometryPopupVisible: false
+
+
     /*****************************************************/
 
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
