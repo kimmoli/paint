@@ -9,18 +9,10 @@ Dialog
     property int currentColor: 0
     property int currentThickness: 0
 
-    onDone:
-    {
-        if (result === DialogResult.Accepted)
-        {
-            console.log("dialog accepted")
-        }
-    }
-
     DialogHeader
     {
         id: pageHeader
-        title:  buttonhelptext[4]
+        title:  qsTr("Pen settings")
         acceptText: acceptText
         cancelText: cancelText
     }

@@ -247,14 +247,14 @@ Page
                         break;
 
                     default:
-                        console.log("Sorry, no such geometry implemented")
+                        console.error("Unimplemented feature")
                         break;
                     }
 
                     break;
 
                 default:
-                    console.log("You need to code some more...")
+                    console.error("Unimplemented feature")
                     break;
             }
             lastX = area.mouseX
@@ -267,7 +267,6 @@ Page
             anchors.fill: canvas
             onPressed:
             {
-                console.log("pressed")
                 geometryPopupVisible = false
 
                 canvas.lastX = mouseX
@@ -286,7 +285,6 @@ Page
 
             onReleased:
             {
-                console.log("released")
                 if (drawMode === Painter.Geometrics)
                 {
                     canvas.requestPaint()

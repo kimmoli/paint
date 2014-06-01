@@ -19,6 +19,14 @@ Row
     signal showMessage(string message, int delay)
     signal showGeometryPopup()
 
+    function startRemorse()
+    {
+        remorse.execute(qsTr("Clearing"), function()
+        {
+            canvas.clear()
+        })
+    }
+
     function changeToolBar(number)
     {
         if (toolbar)
@@ -46,7 +54,6 @@ Row
 
         onClicked:
         {
-            console.log("Creating toolbar " + toolbarNumber)
             geometryPopupVisible = false
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (toolbarNumber + 1)

@@ -8,12 +8,11 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[0]
+        icon.source: "image://theme/icon-m-about"
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            console.log(buttonhelptext[0])
             pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
                                   { "version": painter.version,
                                     "year": "2014",
@@ -23,12 +22,11 @@ Row
     }
     IconButton
     {
-        icon.source: buttonimage[6]
+        icon.source: "image://theme/icon-m-developer-mode"
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            console.log(buttonhelptext[6])
             var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"), {"saveFormat": painter.getSaveMode()} )
 
             genSettingsDialog.accepted.connect(function()
@@ -41,26 +39,18 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[1]
+        icon.source: "image://theme/icon-m-delete"
         anchors.verticalCenter: parent.verticalCenter
-        onClicked:
-        {
-            console.log(buttonhelptext[1])
-            remorse.execute(qsTr("Clearing"), function()
-            {
-                canvas.clear()
-            })
-        }
+        onClicked: startRemorse()
     }
 
     IconButton
     {
-        icon.source: buttonimage[2]
+        icon.source: "image://theme/icon-m-image"
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            console.log(buttonhelptext[2])
             var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
                                                        "currentBg": bgColor })
             bgSettingsDialog.accepted.connect(function() {
@@ -73,13 +63,11 @@ Row
 
     IconButton
     {
-        icon.source: buttonimage[5]
+        icon.source: "image://theme/icon-m-imaging"
         anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
-            console.log(buttonhelptext[5])
             toolBox.opacity = 0.0
-            showTooldrawer = false
             toolBoxVisibility.start()
         }
     }

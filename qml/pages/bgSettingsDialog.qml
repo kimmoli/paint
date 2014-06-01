@@ -8,18 +8,10 @@ Dialog
 
     property int currentBg: 0
 
-    onDone:
-    {
-        if (result === DialogResult.Accepted)
-        {
-            console.log("dialog accepted")
-        }
-    }
-
     DialogHeader
     {
         id: pageHeader
-        title:  buttonhelptext[2]
+        title: qsTr("Select background")
         acceptText: acceptText
         cancelText: cancelText
     }

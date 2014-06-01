@@ -8,18 +8,10 @@ Dialog
 
     property string saveFormat : "NaN"
 
-    onDone:
-    {
-        if (result === DialogResult.Accepted)
-        {
-            console.log("dialog accepted")
-        }
-    }
-
     DialogHeader
     {
         id: pageHeader
-        title:  buttonhelptext[6]
+        title:  qsTr("General settings")
         acceptText: acceptText
         cancelText: cancelText
     }

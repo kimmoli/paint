@@ -13,7 +13,6 @@ Rectangle
 
     function showMessage(message, delay)
     {
-        console.log("Something triggered a message with " + message + " and delay of " + delay)
         messageboxText.text = message
         messagebox.opacity = 1.0
         messageboxVisibility.interval = (delay>0) ? delay : 3000

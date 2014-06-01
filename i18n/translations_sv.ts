@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fi_FI">
+<TS version="2.0" language="sv_SE">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>About </source>
-        <translation>Tietoja: </translation>
+        <translation>Om </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Version: </source>
-        <translation>Versio: </translation>
+        <translation>Version: </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="84"/>
         <source>Help</source>
-        <translation>Pika-apu</translation>
-    </message>
-</context>
-<context>
-    <name>Paint</name>
-    <message>
-        <source>Save format</source>
-        <translation type="obsolete">Tallennusmuoto</translation>
+        <translation>Hjälp</translation>
     </message>
 </context>
 <context>
@@ -37,10 +30,6 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <source>Save format</source>
-        <translation type="obsolete">Tallennusmuoto</translation>
-    </message>
-    <message>
         <location filename="../qml/components/Toolbox.qml" line="24"/>
         <source>Clearing</source>
         <translation type="unfinished"></translation>
@@ -50,30 +39,30 @@
     <name>bgSettingsDialog</name>
     <message>
         <source>Background settings</source>
-        <translation type="obsolete">Taustan asetukset</translation>
+        <translation type="obsolete">Bakgrundsinställningar</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="obsolete">Hyväksy</translation>
+        <translation type="obsolete">Verkställ</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="obsolete">Peru</translation>
+        <translation type="obsolete">Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="14"/>
         <source>Select background</source>
-        <translation type="unfinished">Valitse tausta</translation>
+        <translation type="unfinished">Välj bakgrund</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="28"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Välj färg</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
         <source>None</source>
-        <translation>Ei mitään</translation>
+        <translation>Ingen</translation>
     </message>
 </context>
 <context>
@@ -93,33 +82,33 @@
     <name>paint</name>
     <message>
         <source>About program</source>
-        <translation type="obsolete">Tietoja ohjelmasta</translation>
+        <translation type="obsolete">Om programmet</translation>
     </message>
     <message>
         <source>Clear drawing</source>
-        <translation type="obsolete">Tyhjennä piirrustus</translation>
+        <translation type="obsolete">Rensa skärmen</translation>
     </message>
     <message>
         <source>Select background</source>
-        <translation type="obsolete">Valitse tausta</translation>
+        <translation type="obsolete">Välj bakgrund</translation>
+    </message>
+    <message>
+        <source>Pen settings</source>
+        <translation type="obsolete">Penninställningar</translation>
+    </message>
+    <message>
+        <source>Save image</source>
+        <translation type="obsolete">Spara bild</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="15"/>
         <source>Accept</source>
-        <translation type="unfinished">Hyväksy</translation>
+        <translation type="unfinished">Verkställ</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="16"/>
         <source>Cancel</source>
-        <translation type="unfinished">Peru</translation>
-    </message>
-    <message>
-        <source>Pen settings</source>
-        <translation type="obsolete">Kynän asetukset</translation>
-    </message>
-    <message>
-        <source>Save image</source>
-        <translation type="obsolete">Tallenna</translation>
+        <translation type="unfinished">Avbryt</translation>
     </message>
 </context>
 <context>
@@ -127,25 +116,25 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="15"/>
         <source>Pen settings</source>
-        <translation type="unfinished">Kynän asetukset</translation>
+        <translation>Penninställningar</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="obsolete">Hyväksy</translation>
+        <translation type="obsolete">Verkställ</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="obsolete">Peru</translation>
+        <translation type="obsolete">Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="29"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Välj färg</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="64"/>
         <source>Pen width</source>
-        <translation>Leveys</translation>
+        <translation>Penntjocklek</translation>
     </message>
 </context>
 </TS>

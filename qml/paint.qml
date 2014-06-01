@@ -12,25 +12,6 @@ ApplicationWindow
 
     property var thicknesses : [ 2, 5, 10, 15 ]
 
-    property var buttonimage: [
-        "image://theme/icon-m-about",
-        "image://theme/icon-m-delete",
-        "image://theme/icon-m-image",
-        "image://theme/icon-m-down",
-        "image://theme/icon-m-edit",
-        "image://theme/icon-m-imaging",
-        "image://theme/icon-m-developer-mode" ]
-
-
-    property var buttonhelptext: [
-        qsTr("About program"),      /* 0 */
-        qsTr("Clear drawing"),
-        qsTr("Select background"),
-        qsTr("Show more tools"),
-        qsTr("Tool settings"),
-        qsTr("Save image"),
-        qsTr("General settings")]   /* 6 */
-
     property string acceptText : qsTr("Accept")
     property string cancelText : qsTr("Cancel")
 

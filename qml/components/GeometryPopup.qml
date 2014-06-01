@@ -18,7 +18,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Line
             hideMe()
@@ -33,7 +32,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Rectangle
             hideMe()
@@ -48,7 +46,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.RectangleFilled
             hideMe()
@@ -64,7 +61,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Circle
             hideMe()
@@ -79,7 +75,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             geometricsMode = Painter.CircleFilled
             hideMe()

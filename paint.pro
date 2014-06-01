@@ -11,10 +11,12 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 message($${DEFINES})
 
 system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
+system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
 system(lrelease $$PWD/i18n/*.ts)
 
 i18n.path = /usr/share/harbour-paint/i18n
-i18n.files = i18n/translations_fi.qm
+i18n.files = i18n/translations_fi.qm \
+    i18n/translations_sv.qm
 
 INSTALLS += i18n
 
@@ -51,9 +53,11 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-line.png \
     qml/icons/icon-m-geom-circle.png \
     qml/icons/icon-m-geom-rectangle-filled.png \
-    qml/icons/icon-m-geom-circle-filled.png
+    qml/icons/icon-m-geom-circle-filled.png \
+    i18n/translations_sv.ts
 
-TRANSLATIONS += i18n/translations_fi.ts
+TRANSLATIONS += i18n/translations_fi.ts \
+    i18n/translations_sv.ts
 
 RESOURCES +=
 

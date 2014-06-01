@@ -12,11 +12,7 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Pen
 
-        onClicked:
-        {
-            console.log("pen mode select")
-            drawMode = Painter.Pen
-        }
+        onClicked: drawMode = Painter.Pen
     }
 
     IconButton
@@ -25,11 +21,7 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Eraser
 
-        onClicked:
-        {
-            console.log("eraser mode select")
-            drawMode = Painter.Eraser
-        }
+        onClicked: drawMode = Painter.Eraser
     }
 
     IconButton
@@ -38,11 +30,7 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Spray
 
-        onClicked:
-        {
-            console.log("spray mode select")
-            drawMode = Painter.Spray
-        }
+        onClicked: drawMode = Painter.Spray
     }
 
     IconButton
@@ -53,7 +41,6 @@ Row
 
         onClicked:
         {
-            console.log("Geometrics mode select")
             drawMode = Painter.Geometrics
             showGeometryPopup()
         }
