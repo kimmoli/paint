@@ -25,6 +25,11 @@ ApplicationWindow
 
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 
+    function getRandomFloat(min, max)
+    {
+      return Math.random() * (max - min) + min;
+    }
+
     Painter
     {
         id: painter

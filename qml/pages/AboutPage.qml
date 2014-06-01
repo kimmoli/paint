@@ -37,7 +37,7 @@ Page
         buttonhelp.append( {"image": "image://theme/icon-m-developer-mode", "helptext": qsTr("Change settings")})
         buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})
         buttonhelp.append( {"image": "image://theme/icon-m-image", "helptext": qsTr("Change bacground")})
-        buttonhelp.append( {"image": "image://theme/icon-m-imaging", "helptext": qsTr("Save snapshot")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-save", "helptext": qsTr("Save snapshot")})
     }
 
     SilicaFlickable

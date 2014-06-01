@@ -14,6 +14,10 @@ Page
     property int drawColor: 0
     property int drawThickness: 3
     property int eraserThickness: 15
+    property int sprayerRadius: 20
+    property int sprayerDensity: 50
+    property int sprayerParticleSize: 3
+    property int sprayerColor: 0
     property int bgColor: colors.length
 
     Messagebox
@@ -54,11 +58,6 @@ Page
         anchors.fill: (toolBox.opacity == 0.0) ? page : canvas
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
         z:7
-    }
-
-    function getRandomFloat(min, max)
-    {
-      return Math.random() * (max - min) + min;
     }
 
     function drawLine(ctx, x0,y0,x1,y1)
@@ -177,7 +176,6 @@ Page
 
         property real lastX
         property real lastY
-        property int density: 50
         property real angle
         property real radius
 
@@ -219,12 +217,12 @@ Page
                     break;
 
                 case Painter.Spray :
-                    for (var i = density; i--; )
+                    for (var i = sprayerDensity; i--; )
                     {
                         angle = getRandomFloat(0, Math.PI*2)
-                        radius = getRandomFloat(0, 5*drawThickness)
+                        radius = getRandomFloat(1, sprayerRadius)
                         ctx.fillStyle = colors[drawColor]
-                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), 1+Math.floor(radius/10), 1+Math.floor(radius/10))
+                        ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), sprayerParticleSize, sprayerParticleSize)
                     }
                     break;
 

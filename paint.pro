@@ -56,7 +56,10 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-circle-filled.png \
     i18n/translations_sv.ts \
     qml/pages/eraserSettingsDialog.qml \
-    qml/pages/spraySettingsDialog.qml
+    qml/pages/spraySettingsDialog.qml \
+    qml/components/sprayerColor.qml \
+    qml/components/sprayerParameters.qml \
+    qml/icons/icon-m-save.png
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts

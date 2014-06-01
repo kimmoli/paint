@@ -134,6 +134,31 @@
     </message>
 </context>
 <context>
+    <name>eraserSettingsDialog</name>
+    <message>
+        <source>Pen settings</source>
+        <translation type="obsolete">Penninställningar</translation>
+    </message>
+    <message>
+        <source>Select color</source>
+        <translation type="obsolete">Välj färg</translation>
+    </message>
+    <message>
+        <source>Pen width</source>
+        <translation type="obsolete">Penntjocklek</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/eraserSettingsDialog.qml" line="23"/>
+        <source>Eraser settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/eraserSettingsDialog.qml" line="37"/>
+        <source>Eraser size</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>genSettings</name>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="14"/>
@@ -149,12 +174,12 @@
 <context>
     <name>paint</name>
     <message>
-        <location filename="../qml/paint.qml" line="15"/>
+        <location filename="../qml/paint.qml" line="13"/>
         <source>Accept</source>
         <translation type="unfinished">Verkställ</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="16"/>
+        <location filename="../qml/paint.qml" line="14"/>
         <source>Cancel</source>
         <translation type="unfinished">Avbryt</translation>
     </message>
@@ -162,19 +187,62 @@
 <context>
     <name>penSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="15"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="24"/>
         <source>Pen settings</source>
         <translation>Penninställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="29"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="38"/>
         <source>Select color</source>
         <translation>Välj färg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="73"/>
         <source>Pen width</source>
         <translation>Penntjocklek</translation>
+    </message>
+</context>
+<context>
+    <name>spraySettingsDialog</name>
+    <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="50"/>
+        <source>Sprayer settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select color</source>
+        <translation type="obsolete">Välj färg</translation>
+    </message>
+</context>
+<context>
+    <name>sprayerColor</name>
+    <message>
+        <location filename="../qml/components/sprayerColor.qml" line="10"/>
+        <source>Select color</source>
+        <translation type="unfinished">Välj färg</translation>
+    </message>
+</context>
+<context>
+    <name>sprayerParameters</name>
+    <message>
+        <location filename="../qml/components/sprayerParameters.qml" line="10"/>
+        <source>Sprayer parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/sprayerParameters.qml" line="51"/>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/sprayerParameters.qml" line="64"/>
+        <source>Density</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/sprayerParameters.qml" line="78"/>
+        <source>particles</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

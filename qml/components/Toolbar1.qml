@@ -68,9 +68,23 @@ Row
 
                     break;
 
-                case Painter.Spray : /* TODO: Own dialogs */
-                case Painter.Geometrics:
+                case Painter.Spray :
+                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/spraySettingsDialog.qml"),
+                                                           { "currentRadius": sprayerRadius,
+                                                             "currentParticleSize": sprayerParticleSize,
+                                                             "currentDensity": sprayerDensity,
+                                                             "currentColor": sprayerColor})
 
+                    SettingsDialog.accepted.connect(function() {
+                        sprayerRadius = SettingsDialog.currentRadius
+                        sprayerParticleSize = SettingsDialog.currentParticleSize
+                        sprayerDensity = SettingsDialog.currentDensity
+                        sprayerColor = SettingsDialog.currentColor
+                    })
+
+                    break;
+
+                case Painter.Geometrics:
                 case Painter.Pen :
                     SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
                                                            { "currentColor": drawColor,
