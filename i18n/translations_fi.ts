@@ -6,82 +6,82 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="25"/>
         <source>Change toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda työkalurivi</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="26"/>
         <source>Draw freehand line</source>
-        <translation type="unfinished"></translation>
+        <translation>Vapaapiirto</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="27"/>
         <source>Eraser</source>
-        <translation type="unfinished"></translation>
+        <translation>Pyyhin</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Sprayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Sumutin</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Draw geometric shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Piirrä muotoja</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Change color, width</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda väri, leveys</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw line</source>
-        <translation type="unfinished"></translation>
+        <translation>Piirrä viiva</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Draw rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Piirrä suorakaide</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw filled rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Täytetty suorakaide</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw circle</source>
-        <translation type="unfinished"></translation>
+        <translation>Piirrä ympyrä</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled circle</source>
-        <translation type="unfinished"></translation>
+        <translation>Täytetty ympyrä</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>About Paint</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietoja ohjelmasta</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Change settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Clear drawing</source>
-        <translation type="unfinished">Tyhjennä piirrustus</translation>
+        <translation>Tyhjennä piirrustus</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Change bacground</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda tausta</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Save snapshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallenna</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
@@ -100,50 +100,27 @@
     </message>
 </context>
 <context>
-    <name>Paint</name>
-    <message>
-        <source>Save format</source>
-        <translation type="obsolete">Tallennusmuoto</translation>
-    </message>
-</context>
-<context>
     <name>Toolbar2</name>
     <message>
         <location filename="../qml/components/Toolbar2.qml" line="35"/>
         <source>File format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostomuoto</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <source>Save format</source>
-        <translation type="obsolete">Tallennusmuoto</translation>
-    </message>
-    <message>
         <location filename="../qml/components/Toolbox.qml" line="24"/>
         <source>Clearing</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyhjennetään</translation>
     </message>
 </context>
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <source>Background settings</source>
-        <translation type="obsolete">Taustan asetukset</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <translation type="obsolete">Hyväksy</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Peru</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="14"/>
         <source>Select background</source>
-        <translation type="unfinished">Valitse tausta</translation>
+        <translation>Valitse tausta</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="28"/>
@@ -161,45 +138,25 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="14"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Yleiset asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="28"/>
         <source>File format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostomuoto</translation>
     </message>
 </context>
 <context>
     <name>paint</name>
     <message>
-        <source>About program</source>
-        <translation type="obsolete">Tietoja ohjelmasta</translation>
-    </message>
-    <message>
-        <source>Clear drawing</source>
-        <translation type="obsolete">Tyhjennä piirrustus</translation>
-    </message>
-    <message>
-        <source>Select background</source>
-        <translation type="obsolete">Valitse tausta</translation>
-    </message>
-    <message>
         <location filename="../qml/paint.qml" line="15"/>
         <source>Accept</source>
-        <translation type="unfinished">Hyväksy</translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="16"/>
         <source>Cancel</source>
-        <translation type="unfinished">Peru</translation>
-    </message>
-    <message>
-        <source>Pen settings</source>
-        <translation type="obsolete">Kynän asetukset</translation>
-    </message>
-    <message>
-        <source>Save image</source>
-        <translation type="obsolete">Tallenna</translation>
+        <translation>Peru</translation>
     </message>
 </context>
 <context>
@@ -207,15 +164,7 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="15"/>
         <source>Pen settings</source>
-        <translation type="unfinished">Kynän asetukset</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <translation type="obsolete">Hyväksy</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Peru</translation>
+        <translation>Kynän asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="29"/>

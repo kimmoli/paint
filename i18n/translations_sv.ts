@@ -118,18 +118,6 @@
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <source>Background settings</source>
-        <translation type="obsolete">Bakgrundsinställningar</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <translation type="obsolete">Verkställ</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Avbryt</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="14"/>
         <source>Select background</source>
         <translation type="unfinished">Välj bakgrund</translation>
@@ -161,26 +149,6 @@
 <context>
     <name>paint</name>
     <message>
-        <source>About program</source>
-        <translation type="obsolete">Om programmet</translation>
-    </message>
-    <message>
-        <source>Clear drawing</source>
-        <translation type="obsolete">Rensa skärmen</translation>
-    </message>
-    <message>
-        <source>Select background</source>
-        <translation type="obsolete">Välj bakgrund</translation>
-    </message>
-    <message>
-        <source>Pen settings</source>
-        <translation type="obsolete">Penninställningar</translation>
-    </message>
-    <message>
-        <source>Save image</source>
-        <translation type="obsolete">Spara bild</translation>
-    </message>
-    <message>
         <location filename="../qml/paint.qml" line="15"/>
         <source>Accept</source>
         <translation type="unfinished">Verkställ</translation>
@@ -197,14 +165,6 @@
         <location filename="../qml/pages/penSettingsDialog.qml" line="15"/>
         <source>Pen settings</source>
         <translation>Penninställningar</translation>
-    </message>
-    <message>
-        <source>Accept</source>
-        <translation type="obsolete">Verkställ</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Avbryt</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="29"/>
