@@ -10,8 +10,8 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
 message($${DEFINES})
 
-system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
-system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
+#system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
+#system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
 system(lrelease $$PWD/i18n/*.ts)
 
 i18n.path = /usr/share/harbour-paint/i18n

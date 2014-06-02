@@ -95,8 +95,8 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="103"/>
-        <source>Swedish translation by eson57</source>
-        <translation>Ruotsinkielinen käännös: eson57</translation>
+        <source>Swedish translation by Åke Engelbrektson</source>
+        <translation>Ruotsink. käännös: Åke Engelbrektson</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="110"/>

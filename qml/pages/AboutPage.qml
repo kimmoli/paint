@@ -100,7 +100,7 @@ Page
             Label
             {
                 x: Theme.paddingLarge
-                text: qsTr("Swedish translation by eson57")
+                text: qsTr("Swedish translation by Åke Engelbrektson")
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
