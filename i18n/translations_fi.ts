@@ -86,7 +86,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>About </source>
-        <translation>Tietoja: </translation>
+        <translation>Tämä on </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="95"/>
@@ -94,7 +94,12 @@
         <translation>Versio: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="102"/>
+        <location filename="../qml/pages/AboutPage.qml" line="103"/>
+        <source>Swedish translation by eson57</source>
+        <translation>Ruotsinkielinen käännös: eson57</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="110"/>
         <source>Help</source>
         <translation>Pika-apu</translation>
     </message>
@@ -102,7 +107,7 @@
 <context>
     <name>Toolbar2</name>
     <message>
-        <location filename="../qml/components/Toolbar2.qml" line="39"/>
+        <location filename="../qml/components/Toolbar2.qml" line="40"/>
         <source>File format</source>
         <translation>Tiedostomuoto</translation>
     </message>
@@ -136,26 +141,14 @@
 <context>
     <name>eraserSettingsDialog</name>
     <message>
-        <source>Pen settings</source>
-        <translation type="obsolete">Kynän asetukset</translation>
-    </message>
-    <message>
-        <source>Select color</source>
-        <translation type="obsolete">Valitse väri</translation>
-    </message>
-    <message>
-        <source>Pen width</source>
-        <translation type="obsolete">Leveys</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="23"/>
         <source>Eraser settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Pyyhekumin asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="37"/>
         <source>Eraser size</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko</translation>
     </message>
 </context>
 <context>
@@ -173,17 +166,17 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="67"/>
         <source>Toolbox location</source>
-        <translation type="unfinished"></translation>
+        <translation>Työkalupalkin sijainti</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="77"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Yläreuna</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="91"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>Alareuna</translation>
     </message>
 </context>
 <context>
@@ -222,39 +215,32 @@
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="65"/>
         <source>Sprayer settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Sumuttimen asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="72"/>
         <source>Select color</source>
-        <translation type="unfinished">Valitse väri</translation>
+        <translation>Valitse väri</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="146"/>
         <source>Sprayer parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Yksityiskohdat</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="152"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="165"/>
         <source>Density</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiheys</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="179"/>
         <source>Particle size</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>sprayerColor</name>
-    <message>
-        <source>Select color</source>
-        <translation type="obsolete">Valitse väri</translation>
+        <translation>Hiukkasen koko</translation>
     </message>
 </context>
 </TS>
