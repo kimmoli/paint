@@ -97,6 +97,14 @@ Page
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+            Label
+            {
+                x: Theme.paddingLarge
+                text: qsTr("Swedish translation by eson57")
+                color: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeMedium
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
             SectionHeader
             {
                 text: qsTr("Help")
