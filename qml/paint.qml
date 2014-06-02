@@ -18,6 +18,15 @@ ApplicationWindow
 
     property bool geometryPopupVisible: false
 
+    property int drawColor: 0
+    property int drawThickness: 3
+    property int eraserThickness: 15
+    property int sprayerRadius: 20
+    property int sprayerDensity: 50
+    property int sprayerParticleSize: 3
+    property int sprayerColor: 0
+    property int bgColor: colors.length
+    property string toolboxLocation : "toolboxTop"
 
     /*****************************************************/
 
@@ -33,6 +42,10 @@ ApplicationWindow
     Painter
     {
         id: painter
+        Component.onCompleted:
+        {
+            toolboxLocation = painter.getToolboxLocation()
+        }
     }
 
 }

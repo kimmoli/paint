@@ -29,6 +29,9 @@ public:
     Q_INVOKABLE QString getSaveMode();
     Q_INVOKABLE void setSaveMode(QString extension);
 
+    Q_INVOKABLE QString getToolboxLocation();
+    Q_INVOKABLE void setToolboxLocation(QString location);
+
     enum Mode
     {
         Eraser = 0,
@@ -51,6 +54,7 @@ signals:
 
 private:
     QString fileExtension;
+    QString toolboxLocation;
 
 };
 

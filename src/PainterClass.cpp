@@ -17,6 +17,7 @@ PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
 {
     fileExtension = getSaveMode();
+    toolboxLocation = getToolboxLocation();
 }
 
 QString PainterClass::readVersion()
@@ -86,3 +87,22 @@ void PainterClass::setSaveMode(QString extension)
     fileExtension = extension;
 }
 
+QString PainterClass::getToolboxLocation()
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    toolboxLocation = s.value("toolboxLocation", "toolboxTop").toString();
+    s.endGroup();
+
+    return toolboxLocation;
+}
+
+void PainterClass::setToolboxLocation(QString location)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    s.setValue("toolboxLocation", location);
+    s.endGroup();
+
+    toolboxLocation = location;
+}

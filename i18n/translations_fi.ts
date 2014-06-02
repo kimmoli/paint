@@ -102,7 +102,7 @@
 <context>
     <name>Toolbar2</name>
     <message>
-        <location filename="../qml/components/Toolbar2.qml" line="35"/>
+        <location filename="../qml/components/Toolbar2.qml" line="39"/>
         <source>File format</source>
         <translation>Tiedostomuoto</translation>
     </message>
@@ -110,7 +110,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="24"/>
+        <location filename="../qml/components/Toolbox.qml" line="23"/>
         <source>Clearing</source>
         <translation>Tyhjennetään</translation>
     </message>
@@ -161,14 +161,29 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="14"/>
+        <location filename="../qml/pages/genSettings.qml" line="15"/>
         <source>General settings</source>
         <translation>Yleiset asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="28"/>
+        <location filename="../qml/pages/genSettings.qml" line="29"/>
         <source>File format</source>
         <translation>Tiedostomuoto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="67"/>
+        <source>Toolbox location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="77"/>
+        <source>Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="91"/>
+        <source>Bottom</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

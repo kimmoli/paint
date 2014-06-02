@@ -11,14 +11,34 @@ Page
     width: 540
     height: 960
 
-    property int drawColor: 0
-    property int drawThickness: 3
-    property int eraserThickness: 15
-    property int sprayerRadius: 20
-    property int sprayerDensity: 50
-    property int sprayerParticleSize: 3
-    property int sprayerColor: 0
-    property int bgColor: colors.length
+    state: toolboxLocation
+
+    onStateChanged: geometryCanvas.clear()
+
+    states: [
+        /* Default state is toolboxTop */
+    State
+    {
+        name: "toolboxBottom"
+        AnchorChanges
+        {
+            target: toolBox
+            anchors.top: undefined
+            anchors.bottom: page.bottom
+        }
+        AnchorChanges
+        {
+            target: geometryPopup
+            anchors.top: undefined
+            anchors.bottom: toolBox.top
+        }
+        AnchorChanges
+        {
+            target: canvas
+            anchors.top: undefined
+            anchors.bottom: toolBox.top
+        }
+    } ]
 
     Messagebox
     {
@@ -28,15 +48,17 @@ Page
     Toolbox
     {
         id: toolBox
+
+        anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
         onShowGeometryPopup: geometryPopupVisible = true
-        anchors.top: parent.top
     }
 
     GeometryPopup
     {
         z:1
         id: geometryPopup
+
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
@@ -168,8 +190,9 @@ Page
     {
         id: canvas
         z: 9
-        width: page.width
+
         anchors.top: toolBox.bottom
+        width: page.width
         height: page.height - toolBox.height
         renderTarget: Canvas.FramebufferObject
         antialiasing: true

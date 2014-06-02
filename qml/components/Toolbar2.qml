@@ -27,11 +27,15 @@ Row
 
         onClicked:
         {
-            var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"), {"saveFormat": painter.getSaveMode()} )
+            var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"),
+                                                   {"saveFormat": painter.getSaveMode(),
+                                                    "toolboxLocation": toolboxLocation })
 
             genSettingsDialog.accepted.connect(function()
             {
                 painter.setSaveMode(genSettingsDialog.saveFormat)
+                toolboxLocation = genSettingsDialog.toolboxLocation
+                painter.setToolboxLocation(genSettingsDialog.toolboxLocation)
                 showMessage(qsTr("File format") + " " + genSettingsDialog.saveFormat, 1500)
             })
         }

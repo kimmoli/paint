@@ -5,7 +5,6 @@ Row
 {
     id: toolBox
     z:8
-    anchors.top: parent.top
     anchors.horizontalCenter: parent.horizontalCenter
     height: 80
     width: parent.width

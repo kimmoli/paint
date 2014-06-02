@@ -7,6 +7,7 @@ Dialog
     canAccept: true
 
     property string saveFormat : "NaN"
+    property string toolboxLocation : "NaN"
 
     DialogHeader
     {
@@ -28,29 +29,74 @@ Dialog
             text: qsTr("File format")
         }
 
-        TextSwitch
+        Row
         {
-            id: tsJpg
-            text: "JPG"
-            checked: saveFormat === "jpg"
-            automaticCheck: false
-            onDownChanged:
-            {
-                if (down)
-                    saveFormat = "jpg"
+            width: parent.width
 
+            TextSwitch
+            {
+                id: tsJpg
+                text: "JPG"
+                checked: saveFormat === "jpg"
+                automaticCheck: false
+                width: parent.width/2
+                onDownChanged:
+                {
+                    if (down)
+                        saveFormat = "jpg"
+
+                }
+            }
+            TextSwitch
+            {
+                id: tsPng
+                text: "PNG"
+                checked: saveFormat === "png"
+                automaticCheck: false
+                width: parent.width/2
+                onDownChanged:
+                {
+                    if (down)
+                        saveFormat = "png"
+                }
             }
         }
-        TextSwitch
+
+        SectionHeader
         {
-            id: tsPng
-            text: "PNG"
-            checked: saveFormat === "png"
-            automaticCheck: false
-            onDownChanged:
+            text: qsTr("Toolbox location")
+        }
+
+        Row
+        {
+            width: parent.width
+
+            TextSwitch
             {
-                if (down)
-                    saveFormat = "png"
+                id: tsTop
+                text: qsTr("Top")
+                checked: toolboxLocation === "toolboxTop"
+                automaticCheck: false
+                width: parent.width/2
+                onDownChanged:
+                {
+                    if (down)
+                        toolboxLocation = "toolboxTop"
+
+                }
+            }
+            TextSwitch
+            {
+                id: tsBot
+                text: qsTr("Bottom")
+                checked: toolboxLocation === "toolboxBottom"
+                automaticCheck: false
+                width: parent.width/2
+                onDownChanged:
+                {
+                    if (down)
+                        toolboxLocation = "toolboxBottom"
+                }
             }
         }
 
