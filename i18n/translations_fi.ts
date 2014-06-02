@@ -123,19 +123,24 @@
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="14"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="15"/>
         <source>Select background</source>
         <translation>Valitse tausta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="28"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="29"/>
         <source>Select color</source>
         <translation>Valitse väri</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="69"/>
         <source>None</source>
         <translation>Ei mitään</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="91"/>
+        <source>Image</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
