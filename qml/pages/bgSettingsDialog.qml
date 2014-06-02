@@ -7,6 +7,7 @@ Dialog
     canAccept: true
 
     property int currentBg: 0
+    property bool useExternalImage: false
 
     DialogHeader
     {
@@ -52,7 +53,11 @@ Dialog
                     BackgroundItem
                     {
                         anchors.fill: parent
-                        onClicked: currentBg = index
+                        onClicked:
+                        {
+                            useExternalImage = false
+                            currentBg = index
+                        }
                     }
                 }
             }
@@ -62,14 +67,59 @@ Dialog
         {
             id: ts
             text: qsTr("None")
-            checked: currentBg == colors.length
+            checked: (currentBg === colors.length) && !useExternalImage
             automaticCheck: false
             onDownChanged:
             {
                 if (down)
+                {
+                    useExternalImage = false
                     currentBg = colors.length
+                }
+            }
+        }
+
+
+        Row
+        {
+            width: parent.width
+            spacing: width - tsEf.width - ibEf.width
+
+            TextSwitch
+            {
+                id: tsEf
+                text: qsTr("Image")
+                checked: (currentBg === colors.length) && useExternalImage
+                automaticCheck: false
+                onDownChanged:
+                {
+                    if (down)
+                    {
+                        useExternalImage = true
+                        currentBg = colors.length
+                    }
+                }
             }
 
+            IconButton
+            {
+                id: ibEf
+                icon.source: "image://theme/icon-m-right"
+                visible: useExternalImage
+                enabled: useExternalImage
+                anchors.verticalCenter: tsEf.verticalCenter
+                onClicked:
+                    console.log("useExternalImage")
+            }
+        }
+
+        Image
+        {
+            id: thumbnailImage
+            visible: useExternalImage
+            source: "image://theme/icon-l-dismiss"
+            width: 2*Theme.itemSizeLarge
+            height: 2*Theme.itemSizeLarge
         }
     }
 }
