@@ -57,8 +57,6 @@ OTHER_FILES += qml/paint.qml \
     i18n/translations_sv.ts \
     qml/pages/eraserSettingsDialog.qml \
     qml/pages/spraySettingsDialog.qml \
-    qml/components/sprayerColor.qml \
-    qml/components/sprayerParameters.qml \
     qml/icons/icon-m-save.png
 
 TRANSLATIONS += i18n/translations_fi.ts \

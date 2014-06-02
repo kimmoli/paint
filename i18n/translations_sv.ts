@@ -205,44 +205,41 @@
 <context>
     <name>spraySettingsDialog</name>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="50"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="65"/>
         <source>Sprayer settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="72"/>
         <source>Select color</source>
-        <translation type="obsolete">Välj färg</translation>
+        <translation type="unfinished">Välj färg</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="146"/>
+        <source>Sprayer parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="152"/>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="165"/>
+        <source>Density</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="179"/>
+        <source>Particle size</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>sprayerColor</name>
     <message>
-        <location filename="../qml/components/sprayerColor.qml" line="10"/>
         <source>Select color</source>
-        <translation type="unfinished">Välj färg</translation>
-    </message>
-</context>
-<context>
-    <name>sprayerParameters</name>
-    <message>
-        <location filename="../qml/components/sprayerParameters.qml" line="10"/>
-        <source>Sprayer parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/sprayerParameters.qml" line="51"/>
-        <source>Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/sprayerParameters.qml" line="64"/>
-        <source>Density</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/sprayerParameters.qml" line="78"/>
-        <source>particles</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Välj färg</translation>
     </message>
 </context>
 </TS>

@@ -221,7 +221,7 @@ Page
                     {
                         angle = getRandomFloat(0, Math.PI*2)
                         radius = getRandomFloat(1, sprayerRadius)
-                        ctx.fillStyle = colors[drawColor]
+                        ctx.fillStyle = colors[sprayerColor]
                         ctx.fillRect(lastX + radius * Math.cos(angle), lastY + radius * Math.sin(angle), sprayerParticleSize, sprayerParticleSize)
                     }
                     break;
