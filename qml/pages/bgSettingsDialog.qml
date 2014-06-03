@@ -109,7 +109,22 @@ Dialog
                 enabled: useExternalImage
                 anchors.verticalCenter: tsEf.verticalCenter
                 onClicked:
-                    console.log("useExternalImage")
+                {
+                    var imageSelectDialog = pageStack.push(Qt.resolvedUrl("../pages/MediaSelector.qml"),
+                                                           {"mode": "image",
+                                                            "datesort": true,
+                                                            "multiple": false})
+
+                    imageSelectDialog.accepted.connect(function()
+                    {
+                        var mediaFiles = imageSelectDialog.selectedFiles
+                        for (var i = 0; i < mediaFiles.length; i++)
+                        {
+                            console.log("Selected file " + mediaFiles[i])
+                        }
+
+                    })
+                }
             }
         }
 

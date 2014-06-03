@@ -23,11 +23,15 @@ INSTALLS += i18n
 QT += dbus
 
 SOURCES += src/paint.cpp \
-    src/PainterClass.cpp
+    src/PainterClass.cpp \
+    src/recursivesearch.cpp \
+    src/filemodel.cpp
 	
 HEADERS += \
     src/PainterClass.h \
-    src/IconProvider.h
+    src/IconProvider.h \
+    src/recursivesearch.h \
+    src/filemodel.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
@@ -57,7 +61,8 @@ OTHER_FILES += qml/paint.qml \
     i18n/translations_sv.ts \
     qml/pages/eraserSettingsDialog.qml \
     qml/pages/spraySettingsDialog.qml \
-    qml/icons/icon-m-save.png
+    qml/icons/icon-m-save.png \
+    qml/pages/MediaSelector.qml
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts

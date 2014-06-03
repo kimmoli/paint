@@ -23,10 +23,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QCoreApplication>
 #include "PainterClass.h"
 #include "IconProvider.h"
+#include "filemodel.h"
 
 int main(int argc, char *argv[])
 {
     qmlRegisterType<PainterClass>("harbour.paint.PainterClass", 1, 0, "Painter");
+    qmlRegisterType<Filemodel>("harbour.paint.Filemodel", 1, 0, "Filemodel");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
