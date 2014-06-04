@@ -27,6 +27,8 @@ ApplicationWindow
     property int sprayerColor: 0
     property int bgColor: colors.length
     property string toolboxLocation : "toolboxTop"
+    property bool useImageAsBackground: false
+    property string backgroundImagePath: "image://theme/icon-l-dismiss"
 
     /*****************************************************/
 

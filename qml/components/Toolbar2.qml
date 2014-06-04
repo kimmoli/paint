@@ -64,7 +64,8 @@ Row
                                                        "bgImagePath": "image://theme/icon-l-dismiss" })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentBg
-
+                useImageAsBackground = bgSettingsDialog.useExternalImage
+                backgroundImagePath = bgSettingsDialog.bgImagePath
             })
 
         }

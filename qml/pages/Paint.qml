@@ -80,6 +80,15 @@ Page
         anchors.fill: (toolBox.opacity == 0.0) ? page : canvas
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
         z:7
+        Image
+        {
+            id: bgImg
+            anchors.fill: parent
+            clip: true
+            fillMode: Image.PreserveAspectCrop
+            source: backgroundImagePath
+            opacity: useImageAsBackground ? 1.0 : 0.0
+        }
     }
 
     function drawLine(ctx, x0,y0,x1,y1)
