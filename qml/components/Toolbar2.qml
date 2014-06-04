@@ -60,8 +60,8 @@ Row
         {
             var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
                                                        "currentBg": bgColor,
-                                                       "useExternalImage": false,
-                                                       "bgImagePath": "image://theme/icon-l-dismiss" })
+                                                       "useExternalImage": useImageAsBackground,
+                                                       "bgImagePath": backgroundImagePath })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentBg
                 useImageAsBackground = bgSettingsDialog.useExternalImage

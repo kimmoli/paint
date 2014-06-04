@@ -65,7 +65,7 @@ Page
     {
         id: toolBoxBackgroundEffect
         z: 14
-        clampMax: 0.5
+        clampMax: 0.65
         slope: 2.0
         offset: 0.6
         direction: OpacityRamp.TopToBottom
