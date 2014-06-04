@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 Row
 {
     id: toolBox
-    z:8
+
     anchors.horizontalCenter: parent.horizontalCenter
     height: 80
     width: parent.width

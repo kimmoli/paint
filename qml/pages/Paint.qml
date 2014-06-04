@@ -34,9 +34,14 @@ Page
         }
         AnchorChanges
         {
-            target: canvas
+            target: toolBoxBackground
             anchors.top: undefined
-            anchors.bottom: toolBox.top
+            anchors.bottom: page.bottom
+        }
+        PropertyChanges
+        {
+            target: toolBoxBackgroundEffect
+            direction: OpacityRamp.BottomToTop
         }
     } ]
 
@@ -45,9 +50,32 @@ Page
         id: messagebox
     }
 
+    Rectangle
+    {
+        id: toolBoxBackground
+        z: 14
+
+        anchors.top: page.top
+        width: page.width
+        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0)
+        color: Theme.secondaryHighlightColor
+    }
+
+    OpacityRampEffect
+    {
+        id: toolBoxBackgroundEffect
+        z: 14
+        clampMax: 0.5
+        slope: 2.0
+        offset: 0.6
+        direction: OpacityRamp.TopToBottom
+        sourceItem: toolBoxBackground
+    }
+
     Toolbox
     {
         id: toolBox
+        z: 15
 
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
@@ -56,29 +84,21 @@ Page
 
     GeometryPopup
     {
-        z:1
         id: geometryPopup
+        z: 0
 
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
-        onVisibleChanged: z = visible ? 19 : 1
+        onVisibleChanged: z = visible ? 15 : 0
         onHideMe: geometryPopupVisible = false
     }
-    Rectangle
-    {
-        color: "black"
-        anchors.fill: geometryPopup
-        visible: geometryPopup.visible
-        z: geometryPopup.z-1
-    }
-
 
     Rectangle
     {
         id: bg
         z: 6
-        anchors.fill: page //(toolBox.opacity == 0.0) ? page : canvas
+        anchors.fill: page
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
     }
 
@@ -203,9 +223,7 @@ Page
         id: canvas
         z: 9
 
-        anchors.top: toolBox.bottom
-        width: page.width
-        height: page.height - toolBox.height
+        anchors.fill: page
         renderTarget: Canvas.FramebufferObject
         antialiasing: true
 
