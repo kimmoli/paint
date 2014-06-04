@@ -1,6 +1,5 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
-import org.nemomobile.thumbnailer 1.0
 import harbour.paint.Filemodel 1.0
 
 Dialog  /* Todo: Cleanup, this is just an image selector here */
@@ -41,8 +40,6 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
     property variant selectedFiles: []
 
     property variant _imagesFilter: ["*.jpg", "*.jpeg", "*.gif", "*.png", "*.bmp"]
-    property variant _audiosFilter: ["*.mp3", "*.aac", "*.m4a", "*.wav", "*.ogg"]
-    property variant _videosFilter: ["*.avi", "*.mov", "*.mkv", "*.mp4"]
     property string _mode: "image"
     property int _marqueeIndex: -1
 
@@ -52,29 +49,25 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
         }
     }
 
-    function initialize(sorting) {
-        if (_mode === "image") {
-            filemodel.filter = _imagesFilter
-        }
-        else if (_mode === "video") {
-            filemodel.filter = _videosFilter
-        }
-        else if (_mode === "music") {
-            filemodel.filter = _audiosFilter
-        }
+    function initialize(sorting)
+    {
+        filemodel.filter = _imagesFilter
 
         filemodel.sorting = sorting || datesort
 
         filemodel.showRecursive([_mode, "sdcard"])
     }
 
-    function fileSelect(selection) {
+    function fileSelect(selection)
+    {
         var value = page.selectedFiles
         var exists = value.indexOf(selection)
-        if (exists != -1) {
+        if (exists != -1)
+        {
             value.splice(exists, 1)
         }
-        else if (page.selectedFiles.length < 20) {
+        else if (page.selectedFiles.length < 20)
+        {
             value.splice(0, 0, selection)
         }
         page.selectedFiles = value
@@ -82,49 +75,40 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
         page.canAccept = page.selectedFiles.length > 0
     }
 
-    function fileSingle(selection) {
+    function fileSingle(selection)
+    {
         page.selectedFiles = [selection]
 
         page.canAccept = page.selectedFiles.length > 0
     }
 
-    Filemodel {
+    Filemodel
+    {
         id: filemodel
     }
 
-    DialogHeader {
+    DialogHeader
+    {
         id: header
-        title: page.selectedFiles.length > 0 ? (_mode === "image" ? (multiple ? qsTr("Images selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Image selected", "Media selection page title text"))
-                                                                  : (_mode === "music") ? (multiple ? qsTr("Audio selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Audio selected", "Media selection page title text"))
-                                                                                        : (multiple ? qsTr("Video selected: %n", "Media selection page title text", page.selectedFiles.length) : qsTr("Video selected", "Media selection page title text")))
-                        : (_mode === "image" ? qsTr("Images", "Media selection page title text")
-                                             : (_mode === "music") ? qsTr("Audio", "Media selection page title text")
-                                                                   : qsTr("Video", "Media selection page title text"))
+        title: page.selectedFiles.length > 0 ? qsTr("Image selected") : qsTr("Select image")
     }
 
-    Loader {
+    Loader
+    {
         id: viewLoader
-        anchors {
+        anchors
+        {
             fill: parent
             topMargin: header.height
         }
-        sourceComponent: _mode === "music" ? listComponent : gridComponent
+        sourceComponent: gridComponent
     }
 
-    Component {
-        id: listComponent
-        SilicaListView {
-            model: filemodel
-            delegate: listDelegate
-            clip: true
-
-            VerticalScrollDecorator {}
-        }
-    }
-
-    Component {
+    Component
+    {
         id: gridComponent
-        SilicaGridView {
+        SilicaGridView
+        {
             model: filemodel
             delegate: gridDelegate
             cellWidth: page.isPortrait ? page.width / 3 : page.width / 5
@@ -135,108 +119,19 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
         }
     }
 
-    Component {
-        id: listDelegate
-        BackgroundItem {
-            id: item
-            width: parent.width
-            height: Theme.itemSizeSmall
-            highlighted: down || page.selectedFiles.indexOf(model.path) != -1
-            property int marqueeOffset: 0
-
-            Component.onDestruction: {
-                if (page._marqueeIndex == index) {
-                    page._marqueeIndex = -1
-                    marqueeTimer.stop()
-                }
-            }
-
-            Image {
-                id: icon
-                source: "image://theme/icon-m-" + (model.dir ? "folder" : "music")
-                cache: true
-                asynchronous: false
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: Theme.paddingSmall
-            }
-
-            Item {
-                height: file.height
-                anchors {
-                    left: icon.right
-                    right: parent.right
-                    margins: Theme.paddingLarge
-                    verticalCenter: parent.verticalCenter
-                }
-                clip: true
-
-                Label {
-                    id: file
-                    text: model.name
-                    x: page._marqueeIndex == index ? marqueeOffset : 0
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: Theme.fontSizeSmall
-                    color: item.highlighted ? Theme.highlightColor : Theme.primaryColor
-                }
-
-                Timer {
-                    id: marqueeTimer
-                    interval: 10
-                    running: false
-                    repeat: true
-                    onTriggered: {
-                        if (file.width > file.parent.width) {
-                            if (file.width + marqueeOffset > file.parent.width) {
-                                marqueeOffset -= 1
-                            }
-                            else {
-                                marqueeTimer.stop()
-                            }
-                        }
-                        else {
-                            marqueeTimer.stop()
-                        }
-                    }
-                }
-            }
-
-            onClicked: {
-                page._marqueeIndex = index
-                marqueeOffset = 0
-                marqueeTimer.start()
-                if (model.dir) {
-                    //TODO: implement folder switching
-                    //filesModel.path = model.path
-                }
-                else {
-                    if (page.selectedFiles.length > 1) {
-                        fileSelect(model.path)
-                    }
-                    else {
-                        fileSingle(model.path)
-                    }
-                }
-            }
-            onPressAndHold: {
-                if (multiple)
-                    fileSelect(model.path)
-                else
-                    fileSingle(model.path)
-            }
-        }
-    }
-
-    Component {
+    Component
+    {
         id: gridDelegate
-        Item {
+        Item
+        {
             id: item
             width: GridView.view.cellWidth - 1
             height: GridView.view.cellHeight - 1
             property bool highlighted: mArea.pressed || page.selectedFiles.indexOf(model.path) != -1
             property int marqueeOffset: 0
 
-            Thumbnail {
+            Image   /* Was Thumbnail from org.nemomobile.thumbnailer (not allowed in Harbour) */
+            {
                 id: image
                 source: model.path
                 height: parent.height
@@ -245,46 +140,56 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
                 sourceSize.width: parent.width
                 anchors.centerIn: parent
                 clip: true
-                smooth: true
-                mimeType: model.mime
+                fillMode: Image.PreserveAspectCrop
+                smooth: false
+                asynchronous: true
+                cache: true
 
-                states: [
-                    State {
+                states:
+                [
+                    State
+                    {
                         name: 'loaded'; when: image.status == Thumbnail.Ready
                         PropertyChanges { target: image; opacity: 1; }
                     },
-                    State {
+                    State
+                    {
                         name: 'loading'; when: image.status != Thumbnail.Ready
                         PropertyChanges { target: image; opacity: 0; }
                     }
                 ]
 
-                Behavior on opacity {
+                Behavior on opacity
+                {
                     FadeAnimation {}
                 }
             }
-            Rectangle {
+            Rectangle
+            {
                 anchors.fill: parent
                 color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity)
                 visible: item.highlighted
             }
-            Rectangle {
+            Rectangle
+            {
                 id: rec
                 color: Theme.secondaryHighlightColor
                 height: Theme.fontSizeExtraSmall
-                anchors {
+                anchors
+                {
                     bottom: parent.bottom
                     left: parent.left
                     right: parent.right
                 }
 
-                Item {
-                    anchors {
-                        fill: parent
-                        margins: 2
-                    }
+                Item
+                {
+                    anchors.fill: parent
+                    anchors.margins: 2
+
                     clip: true
-                    Label {
+                    Label
+                    {
                         id: label
                         anchors.verticalCenter: parent.verticalCenter
                         x: width > parent.width ? ( page._marqueeIndex == index ? marqueeOffset : 0) : (parent.width - width) / 2
@@ -296,21 +201,27 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
                         color: Theme.primaryColor
                     }
 
-                    Timer {
+                    Timer
+                    {
                         id: marqueeTimer
                         interval: 10
                         running: false
                         repeat: true
-                        onTriggered: {
-                            if (label.width > label.parent.width) {
-                                if (label.width + marqueeOffset > label.parent.width) {
+                        onTriggered:
+                        {
+                            if (label.width > label.parent.width)
+                            {
+                                if (label.width + marqueeOffset > label.parent.width)
+                                {
                                     marqueeOffset -= 1
                                 }
-                                else {
+                                else
+                                {
                                     marqueeTimer.stop()
                                 }
                             }
-                            else {
+                            else
+                            {
                                 marqueeTimer.stop()
                             }
                         }
@@ -318,21 +229,26 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
                 }
             }
 
-            MouseArea {
+            MouseArea
+            {
                 id: mArea
                 anchors.fill: parent
-                onClicked: {
+                onClicked:
+                {
                     page._marqueeIndex = index
                     marqueeOffset = 0
                     marqueeTimer.start()
-                    if (page.selectedFiles.length > 1) {
+                    if (page.selectedFiles.length > 1)
+                    {
                         fileSelect(model.path)
                     }
-                    else {
+                    else
+                    {
                         fileSingle(model.path)
                     }
                 }
-                onPressAndHold: {
+                onPressAndHold:
+                {
                     if (multiple)
                         fileSelect(model.path)
                     else

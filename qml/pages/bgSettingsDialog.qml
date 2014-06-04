@@ -118,11 +118,8 @@ Dialog
                     imageSelectDialog.accepted.connect(function()
                     {
                         var mediaFiles = imageSelectDialog.selectedFiles
-                        for (var i = 0; i < mediaFiles.length; i++)
-                        {
-                            console.log("Selected file " + mediaFiles[i])
-                        }
-
+                        console.log("Selected file " + mediaFiles[0])
+                        thumbnailImage.source = mediaFiles[0];
                     })
                 }
             }
@@ -133,8 +130,17 @@ Dialog
             id: thumbnailImage
             visible: useExternalImage
             source: "image://theme/icon-l-dismiss"
-            width: 2*Theme.itemSizeLarge
-            height: 2*Theme.itemSizeLarge
+            height: 2* Theme.itemSizeLarge
+            width: 2* Theme.itemSizeLarge
+            sourceSize.height: 2* Theme.itemSizeLarge
+            sourceSize.width: 2* Theme.itemSizeLarge
+
+            clip: true
+            fillMode: Image.PreserveAspectCrop
+            smooth: false
+            asynchronous: true
+            cache: true
         }
     }
 }
+
