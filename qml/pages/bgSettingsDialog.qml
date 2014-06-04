@@ -8,6 +8,7 @@ Dialog
 
     property int currentBg: 0
     property bool useExternalImage: false
+    property string bgImagePath : "image://theme/icon-l-dismiss"
 
     DialogHeader
     {
@@ -119,7 +120,7 @@ Dialog
                     {
                         var mediaFiles = imageSelectDialog.selectedFiles
                         console.log("Selected file " + mediaFiles[0])
-                        thumbnailImage.source = mediaFiles[0];
+                        bgImagePath = mediaFiles[0];
                     })
                 }
             }
@@ -129,7 +130,7 @@ Dialog
         {
             id: thumbnailImage
             visible: useExternalImage
-            source: "image://theme/icon-l-dismiss"
+            source: bgImagePath
             height: 2* Theme.itemSizeLarge
             width: 2* Theme.itemSizeLarge
             sourceSize.height: 2* Theme.itemSizeLarge

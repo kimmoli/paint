@@ -59,7 +59,9 @@ Row
         onClicked:
         {
             var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
-                                                       "currentBg": bgColor })
+                                                       "currentBg": bgColor,
+                                                       "useExternalImage": false,
+                                                       "bgImagePath": "image://theme/icon-l-dismiss" })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentBg
 
