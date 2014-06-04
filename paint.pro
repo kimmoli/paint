@@ -25,13 +25,20 @@ QT += dbus
 SOURCES += src/paint.cpp \
     src/PainterClass.cpp \
     src/recursivesearch.cpp \
-    src/filemodel.cpp
+    src/filemodel.cpp \
+    src/nemoimagemetadata.cpp \
+    src/nemothumbnailprovider.cpp \
+    src/nemothumbnailitem.cpp
 	
 HEADERS += \
     src/PainterClass.h \
     src/IconProvider.h \
     src/recursivesearch.h \
-    src/filemodel.h
+    src/filemodel.h \
+    src/nemoimagemetadata.h \
+    src/nemothumbnailprovider.h \
+    src/nemothumbnailitem.h \
+    src/linkedlist.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \

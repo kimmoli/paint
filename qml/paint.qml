@@ -28,7 +28,7 @@ ApplicationWindow
     property int bgColor: colors.length
     property string toolboxLocation : "toolboxTop"
     property bool useImageAsBackground: false
-    property string backgroundImagePath: "image://theme/icon-l-dismiss"
+    property string backgroundImagePath: "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"
 
     /*****************************************************/
 

@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
+import harbour.paint.Thumbnailer 1.0
 import "../components"
 
 
@@ -102,15 +103,40 @@ Page
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
     }
 
-    Image
+    Thumbnail
     {
         id: bgImg
+        visible: useImageAsBackground
         z: 7
-        anchors.fill: page
-        clip: true
-        fillMode: Image.PreserveAspectCrop
         source: backgroundImagePath
-        opacity: useImageAsBackground ? 1.0 : 0.0
+        height: bg.height
+        width: bg.width
+        sourceSize.height: bg.height
+        sourceSize.width: bg.width
+        anchors.centerIn: bg
+        clip: true
+        smooth: true
+        mimeType: "image"
+        fillMode: Thumbnail.PreserveAspectFit
+
+        states:
+            [
+            State
+            {
+                name: 'loaded'; when: image.status == Thumbnail.Ready
+                PropertyChanges { target: image; opacity: 1; }
+            },
+            State
+            {
+                name: 'loading'; when: image.status != Thumbnail.Ready
+                PropertyChanges { target: image; opacity: 0; }
+            }
+        ]
+
+        Behavior on opacity
+        {
+            FadeAnimation {}
+        }
     }
 
 

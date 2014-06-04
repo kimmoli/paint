@@ -24,11 +24,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "PainterClass.h"
 #include "IconProvider.h"
 #include "filemodel.h"
+#include "nemothumbnailitem.h"
+#include "nemothumbnailprovider.h"
 
 int main(int argc, char *argv[])
 {
     qmlRegisterType<PainterClass>("harbour.paint.PainterClass", 1, 0, "Painter");
     qmlRegisterType<Filemodel>("harbour.paint.Filemodel", 1, 0, "Filemodel");
+    qmlRegisterType<NemoThumbnailItem>("harbour.paint.Thumbnailer", 1, 0, "Thumbnail");
+
+    NemoThumbnailLoader *loader = new NemoThumbnailLoader;
+    loader->start(QThread::IdlePriority);
+    qAddPostRoutine(NemoThumbnailLoader::shutdown);
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
@@ -40,6 +47,7 @@ int main(int argc, char *argv[])
 
     QQmlEngine *engine = view->engine();
     engine->addImageProvider(QLatin1String("paintIcons"), new IconProvider);
+    engine->addImageProvider(QLatin1String("paintThumbnail"), new NemoThumbnailProvider);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
     view->show();

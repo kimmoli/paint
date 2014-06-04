@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 import harbour.paint.Filemodel 1.0
+import harbour.paint.Thumbnailer 1.0
 
 Dialog  /* Todo: Cleanup, this is just an image selector here */
 {
@@ -130,7 +131,7 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
             property bool highlighted: mArea.pressed || page.selectedFiles.indexOf(model.path) != -1
             property int marqueeOffset: 0
 
-            Image   /* Was Thumbnail from org.nemomobile.thumbnailer (not allowed in Harbour) */
+            Thumbnail
             {
                 id: image
                 source: model.path
@@ -140,13 +141,11 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
                 sourceSize.width: parent.width
                 anchors.centerIn: parent
                 clip: true
-                fillMode: Image.PreserveAspectCrop
-                smooth: false
-                asynchronous: true
-                cache: true
+                smooth: true
+                mimeType: model.mime
 
                 states:
-                [
+                    [
                     State
                     {
                         name: 'loaded'; when: image.status == Thumbnail.Ready
