@@ -27,7 +27,9 @@ ApplicationWindow
     property int sprayerColor: 0
     property int textColor: 0
     property int textFontSize: 40
-    property string textFont: textFontSize + "px Arial"
+    property bool textFontBold : false
+    property bool textFontItalic : false
+    property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px Arial"
     property bool textEditPending: false
     property string thisTextEntry : ""
     property int bgColor: colors.length

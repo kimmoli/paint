@@ -8,12 +8,16 @@ Dialog
 
     property int currentColor: 0
     property int currentSize: 40
+    property bool isBold: false
+    property bool isItalic: false
 
     onDone:
     {
         if (result === DialogResult.Accepted)
         {
             currentSize = sizeSlider.value
+            isBold = tsBold.checked
+            isItalic = tsItalic.checked
         }
     }
 
@@ -85,6 +89,25 @@ Dialog
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
+        Row
+        {
+            width: parent.width
+
+            TextSwitch
+            {
+                id: tsBold
+                text: qsTr("Bold")
+                checked: isBold
+                width: parent.width/2
+            }
+            TextSwitch
+            {
+                id: tsItalic
+                text: qsTr("Italic")
+                checked: isItalic
+                width: parent.width/2
+            }
+        }
 
     }
 }

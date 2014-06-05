@@ -52,12 +52,16 @@ Row
         {
             var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
                                                  { "currentColor": textColor,
-                                                   "currentSize": textFontSize })
+                                                   "currentSize": textFontSize,
+                                                   "isBold": textFontBold,
+                                                   "isItalic": textFontItalic })
 
             SettingsDialog.accepted.connect(function()
             {
                 textColor = SettingsDialog.currentColor
                 textFontSize = SettingsDialog.currentSize
+                textFontBold = SettingsDialog.isBold
+                textFontItalic = SettingsDialog.isItalic
                 textSettingsChanged()
             })
         }
