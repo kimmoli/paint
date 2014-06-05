@@ -6,31 +6,61 @@ Row
 {
     id: toolbar2
 
-    Component.onCompleted: drawMode = Painter.None
-
     IconButton
     {
-        icon.source: "image://theme/icon-m-keyboard" /* Todo: better icon? */
+        icon.source: "image://theme/icon-m-keyboard"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Text
 
         onClicked:
         {
-            var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"),
+            drawMode = Painter.Text
+            if (textEditPending)
+                textEditCancel()
+        }
+    }
+
+    IconButton
+    {
+        icon.source: "image://theme/icon-m-enter-accept"
+        anchors.bottom: parent.bottom
+        enabled: textEditPending
+
+        onClicked: textEditAccept()
+    }
+
+
+    Rectangle
+    {
+        color: "transparent"
+        width: 80
+        height: 80
+    }
+    Rectangle
+    {
+        color: "transparent"
+        width: 80
+        height: 80
+    }
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-toolsettings"
+        anchors.bottom: parent.bottom
+
+        onClicked:
+        {
+            var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
                                                  { "currentColor": textColor,
                                                    "currentSize": textFontSize })
 
-            textEntryDialog.accepted.connect(function()
+            SettingsDialog.accepted.connect(function()
             {
-                thisTextEntry = textEntryDialog.newText
-                textColor = textEntryDialog.currentColor
-                textFontSize = textEntryDialog.currentSize
-                console.log("You entered " + thisTextEntry)
-                if (thisTextEntry.length>0)
-                    drawMode = Painter.Text
-                else
-                    drawMode = Painter.None
+                textColor = SettingsDialog.currentColor
+                textFontSize = SettingsDialog.currentSize
+                textSettingsChanged()
             })
         }
     }
+
 }

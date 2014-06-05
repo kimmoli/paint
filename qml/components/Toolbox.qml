@@ -20,6 +20,11 @@ Row
     signal toggleGeometryPopup()
     signal hideGeometryPopup()
 
+    signal textEditAccept()
+    signal textEditCancel()
+    signal textSettingsChanged()
+
+
     function startRemorse()
     {
         remorse.execute(qsTr("Clearing"), function()

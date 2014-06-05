@@ -1,24 +1,29 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+/* Canvas get borked if closing dialog with vkb visible. */
+
 Dialog
 {
     id: textEntryDialog
-    canAccept: true
+    canAccept: ti.focus === false
 
     property string newText : ""
-    property int currentColor: 0
-    property int currentSize: 40
 
     onDone:
     {
         if (result === DialogResult.Accepted)
         {
             newText = ti.text
-            currentSize = sizeSlider.value
         }
     }
 
+    Timer
+    {
+        id: vkbClose
+        interval: 500
+        onTriggered: textEntryDialog.accept()
+    }
 
     DialogHeader
     {
@@ -47,61 +52,11 @@ Dialog
             focus: true
             placeholderText: qsTr("Enter some text")
             EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-            EnterKey.onClicked: textEntryDialog.accept()
-        }
-
-        SectionHeader
-        {
-            text: qsTr("Select color")
-        }
-
-        Grid
-        {
-            id: colorSelector
-            columns: 4
-            Repeater
+            EnterKey.onClicked:
             {
-                model: colors
-                Rectangle
-                {
-                    width: col.width/colorSelector.columns
-                    height: col.width/colorSelector.columns
-                    radius: 10
-                    color: (index == currentColor) ? colors[index] : "transparent"
-                    Rectangle
-                    {
-                        width: parent.width - 20
-                        height: parent.height - 20
-                        radius: 5
-                        color: colors[index]
-                        anchors.centerIn: parent
-                    }
-                    BackgroundItem
-                    {
-                        anchors.fill: parent
-                        onClicked: currentColor = index
-                    }
-                }
+                ti.focus = false
+                vkbClose.start()
             }
         }
-
-        SectionHeader
-        {
-            text: qsTr("Font size")
-        }
-
-        Slider
-        {
-            id: sizeSlider
-            value: currentSize
-            valueText: value
-            minimumValue: 10
-            maximumValue: 100
-            stepSize: 1
-            width: parent.width - 2*Theme.paddingLarge
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
-
     }
 }

@@ -89,6 +89,9 @@ Page
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
         onHideGeometryPopup: geometryPopupVisible = false
+        onTextEditAccept: textAccept()
+        onTextEditCancel: textCancel()
+        onTextSettingsChanged: geometryCanvas.requestPaint()
     }
 
     GeometryPopup
@@ -203,6 +206,20 @@ Page
         ctx.fillText(txt, x, y)
     }
 
+    function textAccept()
+    {
+        textEditPending = false
+        geometryCanvas.clear()
+        canvas.requestPaint()
+    }
+    function textCancel()
+    {
+        thisTextEntry = ""
+        textEditPending = false
+        geometryCanvas.clear()
+    }
+
+
     Canvas
     {
         id: geometryCanvas
@@ -257,8 +274,10 @@ Page
                     default:
                         break;
                 }
+                break;
             case Painter.Text:
-                drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                if (thisTextEntry.length>0)
+                    drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
                 break;
 
             default:
@@ -356,7 +375,11 @@ Page
                     break;
 
                 case Painter.Text:
+                    if (!textEditPending && thisTextEntry.length>0)
+                    {
                         drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                        thisTextEntry = ""
+                    }
                     break;
 
                 default:
@@ -384,9 +407,30 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
+                    geometryCanvas.downX = mouseX
+                    geometryCanvas.downY = mouseY
+                    break;
+
                 case Painter.Text:
                     geometryCanvas.downX = mouseX
                     geometryCanvas.downY = mouseY
+
+                    if (!textEditPending)
+                    {
+                        var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"))
+
+                        textEntryDialog.accepted.connect(function()
+                        {
+                            thisTextEntry = textEntryDialog.newText
+                            if (thisTextEntry.length>0)
+                            {
+                                textEditPending = true
+                                geometryCanvas.requestPaint()
+                            }
+                        })
+                    }
+                    else
+                        geometryCanvas.requestPaint()
 
                     break;
 
@@ -399,7 +443,6 @@ Page
             {
                 switch (drawMode)
                 {
-                case Painter.Text:
                 case Painter.Geometrics:
                     canvas.requestPaint()
                     geometryCanvas.clear()
