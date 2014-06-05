@@ -69,7 +69,9 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/eraserSettingsDialog.qml \
     qml/pages/spraySettingsDialog.qml \
     qml/icons/icon-m-save.png \
-    qml/pages/MediaSelector.qml
+    qml/pages/MediaSelector.qml \
+    qml/components/Toolbar3.qml \
+    qml/pages/textSettingsDialog.qml
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts

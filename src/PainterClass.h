@@ -37,7 +37,8 @@ public:
         Eraser = 0,
         Pen,
         Spray,
-        Geometrics
+        Geometrics,
+        Text
     };
 
     enum GeometricsMode

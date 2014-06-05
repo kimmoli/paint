@@ -8,90 +8,62 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-about"
+        icon.source: "image://theme/icon-m-keyboard" /* Todo: better icon? */
         anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Text
 
         onClicked:
         {
-            pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
-                                  { "version": painter.version,
-                                    "year": "2014",
-                                    "name": "Paint",
-                                    "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
+            drawMode = Painter.Text
         }
     }
+
+    Rectangle
+    {
+        color: "transparent"
+        width: 80
+        height: width
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        width: 80
+        height: width
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        width: 80
+        height: width
+    }
+
+
     IconButton
     {
-        icon.source: "image://theme/icon-m-developer-mode"
+        icon.source: "image://paintIcons/icon-m-toolsettings" /* Todo: better icon? */
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            var saveModeWas = painter.getSaveMode()
-            var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"),
-                                                   {"saveFormat": saveModeWas ,
-                                                    "toolboxLocation": toolboxLocation })
+            var SettingsDialog
 
-            genSettingsDialog.accepted.connect(function()
+            switch (drawMode)
             {
-                var newSaveMode = genSettingsDialog.saveFormat
-                painter.setSaveMode(newSaveMode)
-                if (saveModeWas !== newSaveMode)
-                    showMessage(qsTr("File format") + " " + genSettingsDialog.saveFormat, 1500)
-                toolboxLocation = genSettingsDialog.toolboxLocation
-                painter.setToolboxLocation(genSettingsDialog.toolboxLocation)
-            })
-        }
-    }
+                case Painter.Text :
+                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                                 { "currentColor": textColor })
 
-    IconButton
-    {
-        icon.source: "image://theme/icon-m-delete"
-        anchors.verticalCenter: parent.verticalCenter
-        onClicked: startRemorse()
-    }
+                    SettingsDialog.accepted.connect(function() {
+                        textColor = SettingsDialog.currentColor
+                    })
 
-    IconButton
-    {
-        icon.source: "image://theme/icon-m-image"
-        anchors.bottom: parent.bottom
+                    break;
 
-        onClicked:
-        {
-            var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
-                                                       "currentBg": bgColor,
-                                                       "useExternalImage": useImageAsBackground,
-                                                       "bgImagePath": backgroundImagePath,
-                                                      "bgImageRotate": backgroundImageRotate })
-            bgSettingsDialog.accepted.connect(function() {
-                bgColor = bgSettingsDialog.currentBg
-                useImageAsBackground = bgSettingsDialog.useExternalImage
-                backgroundImagePath = bgSettingsDialog.bgImagePath
-                backgroundImageRotate = bgSettingsDialog.bgImageRotate
-            })
-
-        }
-    }
-
-    IconButton
-    {
-        icon.source: "image://paintIcons/icon-m-save"
-        anchors.verticalCenter: parent.verticalCenter
-        onClicked:
-        {
-            toolBox.opacity = 0.0
-            toolBoxVisibility.start()
-        }
-    }
-    Timer
-    {
-        id: toolBoxVisibility
-        interval: 1000
-        onTriggered:
-        {
-            var fileName = painter.saveScreenshot()
-            toolBox.opacity = 1.0
-            showMessage(fileName, 0)
+                default :
+                    break;
+            }
         }
     }
 }

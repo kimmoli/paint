@@ -13,7 +13,7 @@ Row
     property var popup
 
     property int toolbarNumber : 1
-    property int maxToolbars: 2
+    property int maxToolbars: 3
 
     signal showMessage(string message, int delay)
     signal showGeometryPopup()
@@ -62,7 +62,7 @@ Row
         {
             hideGeometryPopup()
 
-            toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (toolbarNumber + 1)
+            toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (++toolbarNumber)
             changeToolBar(toolbarNumber)
         }
     }

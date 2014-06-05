@@ -25,6 +25,7 @@ ApplicationWindow
     property int sprayerDensity: 50
     property int sprayerParticleSize: 3
     property int sprayerColor: 0
+    property int textColor: 0
     property int bgColor: colors.length
     property string toolboxLocation : "toolboxTop"
     property bool useImageAsBackground: false
