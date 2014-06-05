@@ -34,6 +34,7 @@ public:
 
     enum Mode
     {
+        None = -1,
         Eraser = 0,
         Pen,
         Spray,

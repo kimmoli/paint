@@ -153,11 +153,11 @@ Page
         ctx.lineWidth = drawThickness
         ctx.strokeStyle = colors[drawColor]
 
-        ctx.beginPath();
-        ctx.moveTo(x0, y0);
-        ctx.lineTo(x1, y1);
-        ctx.stroke();
-        ctx.closePath();
+        ctx.beginPath()
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(x1, y1)
+        ctx.stroke()
+        ctx.closePath()
     }
 
     function drawCircle(ctx, x0,y0,x1,y1, fill)
@@ -196,6 +196,13 @@ Page
             ctx.strokeRect(x, y, w, h);
     }
 
+    function drawText(ctx, txt, x, y)
+    {
+        ctx.fillStyle = colors[textColor]
+        ctx.font = textFont
+        ctx.fillText(txt, x, y)
+    }
+
     Canvas
     {
         id: geometryCanvas
@@ -206,7 +213,6 @@ Page
 
         property real downX
         property real downY
-        property color color: colors[drawColor]
 
         property bool clearNow : false
 
@@ -227,26 +233,36 @@ Page
                 return
             }
 
-            switch(geometricsMode)
+            switch (drawMode)
             {
-                case Painter.Line :
-                    drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
-                    break;
-                case Painter.Circle :
-                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, false)
-                    break;
-                case Painter.CircleFilled :
-                    drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, true)
-                    break;
-                case Painter.Rectangle :
-                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, false)
-                    break;
-                case Painter.RectangleFilled :
-                    drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, true)
-                    break;
+            case Painter.Geometrics:
+                switch(geometricsMode)
+                {
+                    case Painter.Line :
+                        drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
+                        break;
+                    case Painter.Circle :
+                        drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                        break;
+                    case Painter.CircleFilled :
+                        drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, true)
+                        break;
+                    case Painter.Rectangle :
+                        drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                        break;
+                    case Painter.RectangleFilled :
+                        drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, true)
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
+            case Painter.Text:
+                drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                break;
+
+            default:
+                break;
             }
         }
     }
@@ -339,6 +355,10 @@ Page
 
                     break;
 
+                case Painter.Text:
+                        drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                    break;
+
                 default:
                     console.error("Unimplemented feature")
                     break;
@@ -360,34 +380,49 @@ Page
             {
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
-                if (drawMode === Painter.Geometrics)
+
+                switch (drawMode)
                 {
+                case Painter.Geometrics:
+                case Painter.Text:
                     geometryCanvas.downX = mouseX
                     geometryCanvas.downY = mouseY
-                }
-                else
-                {
-                    canvas.lastX = mouseX
-                    canvas.lastY = mouseY
+
+                    break;
+
+                default:
+                    break;
                 }
             }
 
             onReleased:
             {
-                if (drawMode === Painter.Geometrics)
+                switch (drawMode)
                 {
+                case Painter.Text:
+                case Painter.Geometrics:
                     canvas.requestPaint()
                     geometryCanvas.clear()
+                    break;
+
+                default:
+                    break;
                 }
                 toolBox.opacity = 1.0
             }
 
             onPositionChanged:
             {
-                if (drawMode === Painter.Geometrics)
+                switch (drawMode)
+                {
+                case Painter.Text:
+                case Painter.Geometrics:
                     geometryCanvas.requestPaint()
-                else
+                    break;
+                default:
                     canvas.requestPaint()
+                    break;
+                }
             }
         }
     }

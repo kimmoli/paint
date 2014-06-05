@@ -71,7 +71,8 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-save.png \
     qml/pages/MediaSelector.qml \
     qml/components/Toolbar3.qml \
-    qml/pages/textSettingsDialog.qml
+    qml/pages/textSettingsDialog.qml \
+    qml/pages/textEntryDialog.qml
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts

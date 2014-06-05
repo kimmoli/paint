@@ -26,6 +26,10 @@ ApplicationWindow
     property int sprayerParticleSize: 3
     property int sprayerColor: 0
     property int textColor: 0
+    property int textFontSize: 40
+    property string textFont: textFontSize + "px Arial"
+    property bool textEditPending: false
+    property string thisTextEntry : ""
     property int bgColor: colors.length
     property string toolboxLocation : "toolboxTop"
     property bool useImageAsBackground: false

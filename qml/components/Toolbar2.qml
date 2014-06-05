@@ -6,6 +6,8 @@ Row
 {
     id: toolbar2
 
+    Component.onCompleted: drawMode = Painter.None
+
     IconButton
     {
         icon.source: "image://theme/icon-m-keyboard" /* Todo: better icon? */
@@ -14,56 +16,21 @@ Row
 
         onClicked:
         {
-            drawMode = Painter.Text
-        }
-    }
+            var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"),
+                                                 { "currentColor": textColor,
+                                                   "currentSize": textFontSize })
 
-    Rectangle
-    {
-        color: "transparent"
-        width: 80
-        height: width
-    }
-
-    Rectangle
-    {
-        color: "transparent"
-        width: 80
-        height: width
-    }
-
-    Rectangle
-    {
-        color: "transparent"
-        width: 80
-        height: width
-    }
-
-
-    IconButton
-    {
-        icon.source: "image://paintIcons/icon-m-toolsettings" /* Todo: better icon? */
-        anchors.bottom: parent.bottom
-
-        onClicked:
-        {
-            var SettingsDialog
-
-            switch (drawMode)
+            textEntryDialog.accepted.connect(function()
             {
-                case Painter.Text :
-                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
-                                                                 { "currentColor": textColor })
-
-                    SettingsDialog.accepted.connect(function() {
-                        textColor = SettingsDialog.currentColor
-                    })
-
-                    break;
-
-                default :
-                    break;
-            }
+                thisTextEntry = textEntryDialog.newText
+                textColor = textEntryDialog.currentColor
+                textFontSize = textEntryDialog.currentSize
+                console.log("You entered " + thisTextEntry)
+                if (thisTextEntry.length>0)
+                    drawMode = Painter.Text
+                else
+                    drawMode = Painter.None
+            })
         }
     }
 }

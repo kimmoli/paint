@@ -3,9 +3,10 @@ import Sailfish.Silica 1.0
 
 Dialog
 {
-    id: textSettingsDialog
+    id: textEntryDialog
     canAccept: true
 
+    property string newText : ""
     property int currentColor: 0
     property int currentSize: 40
 
@@ -13,6 +14,7 @@ Dialog
     {
         if (result === DialogResult.Accepted)
         {
+            newText = ti.text
             currentSize = sizeSlider.value
         }
     }
@@ -21,7 +23,7 @@ Dialog
     DialogHeader
     {
         id: pageHeader
-        title:  qsTr("Text settings")
+        title:  qsTr("Text entry")
         acceptText: acceptText
         cancelText: cancelText
     }
@@ -32,6 +34,21 @@ Dialog
         width: parent.width - Theme.paddingLarge
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: pageHeader.bottom
+
+        SectionHeader
+        {
+            text: qsTr("Enter some text")
+        }
+
+        TextField
+        {
+            id: ti
+            width: parent.width
+            focus: true
+            placeholderText: qsTr("Enter some text")
+            EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+            EnterKey.onClicked: textEntryDialog.accept()
+        }
 
         SectionHeader
         {
