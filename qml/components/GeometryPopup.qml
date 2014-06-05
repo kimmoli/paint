@@ -8,8 +8,6 @@ Row
 {
     id: geometryPopup
 
-    signal hideMe()
-
     IconButton
     {
         icon.source: "image://paintIcons/icon-m-geom-line"
@@ -20,7 +18,6 @@ Row
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Line
-            hideMe()
         }
     }
 
@@ -34,7 +31,6 @@ Row
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Rectangle
-            hideMe()
         }
     }
 
@@ -48,7 +44,6 @@ Row
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.RectangleFilled
-            hideMe()
         }
     }
 
@@ -63,7 +58,6 @@ Row
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Circle
-            hideMe()
         }
     }
 
@@ -77,7 +71,6 @@ Row
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.CircleFilled
-            hideMe()
         }
     }
 

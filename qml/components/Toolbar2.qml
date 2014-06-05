@@ -83,10 +83,6 @@ Row
             toolBoxVisibility.start()
         }
     }
-    Behavior on opacity
-    {
-        FadeAnimation {}
-    }
     Timer
     {
         id: toolBoxVisibility

@@ -17,6 +17,8 @@ Row
 
     signal showMessage(string message, int delay)
     signal showGeometryPopup()
+    signal toggleGeometryPopup()
+    signal hideGeometryPopup()
 
     function startRemorse()
     {
@@ -33,6 +35,11 @@ Row
 
         var toolbarComp = Qt.createComponent(Qt.resolvedUrl("../components/Toolbar" + number + ".qml"))
         toolbar = toolbarComp.createObject(toolBox)
+    }
+
+    Behavior on opacity
+    {
+        FadeAnimation {}
     }
 
     Component.onCompleted: changeToolBar(toolbarNumber)
@@ -53,7 +60,7 @@ Row
 
         onClicked:
         {
-            geometryPopupVisible = false
+            hideGeometryPopup()
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (toolbarNumber + 1)
             changeToolBar(toolbarNumber)

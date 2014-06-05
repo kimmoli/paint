@@ -64,14 +64,19 @@ Page
 
     OpacityRampEffect
     {
-        visible: toolBox.opacity > 0.5
+
         id: toolBoxBackgroundEffect
         z: 14
-        clampMax: 0.65
+        clampMax: toolBox.opacity > 0.5 ? 0.65 : 0.0
         slope: 2.0
         offset: 0.6
         direction: OpacityRamp.TopToBottom
         sourceItem: toolBoxBackground
+
+        Behavior on clampMax
+        {
+            FadeAnimation {}
+        }
     }
 
     Toolbox
@@ -81,7 +86,9 @@ Page
 
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
+        onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
+        onHideGeometryPopup: geometryPopupVisible = false
     }
 
     GeometryPopup
@@ -93,7 +100,6 @@ Page
         anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
         onVisibleChanged: z = visible ? 15 : 0
-        onHideMe: geometryPopupVisible = false
     }
 
     Rectangle
@@ -345,10 +351,13 @@ Page
         {
             id: area
             anchors.fill: canvas
-            onPressed:
+            onPressAndHold:
             {
                 geometryPopupVisible = false
-
+                toolBox.opacity = 0.0
+            }
+            onPressed:
+            {
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
                 if (drawMode === Painter.Geometrics)
@@ -370,6 +379,7 @@ Page
                     canvas.requestPaint()
                     geometryCanvas.clear()
                 }
+                toolBox.opacity = 1.0
             }
 
             onPositionChanged:

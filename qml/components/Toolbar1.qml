@@ -12,7 +12,11 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Pen
 
-        onClicked: drawMode = Painter.Pen
+        onClicked:
+        {
+            hideGeometryPopup()
+            drawMode = Painter.Pen
+        }
     }
 
     IconButton
@@ -21,7 +25,11 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Eraser
 
-        onClicked: drawMode = Painter.Eraser
+        onClicked:
+        {
+            hideGeometryPopup()
+            drawMode = Painter.Eraser
+        }
     }
 
     IconButton
@@ -30,7 +38,11 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Spray
 
-        onClicked: drawMode = Painter.Spray
+        onClicked:
+        {
+            hideGeometryPopup()
+            drawMode = Painter.Spray
+        }
     }
 
     IconButton
@@ -41,8 +53,11 @@ Row
 
         onClicked:
         {
+            if (drawMode != Painter.Geometrics)
+                showGeometryPopup()
+            else
+                toggleGeometryPopup()
             drawMode = Painter.Geometrics
-            showGeometryPopup()
         }
     }
 
