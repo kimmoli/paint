@@ -64,6 +64,7 @@ Page
 
     OpacityRampEffect
     {
+        visible: toolBox.opacity > 0.5
         id: toolBoxBackgroundEffect
         z: 14
         clampMax: 0.65
@@ -117,7 +118,8 @@ Page
         clip: true
         smooth: true
         mimeType: "image"
-        fillMode: Thumbnail.PreserveAspectFit
+        fillMode: backgroundImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
+
 
         states:
             [

@@ -61,11 +61,13 @@ Row
             var bgSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/bgSettingsDialog.qml"), {
                                                        "currentBg": bgColor,
                                                        "useExternalImage": useImageAsBackground,
-                                                       "bgImagePath": backgroundImagePath })
+                                                       "bgImagePath": backgroundImagePath,
+                                                      "bgImageRotate": backgroundImageRotate })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentBg
                 useImageAsBackground = bgSettingsDialog.useExternalImage
                 backgroundImagePath = bgSettingsDialog.bgImagePath
+                backgroundImageRotate = bgSettingsDialog.bgImageRotate
             })
 
         }

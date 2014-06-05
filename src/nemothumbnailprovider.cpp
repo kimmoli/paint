@@ -233,6 +233,11 @@ QImage NemoThumbnailProvider::generateThumbnail(const QString &id, const QByteAr
     QSize originalSize;
     QByteArray format;
 
+    QSize _requestedSize(requestedSize);
+
+    if (landscape)
+        _requestedSize.transpose();
+
     // image was not in cache thus we read it
     QImageReader ir(id);
     if (!ir.canRead())
@@ -241,29 +246,33 @@ QImage NemoThumbnailProvider::generateThumbnail(const QString &id, const QByteAr
     originalSize = ir.size();
     format = ir.format();
 
-    if (originalSize != requestedSize && originalSize.isValid()) {
-        if (crop) {
+    if (originalSize != _requestedSize && originalSize.isValid())
+    {
+        if (crop)
+        {
             // scales arbitrary sized source image to requested size scaling either up or down
             // keeping aspect ratio of the original image intact by maximizing either width or height
             // and cropping the rest of the image away
             QSize scaledSize(originalSize);
 
             // now scale it filling the original rectangle by keeping aspect ratio, but expand if needed.
-            scaledSize.scale(requestedSize, Qt::KeepAspectRatioByExpanding);
+            scaledSize.scale(_requestedSize, Qt::KeepAspectRatioByExpanding);
 
             // set the adjusted clipping rectangle in the center of the scaled image
             QPoint center((scaledSize.width() - 1) / 2, (scaledSize.height() - 1) / 2);
-            QRect cr(0,0,requestedSize.width(), requestedSize.height());
+            QRect cr(0, 0, _requestedSize.width(), _requestedSize.height());
             cr.moveCenter(center);
             ir.setScaledClipRect(cr);
 
             // set requested target size of a thumbnail
             ir.setScaledSize(scaledSize);
-        } else {
+        }
+        else
+        {
             // Maintains correct aspect ratio without cropping, as such the final image may
             // be smaller than requested in one dimension.
             QSize scaledSize(originalSize);
-            scaledSize.scale(requestedSize, Qt::KeepAspectRatio);
+            scaledSize.scale(_requestedSize, Qt::KeepAspectRatio);
             ir.setScaledSize(scaledSize);
         }
     }
@@ -275,11 +284,11 @@ QImage NemoThumbnailProvider::generateThumbnail(const QString &id, const QByteAr
 
     /* If requested landscape image, rotate once 90 degrees clockwise */
     if (landscape)
-        img = rotate(img, NemoImageMetadata::LeftBottom);
+        img = rotate(img, NemoImageMetadata::RightTop);
 
     // write the scaled image to cache
-    if (meta.orientation() != NemoImageMetadata::TopLeft ||
-        (originalSize != requestedSize && originalSize.isValid())) {
+    if (meta.orientation() != NemoImageMetadata::TopLeft || (originalSize != _requestedSize && originalSize.isValid()))
+    {
         writeCacheFile(hashData, img);
     }
 

@@ -10,6 +10,7 @@ Dialog
     property int currentBg: 0
     property bool useExternalImage: false
     property string bgImagePath : ""
+    property bool bgImageRotate : false
 
     DialogHeader
     {
@@ -121,7 +122,8 @@ Dialog
                     {
                         var mediaFiles = imageSelectDialog.selectedFiles
                         console.log("Selected file " + mediaFiles[0])
-                        bgImagePath = mediaFiles[0];
+                        bgImagePath = mediaFiles[0]
+                        bgImageRotate = false
                     })
                 }
             }
@@ -130,62 +132,64 @@ Dialog
         Row
         {
             visible: useExternalImage
-            spacing: Theme.itemSizeLarge
+            spacing: Theme.paddingLarge
+            x: Theme.paddingLarge
 
             Rectangle
             {
                 id: previewPlaceHolder
                 width: 2* Theme.itemSizeLarge
                 height: 2* Theme.itemSizeLarge
-                x: Theme.itemSizeLarge
+                color: "transparent"
 
-                Thumbnail
+                Rectangle
                 {
-                    id: image
-                    source: bgImagePath
-                    height: parent.height
-                    width: parent.width
-                    sourceSize.height: parent.height
-                    sourceSize.width: parent.width
-                    anchors.centerIn: parent
-                    clip: true
-                    smooth: true
-                    mimeType: "image"
-                    fillMode: Thumbnail.PreserveAspectFit
+                    width: (540/960) * 2* Theme.itemSizeLarge
+                    height: 2* Theme.itemSizeLarge
+                    color: "transparent"
+                    anchors.centerIn: previewPlaceHolder
 
-                    states:
-                        [
-                        State
-                        {
-                            name: 'loaded'; when: image.status == Thumbnail.Ready
-                            PropertyChanges { target: image; opacity: 1; }
-                        },
-                        State
-                        {
-                            name: 'loading'; when: image.status != Thumbnail.Ready
-                            PropertyChanges { target: image; opacity: 0; }
-                        }
-                    ]
-
-                    Behavior on opacity
+                    Thumbnail
                     {
-                        FadeAnimation {}
+                        id: image
+                        source: bgImagePath
+                        height: parent.height
+                        width: parent.width
+                        sourceSize.height: parent.height
+                        sourceSize.width: parent.width
+                        anchors.centerIn: parent
+                        clip: true
+                        smooth: true
+                        mimeType: "image"
+                        fillMode: bgImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
+
+                        states:
+                            [
+                            State
+                            {
+                                name: 'loaded'; when: image.status == Thumbnail.Ready
+                                PropertyChanges { target: image; opacity: 1; }
+                            },
+                            State
+                            {
+                                name: 'loading'; when: image.status != Thumbnail.Ready
+                                PropertyChanges { target: image; opacity: 0; }
+                            }
+                        ]
+
+                        Behavior on opacity
+                        {
+                            FadeAnimation {}
+                        }
                     }
                 }
             }
             IconButton
             {
                 icon.source: "image://theme/icon-m-rotate"
+                icon.rotation: bgImageRotate ? 0 : 90
                 anchors.verticalCenter: previewPlaceHolder.verticalCenter
-                onClicked:
-                {
-                    if (image.fillMode === Thumbnail.PreserveAspectFit)
-                        image.fillMode = Thumbnail.RotateFit
-                    else
-                        image.fillMode = Thumbnail.PreserveAspectFit
-
-                }
-
+                onClicked: bgImageRotate = !bgImageRotate
             }
         }
     }
