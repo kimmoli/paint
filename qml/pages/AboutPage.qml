@@ -33,6 +33,8 @@ Page
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-rectangle-filled", "helptext": qsTr("Draw filled rectangle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle", "helptext": qsTr("Draw circle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle-filled", "helptext": qsTr("Draw filled circle")})
+        buttonhelp.append( {"image": "image://theme/icon-m-keyboard", "helptext": qsTr("Text tool (cancel text)")})
+        buttonhelp.append( {"image": "image://theme/icon-m-enter-accept", "helptext": qsTr("Accept text")})
         buttonhelp.append( {"image": "image://theme/icon-m-about", "helptext": qsTr("About Paint")})
         buttonhelp.append( {"image": "image://theme/icon-m-developer-mode", "helptext": qsTr("Change settings")})
         buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})
