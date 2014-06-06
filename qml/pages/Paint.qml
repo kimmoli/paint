@@ -14,7 +14,7 @@ Page
 
     state: toolboxLocation
 
-    onStateChanged: geometryCanvas.clear()
+    onStateChanged: previewCanvas.clear()
 
     states: [
         /* Default state is toolboxTop */
@@ -91,7 +91,7 @@ Page
         onHideGeometryPopup: geometryPopupVisible = false
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
-        onTextSettingsChanged: geometryCanvas.requestPaint()
+        onTextSettingsChanged: previewCanvas.requestPaint()
     }
 
     GeometryPopup
@@ -211,14 +211,14 @@ Page
     function textAccept()
     {
         textEditPending = false
-        geometryCanvas.clear()
+        previewCanvas.clear()
         canvas.requestPaint()
     }
     function textCancel()
     {
         thisTextEntry = ""
         textEditPending = false
-        geometryCanvas.clear()
+        previewCanvas.clear()
     }
 
     function drawDimensionLine(ctx, x0, y0, x1, y1)
@@ -266,7 +266,7 @@ Page
 
     Canvas
     {
-        id: geometryCanvas
+        id: previewCanvas
         z: 10
         anchors.fill: canvas
         renderTarget: Canvas.FramebufferObject
@@ -402,19 +402,19 @@ Page
                     switch(geometricsMode)
                     {
                     case Painter.Line :
-                        drawLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
                         break;
                     case Painter.CircleFilled :
-                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
                         break;
                     case Painter.RectangleFilled :
-                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
 
                     default:
@@ -433,7 +433,7 @@ Page
                     break;
 
                 case Painter.Dimensioning:
-                    drawDimensionLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                    drawDimensionLine(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY)
                     break;
 
                 default:
@@ -462,13 +462,13 @@ Page
                 {
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
-                    geometryCanvas.downX = mouseX
-                    geometryCanvas.downY = mouseY
+                    previewCanvas.downX = mouseX
+                    previewCanvas.downY = mouseY
                     break;
 
                 case Painter.Text:
-                    geometryCanvas.downX = mouseX
-                    geometryCanvas.downY = mouseY
+                    previewCanvas.downX = mouseX
+                    previewCanvas.downY = mouseY
 
                     if (!textEditPending)
                     {
@@ -480,12 +480,12 @@ Page
                             if (thisTextEntry.length>0)
                             {
                                 textEditPending = true
-                                geometryCanvas.requestPaint()
+                                previewCanvas.requestPaint()
                             }
                         })
                     }
                     else
-                        geometryCanvas.requestPaint()
+                        previewCanvas.requestPaint()
 
                     break;
 
@@ -501,7 +501,7 @@ Page
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
                     canvas.requestPaint()
-                    geometryCanvas.clear()
+                    previewCanvas.clear()
                     break;
 
                 default:
@@ -517,7 +517,7 @@ Page
                 case Painter.Text:
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
-                    geometryCanvas.requestPaint()
+                    previewCanvas.requestPaint()
                     break;
                 default:
                     canvas.requestPaint()
