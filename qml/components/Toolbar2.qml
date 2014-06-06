@@ -8,12 +8,13 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-keyboard"
+        icon.source: "image://paintIcons/icon-m-texttool"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Text
 
         onClicked:
         {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-textsettings"
             drawMode = Painter.Text
             if (textEditPending)
                 textEditCancel()
@@ -45,6 +46,7 @@ Row
 
     IconButton
     {
+        id: toolSettingsButton
         icon.source: "image://paintIcons/icon-m-toolsettings"
         anchors.bottom: parent.bottom
 

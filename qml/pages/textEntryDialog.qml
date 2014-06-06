@@ -90,7 +90,7 @@ Dialog
         }
         IconButton
         {
-            icon.source: "image://paintIcons/icon-m-toolsettings"
+            icon.source: "image://paintIcons/icon-m-textsettings"
             anchors.right: parent.right
 
             onClicked:

@@ -72,7 +72,21 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/MediaSelector.qml \
     qml/components/Toolbar3.qml \
     qml/pages/textSettingsDialog.qml \
-    qml/pages/textEntryDialog.qml
+    qml/pages/textEntryDialog.qml \
+    qml/icons/icon-m-toolsettings.png \
+    qml/icons/icon-m-texttool.png \
+    qml/icons/icon-m-textsettings.png \
+    qml/icons/icon-m-spray.png \
+    qml/icons/icon-m-save.png \
+    qml/icons/icon-m-geom-rectangle-filled.png \
+    qml/icons/icon-m-geom-rectangle.png \
+    qml/icons/icon-m-geom-line.png \
+    qml/icons/icon-m-geometrics.png \
+    qml/icons/icon-m-geom-circle-filled.png \
+    qml/icons/icon-m-geom-circle.png \
+    qml/icons/icon-m-erasersettings.png \
+    qml/icons/icon-m-eraser.png \
+    qml/icons/icon-m-dimensiontool.png
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts
