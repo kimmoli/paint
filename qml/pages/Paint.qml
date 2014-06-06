@@ -204,7 +204,6 @@ Page
         ctx.fillStyle = colors[textColor]
         ctx.font = textFont
         ctx.textAlign = "center"
-        console.log(textFont)
         ctx.fillText(txt, x, y)
     }
 

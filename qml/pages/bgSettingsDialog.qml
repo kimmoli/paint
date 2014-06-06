@@ -121,7 +121,6 @@ Dialog
                     imageSelectDialog.accepted.connect(function()
                     {
                         var mediaFiles = imageSelectDialog.selectedFiles
-                        console.log("Selected file " + mediaFiles[0])
                         bgImagePath = mediaFiles[0]
                         bgImageRotate = false
                     })

@@ -10,29 +10,6 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
 
     canAccept: false
 
-    function accept() {
-        if (canAccept) {
-            _dialogDone(DialogResult.Accepted)
-        }
-        else {
-            negativeFeedback()
-        }
-
-        // Attempt to navigate even if it will fail, so that feedback can be generated
-        pageStack.navigateForward()
-    }
-
-    property bool cantAcceptReally: pageStack._forwardFlickDifference > 0 && pageStack._preventForwardNavigation
-    onCantAcceptReallyChanged: {
-        if (cantAcceptReally)
-            negativeFeedback()
-    }
-
-    function negativeFeedback() {
-        //banner.notify(qsTr("You should select files to send!", "Media page cant accept feedback"))
-        console.log("You should select files to send!", "Media page cant accept feedback")
-    }
-
     property bool multiple: false
     property bool filesystem: false
     property bool datesort: false
@@ -44,8 +21,10 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
     property string _mode: "image"
     property int _marqueeIndex: -1
 
-    onStatusChanged: {
-        if (status == DialogStatus.Opened) {
+    onStatusChanged:
+    {
+        if (status == DialogStatus.Opened)
+        {
             initialize()
         }
     }
