@@ -36,7 +36,11 @@ Row
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Dimensioning
 
-        onClicked: drawMode = Painter.Dimensioning
+        onClicked:
+        {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
+            drawMode = Painter.Dimensioning
+        }
     }
 
     Rectangle
@@ -54,20 +58,40 @@ Row
 
         onClicked:
         {
-            var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
-                                                 { "currentColor": textColor,
-                                                   "currentSize": textFontSize,
-                                                   "isBold": textFontBold,
-                                                   "isItalic": textFontItalic })
+            var SettingsDialog
 
-            SettingsDialog.accepted.connect(function()
+            switch (drawMode)
             {
-                textColor = SettingsDialog.currentColor
-                textFontSize = SettingsDialog.currentSize
-                textFontBold = SettingsDialog.isBold
-                textFontItalic = SettingsDialog.isItalic
-                textSettingsChanged()
-            })
+            case Painter.Text:
+                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                     { "currentColor": textColor,
+                                                       "currentSize": textFontSize,
+                                                       "isBold": textFontBold,
+                                                       "isItalic": textFontItalic })
+
+                SettingsDialog.accepted.connect(function()
+                {
+                    textColor = SettingsDialog.currentColor
+                    textFontSize = SettingsDialog.currentSize
+                    textFontBold = SettingsDialog.isBold
+                    textFontItalic = SettingsDialog.isItalic
+                    textSettingsChanged()
+                })
+                break;
+            case Painter.Dimensioning:
+                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
+                                                       { "currentColor": drawColor,
+                                                         "currentThickness": drawThickness })
+
+                SettingsDialog.accepted.connect(function() {
+                    drawColor = SettingsDialog.currentColor
+                    drawThickness = SettingsDialog.currentThickness
+                })
+                break;
+            default:
+                break;
+            }
+
         }
     }
 

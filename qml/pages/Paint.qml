@@ -204,6 +204,7 @@ Page
         ctx.fillStyle = colors[textColor]
         ctx.font = textFont
         ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
         ctx.fillText(txt, x, y)
     }
 
@@ -218,6 +219,48 @@ Page
         thisTextEntry = ""
         textEditPending = false
         geometryCanvas.clear()
+    }
+
+    function drawDimensionLine(ctx, x0, y0, x1, y1)
+    {
+        var headlen = 15
+        var angle = Math.atan2(y1-y0, x1-x0)
+
+        var seglen = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+        var mx = x0+seglen/2*Math.cos(angle)
+        var my = y0+seglen/2*Math.sin(angle)
+
+        var text = seglen.toFixed(1).toString()
+        ctx.font = textFont
+        var textlen = ctx.measureText(text).width
+        var fits = (textlen < (seglen-2*headlen))
+
+        ctx.lineWidth = drawThickness
+        ctx.strokeStyle = colors[drawColor]
+
+        ctx.beginPath()
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(x0+headlen*Math.cos(angle-Math.PI/6),y0+headlen*Math.sin(angle-Math.PI/6))
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(x0+headlen*Math.cos(angle+Math.PI/6),y0+headlen*Math.sin(angle+Math.PI/6))
+        ctx.moveTo(x0, y0)
+        if (fits)
+        {
+            ctx.lineTo(x0+(seglen-textlen)/2*Math.cos(angle), y0+(seglen-textlen)/2*Math.sin(angle))
+            ctx.moveTo(x0+(textlen+(seglen-textlen)/2)*Math.cos(angle), y0+(textlen+(seglen-textlen)/2)*Math.sin(angle))
+        }
+        ctx.lineTo(x1, y1)
+        ctx.lineTo(x1-headlen*Math.cos(angle-Math.PI/6),y1-headlen*Math.sin(angle-Math.PI/6))
+        ctx.moveTo(x1, y1)
+        ctx.lineTo(x1-headlen*Math.cos(angle+Math.PI/6),y1-headlen*Math.sin(angle+Math.PI/6))
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.save()
+        ctx.translate(mx, my)
+        ctx.rotate(angle)
+        drawText(ctx, text, 0, fits ? textFontSize/3 : -20 )
+        ctx.restore()
     }
 
 
@@ -250,6 +293,7 @@ Page
                 clearNow = false
                 return
             }
+            ctx.lineJoin = ctx.lineCap = 'round';
 
             switch (drawMode)
             {
@@ -279,6 +323,10 @@ Page
             case Painter.Text:
                 if (thisTextEntry.length>0)
                     drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                break;
+
+            case Painter.Dimensioning:
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY)
                 break;
 
             default:
@@ -321,6 +369,8 @@ Page
                 return
             }
 
+            ctx.lineJoin = ctx.lineCap = 'round';
+
             switch (drawMode)
             {
                 case Painter.Eraser :
@@ -329,7 +379,6 @@ Page
                         ctx.globalCompositeOperation = 'destination-out'
                     ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
                     ctx.strokeStyle = colors[drawColor]
-                    ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
                     ctx.moveTo(lastX, lastY)
                     lastX = area.mouseX
@@ -383,6 +432,10 @@ Page
                     }
                     break;
 
+                case Painter.Dimensioning:
+                    drawDimensionLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                    break;
+
                 default:
                     console.error("Unimplemented feature")
                     break;
@@ -408,6 +461,7 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
+                case Painter.Dimensioning:
                     geometryCanvas.downX = mouseX
                     geometryCanvas.downY = mouseY
                     break;
@@ -445,6 +499,7 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
+                case Painter.Dimensioning:
                     canvas.requestPaint()
                     geometryCanvas.clear()
                     break;
@@ -461,6 +516,7 @@ Page
                 {
                 case Painter.Text:
                 case Painter.Geometrics:
+                case Painter.Dimensioning:
                     geometryCanvas.requestPaint()
                     break;
                 default:
