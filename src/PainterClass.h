@@ -39,7 +39,8 @@ public:
         Pen,
         Spray,
         Geometrics,
-        Text
+        Text,
+        Dimensioning
     };
 
     enum GeometricsMode

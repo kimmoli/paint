@@ -30,13 +30,15 @@ Row
         onClicked: textEditAccept()
     }
 
-
-    Rectangle
+    IconButton
     {
-        color: "transparent"
-        width: 80
-        height: 80
+        icon.source: "image://paintIcons/icon-m-dimensiontool"
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Dimensioning
+
+        onClicked: drawMode = Painter.Dimensioning
     }
+
     Rectangle
     {
         color: "transparent"
