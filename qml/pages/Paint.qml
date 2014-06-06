@@ -150,6 +150,10 @@ Page
         }
     }
 
+    ListModel
+    {
+        id: dimensionModel
+    }
 
     function drawLine(ctx, x0,y0,x1,y1)
     {
@@ -221,7 +225,7 @@ Page
         previewCanvas.clear()
     }
 
-    function drawDimensionLine(ctx, x0, y0, x1, y1)
+    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, lineColor, lineThickness)
     {
         var headlen = 15
         var angle = Math.atan2(y1-y0, x1-x0)
@@ -231,12 +235,12 @@ Page
         var my = y0+seglen/2*Math.sin(angle)
 
         var text = seglen.toFixed(1).toString()
-        ctx.font = textFont
+        ctx.font = font
         var textlen = ctx.measureText(text).width
         var fits = (textlen < (seglen-2*headlen))
 
-        ctx.lineWidth = drawThickness
-        ctx.strokeStyle = colors[drawColor]
+        ctx.lineWidth = lineThickness
+        ctx.strokeStyle = colors[lineColor]
 
         ctx.beginPath()
         ctx.moveTo(x0, y0)
@@ -258,16 +262,55 @@ Page
 
         ctx.save()
         ctx.translate(mx, my)
-        ctx.rotate(angle)
-        drawText(ctx, text, 0, fits ? textFontSize/3 : -20 )
+        ctx.rotate(((angle > Math.PI/2)||(angle < -Math.PI/2)) ? Math.PI+angle : angle)
+        ctx.fillStyle = colors[fontColor]
+        ctx.font = font
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.fillText(text, 0, fits ? textFontSize/3 : -20 )
         ctx.restore()
     }
 
+    Canvas
+    {
+        id: dimensionCanvas
+        z: 10
+        anchors.fill: canvas
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
+        onPaint:
+        {
+            var ctx = getContext('2d')
+            console.log("dimensionCanvas Paint()")
+
+            ctx.clearRect(0, 0, width, height);
+            if (clearNow)
+            {
+                clearNow = false
+                return
+            }
+            /* This redraws all dimension lines from listmodel */
+            for (var i=0 ; i<dimensionModel.count; i++)
+            {
+                var d=dimensionModel.get(i)
+                console.log(d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"])
+                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"])
+            }
+        }
+    }
 
     Canvas
     {
         id: previewCanvas
-        z: 10
+        z: 11
         anchors.fill: canvas
         renderTarget: Canvas.FramebufferObject
         antialiasing: true
@@ -326,7 +369,7 @@ Page
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY)
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, drawColor, drawThickness)
                 break;
 
             default:
@@ -432,10 +475,6 @@ Page
                     }
                     break;
 
-                case Painter.Dimensioning:
-                    drawDimensionLine(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY)
-                    break;
-
                 default:
                     console.error("Unimplemented feature")
                     break;
@@ -498,8 +537,20 @@ Page
             {
                 switch (drawMode)
                 {
-                case Painter.Geometrics:
                 case Painter.Dimensioning:
+                    dimensionModel.append( {"x0": previewCanvas.downX,
+                                            "y0": previewCanvas.downY,
+                                            "x1": area.mouseX,
+                                            "y1": area.mouseY,
+                                            "font": textFont,
+                                            "fontColor": textColor,
+                                            "lineColor": drawColor,
+                                            "lineThickness": drawThickness})
+                    dimensionCanvas.requestPaint()
+                    previewCanvas.clear()
+                    break;
+
+                case Painter.Geometrics:
                     canvas.requestPaint()
                     previewCanvas.clear()
                     break;
