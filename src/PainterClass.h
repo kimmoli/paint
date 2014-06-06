@@ -31,6 +31,7 @@ public:
 
     Q_INVOKABLE QString getToolboxLocation();
     Q_INVOKABLE void setToolboxLocation(QString location);
+    Q_INVOKABLE QString getLanguage();
 
     enum Mode
     {

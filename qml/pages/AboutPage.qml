@@ -12,6 +12,7 @@ Page
     property string year
     property string version
     property string imagelocation
+    property string language
 
     id: page
 
@@ -22,6 +23,7 @@ Page
 
     Component.onCompleted:
     {
+        console.log("Language " + language)
         buttonhelp.append( {"image": "image://theme/icon-m-repeat", "helptext": qsTr("Change toolbar")})
         buttonhelp.append( {"image": "image://theme/icon-m-edit", "helptext": qsTr("Draw freehand line")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-eraser", "helptext": qsTr("Eraser")})
@@ -39,7 +41,7 @@ Page
         buttonhelp.append( {"image": "image://theme/icon-m-about", "helptext": qsTr("About Paint")})
         buttonhelp.append( {"image": "image://theme/icon-m-developer-mode", "helptext": qsTr("Change settings")})
         buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})
-        buttonhelp.append( {"image": "image://theme/icon-m-image", "helptext": qsTr("Change bacground")})
+        buttonhelp.append( {"image": "image://theme/icon-m-image", "helptext": qsTr("Change background")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-save", "helptext": qsTr("Save snapshot")})
     }
 
@@ -103,10 +105,11 @@ Page
             Label
             {
                 x: Theme.paddingLarge
-                text: qsTr("Swedish translation by Åke Engelbrektson")
+                text: qsTr("translation credit placeholder")
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: language === "de" || language === "sv"
             }
             SectionHeader
             {

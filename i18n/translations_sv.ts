@@ -75,7 +75,7 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
-        <source>Change bacground</source>
+        <source>Change background</source>
         <translation>Ändra bakgrund</translation>
     </message>
     <message>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="103"/>
-        <source>Swedish translation by Åke Engelbrektson</source>
+        <source>translation credit placeholder</source>
         <translation>Svensk översättning av Åke Engelbrektson</translation>
     </message>
     <message>
