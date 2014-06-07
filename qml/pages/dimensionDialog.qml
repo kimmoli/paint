@@ -9,7 +9,14 @@ Dialog
     canAccept: (ti.focus === false) && (Number(ti.text.replace(",","."))>0)
 
     property real currentDimensionScale : 1.0
-    property real currentDimension: 1.0
+    property real currentDimension: 0
+    property variant d
+
+    Component.onCompleted:
+    {
+        d = dimensionModel.get(selectedDimension)
+        currentDimension = Math.sqrt(Math.pow(Math.abs(d["x1"]-d["x0"]), 2) + Math.pow(Math.abs(d["y1"]-d["y0"]), 2))
+    }
 
     onDone:
     {

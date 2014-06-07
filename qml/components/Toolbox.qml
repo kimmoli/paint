@@ -19,6 +19,9 @@ Row
     signal showGeometryPopup()
     signal toggleGeometryPopup()
     signal hideGeometryPopup()
+    signal showDimensionPopup()
+    signal toggleDimensionPopup()
+    signal hideDimensionPopup()
 
     signal textEditAccept()
     signal textEditCancel()
@@ -70,6 +73,7 @@ Row
         onClicked:
         {
             hideGeometryPopup()
+            hideDimensionPopup()
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (++toolbarNumber)
             changeToolBar(toolbarNumber)

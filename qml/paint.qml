@@ -17,6 +17,7 @@ ApplicationWindow
     property int geometricsMode : Painter.Line
 
     property bool geometryPopupVisible: false
+    property bool dimensionPopupVisible: false
 
     property int drawColor: 0
     property int drawThickness: 3
@@ -38,6 +39,7 @@ ApplicationWindow
     property string backgroundImagePath: "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"
     property bool backgroundImageRotate : false
     property real dimensionScale: 1.0
+    property int selectedDimension: 0
 
     /*****************************************************/
 
@@ -59,6 +61,11 @@ ApplicationWindow
         }
     }
 
+    ListModel
+    {
+        id: dimensionModel
+
+    }
 }
 
 

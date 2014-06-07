@@ -35,6 +35,12 @@ Page
         }
         AnchorChanges
         {
+            target: dimensionPopup
+            anchors.top: undefined
+            anchors.bottom: toolBox.top
+        }
+        AnchorChanges
+        {
             target: toolBoxBackground
             anchors.top: undefined
             anchors.bottom: page.bottom
@@ -58,7 +64,7 @@ Page
 
         anchors.top: page.top
         width: page.width
-        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0)
+        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0) + (dimensionPopup.visible ? dimensionPopup.height : 0)
         color: Theme.secondaryHighlightColor
     }
 
@@ -89,6 +95,9 @@ Page
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
         onHideGeometryPopup: geometryPopupVisible = false
+        onToggleDimensionPopup: dimensionPopupVisible = !dimensionPopupVisible
+        onShowDimensionPopup: dimensionPopupVisible = true
+        onHideDimensionPopup: dimensionPopupVisible = false
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
@@ -102,6 +111,16 @@ Page
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
+        onVisibleChanged: z = visible ? 15 : 0
+    }
+    DimensionPopup
+    {
+        id: dimensionPopup
+        z: 0
+
+        anchors.top: toolBox.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: dimensionPopupVisible && (drawMode === Painter.Dimensioning)
         onVisibleChanged: z = visible ? 15 : 0
     }
 
@@ -148,11 +167,6 @@ Page
         {
             FadeAnimation {}
         }
-    }
-
-    ListModel
-    {
-        id: dimensionModel
     }
 
     function drawLine(ctx, x0,y0,x1,y1)
@@ -225,7 +239,7 @@ Page
         previewCanvas.clear()
     }
 
-    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, lineColor, lineThickness)
+    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, lineColor, lineThickness, selected)
     {
         var headlen = 15
         var angle = Math.atan2(y1-y0, x1-x0)
@@ -264,6 +278,8 @@ Page
         ctx.save()
         ctx.translate(mx, my)
         ctx.rotate(((angle > Math.PI/2)||(angle < -Math.PI/2)) ? Math.PI+angle : angle)
+        if (selected)
+            ctx.strokeRect(-textlen/2, fits ? -textFontSize/2 : textFontSize/2, textlen, textFontSize)
         ctx.fillStyle = colors[fontColor]
         ctx.font = font
         ctx.textAlign = "center"
@@ -303,7 +319,7 @@ Page
             {
                 var d=dimensionModel.get(i)
 
-                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"])
+                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"], i === selectedDimension)
             }
         }
     }
@@ -370,7 +386,7 @@ Page
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, drawColor, drawThickness)
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, drawColor, drawThickness, false)
                 break;
 
             default:
@@ -491,6 +507,7 @@ Page
             onPressAndHold:
             {
                 geometryPopupVisible = false
+                dimensionPopupVisible = false
                 toolBox.opacity = 0.0
             }
             onPressed:
