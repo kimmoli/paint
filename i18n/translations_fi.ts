@@ -61,17 +61,17 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Text tool (cancel text)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstityökalu (peruuta)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Accept current text</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyväksy teksti</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Dimensioning tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittatyökalu</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuva valittu</translation>
     </message>
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Select image</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kuva</translation>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="41"/>
         <source>File format</source>
-        <translation type="unfinished">Tiedostomuoto</translation>
+        <translation>Tiedostomuoto</translation>
     </message>
 </context>
 <context>
@@ -175,7 +175,7 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="94"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuva</translation>
     </message>
 </context>
 <context>
@@ -183,32 +183,32 @@
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="39"/>
         <source>Dimensioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittaukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="51"/>
         <source>Warning: Do not cancel now</source>
-        <translation type="unfinished"></translation>
+        <translation>Varoitus: Älä peruuta nyt</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="65"/>
         <source>Scale all dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Skaalaa kaikki mittaukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Reference length %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenssimitta %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Currently scaled length %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skaalattu mitta %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="85"/>
         <source>Enter true length</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä todellinen pituus</translation>
     </message>
 </context>
 <context>
@@ -321,18 +321,18 @@
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="31"/>
         <source>Text entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstinsyöttö</translation>
     </message>
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="42"/>
         <source>Warning: Do not cancel now</source>
-        <translation type="unfinished"></translation>
+        <translation>Varoitus: Älä peruuta nyt</translation>
     </message>
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="54"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="62"/>
         <source>Enter some text</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä teksti tähän</translation>
     </message>
 </context>
 <context>
@@ -340,27 +340,27 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="28"/>
         <source>Text settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekstin asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="42"/>
         <source>Select color</source>
-        <translation type="unfinished">Valitse väri</translation>
+        <translation>Valitse väri</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="77"/>
         <source>Font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaisimen koko</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="99"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Lihavoitu</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="106"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursiivi</translation>
     </message>
 </context>
 </TS>
