@@ -13,7 +13,6 @@ Page
     height: 960
 
     state: toolboxLocation
-
     onStateChanged: previewCanvas.clear()
 
     states: [
@@ -95,9 +94,9 @@ Page
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
         onHideGeometryPopup: geometryPopupVisible = false
-        onToggleDimensionPopup: dimensionPopupVisible = !dimensionPopupVisible
-        onShowDimensionPopup: dimensionPopupVisible = true
-        onHideDimensionPopup: dimensionPopupVisible = false
+        onToggleDimensionPopup: { dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
+        onShowDimensionPopup: { dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
+        onHideDimensionPopup: { dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
@@ -239,7 +238,7 @@ Page
         previewCanvas.clear()
     }
 
-    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, lineColor, lineThickness, selected)
+    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineColor, lineThickness, selected)
     {
         var headlen = 15
         var angle = Math.atan2(y1-y0, x1-x0)
@@ -279,12 +278,17 @@ Page
         ctx.translate(mx, my)
         ctx.rotate(((angle > Math.PI/2)||(angle < -Math.PI/2)) ? Math.PI+angle : angle)
         if (selected)
-            ctx.strokeRect(-textlen/2, fits ? -textFontSize/2 : textFontSize/2, textlen, textFontSize)
+        {
+            ctx.save()
+            ctx.lineWidth = 3
+            ctx.strokeRect(-textlen/2, fits ? -fontSize/2 : -15-fontSize, textlen, fontSize)
+            ctx.restore()
+        }
         ctx.fillStyle = colors[fontColor]
         ctx.font = font
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.fillText(text, 0, fits ? textFontSize/3 : -20 )
+        ctx.fillText(text, 0, fits ? fontSize/3 : -20 )
         ctx.restore()
     }
 
@@ -306,7 +310,8 @@ Page
         onPaint:
         {
             var ctx = getContext('2d')
-            console.log("dimensionCanvas Paint()")
+
+            ctx.lineJoin = ctx.lineCap = 'round';
 
             ctx.clearRect(0, 0, width, height);
             if (clearNow)
@@ -319,7 +324,7 @@ Page
             {
                 var d=dimensionModel.get(i)
 
-                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"], i === selectedDimension)
+                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], (i === selectedDimension) && dimensionPopupVisible)
             }
         }
     }
@@ -386,7 +391,7 @@ Page
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, drawColor, drawThickness, false)
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, textFontSize, drawColor, drawThickness, false)
                 break;
 
             default:
@@ -561,6 +566,7 @@ Page
                                             "x1": area.mouseX,
                                             "y1": area.mouseY,
                                             "font": textFont,
+                                            "fontSize": textFontSize,
                                             "fontColor": textColor,
                                             "lineColor": drawColor,
                                             "lineThickness": drawThickness})

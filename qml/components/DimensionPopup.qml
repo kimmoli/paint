@@ -17,7 +17,6 @@ Row
         {
             selectedDimension = (selectedDimension > 0) ? --selectedDimension : dimensionModel.count-1
             dimensionCanvas.requestPaint()
-            console.log("Selected dimension", selectedDimension)
         }
     }
 
@@ -30,7 +29,6 @@ Row
         {
             selectedDimension = (selectedDimension < dimensionModel.count-1) ? ++selectedDimension : 0
             dimensionCanvas.requestPaint()
-            console.log("Selected dimension", selectedDimension)
         }
     }
 
@@ -47,7 +45,6 @@ Row
             dimensionsDialog.accepted.connect(function()
             {
                 dimensionScale = dimensionsDialog.currentDimensionScale
-                console.log("New scale is " + dimensionScale)
                 dimensionCanvas.requestPaint()
             })
         }
@@ -60,6 +57,8 @@ Row
         onClicked:
         {
             dimensionModel.remove(selectedDimension)
+            if (selectedDimension > dimensionModel.count-1 && selectedDimension > 0)
+                selectedDimension = dimensionModel.count-1
             dimensionCanvas.requestPaint()
         }
     }
