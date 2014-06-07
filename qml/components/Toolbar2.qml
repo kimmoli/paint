@@ -48,16 +48,11 @@ Row
         }
     }
 
-    IconButton
+    Rectangle
     {
-        icon.source: "image://theme/icon-m-service-upload"
-        anchors.bottom: parent.bottom
-        enabled: false
-
-        onClicked:
-        {
-
-        }
+        color: "transparent"
+        width: 80
+        height: 80
     }
 
     IconButton

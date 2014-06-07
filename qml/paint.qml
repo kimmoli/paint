@@ -40,6 +40,9 @@ ApplicationWindow
     property bool backgroundImageRotate : false
     property real dimensionScale: 1.0
     property int selectedDimension: 0
+    property string iconMove : "/usr/share/harbour-paint/qml/icons/icon-m-move.png"
+    property bool dimensionMoveMode: false
+    property int dimensionMoveEnd: 0
 
     /*****************************************************/
 

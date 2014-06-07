@@ -264,8 +264,8 @@ Page
         ctx.moveTo(x0, y0)
         if (fits)
         {
-            ctx.lineTo(x0+(seglen-textlen)/2*Math.cos(angle), y0+(seglen-textlen)/2*Math.sin(angle))
-            ctx.moveTo(x0+(textlen+(seglen-textlen)/2)*Math.cos(angle), y0+(textlen+(seglen-textlen)/2)*Math.sin(angle))
+            ctx.lineTo(x0+(seglen-textlen-lineThickness)/2*Math.cos(angle), y0+(seglen-textlen-lineThickness)/2*Math.sin(angle))
+            ctx.moveTo(x0+(textlen+lineThickness+(seglen-textlen)/2)*Math.cos(angle), y0+(textlen+lineThickness+(seglen-textlen)/2)*Math.sin(angle))
         }
         ctx.lineTo(x1, y1)
         ctx.lineTo(x1-headlen*Math.cos(angle-Math.PI/6),y1-headlen*Math.sin(angle-Math.PI/6))
@@ -281,7 +281,7 @@ Page
         {
             ctx.save()
             ctx.lineWidth = 3
-            ctx.strokeRect(-textlen/2, fits ? -fontSize/2 : -15-fontSize, textlen, fontSize)
+            ctx.strokeRect(-textlen/2, fits ? -fontSize/2 : -15-fontSize, textlen+lineThickness, fontSize)
             ctx.restore()
         }
         ctx.fillStyle = colors[fontColor]
@@ -307,6 +307,7 @@ Page
             clearNow = true
             requestPaint()
         }
+
         onPaint:
         {
             var ctx = getContext('2d')
@@ -324,7 +325,8 @@ Page
             {
                 var d=dimensionModel.get(i)
 
-                drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], (i === selectedDimension) && dimensionPopupVisible)
+                if (!((i === selectedDimension) && dimensionMoveMode && area.pressed))
+                    drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], (i === selectedDimension) && dimensionPopupVisible)
             }
         }
     }
@@ -391,7 +393,7 @@ Page
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, textFontSize, drawColor, drawThickness, false)
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
                 break;
 
             default:
@@ -523,9 +525,50 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
-                case Painter.Dimensioning:
                     previewCanvas.downX = mouseX
                     previewCanvas.downY = mouseY
+                    break;
+
+                case Painter.Dimensioning:
+                    if (dimensionMoveMode)
+                    {
+                        var d=dimensionModel.get(selectedDimension)
+
+                        if (d["y0"] > d["y1"])
+                        {
+                            if (mouseY > (d["y0"] + d["y1"])/2)
+                            {
+                                dimensionMoveEnd = 1
+                            }
+                            else
+                            {
+                                dimensionMoveEnd = 0
+                            }
+                        }
+                        else
+                        {
+                            if (mouseY > (d["y0"] + d["y1"])/2)
+                            {
+                                dimensionMoveEnd = 0
+                            }
+                            else
+                            {
+                                dimensionMoveEnd = 1
+                            }
+                        }
+
+                        previewCanvas.downX = d[String("x%1").arg(dimensionMoveEnd)]
+                        previewCanvas.downY = d[String("y%1").arg(dimensionMoveEnd)]
+
+                        // This will hide this dimension from dimensionCanvas
+                        // as it is drawn to previewCanvas
+                        dimensionCanvas.requestPaint()
+                    }
+                    else
+                    {
+                        previewCanvas.downX = mouseX
+                        previewCanvas.downY = mouseY
+                    }
                     break;
 
                 case Painter.Text:
@@ -561,20 +604,35 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Dimensioning:
-                    dimensionModel.append( {"x0": previewCanvas.downX,
-                                            "y0": previewCanvas.downY,
-                                            "x1": area.mouseX,
-                                            "y1": area.mouseY,
-                                            "font": textFont,
-                                            "fontSize": textFontSize,
-                                            "fontColor": textColor,
-                                            "lineColor": drawColor,
-                                            "lineThickness": drawThickness})
-                    dimensionCanvas.requestPaint()
+
+                    dimensionPopupVisible = true
+
+                    if (dimensionMoveMode)
+                    {
+                        dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseX)
+                        dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseY)
+                    }
+                    else
+                    {
+                        dimensionModel.append( {"x0": previewCanvas.downX,
+                                                "y0": previewCanvas.downY,
+                                                "x1": area.mouseX,
+                                                "y1": area.mouseY,
+                                                "font": textFont,
+                                                "fontSize": textFontSize,
+                                                "fontColor": textColor,
+                                                "lineColor": drawColor,
+                                                "lineThickness": drawThickness})
+                    }
                     previewCanvas.clear()
+                    dimensionCanvas.requestPaint()
+
                     break;
 
                 case Painter.Geometrics:
+
+                    geometryPopupVisible = true
+
                     canvas.requestPaint()
                     previewCanvas.clear()
                     break;

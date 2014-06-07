@@ -74,6 +74,7 @@ Row
         {
             hideGeometryPopup()
             hideDimensionPopup()
+            dimensionMoveMode = false
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (++toolbarNumber)
             changeToolBar(toolbarNumber)

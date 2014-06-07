@@ -48,7 +48,7 @@ Dialog
         color: ti.focus ? "yellow" : "transparent"
         font.pixelSize: Theme.fontSizeMedium
         font.bold: true
-        text: qsTr("Warning: Do not cancel this dialog")
+        text: qsTr("Warning: Do not cancel now")
     }
 
 
@@ -62,7 +62,7 @@ Dialog
 
         SectionHeader
         {
-            text: qsTr("Enter true length")
+            text: qsTr("Scale all dimensions")
         }
         Label
         {
