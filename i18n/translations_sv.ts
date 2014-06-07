@@ -61,17 +61,17 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Text tool (cancel text)</source>
-        <translation type="unfinished"></translation>
+        <translation>Textverktyg (avbryt text)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Accept current text</source>
-        <translation type="unfinished"></translation>
+        <translation>Acceptera aktuell text</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Dimensioning tool</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensioneringsverktyg</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild vald</translation>
     </message>
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Select image</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj bild</translation>
     </message>
 </context>
 <context>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="41"/>
         <source>File format</source>
-        <translation type="unfinished">Filformat</translation>
+        <translation>Filformat</translation>
     </message>
 </context>
 <context>
@@ -175,7 +175,7 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="94"/>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild</translation>
     </message>
 </context>
 <context>
@@ -183,32 +183,32 @@
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="39"/>
         <source>Dimensioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensionering</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="51"/>
         <source>Warning: Do not cancel now</source>
-        <translation type="unfinished"></translation>
+        <translation>Varning! Avbryt inte nu.</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="65"/>
         <source>Scale all dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Skala samtliga dimensioner</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Reference length %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Referenslängd %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Currently scaled length %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuell skalad längd %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="85"/>
         <source>Enter true length</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange verklig längd</translation>
     </message>
 </context>
 <context>
@@ -321,18 +321,18 @@
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="31"/>
         <source>Text entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Textinmatning</translation>
     </message>
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="42"/>
         <source>Warning: Do not cancel now</source>
-        <translation type="unfinished"></translation>
+        <translation>Varning! Avbryt inte nu</translation>
     </message>
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="54"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="62"/>
         <source>Enter some text</source>
-        <translation type="unfinished"></translation>
+        <translation>Mata in text</translation>
     </message>
 </context>
 <context>
@@ -340,27 +340,27 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="28"/>
         <source>Text settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Textinställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="42"/>
         <source>Select color</source>
-        <translation type="unfinished">Välj färg</translation>
+        <translation>Välj färg</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="77"/>
         <source>Font size</source>
-        <translation type="unfinished"></translation>
+        <translation>Teckenstorlek</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="99"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Fet</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="106"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursiv</translation>
     </message>
 </context>
 </TS>
