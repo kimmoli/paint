@@ -30,6 +30,10 @@ Row
         remorse.execute(qsTr("Clearing"), function()
         {
             canvas.clear()
+
+            /* Clear also all dimensions created */
+            dimensionModel.clear()
+            dimensionCanvas.clear()
         })
     }
 

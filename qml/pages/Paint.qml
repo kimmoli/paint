@@ -234,7 +234,8 @@ Page
         var mx = x0+seglen/2*Math.cos(angle)
         var my = y0+seglen/2*Math.sin(angle)
 
-        var text = seglen.toFixed(1).toString()
+        var scaled = seglen / dimensionScale
+        var text = scaled.toFixed(1).toString()
         ctx.font = font
         var textlen = ctx.measureText(text).width
         var fits = (textlen < (seglen-2*headlen))
@@ -301,7 +302,7 @@ Page
             for (var i=0 ; i<dimensionModel.count; i++)
             {
                 var d=dimensionModel.get(i)
-                console.log(d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"])
+
                 drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["lineColor"], d["lineThickness"])
             }
         }

@@ -43,11 +43,29 @@ Row
         }
     }
 
-    Rectangle
+    IconButton
     {
-        color: "transparent"
-        width: 80
-        height: 80
+        icon.source: "image://theme/icon-m-right"
+        anchors.bottom: parent.bottom
+        enabled: (drawMode === Painter.Dimensioning) && (dimensionModel.count > 0)
+
+        onClicked:
+        {
+            var d = dimensionModel.get(0)
+            var seglen = Math.sqrt(Math.pow(Math.abs(d["x1"]-d["x0"]), 2) + Math.pow(Math.abs(d["y1"]-d["y0"]), 2))
+
+            var dimensionsDialog = pageStack.push(Qt.resolvedUrl("../pages/dimensionDialog.qml"),
+                                                  { "currentDimensionScale": dimensionScale,
+                                                    "currentDimension": seglen })
+
+            dimensionsDialog.accepted.connect(function()
+            {
+                dimensionScale = dimensionsDialog.currentDimensionScale
+                console.log("New scale is " + dimensionScale)
+                dimensionCanvas.requestPaint()
+            })
+
+        }
     }
 
     IconButton

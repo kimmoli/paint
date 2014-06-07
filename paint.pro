@@ -89,7 +89,8 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-erasersettings.png \
     qml/icons/icon-m-eraser.png \
     qml/icons/icon-m-dimensiontool.png \
-    i18n/translations_de.ts
+    i18n/translations_de.ts \
+    qml/pages/dimensionDialog.qml
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts \
