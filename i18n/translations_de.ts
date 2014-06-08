@@ -66,7 +66,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Accept current text</source>
-        <translation>AKtuellen Text übernehmen</translation>
+        <translation>Aktuellen Text übernehmen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
