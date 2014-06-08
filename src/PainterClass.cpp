@@ -106,3 +106,8 @@ void PainterClass::setToolboxLocation(QString location)
 
     toolboxLocation = location;
 }
+
+QString PainterClass::getLanguage()
+{
+    return QLocale::system().name().split('_').at(0);
+}

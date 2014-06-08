@@ -8,12 +8,14 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-keyboard"
+        icon.source: "image://paintIcons/icon-m-texttool"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Text
 
         onClicked:
         {
+            hideDimensionPopup()
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-textsettings"
             drawMode = Painter.Text
             if (textEditPending)
                 textEditCancel()
@@ -29,13 +31,23 @@ Row
         onClicked: textEditAccept()
     }
 
-
-    Rectangle
+    IconButton
     {
-        color: "transparent"
-        width: 80
-        height: 80
+        icon.source: "image://paintIcons/icon-m-dimensiontool"
+        anchors.bottom: parent.bottom
+        highlighted: drawMode === Painter.Dimensioning
+
+        onClicked:
+        {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
+            if (drawMode != Painter.Dimensioning)
+                showDimensionPopup()
+            else
+                toggleDimensionPopup()
+            drawMode = Painter.Dimensioning
+        }
     }
+
     Rectangle
     {
         color: "transparent"
@@ -45,25 +57,46 @@ Row
 
     IconButton
     {
+        id: toolSettingsButton
         icon.source: "image://paintIcons/icon-m-toolsettings"
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
-                                                 { "currentColor": textColor,
-                                                   "currentSize": textFontSize,
-                                                   "isBold": textFontBold,
-                                                   "isItalic": textFontItalic })
+            var SettingsDialog
 
-            SettingsDialog.accepted.connect(function()
+            switch (drawMode)
             {
-                textColor = SettingsDialog.currentColor
-                textFontSize = SettingsDialog.currentSize
-                textFontBold = SettingsDialog.isBold
-                textFontItalic = SettingsDialog.isItalic
-                textSettingsChanged()
-            })
+            case Painter.Text:
+                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                     { "currentColor": textColor,
+                                                       "currentSize": textFontSize,
+                                                       "isBold": textFontBold,
+                                                       "isItalic": textFontItalic })
+
+                SettingsDialog.accepted.connect(function()
+                {
+                    textColor = SettingsDialog.currentColor
+                    textFontSize = SettingsDialog.currentSize
+                    textFontBold = SettingsDialog.isBold
+                    textFontItalic = SettingsDialog.isItalic
+                    textSettingsChanged()
+                })
+                break;
+            case Painter.Dimensioning:
+                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
+                                                       { "currentColor": drawColor,
+                                                         "currentThickness": drawThickness })
+
+                SettingsDialog.accepted.connect(function() {
+                    drawColor = SettingsDialog.currentColor
+                    drawThickness = SettingsDialog.currentThickness
+                })
+                break;
+            default:
+                break;
+            }
+
         }
     }
 

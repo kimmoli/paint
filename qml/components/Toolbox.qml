@@ -19,6 +19,9 @@ Row
     signal showGeometryPopup()
     signal toggleGeometryPopup()
     signal hideGeometryPopup()
+    signal showDimensionPopup()
+    signal toggleDimensionPopup()
+    signal hideDimensionPopup()
 
     signal textEditAccept()
     signal textEditCancel()
@@ -30,6 +33,10 @@ Row
         remorse.execute(qsTr("Clearing"), function()
         {
             canvas.clear()
+
+            /* Clear also all dimensions created */
+            dimensionModel.clear()
+            dimensionCanvas.clear()
         })
     }
 
@@ -66,6 +73,8 @@ Row
         onClicked:
         {
             hideGeometryPopup()
+            hideDimensionPopup()
+            dimensionMoveMode = false
 
             toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (++toolbarNumber)
             changeToolBar(toolbarNumber)

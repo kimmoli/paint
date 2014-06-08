@@ -13,8 +13,7 @@ Page
     height: 960
 
     state: toolboxLocation
-
-    onStateChanged: geometryCanvas.clear()
+    onStateChanged: previewCanvas.clear()
 
     states: [
         /* Default state is toolboxTop */
@@ -30,6 +29,12 @@ Page
         AnchorChanges
         {
             target: geometryPopup
+            anchors.top: undefined
+            anchors.bottom: toolBox.top
+        }
+        AnchorChanges
+        {
+            target: dimensionPopup
             anchors.top: undefined
             anchors.bottom: toolBox.top
         }
@@ -58,7 +63,7 @@ Page
 
         anchors.top: page.top
         width: page.width
-        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0)
+        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0) + (dimensionPopup.visible ? dimensionPopup.height : 0)
         color: Theme.secondaryHighlightColor
     }
 
@@ -89,9 +94,12 @@ Page
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
         onHideGeometryPopup: geometryPopupVisible = false
+        onToggleDimensionPopup: { dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
+        onShowDimensionPopup: { dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
+        onHideDimensionPopup: { dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
-        onTextSettingsChanged: geometryCanvas.requestPaint()
+        onTextSettingsChanged: previewCanvas.requestPaint()
     }
 
     GeometryPopup
@@ -102,6 +110,16 @@ Page
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
+        onVisibleChanged: z = visible ? 15 : 0
+    }
+    DimensionPopup
+    {
+        id: dimensionPopup
+        z: 0
+
+        anchors.top: toolBox.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: dimensionPopupVisible && (drawMode === Painter.Dimensioning)
         onVisibleChanged: z = visible ? 15 : 0
     }
 
@@ -149,7 +167,6 @@ Page
             FadeAnimation {}
         }
     }
-
 
     function drawLine(ctx, x0,y0,x1,y1)
     {
@@ -204,27 +221,120 @@ Page
         ctx.fillStyle = colors[textColor]
         ctx.font = textFont
         ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
         ctx.fillText(txt, x, y)
     }
 
     function textAccept()
     {
         textEditPending = false
-        geometryCanvas.clear()
+        previewCanvas.clear()
         canvas.requestPaint()
     }
     function textCancel()
     {
         thisTextEntry = ""
         textEditPending = false
-        geometryCanvas.clear()
+        previewCanvas.clear()
     }
 
+    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineColor, lineThickness, selected)
+    {
+        var headlen = 15
+        var angle = Math.atan2(y1-y0, x1-x0)
+
+        var seglen = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+        var mx = x0+seglen/2*Math.cos(angle)
+        var my = y0+seglen/2*Math.sin(angle)
+
+        var scaled = seglen / dimensionScale
+        var text = scaled.toFixed(1).toString()
+        ctx.font = font
+        var textlen = ctx.measureText(text).width
+        var fits = (textlen < (seglen-2*headlen))
+
+        ctx.lineWidth = lineThickness
+        ctx.strokeStyle = colors[lineColor]
+
+        ctx.beginPath()
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(x0+headlen*Math.cos(angle-Math.PI/6),y0+headlen*Math.sin(angle-Math.PI/6))
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(x0+headlen*Math.cos(angle+Math.PI/6),y0+headlen*Math.sin(angle+Math.PI/6))
+        ctx.moveTo(x0, y0)
+        if (fits)
+        {
+            ctx.lineTo(x0+(seglen-textlen-lineThickness)/2*Math.cos(angle), y0+(seglen-textlen-lineThickness)/2*Math.sin(angle))
+            ctx.moveTo(x0+(textlen+lineThickness+(seglen-textlen)/2)*Math.cos(angle), y0+(textlen+lineThickness+(seglen-textlen)/2)*Math.sin(angle))
+        }
+        ctx.lineTo(x1, y1)
+        ctx.lineTo(x1-headlen*Math.cos(angle-Math.PI/6),y1-headlen*Math.sin(angle-Math.PI/6))
+        ctx.moveTo(x1, y1)
+        ctx.lineTo(x1-headlen*Math.cos(angle+Math.PI/6),y1-headlen*Math.sin(angle+Math.PI/6))
+        ctx.stroke()
+        ctx.closePath()
+
+        ctx.save()
+        ctx.translate(mx, my)
+        ctx.rotate(((angle > Math.PI/2)||(angle < -Math.PI/2)) ? Math.PI+angle : angle)
+        if (selected)
+        {
+            ctx.save()
+            ctx.lineWidth = 3
+            ctx.strokeRect(-textlen/2, fits ? -fontSize/2 : -15-fontSize, textlen+lineThickness, fontSize)
+            ctx.restore()
+        }
+        ctx.fillStyle = colors[fontColor]
+        ctx.font = font
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.fillText(text, 0, fits ? fontSize/3 : -20 )
+        ctx.restore()
+    }
 
     Canvas
     {
-        id: geometryCanvas
+        id: dimensionCanvas
         z: 10
+        anchors.fill: canvas
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
+
+        onPaint:
+        {
+            var ctx = getContext('2d')
+
+            ctx.lineJoin = ctx.lineCap = 'round';
+
+            ctx.clearRect(0, 0, width, height);
+            if (clearNow)
+            {
+                clearNow = false
+                return
+            }
+            /* This redraws all dimension lines from listmodel */
+            for (var i=0 ; i<dimensionModel.count; i++)
+            {
+                var d=dimensionModel.get(i)
+
+                if (!((i === selectedDimension) && dimensionMoveMode && area.pressed))
+                    drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], (i === selectedDimension) && dimensionPopupVisible)
+            }
+        }
+    }
+
+    Canvas
+    {
+        id: previewCanvas
+        z: 11
         anchors.fill: canvas
         renderTarget: Canvas.FramebufferObject
         antialiasing: true
@@ -250,6 +360,7 @@ Page
                 clearNow = false
                 return
             }
+            ctx.lineJoin = ctx.lineCap = 'round';
 
             switch (drawMode)
             {
@@ -279,6 +390,10 @@ Page
             case Painter.Text:
                 if (thisTextEntry.length>0)
                     drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                break;
+
+            case Painter.Dimensioning:
+                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
                 break;
 
             default:
@@ -321,6 +436,8 @@ Page
                 return
             }
 
+            ctx.lineJoin = ctx.lineCap = 'round';
+
             switch (drawMode)
             {
                 case Painter.Eraser :
@@ -329,7 +446,6 @@ Page
                         ctx.globalCompositeOperation = 'destination-out'
                     ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
                     ctx.strokeStyle = colors[drawColor]
-                    ctx.lineJoin = ctx.lineCap = 'round';
                     ctx.beginPath()
                     ctx.moveTo(lastX, lastY)
                     lastX = area.mouseX
@@ -353,19 +469,19 @@ Page
                     switch(geometricsMode)
                     {
                     case Painter.Line :
-                        drawLine(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY)
+                        drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
                         break;
                     case Painter.CircleFilled :
-                        drawCircle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
                         break;
                     case Painter.RectangleFilled :
-                        drawRectangle(ctx, geometryCanvas.downX, geometryCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
                         break;
 
                     default:
@@ -398,6 +514,7 @@ Page
             onPressAndHold:
             {
                 geometryPopupVisible = false
+                dimensionPopupVisible = false
                 toolBox.opacity = 0.0
             }
             onPressed:
@@ -408,13 +525,55 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
-                    geometryCanvas.downX = mouseX
-                    geometryCanvas.downY = mouseY
+                    previewCanvas.downX = mouseX
+                    previewCanvas.downY = mouseY
+                    break;
+
+                case Painter.Dimensioning:
+                    if (dimensionMoveMode)
+                    {
+                        var d=dimensionModel.get(selectedDimension)
+
+                        if (d["y0"] > d["y1"])
+                        {
+                            if (mouseY > (d["y0"] + d["y1"])/2)
+                            {
+                                dimensionMoveEnd = 1
+                            }
+                            else
+                            {
+                                dimensionMoveEnd = 0
+                            }
+                        }
+                        else
+                        {
+                            if (mouseY > (d["y0"] + d["y1"])/2)
+                            {
+                                dimensionMoveEnd = 0
+                            }
+                            else
+                            {
+                                dimensionMoveEnd = 1
+                            }
+                        }
+
+                        previewCanvas.downX = d[String("x%1").arg(dimensionMoveEnd)]
+                        previewCanvas.downY = d[String("y%1").arg(dimensionMoveEnd)]
+
+                        // This will hide this dimension from dimensionCanvas
+                        // as it is drawn to previewCanvas
+                        dimensionCanvas.requestPaint()
+                    }
+                    else
+                    {
+                        previewCanvas.downX = mouseX
+                        previewCanvas.downY = mouseY
+                    }
                     break;
 
                 case Painter.Text:
-                    geometryCanvas.downX = mouseX
-                    geometryCanvas.downY = mouseY
+                    previewCanvas.downX = mouseX
+                    previewCanvas.downY = mouseY
 
                     if (!textEditPending)
                     {
@@ -426,12 +585,12 @@ Page
                             if (thisTextEntry.length>0)
                             {
                                 textEditPending = true
-                                geometryCanvas.requestPaint()
+                                previewCanvas.requestPaint()
                             }
                         })
                     }
                     else
-                        geometryCanvas.requestPaint()
+                        previewCanvas.requestPaint()
 
                     break;
 
@@ -444,9 +603,38 @@ Page
             {
                 switch (drawMode)
                 {
+                case Painter.Dimensioning:
+
+                    dimensionPopupVisible = true
+
+                    if (dimensionMoveMode)
+                    {
+                        dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseX)
+                        dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseY)
+                    }
+                    else
+                    {
+                        dimensionModel.append( {"x0": previewCanvas.downX,
+                                                "y0": previewCanvas.downY,
+                                                "x1": area.mouseX,
+                                                "y1": area.mouseY,
+                                                "font": textFont,
+                                                "fontSize": textFontSize,
+                                                "fontColor": textColor,
+                                                "lineColor": drawColor,
+                                                "lineThickness": drawThickness})
+                    }
+                    previewCanvas.clear()
+                    dimensionCanvas.requestPaint()
+
+                    break;
+
                 case Painter.Geometrics:
+
+                    geometryPopupVisible = true
+
                     canvas.requestPaint()
-                    geometryCanvas.clear()
+                    previewCanvas.clear()
                     break;
 
                 default:
@@ -461,7 +649,8 @@ Page
                 {
                 case Painter.Text:
                 case Painter.Geometrics:
-                    geometryCanvas.requestPaint()
+                case Painter.Dimensioning:
+                    previewCanvas.requestPaint()
                     break;
                 default:
                     canvas.requestPaint()

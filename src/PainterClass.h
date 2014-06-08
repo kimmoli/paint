@@ -31,6 +31,7 @@ public:
 
     Q_INVOKABLE QString getToolboxLocation();
     Q_INVOKABLE void setToolboxLocation(QString location);
+    Q_INVOKABLE QString getLanguage();
 
     enum Mode
     {
@@ -39,7 +40,8 @@ public:
         Pen,
         Spray,
         Geometrics,
-        Text
+        Text,
+        Dimensioning
     };
 
     enum GeometricsMode

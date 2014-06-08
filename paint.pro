@@ -12,11 +12,13 @@ message($${DEFINES})
 
 #system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
+#system(lupdate qml -ts $$PWD/i18n/translations_de.ts)
 system(lrelease $$PWD/i18n/*.ts)
 
 i18n.path = /usr/share/harbour-paint/i18n
 i18n.files = i18n/translations_fi.qm \
-    i18n/translations_sv.qm
+    i18n/translations_sv.qm \
+    i18n/translations_de.qm
 
 INSTALLS += i18n
 
@@ -72,10 +74,29 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/MediaSelector.qml \
     qml/components/Toolbar3.qml \
     qml/pages/textSettingsDialog.qml \
-    qml/pages/textEntryDialog.qml
+    qml/pages/textEntryDialog.qml \
+    qml/icons/icon-m-toolsettings.png \
+    qml/icons/icon-m-texttool.png \
+    qml/icons/icon-m-textsettings.png \
+    qml/icons/icon-m-spray.png \
+    qml/icons/icon-m-save.png \
+    qml/icons/icon-m-geom-rectangle-filled.png \
+    qml/icons/icon-m-geom-rectangle.png \
+    qml/icons/icon-m-geom-line.png \
+    qml/icons/icon-m-geometrics.png \
+    qml/icons/icon-m-geom-circle-filled.png \
+    qml/icons/icon-m-geom-circle.png \
+    qml/icons/icon-m-erasersettings.png \
+    qml/icons/icon-m-eraser.png \
+    qml/icons/icon-m-dimensiontool.png \
+    i18n/translations_de.ts \
+    qml/pages/dimensionDialog.qml \
+    qml/components/DimensionPopup.qml \
+    qml/icons/icon-m-move.png
 
 TRANSLATIONS += i18n/translations_fi.ts \
-    i18n/translations_sv.ts
+    i18n/translations_sv.ts \
+    i18n/translations_de.ts
 
 RESOURCES +=
 

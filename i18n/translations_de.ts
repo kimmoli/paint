@@ -4,123 +4,153 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="25"/>
+        <location filename="../qml/pages/AboutPage.qml" line="27"/>
         <source>Change toolbar</source>
         <translation>Werkzeugleiste anpassen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="26"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
         <translation>Freihandlinie zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="27"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
         <translation>Radierer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="28"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
         <translation>Airbrush</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
         <translation>Form zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
         <translation>Farbe/Stärke anpassen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
         <translation>Linie zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
         <translation>Rechteck zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
         <translation>Gefülltes Rechteck zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw circle</source>
         <translation>Kreis zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled circle</source>
         <translation>Gefüllten Kreis zeichnen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <source>Text tool (cancel text)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <source>Accept current text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <source>Dimensioning tool</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>About Paint</source>
         <translation>Über Paint</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Change settings</source>
         <translation>Einstellungen ändern</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Clear drawing</source>
         <translation>Zeichnung leeren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
-        <source>Change bacground</source>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <source>Change background</source>
         <translation>Hintergrund anpassen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>Save snapshot</source>
         <translation>Schnappschuss speichern</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>About </source>
         <translation>Über </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="95"/>
+        <location filename="../qml/pages/AboutPage.qml" line="100"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="103"/>
-        <source>Swedish translation by Åke Engelbrektson</source>
-        <translation>Schwedische Übersetzung von Åke Engelbrektson</translation>
-    </message>
-	<message>
-        <location filename="../qml/pages/AboutPage.qml" line="103"/>
-        <source>German translation by Jens Klingen</source>
+        <location filename="../qml/pages/AboutPage.qml" line="108"/>
+        <source>translation credit placeholder</source>
         <translation>Deutsche Übersetzung von Jens Klingen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="110"/>
+        <location filename="../qml/pages/AboutPage.qml" line="116"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
 </context>
 <context>
+    <name>MediaSelector</name>
+    <message>
+        <location filename="../qml/pages/MediaSelector.qml" line="73"/>
+        <source>Image selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MediaSelector.qml" line="73"/>
+        <source>Select image</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Toolbar2</name>
     <message>
-        <location filename="../qml/components/Toolbar2.qml" line="40"/>
         <source>File format</source>
-        <translation>Dateiformat</translation>
+        <translation type="obsolete">Dateiformat</translation>
+    </message>
+</context>
+<context>
+    <name>Toolbar3</name>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="41"/>
+        <source>File format</source>
+        <translation type="unfinished">Dateiformat</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="23"/>
+        <location filename="../qml/components/Toolbox.qml" line="33"/>
         <source>Clearing</source>
         <translation>Leeren</translation>
     </message>
@@ -128,19 +158,57 @@
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="14"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="18"/>
         <source>Select background</source>
         <translation>Hintergrund auswählen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="28"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="32"/>
         <source>Select color</source>
         <translation>Farbe auswählen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="72"/>
         <source>None</source>
         <translation>Keine</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="94"/>
+        <source>Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dimensionDialog</name>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="39"/>
+        <source>Dimensioning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="51"/>
+        <source>Warning: Do not cancel now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="65"/>
+        <source>Scale all dimensions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
+        <source>Reference length %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
+        <source>Currently scaled length %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="85"/>
+        <source>Enter true length</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -246,6 +314,53 @@
         <location filename="../qml/pages/spraySettingsDialog.qml" line="179"/>
         <source>Particle size</source>
         <translation>Partikelgröße</translation>
+    </message>
+</context>
+<context>
+    <name>textEntryDialog</name>
+    <message>
+        <location filename="../qml/pages/textEntryDialog.qml" line="31"/>
+        <source>Text entry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textEntryDialog.qml" line="42"/>
+        <source>Warning: Do not cancel now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textEntryDialog.qml" line="54"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="62"/>
+        <source>Enter some text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>textSettingsDialog</name>
+    <message>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="28"/>
+        <source>Text settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="42"/>
+        <source>Select color</source>
+        <translation type="unfinished">Farbe auswählen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="77"/>
+        <source>Font size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="99"/>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="106"/>
+        <source>Italic</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -32,6 +32,15 @@ Dialog
         acceptText: acceptText
         cancelText: cancelText
     }
+    Label
+    {
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: ti.focus ? "yellow" : "transparent"
+        font.pixelSize: Theme.fontSizeMedium
+        font.bold: true
+        text: qsTr("Warning: Do not cancel now")
+    }
 
     Column
     {
@@ -90,7 +99,7 @@ Dialog
         }
         IconButton
         {
-            icon.source: "image://paintIcons/icon-m-toolsettings"
+            icon.source: "image://paintIcons/icon-m-textsettings"
             anchors.right: parent.right
 
             onClicked:

@@ -14,6 +14,7 @@ Row
 
         onClicked:
         {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
             hideGeometryPopup()
             drawMode = Painter.Pen
         }
@@ -27,6 +28,7 @@ Row
 
         onClicked:
         {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-erasersettings"
             hideGeometryPopup()
             drawMode = Painter.Eraser
         }
@@ -40,6 +42,7 @@ Row
 
         onClicked:
         {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
             hideGeometryPopup()
             drawMode = Painter.Spray
         }
@@ -53,6 +56,7 @@ Row
 
         onClicked:
         {
+            toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
             if (drawMode != Painter.Geometrics)
                 showGeometryPopup()
             else
@@ -64,6 +68,7 @@ Row
 
     IconButton
     {
+        id: toolSettingsButton
         icon.source: "image://paintIcons/icon-m-toolsettings"
         anchors.bottom: parent.bottom
 

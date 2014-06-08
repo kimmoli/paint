@@ -17,6 +17,7 @@ Row
                                   { "version": painter.version,
                                     "year": "2014",
                                     "name": "Paint",
+                                    "language": painter.getLanguage(),
                                     "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
         }
     }
