@@ -53,7 +53,7 @@
 
 static inline QString cachePath()
 {
-    return QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation) + "/.nemothumbs";
+    return QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation) + "/harbour-paint";
 }
 
 static inline QString rawCachePath()
