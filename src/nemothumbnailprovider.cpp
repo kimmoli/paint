@@ -38,11 +38,7 @@
 #include <QtEndian>
 #include <QElapsedTimer>
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 # include <QStandardPaths>
-#else
-# include <QDesktopServices>
-#endif
 
 #undef THUMBNAILER_DEBUG
 
@@ -57,11 +53,7 @@
 
 static inline QString cachePath()
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
     return QStandardPaths::writableLocation(QStandardPaths::GenericCacheLocation) + "/.nemothumbs";
-#else
-    return QDesktopServices::storageLocation(QDesktopServices::CacheLocation) + ".nemothumbs";
-#endif
 }
 
 static inline QString rawCachePath()
