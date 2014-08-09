@@ -130,7 +130,7 @@ Dialog
             value: gridSpacing
             valueText: value
             minimumValue: 20
-            maximumValue: 270
+            maximumValue: 100
             stepSize: 1
         }
 
