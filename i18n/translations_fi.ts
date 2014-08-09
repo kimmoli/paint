@@ -76,7 +76,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruudukko</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
@@ -259,17 +259,17 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="113"/>
         <source>Grid settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruudukon asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="120"/>
         <source>Snap to Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Tartu ruudukkoon</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="128"/>
         <source>Grid spacing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruudukon väli</translation>
     </message>
 </context>
 <context>
