@@ -76,7 +76,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Stödlinjer</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
@@ -249,27 +249,27 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="85"/>
         <source>Top</source>
-        <translation>I toppen</translation>
+        <translation>I överkant</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="99"/>
         <source>Bottom</source>
-        <translation>I botten</translation>
+        <translation>I underkant</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="113"/>
         <source>Grid settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Stödlinjeinställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="120"/>
         <source>Snap to Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Fäst vid stödlinjer</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="128"/>
         <source>Grid spacing</source>
-        <translation type="unfinished"></translation>
+        <translation>Stödlinjeavstånd</translation>
     </message>
 </context>
 <context>
