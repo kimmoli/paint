@@ -75,46 +75,51 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
+        <source>Grid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>About Paint</source>
         <translation>Om Paint</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Change settings</source>
         <translation>Ändra inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Clear drawing</source>
         <translation>Rensa skärmen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>Change background</source>
         <translation>Ändra bakgrund</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Save snapshot</source>
         <translation>Spara ögonblicksbild</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutPage.qml" line="63"/>
         <source>About </source>
         <translation>Om </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="100"/>
+        <location filename="../qml/pages/AboutPage.qml" line="101"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="108"/>
+        <location filename="../qml/pages/AboutPage.qml" line="109"/>
         <source>translation credit placeholder</source>
         <translation>Svensk översättning av Åke Engelbrektson</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="116"/>
+        <location filename="../qml/pages/AboutPage.qml" line="117"/>
         <source>Help</source>
         <translation>Hjälp</translation>
     </message>
@@ -142,7 +147,7 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="41"/>
+        <location filename="../qml/components/Toolbar3.qml" line="43"/>
         <source>File format</source>
         <translation>Filformat</translation>
     </message>
@@ -150,7 +155,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="33"/>
+        <location filename="../qml/components/Toolbox.qml" line="35"/>
         <source>Clearing</source>
         <translation>Rensar</translation>
     </message>
@@ -227,29 +232,44 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="15"/>
+        <location filename="../qml/pages/genSettings.qml" line="17"/>
         <source>General settings</source>
         <translation>Allmäna inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="29"/>
+        <location filename="../qml/pages/genSettings.qml" line="37"/>
         <source>File format</source>
         <translation>Filformat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="67"/>
+        <location filename="../qml/pages/genSettings.qml" line="75"/>
         <source>Toolbox location</source>
         <translation>Verktygsplacering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="77"/>
+        <location filename="../qml/pages/genSettings.qml" line="85"/>
         <source>Top</source>
         <translation>I toppen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="91"/>
+        <location filename="../qml/pages/genSettings.qml" line="99"/>
         <source>Bottom</source>
         <translation>I botten</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="113"/>
+        <source>Grid settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="120"/>
+        <source>Snap to Grid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="128"/>
+        <source>Grid spacing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
