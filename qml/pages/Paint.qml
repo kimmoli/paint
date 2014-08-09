@@ -100,6 +100,14 @@ Page
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
+        onToggleGridVisibility:
+        {
+            gridVisible =! gridVisible
+            if (gridVisible)
+                gridCanvas.requestPaint()
+            else
+                gridCanvas.clear()
+        }
     }
 
     GeometryPopup
@@ -165,6 +173,46 @@ Page
         Behavior on opacity
         {
             FadeAnimation {}
+        }
+    }
+
+    Canvas
+    {
+        id: gridCanvas
+        z: 8
+        anchors.fill: canvas
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
+
+        onPaint:
+        {
+            var ctx = getContext('2d')
+
+            ctx.clearRect(0, 0, width, height);
+            if (clearNow)
+            {
+                clearNow = false
+                return
+            }
+
+            ctx.lineWidth = 1
+            ctx.strokeStyle = "white"
+
+            for (var y = 0 ; y < height; y = y + gridSpacing)
+                drawLine(ctx, 0, y, width, y)
+
+            for (var x = 0 ; x < width; y = y + gridSpacing)
+                drawLine(ctx, x, 0, x, height)
+
+
         }
     }
 

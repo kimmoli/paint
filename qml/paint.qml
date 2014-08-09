@@ -43,6 +43,8 @@ ApplicationWindow
     property string iconMove : "/usr/share/harbour-paint/qml/icons/icon-m-move.png"
     property bool dimensionMoveMode: false
     property int dimensionMoveEnd: 0
+    property int gridSpacing: 20
+    property bool gridVisible: false
 
     /*****************************************************/
 

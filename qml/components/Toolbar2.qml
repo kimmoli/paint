@@ -48,11 +48,12 @@ Row
         }
     }
 
-    Rectangle
+    IconButton
     {
-        color: "transparent"
-        width: 80
-        height: 80
+        icon.source: "image://theme/icon-m-like"
+        anchors.bottom: parent.bottom
+
+        onClicked: toggleGridVisibility()
     }
 
     IconButton
