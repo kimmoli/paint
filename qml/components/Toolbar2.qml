@@ -50,7 +50,7 @@ Row
 
     IconButton
     {
-        icon.source: "image://theme/icon-m-like"
+        icon.source: "image://paintIcons/icon-m-grid"
         anchors.bottom: parent.bottom
 
         onClicked: toggleGridVisibility()
