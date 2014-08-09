@@ -111,3 +111,33 @@ QString PainterClass::getLanguage()
 {
     return QLocale::system().name().split('_').at(0);
 }
+
+int PainterClass::getGridSpacing()
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    int gridSpacing = s.value("gridSpacing", "50").toInt();
+    s.endGroup();
+
+    return gridSpacing;
+}
+
+bool PainterClass::getGridSnapTo()
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    bool gridSnapTo = s.value("gridSnapTo", "false").toBool();
+    s.endGroup();
+
+    return gridSnapTo;
+}
+
+void PainterClass::setGridSettings(int gridSpacing, bool gridSnapTo)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Settings");
+    s.setValue("gridSpacing", gridSpacing);
+    s.setValue("gridSnapTo", gridSnapTo);
+    s.endGroup();
+}
+

@@ -8,6 +8,8 @@ Dialog
 
     property string saveFormat : "NaN"
     property string toolboxLocation : "NaN"
+    property int gridSpacing : 50
+    property bool gridSnapTo : false
 
     DialogHeader
     {
@@ -15,6 +17,12 @@ Dialog
         title:  qsTr("General settings")
         acceptText: acceptText
         cancelText: cancelText
+    }
+
+    onAccepted:
+    {
+        gridSpacing = gridSpacingSlider.value
+        gridSnapTo = gridSnapSwitch.checked
     }
 
     Column
@@ -99,6 +107,34 @@ Dialog
                 }
             }
         }
+
+        SectionHeader
+        {
+            text: qsTr("Grid settings")
+        }
+
+
+        TextSwitch
+        {
+            id: gridSnapSwitch
+            text: qsTr("Snap to Grid")
+            checked: gridSnapTo
+            width: parent.width
+        }
+
+        Slider
+        {
+            id: gridSpacingSlider
+            label: qsTr("Grid spacing")
+            width: parent.width
+            value: gridSpacing
+            valueText: value
+            minimumValue: 20
+            maximumValue: 270
+            stepSize: 1
+        }
+
+
 
     }
 }

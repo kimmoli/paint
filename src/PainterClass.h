@@ -33,6 +33,10 @@ public:
     Q_INVOKABLE void setToolboxLocation(QString location);
     Q_INVOKABLE QString getLanguage();
 
+    Q_INVOKABLE int getGridSpacing();
+    Q_INVOKABLE bool getGridSnapTo();
+    Q_INVOKABLE void setGridSettings(int gridSpacing, bool gridSnapTo);
+
     enum Mode
     {
         None = -1,

@@ -100,14 +100,8 @@ Page
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
-        onToggleGridVisibility:
-        {
-            gridVisible =! gridVisible
-            if (gridVisible)
-                gridCanvas.requestPaint()
-            else
-                gridCanvas.clear()
-        }
+        onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
+        onGridSettingsChanged: gridCanvas.requestPaint()
     }
 
     GeometryPopup
@@ -137,6 +131,7 @@ Page
         z: 6
         anchors.fill: page
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
+        onColorChanged: gridCanvas.requestPaint()
     }
 
     Thumbnail
@@ -203,17 +198,46 @@ Page
                 return
             }
 
+            if (!gridVisible)
+                return
+
             ctx.lineWidth = 1
-            ctx.strokeStyle = "white"
+
+            ctx.strokeStyle = bgColor < colors.length ? inverse(colors[bgColor]) : "#ffffff"
 
             for (var y = 0 ; y < height; y = y + gridSpacing)
-                drawLine(ctx, 0, y, width, y)
+            {
+                ctx.beginPath()
+                ctx.moveTo(0, y)
+                ctx.lineTo(width, y)
+                ctx.stroke()
+                ctx.closePath()
+            }
 
-            for (var x = 0 ; x < width; y = y + gridSpacing)
-                drawLine(ctx, x, 0, x, height)
-
-
+            for (var x = 0 ; x < width; x = x + gridSpacing)
+            {
+                ctx.beginPath()
+                ctx.moveTo(x, 0)
+                ctx.lineTo(x, height)
+                ctx.stroke()
+                ctx.closePath()
+            }
         }
+    }
+
+    function inverse(hex)
+    {
+      if (hex.length !== 7 || hex.indexOf('#') !== 0)
+          return "#ffffff"
+      return "#" + pad((255 - parseInt(hex.substring(1, 3), 16)).toString(16)) + pad((255 - parseInt(hex.substring(3, 5), 16)).toString(16)) + pad((255 - parseInt(hex.substring(5, 7), 16)).toString(16))
+    }
+
+    function pad(num)
+    {
+      if (num.length < 2)
+        return "0" + num
+      else
+        return num
     }
 
     function drawLine(ctx, x0,y0,x1,y1)
