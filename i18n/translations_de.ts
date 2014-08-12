@@ -76,7 +76,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Raster</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
@@ -259,17 +259,17 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="113"/>
         <source>Grid settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Rastereinstellungen</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="120"/>
         <source>Snap to Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Am Raster ausrichten</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="128"/>
         <source>Grid spacing</source>
-        <translation type="unfinished"></translation>
+        <translation>Rasterabstand</translation>
     </message>
 </context>
 <context>
