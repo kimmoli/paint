@@ -25,13 +25,6 @@ Dialog
         onTriggered: textEntryDialog.accept()
     }
 
-    DialogHeader
-    {
-        id: pageHeader
-        title:  qsTr("Text entry")
-        acceptText: acceptText
-        cancelText: cancelText
-    }
     Label
     {
         anchors.top: parent.top
@@ -42,82 +35,98 @@ Dialog
         text: qsTr("Warning: Do not cancel now")
     }
 
-    Column
+    SilicaFlickable
     {
-        id: col
-        width: parent.width - Theme.paddingLarge
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: pageHeader.bottom
+        id: flick
 
-        SectionHeader
+        anchors.fill: parent
+        contentHeight: dialogHeader.height + col.height
+        width: parent.width
+
+        VerticalScrollDecorator { flickable: flick }
+
+        DialogHeader
         {
-            text: qsTr("Enter some text")
+            id: dialogHeader
         }
 
-        TextField
+        Column
         {
-            id: ti
-            width: parent.width
-            focus: true
-            placeholderText: qsTr("Enter some text")
-            EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-            EnterKey.onClicked:
+            id: col
+            width: parent.width - Theme.paddingLarge
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: dialogHeader.bottom
+
+            SectionHeader
             {
-                ti.focus = false
-                vkbClose.start()
+                text: qsTr("Enter some text")
             }
-            onTextChanged: previewCanvas.requestPaint()
-        }
-        Rectangle
-        {
 
-            color: "transparent"
-            height: 150
-            width: parent.width
-            Canvas
+            TextField
             {
-                id: previewCanvas
-                anchors.fill: parent
-                renderTarget: Canvas.FramebufferObject
-                antialiasing: true
-
-                property bool clearNow : false
-                property int midX : width / 2
-                property int midY : height * 0.75
-
-                onPaint:
+                id: ti
+                width: parent.width
+                focus: true
+                placeholderText: qsTr("Enter some text")
+                EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                EnterKey.onClicked:
                 {
-                    var ctx = getContext('2d')
+                    ti.focus = false
+                    vkbClose.start()
+                }
+                onTextChanged: previewCanvas.requestPaint()
+            }
+            Rectangle
+            {
 
-                    ctx.clearRect(0, 0, width, height);
-                    ctx.fillStyle = colors[textColor]
-                    ctx.font = textFont
-                    ctx.textAlign = "center"
-                    ctx.fillText(ti.text, midX, midY)
+                color: "transparent"
+                height: 150
+                width: parent.width
+                Canvas
+                {
+                    id: previewCanvas
+                    anchors.fill: parent
+                    renderTarget: Canvas.FramebufferObject
+                    antialiasing: true
+
+                    property bool clearNow : false
+                    property int midX : width / 2
+                    property int midY : height * 0.75
+
+                    onPaint:
+                    {
+                        var ctx = getContext('2d')
+
+                        ctx.clearRect(0, 0, width, height);
+                        ctx.fillStyle = colors[textColor]
+                        ctx.font = textFont
+                        ctx.textAlign = "center"
+                        ctx.fillText(ti.text, midX, midY)
+                    }
                 }
             }
-        }
-        IconButton
-        {
-            icon.source: "image://paintIcons/icon-m-textsettings"
-            anchors.right: parent.right
-
-            onClicked:
+            IconButton
             {
-                var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
-                                                     { "currentColor": textColor,
-                                                       "currentSize": textFontSize,
-                                                       "isBold": textFontBold,
-                                                       "isItalic": textFontItalic })
+                icon.source: "image://paintIcons/icon-m-textsettings"
+                anchors.right: parent.right
 
-                SettingsDialog.accepted.connect(function()
+                onClicked:
                 {
-                    textColor = SettingsDialog.currentColor
-                    textFontSize = SettingsDialog.currentSize
-                    textFontBold = SettingsDialog.isBold
-                    textFontItalic = SettingsDialog.isItalic
-                    previewCanvas.requestPaint()
-                })
+                    var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                         { "currentColor": textColor,
+                                                           "currentSize": textFontSize,
+                                                           "isBold": textFontBold,
+                                                           "isItalic": textFontItalic })
+
+                    SettingsDialog.accepted.connect(function()
+                    {
+                        textColor = SettingsDialog.currentColor
+                        textFontSize = SettingsDialog.currentSize
+                        textFontBold = SettingsDialog.isBold
+                        textFontItalic = SettingsDialog.isItalic
+                        previewCanvas.requestPaint()
+                    })
+                }
             }
         }
     }

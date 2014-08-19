@@ -10,8 +10,8 @@ ApplicationWindow
                              "#00ff80", "#00ffff", "#0000ff", "#8000ff", "#ff00ff",
                              "#000000", "#ffffff" ] // also black and white
 
-    property string acceptText : qsTr("Accept")
-    property string cancelText : qsTr("Cancel")
+    property string dialogAcceptText : qsTr("Accept")
+    property string dialogCancelText : qsTr("Cancel")
 
     property int drawMode : Painter.Pen
     property int geometricsMode : Painter.Line

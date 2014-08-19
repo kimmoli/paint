@@ -69,8 +69,9 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
 
     DialogHeader
     {
-        id: header
-        title: page.selectedFiles.length > 0 ? qsTr("Image selected") : qsTr("Select image")
+        id: dialogHeader
+        acceptText: page.selectedFiles.length > 0 ? qsTr("Image selected") : qsTr("Select image")
+        cancelText: dialogCancelText
     }
 
     Loader
@@ -79,7 +80,7 @@ Dialog  /* Todo: Cleanup, this is just an image selector here */
         anchors
         {
             fill: parent
-            topMargin: header.height
+            topMargin: dialogHeader.height
         }
         sourceComponent: gridComponent
     }

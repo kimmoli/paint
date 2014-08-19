@@ -18,87 +18,100 @@ Dialog
     }
 
 
-    DialogHeader
+    SilicaFlickable
     {
-        id: pageHeader
-        title:  qsTr("Pen settings")
-        acceptText: acceptText
-        cancelText: cancelText
-    }
+        id: flick
 
-    Column
-    {
-        id: col
-        width: parent.width - Theme.paddingLarge
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: pageHeader.bottom
+        anchors.fill: parent
+        contentHeight: dialogHeader.height + col.height
+        width: parent.width
 
-        SectionHeader
+        VerticalScrollDecorator { flickable: flick }
+
+        DialogHeader
         {
-            text: qsTr("Select color")
+            id: dialogHeader
         }
-
-        Grid
+        Column
         {
-            id: colorSelector
-            columns: 4
-            Repeater
+            id: col
+            width: parent.width - Theme.paddingLarge
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: dialogHeader.bottom
+
+            SectionHeader
             {
-                model: colors
-                Rectangle
+                text: qsTr("Pen settings")
+                font.pixelSize: Theme.fontSizeLarge
+            }
+
+            SectionHeader
+            {
+                text: qsTr("Select color")
+            }
+
+            Grid
+            {
+                id: colorSelector
+                columns: 4
+                Repeater
                 {
-                    width: col.width/colorSelector.columns
-                    height: col.width/colorSelector.columns
-                    radius: 10
-                    color: (index == currentColor) ? colors[index] : "transparent"
+                    model: colors
                     Rectangle
                     {
-                        width: parent.width - 20
-                        height: parent.height - 20
-                        radius: 5
-                        color: colors[index]
-                        anchors.centerIn: parent
-                    }
-                    BackgroundItem
-                    {
-                        anchors.fill: parent
-                        onClicked: currentColor = index
+                        width: col.width/colorSelector.columns
+                        height: col.width/colorSelector.columns
+                        radius: 10
+                        color: (index == currentColor) ? colors[index] : "transparent"
+                        Rectangle
+                        {
+                            width: parent.width - 20
+                            height: parent.height - 20
+                            radius: 5
+                            color: colors[index]
+                            anchors.centerIn: parent
+                        }
+                        BackgroundItem
+                        {
+                            anchors.fill: parent
+                            onClicked: currentColor = index
+                        }
                     }
                 }
             }
-        }
 
-        SectionHeader
-        {
-            text: qsTr("Pen width")
-        }
-
-        Rectangle
-        {
-            color: "transparent"
-            height: 80
-            width: parent.width
+            SectionHeader
+            {
+                text: qsTr("Pen width")
+            }
 
             Rectangle
             {
-                height: thicknessSlider.value
-                width: parent.width - 170
-                color: colors[currentColor]
-                anchors.centerIn: parent
+                color: "transparent"
+                height: 80
+                width: parent.width
+
+                Rectangle
+                {
+                    height: thicknessSlider.value
+                    width: parent.width - 170
+                    color: colors[currentColor]
+                    anchors.centerIn: parent
+                }
             }
-        }
 
-        Slider
-        {
-            id: thicknessSlider
-            value: currentThickness
-            valueText: value
-            minimumValue: 1
-            maximumValue: 25
-            stepSize: 1
-            width: parent.width - 2*Theme.paddingLarge
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+            Slider
+            {
+                id: thicknessSlider
+                value: currentThickness
+                valueText: value
+                minimumValue: 1
+                maximumValue: 25
+                stepSize: 1
+                width: parent.width - 2*Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
 
+        }
     }
 }
