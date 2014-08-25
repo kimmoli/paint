@@ -10,6 +10,7 @@ Dialog
     property int currentSize: 40
     property bool isBold: false
     property bool isItalic: false
+    property int fontNameIndex: 0
 
     onDone:
     {
@@ -119,6 +120,24 @@ Dialog
                     text: qsTr("Italic")
                     checked: isItalic
                     width: parent.width/2
+                }
+            }
+
+            SectionHeader
+            {
+                text: qsTr("Font")
+            }
+
+            Repeater
+            {
+                model: fontList
+                TextSwitch
+                {
+                    text: fontList.get(index)["name"]
+                    width: parent.width
+                    automaticCheck: false
+                    checked: index === fontNameIndex
+                    onClicked: fontNameIndex = index
                 }
             }
 

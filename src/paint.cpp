@@ -52,6 +52,10 @@ int main(int argc, char *argv[])
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
     view->show();
 
+
+
     return app->exec();
 }
+
+
 

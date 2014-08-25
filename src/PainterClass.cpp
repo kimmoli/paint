@@ -12,12 +12,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QCoreApplication>
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
+#include <QFontDatabase>
 
 PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
 {
     fileExtension = getSaveMode();
     toolboxLocation = getToolboxLocation();
+    fontFamilies = QFontDatabase().families();
 }
 
 QString PainterClass::readVersion()
@@ -139,5 +141,15 @@ void PainterClass::setGridSettings(int gridSpacing, bool gridSnapTo)
     s.setValue("gridSpacing", gridSpacing);
     s.setValue("gridSnapTo", gridSnapTo);
     s.endGroup();
+}
+
+int PainterClass::getNumberOfFonts()
+{
+    return fontFamilies.count();
+}
+
+QString PainterClass::getFontName(int number)
+{
+    return fontFamilies.at(number);
 }
 

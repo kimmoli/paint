@@ -73,7 +73,8 @@ Row
                                                      { "currentColor": textColor,
                                                        "currentSize": textFontSize,
                                                        "isBold": textFontBold,
-                                                       "isItalic": textFontItalic })
+                                                       "isItalic": textFontItalic,
+                                                       "fontNameIndex": textFontNameIndex})
 
                 SettingsDialog.accepted.connect(function()
                 {
@@ -81,6 +82,7 @@ Row
                     textFontSize = SettingsDialog.currentSize
                     textFontBold = SettingsDialog.isBold
                     textFontItalic = SettingsDialog.isItalic
+                    textFontNameIndex = SettingsDialog.fontNameIndex
                     textSettingsChanged()
                 })
                 break;

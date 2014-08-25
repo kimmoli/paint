@@ -116,7 +116,8 @@ Dialog
                                                          { "currentColor": textColor,
                                                            "currentSize": textFontSize,
                                                            "isBold": textFontBold,
-                                                           "isItalic": textFontItalic })
+                                                           "isItalic": textFontItalic,
+                                                           "fontNameIndex": textFontNameIndex })
 
                     SettingsDialog.accepted.connect(function()
                     {
@@ -124,6 +125,7 @@ Dialog
                         textFontSize = SettingsDialog.currentSize
                         textFontBold = SettingsDialog.isBold
                         textFontItalic = SettingsDialog.isItalic
+                        textFontNameIndex = SettingsDialog.fontNameIndex
                         previewCanvas.requestPaint()
                     })
                 }

@@ -30,7 +30,9 @@ ApplicationWindow
     property int textFontSize: 40
     property bool textFontBold : false
     property bool textFontItalic : false
-    property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px Arial"
+    property int textFontNameIndex: 0
+    property string textFontName: painter.getFontName(textFontNameIndex)
+    property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px " + textFontName
     property bool textEditPending: false
     property string thisTextEntry : ""
     property int bgColor: colors.length
@@ -66,13 +68,22 @@ ApplicationWindow
             toolboxLocation = painter.getToolboxLocation()
             gridSpacing = painter.getGridSpacing()
             gridSnapTo = painter.getGridSnapTo()
+            for (var i=0 ; i<painter.getNumberOfFonts(); i++)
+            {
+                console.log("font " + i + " is " + painter.getFontName(i))
+                fontList.append( {"number": i, "name": painter.getFontName(i) } )
+            }
         }
     }
 
     ListModel
     {
         id: dimensionModel
+    }
 
+    ListModel
+    {
+        id: fontList
     }
 }
 
