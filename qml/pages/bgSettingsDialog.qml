@@ -26,6 +26,13 @@ Dialog
         DialogHeader
         {
             id: dialogHeader
+            acceptText: qsTr("Select background")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
         }
 
         Column
@@ -35,12 +42,6 @@ Dialog
             anchors.top: dialogHeader.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: Theme.paddingSmall
-
-            SectionHeader
-            {
-                text: qsTr("Select background")
-                font.pixelSize: Theme.fontSizeLarge
-            }
 
             SectionHeader
             {

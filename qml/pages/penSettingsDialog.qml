@@ -31,19 +31,21 @@ Dialog
         DialogHeader
         {
             id: dialogHeader
+            acceptText: qsTr("Pen settings")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
         }
+
         Column
         {
             id: col
             width: parent.width - Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: dialogHeader.bottom
-
-            SectionHeader
-            {
-                text: qsTr("Pen settings")
-                font.pixelSize: Theme.fontSizeLarge
-            }
 
             SectionHeader
             {

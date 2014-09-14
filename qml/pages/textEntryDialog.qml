@@ -25,16 +25,6 @@ Dialog
         onTriggered: textEntryDialog.accept()
     }
 
-    Label
-    {
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        color: ti.focus ? "yellow" : "transparent"
-        font.pixelSize: Theme.fontSizeMedium
-        font.bold: true
-        text: qsTr("Warning: Do not cancel now")
-    }
-
     SilicaFlickable
     {
         id: flick

@@ -30,6 +30,13 @@ Dialog
         DialogHeader
         {
             id: dialogHeader
+            acceptText: qsTr("General settings")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
         }
 
 
@@ -39,12 +46,6 @@ Dialog
             width: parent.width - Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: dialogHeader.bottom
-
-            SectionHeader
-            {
-                text: qsTr("General settings")
-                font.pixelSize: Theme.fontSizeLarge
-            }
 
             SectionHeader
             {

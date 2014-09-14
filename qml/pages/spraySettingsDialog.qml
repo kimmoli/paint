@@ -54,6 +54,13 @@ Dialog
         DialogHeader
         {
             id: dialogHeader
+            acceptText: qsTr("Sprayer settings")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
         }
 
         Column
@@ -63,12 +70,6 @@ Dialog
             anchors.top: dialogHeader.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: Theme.paddingSmall
-
-            SectionHeader
-            {
-                text: qsTr("Sprayer settings")
-                font.pixelSize: Theme.fontSizeLarge
-            }
 
             SectionHeader
             {
