@@ -92,7 +92,8 @@ OTHER_FILES += qml/paint.qml \
     i18n/translations_de.ts \
     qml/pages/dimensionDialog.qml \
     qml/components/DimensionPopup.qml \
-    qml/icons/icon-m-move.png
+    qml/icons/icon-m-move.png \
+    qml/icons/icon-m-grid.png
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts \

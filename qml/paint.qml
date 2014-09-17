@@ -10,8 +10,8 @@ ApplicationWindow
                              "#00ff80", "#00ffff", "#0000ff", "#8000ff", "#ff00ff",
                              "#000000", "#ffffff" ] // also black and white
 
-    property string acceptText : qsTr("Accept")
-    property string cancelText : qsTr("Cancel")
+    property string dialogAcceptText : qsTr("Accept")
+    property string dialogCancelText : qsTr("Cancel")
 
     property int drawMode : Painter.Pen
     property int geometricsMode : Painter.Line
@@ -30,7 +30,9 @@ ApplicationWindow
     property int textFontSize: 40
     property bool textFontBold : false
     property bool textFontItalic : false
-    property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px Arial"
+    property int textFontNameIndex: 0
+    property string textFontName: painter.getFontName(textFontNameIndex)
+    property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px " + textFontName
     property bool textEditPending: false
     property string thisTextEntry : ""
     property int bgColor: colors.length
@@ -43,6 +45,9 @@ ApplicationWindow
     property string iconMove : "/usr/share/harbour-paint/qml/icons/icon-m-move.png"
     property bool dimensionMoveMode: false
     property int dimensionMoveEnd: 0
+    property int gridSpacing: 50
+    property bool gridSnapTo: false
+    property bool gridVisible: false
 
     /*****************************************************/
 
@@ -61,13 +66,24 @@ ApplicationWindow
         Component.onCompleted:
         {
             toolboxLocation = painter.getToolboxLocation()
+            gridSpacing = painter.getGridSpacing()
+            gridSnapTo = painter.getGridSnapTo()
+            for (var i=0 ; i<painter.getNumberOfFonts(); i++)
+            {
+                console.log("font " + i + " is " + painter.getFontName(i))
+                fontList.append( {"number": i, "name": painter.getFontName(i) } )
+            }
         }
     }
 
     ListModel
     {
         id: dimensionModel
+    }
 
+    ListModel
+    {
+        id: fontList
     }
 }
 

@@ -17,53 +17,68 @@ Dialog
     }
 
 
-    DialogHeader
+
+    SilicaFlickable
     {
-        id: pageHeader
-        title:  qsTr("Eraser settings")
-        acceptText: acceptText
-        cancelText: cancelText
-    }
+        id: flick
 
-    Column
-    {
-        id: col
-        width: parent.width - Theme.paddingLarge
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: pageHeader.bottom
+        anchors.fill: parent
+        contentHeight: dialogHeader.height + col.height
+        width: parent.width
 
-        SectionHeader
+        VerticalScrollDecorator { flickable: flick }
+
+        DialogHeader
         {
-            text: qsTr("Eraser size")
-        }
-
-        Rectangle
-        {
-            color: "transparent"
-            height: 300
-            width: parent.width
-
-            Rectangle
+            id: dialogHeader
+            acceptText: qsTr("Eraser settings")
+            Timer
             {
-                height: thicknessSlider.value
-                width: thicknessSlider.value
-                radius: thicknessSlider.value/2
-                color: "white"
-                anchors.centerIn: parent
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
             }
         }
 
-        Slider
+        Column
         {
-            id: thicknessSlider
-            value: currentThickness
-            valueText: value
-            minimumValue: 3
-            maximumValue: 100
-            stepSize: 1
-            width: parent.width - 2*Theme.paddingLarge
+            id: col
+            width: parent.width - Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
-        }
+            anchors.top: dialogHeader.bottom
 
+            SectionHeader
+            {
+                text: qsTr("Eraser size")
+            }
+
+            Rectangle
+            {
+                color: "transparent"
+                height: 300
+                width: parent.width
+
+                Rectangle
+                {
+                    height: thicknessSlider.value
+                    width: thicknessSlider.value
+                    radius: thicknessSlider.value/2
+                    color: "white"
+                    anchors.centerIn: parent
+                }
+            }
+
+            Slider
+            {
+                id: thicknessSlider
+                value: currentThickness
+                valueText: value
+                minimumValue: 3
+                maximumValue: 100
+                stepSize: 1
+                width: parent.width - 2*Theme.paddingLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+        }
     }
 }

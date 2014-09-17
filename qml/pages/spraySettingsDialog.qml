@@ -41,31 +41,35 @@ Dialog
         showpage = showpageComp.createObject(eraserSettingsDialog)
     }
 
-
     SilicaFlickable
     {
         id: flick
 
         anchors.fill: parent
-        contentHeight: col.height
+        contentHeight: dialogHeader.height + col.height
         width: parent.width
 
         VerticalScrollDecorator { flickable: flick }
+
+        DialogHeader
+        {
+            id: dialogHeader
+            acceptText: qsTr("Sprayer settings")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
+        }
 
         Column
         {
             id: col
             width: parent.width - Theme.paddingLarge
+            anchors.top: dialogHeader.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: Theme.paddingSmall
-
-            DialogHeader
-            {
-                id: pageHeader
-                title:  qsTr("Sprayer settings")
-                acceptText: acceptText
-                cancelText: cancelText
-            }
 
             SectionHeader
             {

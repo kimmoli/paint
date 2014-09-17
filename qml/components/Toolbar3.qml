@@ -31,7 +31,9 @@ Row
             var saveModeWas = painter.getSaveMode()
             var genSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/genSettings.qml"),
                                                    {"saveFormat": saveModeWas ,
-                                                    "toolboxLocation": toolboxLocation })
+                                                    "toolboxLocation": toolboxLocation,
+                                                    "gridSpacing": gridSpacing,
+                                                    "gridSnapTo": gridSnapTo })
 
             genSettingsDialog.accepted.connect(function()
             {
@@ -41,6 +43,10 @@ Row
                     showMessage(qsTr("File format") + " " + genSettingsDialog.saveFormat, 1500)
                 toolboxLocation = genSettingsDialog.toolboxLocation
                 painter.setToolboxLocation(genSettingsDialog.toolboxLocation)
+                gridSpacing = genSettingsDialog.gridSpacing
+                gridSnapTo = genSettingsDialog.gridSnapTo
+                painter.setGridSettings(gridSpacing, gridSnapTo)
+                gridSettingsChanged()
             })
         }
     }

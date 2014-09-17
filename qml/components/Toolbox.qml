@@ -27,6 +27,8 @@ Row
     signal textEditCancel()
     signal textSettingsChanged()
 
+    signal toggleGridVisibility()
+    signal gridSettingsChanged()
 
     function startRemorse()
     {

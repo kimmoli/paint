@@ -38,6 +38,7 @@ Page
         buttonhelp.append( {"image": "image://paintIcons/icon-m-texttool", "helptext": qsTr("Text tool (cancel text)")})
         buttonhelp.append( {"image": "image://theme/icon-m-enter-accept", "helptext": qsTr("Accept current text")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-dimensiontool", "helptext": qsTr("Dimensioning tool")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-grid", "helptext": qsTr("Grid")})
         buttonhelp.append( {"image": "image://theme/icon-m-about", "helptext": qsTr("About Paint")})
         buttonhelp.append( {"image": "image://theme/icon-m-developer-mode", "helptext": qsTr("Change settings")})
         buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})

@@ -48,11 +48,12 @@ Row
         }
     }
 
-    Rectangle
+    IconButton
     {
-        color: "transparent"
-        width: 80
-        height: 80
+        icon.source: "image://paintIcons/icon-m-grid"
+        anchors.bottom: parent.bottom
+
+        onClicked: toggleGridVisibility()
     }
 
     IconButton
@@ -72,7 +73,8 @@ Row
                                                      { "currentColor": textColor,
                                                        "currentSize": textFontSize,
                                                        "isBold": textFontBold,
-                                                       "isItalic": textFontItalic })
+                                                       "isItalic": textFontItalic,
+                                                       "fontNameIndex": textFontNameIndex})
 
                 SettingsDialog.accepted.connect(function()
                 {
@@ -80,6 +82,7 @@ Row
                     textFontSize = SettingsDialog.currentSize
                     textFontBold = SettingsDialog.isBold
                     textFontItalic = SettingsDialog.isItalic
+                    textFontNameIndex = SettingsDialog.fontNameIndex
                     textSettingsChanged()
                 })
                 break;

@@ -100,6 +100,8 @@ Page
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
+        onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
+        onGridSettingsChanged: gridCanvas.requestPaint()
     }
 
     GeometryPopup
@@ -129,6 +131,7 @@ Page
         z: 6
         anchors.fill: page
         color: bgColor < colors.length ? colors[bgColor] : "transparent"
+        onColorChanged: gridCanvas.requestPaint()
     }
 
     Thumbnail
@@ -166,6 +169,75 @@ Page
         {
             FadeAnimation {}
         }
+    }
+
+    Canvas
+    {
+        id: gridCanvas
+        z: 8
+        anchors.fill: canvas
+        renderTarget: Canvas.FramebufferObject
+        antialiasing: true
+
+        property bool clearNow : false
+
+        function clear()
+        {
+            clearNow = true
+            requestPaint()
+        }
+
+        onPaint:
+        {
+            var ctx = getContext('2d')
+
+            ctx.clearRect(0, 0, width, height);
+            if (clearNow)
+            {
+                clearNow = false
+                return
+            }
+
+            if (!gridVisible)
+                return
+
+            ctx.lineWidth = 1
+
+            ctx.strokeStyle = bgColor < colors.length ? inverse(colors[bgColor]) : "#ffffff"
+
+            for (var y = 0 ; y < height; y = y + gridSpacing)
+            {
+                ctx.beginPath()
+                ctx.moveTo(0, y)
+                ctx.lineTo(width, y)
+                ctx.stroke()
+                ctx.closePath()
+            }
+
+            for (var x = 0 ; x < width; x = x + gridSpacing)
+            {
+                ctx.beginPath()
+                ctx.moveTo(x, 0)
+                ctx.lineTo(x, height)
+                ctx.stroke()
+                ctx.closePath()
+            }
+        }
+    }
+
+    function inverse(hex)
+    {
+      if (hex.length !== 7 || hex.indexOf('#') !== 0)
+          return "#ffffff"
+      return "#" + pad((255 - parseInt(hex.substring(1, 3), 16)).toString(16)) + pad((255 - parseInt(hex.substring(3, 5), 16)).toString(16)) + pad((255 - parseInt(hex.substring(5, 7), 16)).toString(16))
+    }
+
+    function pad(num)
+    {
+      if (num.length < 2)
+        return "0" + num
+      else
+        return num
     }
 
     function drawLine(ctx, x0,y0,x1,y1)
@@ -368,19 +440,19 @@ Page
                 switch(geometricsMode)
                 {
                     case Painter.Line :
-                        drawLine(ctx, downX, downY, area.mouseX, area.mouseY)
+                        drawLine(ctx, downX, downY, area.gMouseX, area.gMouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                        drawCircle(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
                         break;
                     case Painter.CircleFilled :
-                        drawCircle(ctx, downX, downY, area.mouseX, area.mouseY, true)
+                        drawCircle(ctx, downX, downY, area.gMouseX, area.gMouseY, true)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, false)
+                        drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
                         break;
                     case Painter.RectangleFilled :
-                        drawRectangle(ctx, downX, downY, area.mouseX, area.mouseY, true)
+                        drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, true)
                         break;
 
                     default:
@@ -389,11 +461,11 @@ Page
                 break;
             case Painter.Text:
                 if (thisTextEntry.length>0)
-                    drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                    drawText(ctx, thisTextEntry, area.gMouseX, area.gMouseY)
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.mouseX, area.mouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
+                drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
                 break;
 
             default:
@@ -448,8 +520,8 @@ Page
                     ctx.strokeStyle = colors[drawColor]
                     ctx.beginPath()
                     ctx.moveTo(lastX, lastY)
-                    lastX = area.mouseX
-                    lastY = area.mouseY
+                    lastX = area.gMouseX
+                    lastY = area.gMouseY
                     ctx.lineTo(lastX, lastY)
                     ctx.stroke()
                     ctx.globalCompositeOperation = 'source-over'
@@ -469,19 +541,19 @@ Page
                     switch(geometricsMode)
                     {
                     case Painter.Line :
-                        drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY)
+                        drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
                         break;
                     case Painter.CircleFilled :
-                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, true)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, false)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
                         break;
                     case Painter.RectangleFilled :
-                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.mouseX, area.mouseY, true)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, true)
                         break;
 
                     default:
@@ -494,7 +566,7 @@ Page
                 case Painter.Text:
                     if (!textEditPending && thisTextEntry.length>0)
                     {
-                        drawText(ctx, thisTextEntry, area.mouseX, area.mouseY)
+                        drawText(ctx, thisTextEntry, area.gMouseX, area.gMouseY)
                         thisTextEntry = ""
                     }
                     break;
@@ -503,14 +575,18 @@ Page
                     console.error("Unimplemented feature")
                     break;
             }
-            lastX = area.mouseX
-            lastY = area.mouseY
+            lastX = area.gMouseX
+            lastY = area.gMouseY
         }
 
         MouseArea
         {
             id: area
             anchors.fill: canvas
+
+            property real gMouseX: 0.0
+            property real gMouseY: 0.0
+
             onPressAndHold:
             {
                 geometryPopupVisible = false
@@ -519,14 +595,26 @@ Page
             }
             onPressed:
             {
-                canvas.lastX = mouseX
-                canvas.lastY = mouseY
+                if (gridVisible && gridSnapTo)
+                {
+                    // =PYÖRISTÄ.KERR.ALAS((A1-$C$1/2)/($C$1);1)*$C$1+$C$1
+                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                }
+                else
+                {
+                    area.gMouseX = mouseX
+                    area.gMouseY = mouseY
+                }
+
+                canvas.lastX = gMouseX
+                canvas.lastY = gMouseY
 
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
-                    previewCanvas.downX = mouseX
-                    previewCanvas.downY = mouseY
+                    previewCanvas.downX = gMouseX
+                    previewCanvas.downY = gMouseY
                     break;
 
                 case Painter.Dimensioning:
@@ -566,14 +654,14 @@ Page
                     }
                     else
                     {
-                        previewCanvas.downX = mouseX
-                        previewCanvas.downY = mouseY
+                        previewCanvas.downX = gMouseX
+                        previewCanvas.downY = gMouseY
                     }
                     break;
 
                 case Painter.Text:
-                    previewCanvas.downX = mouseX
-                    previewCanvas.downY = mouseY
+                    previewCanvas.downX = gMouseX
+                    previewCanvas.downY = gMouseY
 
                     if (!textEditPending)
                     {
@@ -601,6 +689,18 @@ Page
 
             onReleased:
             {
+
+                if (gridVisible && gridSnapTo)
+                {
+                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                }
+                else
+                {
+                    area.gMouseX = mouseX
+                    area.gMouseY = mouseY
+                }
+
                 switch (drawMode)
                 {
                 case Painter.Dimensioning:
@@ -609,15 +709,15 @@ Page
 
                     if (dimensionMoveMode)
                     {
-                        dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseX)
-                        dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.mouseY)
+                        dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseX)
+                        dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseY)
                     }
                     else
                     {
                         dimensionModel.append( {"x0": previewCanvas.downX,
                                                 "y0": previewCanvas.downY,
-                                                "x1": area.mouseX,
-                                                "y1": area.mouseY,
+                                                "x1": area.gMouseX,
+                                                "y1": area.gMouseY,
                                                 "font": textFont,
                                                 "fontSize": textFontSize,
                                                 "fontColor": textColor,
@@ -645,6 +745,18 @@ Page
 
             onPositionChanged:
             {
+
+                if (gridVisible && gridSnapTo)
+                {
+                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                }
+                else
+                {
+                    area.gMouseX = mouseX
+                    area.gMouseY = mouseY
+                }
+
                 switch (drawMode)
                 {
                 case Painter.Text:

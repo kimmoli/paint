@@ -12,183 +12,200 @@ Dialog
     property string bgImagePath : ""
     property bool bgImageRotate : false
 
-    DialogHeader
-    {
-        id: pageHeader
-        title: qsTr("Select background")
-        acceptText: acceptText
-        cancelText: cancelText
-    }
 
-    Column
+    SilicaFlickable
     {
-        id: col
-        width: parent.width - Theme.paddingLarge
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: pageHeader.bottom
+        id: flick
 
-        SectionHeader
+        anchors.fill: parent
+        contentHeight: dialogHeader.height + col.height
+        width: parent.width
+
+        VerticalScrollDecorator { flickable: flick }
+
+        DialogHeader
         {
-            text: qsTr("Select color")
+            id: dialogHeader
+            acceptText: qsTr("Select background")
+            Timer
+            {
+                interval: 2500
+                running: true
+                onTriggered: dialogHeader.acceptText = dialogHeader.defaultAcceptText
+            }
         }
 
-        Grid
+        Column
         {
-            id: colorSelector
-            columns: 4
-            Repeater
+            id: col
+            width: parent.width - Theme.paddingLarge
+            anchors.top: dialogHeader.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: Theme.paddingSmall
+
+            SectionHeader
             {
-                model: colors
-                Rectangle
+                text: qsTr("Select color")
+            }
+
+            Grid
+            {
+                id: colorSelector
+                columns: 4
+                Repeater
                 {
-                    width: col.width/colorSelector.columns
-                    height: col.width/colorSelector.columns
-                    radius: 10
-                    color: (index == currentBg) ? colors[index] : "transparent"
+                    model: colors
                     Rectangle
                     {
-                        width: parent.width - 20
-                        height: parent.height - 20
-                        radius: 5
-                        color: colors[index]
-                        anchors.centerIn: parent
-                    }
-                    BackgroundItem
-                    {
-                        anchors.fill: parent
-                        onClicked:
+                        width: col.width/colorSelector.columns
+                        height: col.width/colorSelector.columns
+                        radius: 10
+                        color: (index == currentBg) ? colors[index] : "transparent"
+                        Rectangle
                         {
-                            useExternalImage = false
-                            currentBg = index
+                            width: parent.width - 20
+                            height: parent.height - 20
+                            radius: 5
+                            color: colors[index]
+                            anchors.centerIn: parent
+                        }
+                        BackgroundItem
+                        {
+                            anchors.fill: parent
+                            onClicked:
+                            {
+                                useExternalImage = false
+                                currentBg = index
+                            }
                         }
                     }
                 }
             }
-        }
-
-        TextSwitch
-        {
-            id: ts
-            text: qsTr("None")
-            checked: (currentBg === colors.length) && !useExternalImage
-            automaticCheck: false
-            onDownChanged:
-            {
-                if (down)
-                {
-                    useExternalImage = false
-                    currentBg = colors.length
-                }
-            }
-        }
-
-
-        Row
-        {
-            width: parent.width
-            spacing: width - tsEf.width - ibEf.width
 
             TextSwitch
             {
-                id: tsEf
-                text: qsTr("Image")
-                checked: (currentBg === colors.length) && useExternalImage
+                id: ts
+                text: qsTr("None")
+                checked: (currentBg === colors.length) && !useExternalImage
                 automaticCheck: false
                 onDownChanged:
                 {
                     if (down)
                     {
-                        useExternalImage = true
+                        useExternalImage = false
                         currentBg = colors.length
                     }
                 }
             }
 
-            IconButton
+
+            Row
             {
-                id: ibEf
-                icon.source: "image://theme/icon-m-right"
-                visible: useExternalImage
-                enabled: useExternalImage
-                anchors.verticalCenter: tsEf.verticalCenter
-                onClicked:
+                width: parent.width
+                spacing: width - tsEf.width - ibEf.width
+
+                TextSwitch
                 {
-                    var imageSelectDialog = pageStack.push(Qt.resolvedUrl("../pages/MediaSelector.qml"),
-                                                           {"mode": "image",
-                                                            "datesort": true,
-                                                            "multiple": false})
-
-                    imageSelectDialog.accepted.connect(function()
+                    id: tsEf
+                    text: qsTr("Image")
+                    checked: (currentBg === colors.length) && useExternalImage
+                    automaticCheck: false
+                    onDownChanged:
                     {
-                        var mediaFiles = imageSelectDialog.selectedFiles
-                        bgImagePath = mediaFiles[0]
-                        bgImageRotate = false
-                    })
-                }
-            }
-        }
-
-        Row
-        {
-            visible: useExternalImage
-            spacing: Theme.paddingLarge
-            x: Theme.paddingLarge
-
-            Rectangle
-            {
-                id: previewPlaceHolder
-                width: 2* Theme.itemSizeLarge
-                height: 2* Theme.itemSizeLarge
-                color: "transparent"
-
-                Rectangle
-                {
-                    width: (540/960) * 2* Theme.itemSizeLarge
-                    height: 2* Theme.itemSizeLarge
-                    color: "transparent"
-                    anchors.centerIn: previewPlaceHolder
-
-                    Thumbnail
-                    {
-                        id: image
-                        source: bgImagePath
-                        height: parent.height
-                        width: parent.width
-                        sourceSize.height: parent.height
-                        sourceSize.width: parent.width
-                        anchors.centerIn: parent
-                        clip: true
-                        smooth: true
-                        mimeType: "image"
-                        fillMode: bgImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
-
-                        states:
-                            [
-                            State
-                            {
-                                name: 'loaded'; when: image.status == Thumbnail.Ready
-                                PropertyChanges { target: image; opacity: 1; }
-                            },
-                            State
-                            {
-                                name: 'loading'; when: image.status != Thumbnail.Ready
-                                PropertyChanges { target: image; opacity: 0; }
-                            }
-                        ]
-
-                        Behavior on opacity
+                        if (down)
                         {
-                            FadeAnimation {}
+                            useExternalImage = true
+                            currentBg = colors.length
                         }
                     }
                 }
+
+                IconButton
+                {
+                    id: ibEf
+                    icon.source: "image://theme/icon-m-right"
+                    visible: useExternalImage
+                    enabled: useExternalImage
+                    anchors.verticalCenter: tsEf.verticalCenter
+                    onClicked:
+                    {
+                        var imageSelectDialog = pageStack.push(Qt.resolvedUrl("../pages/MediaSelector.qml"),
+                                                               {"mode": "image",
+                                                                "datesort": true,
+                                                                "multiple": false})
+
+                        imageSelectDialog.accepted.connect(function()
+                        {
+                            var mediaFiles = imageSelectDialog.selectedFiles
+                            bgImagePath = mediaFiles[0]
+                            bgImageRotate = false
+                        })
+                    }
+                }
             }
-            IconButton
+
+            Row
             {
-                icon.source: "image://theme/icon-m-rotate"
-                icon.rotation: bgImageRotate ? 0 : 90
-                anchors.verticalCenter: previewPlaceHolder.verticalCenter
-                onClicked: bgImageRotate = !bgImageRotate
+                visible: useExternalImage
+                spacing: Theme.paddingLarge
+                x: Theme.paddingLarge
+
+                Rectangle
+                {
+                    id: previewPlaceHolder
+                    width: 2* Theme.itemSizeLarge
+                    height: 2* Theme.itemSizeLarge
+                    color: "transparent"
+
+                    Rectangle
+                    {
+                        width: (540/960) * 2* Theme.itemSizeLarge
+                        height: 2* Theme.itemSizeLarge
+                        color: "transparent"
+                        anchors.centerIn: previewPlaceHolder
+
+                        Thumbnail
+                        {
+                            id: image
+                            source: bgImagePath
+                            height: parent.height
+                            width: parent.width
+                            sourceSize.height: parent.height
+                            sourceSize.width: parent.width
+                            anchors.centerIn: parent
+                            clip: true
+                            smooth: true
+                            mimeType: "image"
+                            fillMode: bgImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
+
+                            states:
+                                [
+                                State
+                                {
+                                    name: 'loaded'; when: image.status == Thumbnail.Ready
+                                    PropertyChanges { target: image; opacity: 1; }
+                                },
+                                State
+                                {
+                                    name: 'loading'; when: image.status != Thumbnail.Ready
+                                    PropertyChanges { target: image; opacity: 0; }
+                                }
+                            ]
+
+                            Behavior on opacity
+                            {
+                                FadeAnimation {}
+                            }
+                        }
+                    }
+                }
+                IconButton
+                {
+                    icon.source: "image://theme/icon-m-rotate"
+                    icon.rotation: bgImageRotate ? 0 : 90
+                    anchors.verticalCenter: previewPlaceHolder.verticalCenter
+                    onClicked: bgImageRotate = !bgImageRotate
+                }
             }
         }
     }
