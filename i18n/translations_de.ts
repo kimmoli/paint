@@ -383,7 +383,7 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="128"/>
         <source>Font</source>
-        <translation>Schrift</translation>
+        <translation>Schriftart</translation>
     </message>
 </context>
 </TS>
