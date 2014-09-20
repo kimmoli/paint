@@ -48,6 +48,7 @@ ApplicationWindow
     property int gridSpacing: 50
     property bool gridSnapTo: false
     property bool gridVisible: false
+    property bool isColorWheel: false
 
     /*****************************************************/
 
