@@ -176,7 +176,7 @@ Page
         id: gridCanvas
         z: 8
         anchors.fill: canvas
-        renderTarget: Canvas.FramebufferObject
+        renderTarget: Canvas.Canvas.Image
         antialiasing: true
 
         property bool clearNow : false
@@ -369,7 +369,7 @@ Page
         id: dimensionCanvas
         z: 10
         anchors.fill: canvas
-        renderTarget: Canvas.FramebufferObject
+        renderTarget: Canvas.Canvas.Image
         antialiasing: true
 
         property bool clearNow : false
@@ -408,7 +408,7 @@ Page
         id: previewCanvas
         z: 11
         anchors.fill: canvas
-        renderTarget: Canvas.FramebufferObject
+        renderTarget: Canvas.Canvas.Image
         antialiasing: true
 
         property real downX
@@ -481,7 +481,7 @@ Page
         z: 9
 
         anchors.fill: page
-        renderTarget: Canvas.FramebufferObject
+        renderTarget: Canvas.Canvas.Image
         antialiasing: true
 
         property real lastX
