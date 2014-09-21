@@ -268,6 +268,36 @@ Page
         ctx.closePath()
     }
 
+    function drawEllipse(ctx, x0, y0, x1, y1, fill)
+    {
+
+        var x = Math.min(x0, x1),
+            y = Math.min(y0, y1),
+            w = Math.abs(x1-x0),
+            h = Math.abs(y1-y0);
+
+        var kappa = .5522848
+        var ox = (w / 2) * kappa // control point offset horizontal
+        var oy = (h / 2) * kappa // control point offset vertical
+        var xe = x + w           // x-end
+        var ye = y + h           // y-end
+        var xm = x + w / 2       // x-middle
+        var ym = y + h / 2       // y-middle
+
+        ctx.lineWidth = drawThickness
+        ctx.strokeStyle = colors[drawColor]
+        ctx.fillStyle  = colors[drawColor]
+
+        ctx.beginPath();
+        ctx.moveTo(x, ym);
+        ctx.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+        ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+        ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+        ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+        ctx.closePath();
+        ctx.stroke();
+    }
+
     function drawRectangle(ctx, x0,y0,x1,y1, fill)
     {
         ctx.lineWidth = drawThickness
@@ -454,6 +484,9 @@ Page
                     case Painter.RectangleFilled :
                         drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, true)
                         break;
+                    case Painter.Ellipse :
+                        drawEllipse(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
+                        break;
 
                     default:
                         break;
@@ -555,6 +588,9 @@ Page
                         break;
                     case Painter.RectangleFilled :
                         drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, true)
+                        break;
+                    case Painter.Ellipse:
+                        drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
                         break;
 
                     default:

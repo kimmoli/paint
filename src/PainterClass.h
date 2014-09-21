@@ -58,7 +58,8 @@ public:
         Rectangle,
         RectangleFilled,
         Circle,
-        CircleFilled
+        CircleFilled,
+        Ellipse
     };
 
 signals:

@@ -74,5 +74,19 @@ Row
         }
     }
 
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-geom-circle"
+        anchors.bottom: parent.bottom
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Ellipse)
+
+        onClicked:
+        {
+            drawMode = Painter.Geometrics
+            geometricsMode = Painter.Ellipse
+        }
+    }
+
+
 }
 
