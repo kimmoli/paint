@@ -288,17 +288,22 @@
 <context>
     <name>penSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="34"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="36"/>
         <source>Pen settings</source>
         <translation>Kynän asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="52"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="54"/>
         <source>Select color</source>
         <translation>Valitse väri</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="87"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="65"/>
+        <source>Edit color %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="266"/>
         <source>Pen width</source>
         <translation>Leveys</translation>
     </message>
