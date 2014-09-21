@@ -10,8 +10,6 @@ Dialog
     property int currentThickness: 0
     property bool isColorWheel: false
     property string colorWheelColor: "#000000"
-    property bool paintIt: false
-    property bool paintedIt: false
 
     onDone:
     {
@@ -56,30 +54,43 @@ Dialog
                 text: qsTr("Select color")
             }
 
-            TextSwitch
+            Row
             {
-                id: tsColorWheel
-                text: qsTr("Edit color")
-                automaticCheck: false
-                checked: isColorWheel
                 width: parent.width
-                onClicked:
+
+                TextSwitch
                 {
-                    isColorWheel = !isColorWheel
-                    if (!paintIt && isColorWheel && !paintedIt)
+                    id: tsColorWheel
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Edit color %1").arg(previewLine.color)
+                    automaticCheck: false
+                    checked: isColorWheel
+                    width: parent.width*(3/4)-Theme.paddingLarge
+
+                    onClicked:
                     {
-                        paintIt = true;
-                        colorWheelCanvas.requestPaint()
+                        isColorWheel = !isColorWheel
+
+                        if (isColorWheel)
+                        {
+                            colorWheelColor = colors[currentColor]
+                            colorWheelRect.color = colors[currentColor]
+                        }
+                        else
+                        {
+                            colorSelectorRepeater.model = colors
+                            colorCursor.visible = false
+                        }
                     }
-                    if (isColorWheel)
-                    {
-                        colorWheelColor = colors[currentColor]
-                        colorWheelRect.color = colors[currentColor]
-                    }
-                    if (!isColorWheel)
-                    {
-                        colorSelectorRepeater.model = colors
-                    }
+                }
+                Rectangle
+                {
+                    id: colorWheelRect
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: isColorWheel
+                    width: parent.width*(1/4)
+                    height: parent.height - Theme.paddingLarge
+                    radius: 5
                 }
             }
 
@@ -110,7 +121,11 @@ Dialog
                         BackgroundItem
                         {
                             anchors.fill: parent
-                            onClicked: currentColor = index
+                            onClicked:
+                            {
+                                currentColor = index
+                                previewLine.color = colors[currentColor]
+                            }
                         }
                     }
                 }
@@ -118,90 +133,77 @@ Dialog
 
             Rectangle
             {
-                id: colorWheelRect
+                id: colorWheelPlaceHolder
                 visible: isColorWheel
 
-                color: colorWheelColor
+                color: "transparent"
                 height: parent.width*(3/4)
-                width: height
-                radius: height*0.5
+                width: parent.width
+                radius: 10
 
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                Rectangle
+                {
+                    id: colorCursor
+                    visible: false
+                    x: 50
+                    y: 50
+                    width: 10
+                    height: 10
+                    z: 2
+                    color: "transparent"
+                    border.color: "White"
+                    border.width: 2
+                    radius: width*0.5
+                }
+
 
                 Canvas
                 {
                     id: colorWheelCanvas
                     anchors.fill: parent
-                    renderTarget: Canvas.FramebufferObject
+                    renderTarget: Canvas.Image
                     antialiasing: true
-
-                    property bool clearNow : false
-                    property int midX : width / 2
-                    property int midY : height / 2
 
                     onPaint:
                     {
-                        if (!paintIt)
-                            return
-
-                        paintedIt = true
-
                         var ctx = getContext('2d')
+
+                        var border = 20
 
                         ctx.clearRect(0, 0, width, height);
 
-                        var cx = width / 2
-                        var cy = height / 2
-                        var radius = width  / 2.3
-                        var hue, sat, value
-                        var i = 0, x, y, rx, ry, d
-                        var f, g, p, u, v, w, rgb
+                        /* RGB gradient */
+                        var grd = ctx.createLinearGradient(0, 0, width-2*border, 0);
+                        grd.addColorStop(0,   "red");
+                        grd.addColorStop(1/6, "magenta");
+                        grd.addColorStop(2/6, "blue");
+                        grd.addColorStop(3/6, "cyan");
+                        grd.addColorStop(4/6, "lime");
+                        grd.addColorStop(5/6, "yellow");
+                        grd.addColorStop(1,   "red");
+                        ctx.fillStyle = grd;
+                        ctx.fillRect(0, 0, width-2*border, height);
 
-                        var imageData = ctx.createImageData(width, height)
-                        var pixels = imageData.data
+                        /* Brightness gradient on top of RGB gradient */
+                        var grd2 = ctx.createLinearGradient(0,0,0,height);
+                        grd2.addColorStop(0,   "white");
+                        grd2.addColorStop(2/5, "transparent");
+                        grd2.addColorStop(3/5, "transparent");
+                        grd2.addColorStop(1,   "black");
+                        ctx.fillStyle = grd2;
+                        ctx.fillRect(0, 0, width-2*border, height);
 
-                        var vx = tsDark.checked ? 0 : 255
+                        /* Grey-scale gradient at right edge */
+                        var grd3 = ctx.createLinearGradient(0,0,0,height);
+                        grd3.addColorStop(0,   "white");
+                        grd3.addColorStop(border/height, "white")
+                        grd3.addColorStop((height-border)/height, "black")
+                        grd3.addColorStop(1,   "black");
+                        ctx.fillStyle = grd3;
+                        ctx.fillRect(width-2*border, 0, 2*border, height);
 
-                        /* This bastard takes ages to draw :( */
-
-                        for (y = 0; y < height; y = y + 1)
-                        {
-                            for (x = 0; x < width; x = x + 1, i = i + 4)
-                            {
-                                rx = x - cx
-                                ry = y - cy
-                                d = rx * rx + ry * ry
-                                if (d < radius * radius)
-                                {
-                                    hue = 6 * (Math.atan2(ry, rx) + Math.PI) / (2 * Math.PI)
-                                    sat = Math.sqrt(d) / radius
-                                    g = Math.floor(hue)
-                                    f = hue - g
-
-                                    if (!tsDark.checked)
-                                    {
-                                        u = 255 * (1 - sat)
-                                        v = 255 * (1 - sat * f)
-                                        w = 255 * (1 - sat * (1 - f))
-                                        pixels[i] =     [vx, v, u, u, w, vx, vx][g]
-                                        pixels[i + 2] = [u, u, w, vx, vx, v, u][g]
-                                    }
-                                    else
-                                    {
-                                        u = 255 * (sat)
-                                        v = 255 * (sat * (1 - f))
-                                        w = 255 * (sat * f)
-                                        g = 6 - g
-                                        pixels[i+2] =     [vx, v, u, u, w, vx, vx][g]
-                                        pixels[i] = [u, u, w, vx, vx, v, u][g]
-                                    }
-                                    pixels[i + 1] = [w, vx, vx, v, u, u, w][g]
-                                    pixels[i + 3] = 255
-                                }
-                            }
-                        }
-
-                      ctx.putImageData(imageData, 0, 0);
                     }
                 }
 
@@ -217,30 +219,46 @@ Dialog
                         return ((r << 16) | (g << 8) | b).toString(16)
                     }
 
+                    function rgbToHexInverse(r, g, b)
+                    {
+                        if (r > 255 || g > 255 || b > 255)
+                            throw "Invalid color component"
+                        return (((255-r) << 16) | ((255-g) << 8) | (255-b)).toString(16)
+                    }
+
+
+                    preventStealing: true
+
+                    onPositionChanged: getColorAtPosition()
                     onPressed:
                     {
-                        var ctx = colorWheelCanvas.getContext('2d')
-                        var p = ctx.getImageData(mouseX, mouseY, 1, 1).data;
-                        var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6)
-                        console.log("color at " + mouseX + "x" + mouseY + " is " + hex)
-
-                        /* Just set them all ... */
-                        colorWheelColor = hex
-                        colorWheelRect.color = colorWheelColor
-                        colors[currentColor] = colorWheelColor
-                        previewLine.color = colorWheelColor
+                        colorCursor.visible = true
+                        getColorAtPosition()
                     }
+
+                    function getColorAtPosition()
+                    {
+                        if (mouseX > 0 && mouseY > 0 && mouseX < width-1 && mouseY < height-1)
+                        {
+                            var ctx = colorWheelCanvas.getContext('2d')
+                            var p = ctx.getImageData(mouseX, mouseY, 1, 1).data;
+                            var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6)
+                            console.log("color at " + mouseX + "x" + mouseY + " is " + hex)
+
+                            /* Just set them all ... */
+                            colorWheelColor = hex
+                            colorWheelRect.color = colorWheelColor
+                            colors[currentColor] = colorWheelColor
+                            previewLine.color = colorWheelColor
+
+                            colorCursor.x = (mouseX) - 5
+                            colorCursor.y = (mouseY) - 5
+                            colorCursor.border.color = "#" + ("000000" + rgbToHexInverse(p[0], p[1], p[2])).slice(-6)
+                        }
+                    }
+
                 }
             }
-
-            TextSwitch
-            {
-                visible: isColorWheel
-                id: tsDark
-                text: qsTr("Dark colors")
-                onClicked: colorWheelCanvas.requestPaint()
-            }
-
 
             SectionHeader
             {
