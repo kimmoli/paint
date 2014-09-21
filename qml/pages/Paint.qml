@@ -482,6 +482,7 @@ Page
 
         anchors.fill: page
         renderTarget: Canvas.Image
+        renderStrategy: Canvas.Threaded
         antialiasing: true
 
         property real lastX

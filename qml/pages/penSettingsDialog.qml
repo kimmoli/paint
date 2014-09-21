@@ -164,6 +164,7 @@ Dialog
                     id: colorWheelCanvas
                     anchors.fill: parent
                     renderTarget: Canvas.Image
+                    renderStrategy: Canvas.Threaded
                     antialiasing: true
 
                     onPaint:
