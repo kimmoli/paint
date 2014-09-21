@@ -70,6 +70,9 @@ Dialog
                     {
                         paintIt = true;
                         colorWheelCanvas.requestPaint()
+                    }
+                    if (isColorWheel)
+                    {
                         colorWheelColor = colors[currentColor]
                         colorWheelRect.color = colors[currentColor]
                     }
@@ -157,28 +160,43 @@ Dialog
                         var imageData = ctx.createImageData(width, height)
                         var pixels = imageData.data
 
+                        var vx = tsDark.checked ? 0 : 255
+
                         /* This bastard takes ages to draw :( */
 
                         for (y = 0; y < height; y = y + 1)
                         {
                             for (x = 0; x < width; x = x + 1, i = i + 4)
                             {
-                                rx = x - cx;
-                                ry = y - cy;
-                                d = rx * rx + ry * ry;
+                                rx = x - cx
+                                ry = y - cy
+                                d = rx * rx + ry * ry
                                 if (d < radius * radius)
                                 {
-                                    hue = 6 * (Math.atan2(ry, rx) + Math.PI) / (2 * Math.PI);
-                                    sat = Math.sqrt(d) / radius;
-                                    g = Math.floor(hue);
-                                    f = hue - g;
-                                    u = 255 * (1 - sat);
-                                    v = 255 * (1 - sat * f);
-                                    w = 255 * (1 - sat * (1 - f));
-                                    pixels[i] = [255, v, u, u, w, 255, 255][g];
-                                    pixels[i + 1] = [w, 255, 255, v, u, u, w][g];
-                                    pixels[i + 2] = [u, u, w, 255, 255, v, u][g];
-                                    pixels[i + 3] = 255;
+                                    hue = 6 * (Math.atan2(ry, rx) + Math.PI) / (2 * Math.PI)
+                                    sat = Math.sqrt(d) / radius
+                                    g = Math.floor(hue)
+                                    f = hue - g
+
+                                    if (!tsDark.checked)
+                                    {
+                                        u = 255 * (1 - sat)
+                                        v = 255 * (1 - sat * f)
+                                        w = 255 * (1 - sat * (1 - f))
+                                        pixels[i] =     [vx, v, u, u, w, vx, vx][g]
+                                        pixels[i + 2] = [u, u, w, vx, vx, v, u][g]
+                                    }
+                                    else
+                                    {
+                                        u = 255 * (sat)
+                                        v = 255 * (sat * (1 - f))
+                                        w = 255 * (sat * f)
+                                        g = 6 - g
+                                        pixels[i+2] =     [vx, v, u, u, w, vx, vx][g]
+                                        pixels[i] = [u, u, w, vx, vx, v, u][g]
+                                    }
+                                    pixels[i + 1] = [w, vx, vx, v, u, u, w][g]
+                                    pixels[i + 3] = 255
                                 }
                             }
                         }
@@ -214,6 +232,15 @@ Dialog
                     }
                 }
             }
+
+            TextSwitch
+            {
+                visible: isColorWheel
+                id: tsDark
+                text: qsTr("Dark colors")
+                onClicked: colorWheelCanvas.requestPaint()
+            }
+
 
             SectionHeader
             {
