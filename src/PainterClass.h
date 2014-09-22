@@ -56,9 +56,7 @@ public:
     {
         Line = 0,
         Rectangle,
-        RectangleFilled,
         Circle,
-        CircleFilled,
         Ellipse
     };
 

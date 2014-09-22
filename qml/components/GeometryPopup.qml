@@ -8,6 +8,8 @@ Row
 {
     id: geometryPopup
 
+    property bool geometryFillToggled: false
+
     IconButton
     {
         icon.source: "image://paintIcons/icon-m-geom-line"
@@ -23,9 +25,9 @@ Row
 
     IconButton
     {
-        icon.source: "image://paintIcons/icon-m-geom-rectangle"
+        icon.source: geometryFill ? "image://paintIcons/icon-m-geom-rectangle-filled" : "image://paintIcons/icon-m-geom-rectangle"
         anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Rectangle)
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Rectangle) && !geometryFillToggled
 
         onClicked:
         {
@@ -36,23 +38,9 @@ Row
 
     IconButton
     {
-        icon.source: "image://paintIcons/icon-m-geom-rectangle-filled"
+        icon.source: geometryFill ? "image://paintIcons/icon-m-geom-circle-filled" : "image://paintIcons/icon-m-geom-circle"
         anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.RectangleFilled)
-
-        onClicked:
-        {
-            drawMode = Painter.Geometrics
-            geometricsMode = Painter.RectangleFilled
-        }
-    }
-
-
-    IconButton
-    {
-        icon.source: "image://paintIcons/icon-m-geom-circle"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Circle)
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Circle) && !geometryFillToggled
 
         onClicked:
         {
@@ -63,27 +51,31 @@ Row
 
     IconButton
     {
-        icon.source: "image://paintIcons/icon-m-geom-circle-filled"
+        icon.source: geometryFill ? "image://paintIcons/icon-m-geom-ellipse-filled" : "image://paintIcons/icon-m-geom-ellipse"
         anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.CircleFilled)
-
-        onClicked:
-        {
-            drawMode = Painter.Geometrics
-            geometricsMode = Painter.CircleFilled
-        }
-    }
-
-    IconButton
-    {
-        icon.source: "image://paintIcons/icon-m-geom-circle"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Ellipse)
+        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Ellipse) && !geometryFillToggled
 
         onClicked:
         {
             drawMode = Painter.Geometrics
             geometricsMode = Painter.Ellipse
+        }
+    }
+
+    IconButton
+    {
+        icon.source: "image://paintIcons/icon-m-geom-fill"
+        anchors.bottom: parent.bottom
+        highlighted: geometryFill
+
+        onClicked:
+        {
+            /* geometryFillToggled is used as workaround as highlighted iconButton does not follow icon.source
+               non-highlighted follows. */
+
+            geometryFillToggled = true
+            geometryFill = !geometryFill
+            geometryFillToggled = false
         }
     }
 

@@ -295,6 +295,8 @@ Page
         ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
         ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
         ctx.closePath();
+        if (fill)
+            ctx.fill()
         ctx.stroke();
     }
 
@@ -473,19 +475,13 @@ Page
                         drawLine(ctx, downX, downY, area.gMouseX, area.gMouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
-                        break;
-                    case Painter.CircleFilled :
-                        drawCircle(ctx, downX, downY, area.gMouseX, area.gMouseY, true)
+                        drawCircle(ctx, downX, downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
-                        break;
-                    case Painter.RectangleFilled :
-                        drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, true)
+                        drawRectangle(ctx, downX, downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
                     case Painter.Ellipse :
-                        drawEllipse(ctx, downX, downY, area.gMouseX, area.gMouseY, false)
+                        drawEllipse(ctx, downX, downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
 
                     default:
@@ -578,19 +574,13 @@ Page
                         drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY)
                         break;
                     case Painter.Circle :
-                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
-                        break;
-                    case Painter.CircleFilled :
-                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, true)
+                        drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
                     case Painter.Rectangle :
-                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
-                        break;
-                    case Painter.RectangleFilled :
-                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, true)
+                        drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
                     case Painter.Ellipse:
-                        drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, false)
+                        drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
 
                     default:
