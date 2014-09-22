@@ -300,7 +300,7 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="65"/>
         <source>Edit color %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe %1 bearbeiten</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="266"/>
