@@ -60,68 +60,91 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <source>Draw ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <source>Draw filled ellipse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <source>Fill mode toggle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Text tool (cancel text)</source>
         <translation>Textverktyg (avbryt text)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Accept current text</source>
         <translation>Acceptera aktuell text</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Dimensioning tool</source>
         <translation>Dimensioneringsverktyg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Grid</source>
         <translation>Stödlinjer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>About Paint</source>
         <translation>Om Paint</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Change settings</source>
         <translation>Ändra inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>Clear drawing</source>
         <translation>Rensa skärmen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Change background</source>
         <translation>Ändra bakgrund</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
         <source>Save snapshot</source>
         <translation>Spara ögonblicksbild</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>About </source>
         <translation>Om </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="101"/>
+        <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="109"/>
+        <location filename="../qml/pages/AboutPage.qml" line="112"/>
         <source>translation credit placeholder</source>
         <translation>Svensk översättning av Åke Engelbrektson</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="117"/>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Help</source>
         <translation>Hjälp</translation>
+    </message>
+</context>
+<context>
+    <name>ColorSelector</name>
+    <message>
+        <location filename="../qml/components/ColorSelector.qml" line="22"/>
+        <source>Edit color %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -163,22 +186,22 @@
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="29"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="30"/>
         <source>Select background</source>
         <translation>Välj bakgrund</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="48"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="49"/>
         <source>Select color</source>
         <translation>Välj färg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="88"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="60"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="110"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="82"/>
         <source>Image</source>
         <translation>Bild</translation>
     </message>
@@ -288,22 +311,17 @@
 <context>
     <name>penSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="36"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="35"/>
         <source>Pen settings</source>
         <translation>Penninställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="54"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="53"/>
         <source>Select color</source>
         <translation>Välj färg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="65"/>
-        <source>Edit color %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="266"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="64"/>
         <source>Pen width</source>
         <translation>Penntjocklek</translation>
     </message>
@@ -311,32 +329,32 @@
 <context>
     <name>spraySettingsDialog</name>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="57"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="58"/>
         <source>Sprayer settings</source>
         <translation>Spray-inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="76"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="77"/>
         <source>Select color</source>
         <translation>Välj färg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="150"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="123"/>
         <source>Sprayer parameters</source>
         <translation>Spray-parametrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="156"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="129"/>
         <source>Size</source>
         <translation>Storlek</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="169"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="142"/>
         <source>Density</source>
         <translation>Densitet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="183"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="156"/>
         <source>Particle size</source>
         <translation>Partikelstorlek</translation>
     </message>
@@ -361,32 +379,32 @@
 <context>
     <name>textSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="38"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="39"/>
         <source>Text settings</source>
         <translation>Textinställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="56"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="57"/>
         <source>Select color</source>
         <translation>Välj färg</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="91"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="67"/>
         <source>Font size</source>
         <translation>Teckenstorlek</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="113"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="89"/>
         <source>Bold</source>
         <translation>Fet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="120"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="96"/>
         <source>Italic</source>
         <translation>Kursiv</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="128"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="104"/>
         <source>Font</source>
         <translation>Typsnitt</translation>
     </message>
