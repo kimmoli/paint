@@ -61,17 +61,17 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita ellips</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita fylld ellips</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Fill mode toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>Växla fyllnad/transparens</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="22"/>
         <source>Edit color %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändra färg %1</translation>
     </message>
 </context>
 <context>
