@@ -50,9 +50,13 @@ int main(int argc, char *argv[])
     engine->addImageProvider(QLatin1String("paintThumbnail"), new NemoThumbnailProvider);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
+
+    /* Revert some defaults due Sailfish moving to Qt5.2 not to allow releasing graphics resources.
+     * source https://lists.sailfishos.org/pipermail/devel/2014-May/004123.html */
+    view->setPersistentOpenGLContext(true);
+    view->setPersistentSceneGraph(true);
+
     view->show();
-
-
 
     return app->exec();
 }
