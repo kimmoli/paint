@@ -1,13 +1,14 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.Thumbnailer 1.0
+import "../components"
 
 Dialog
 {
     id: bgSettingsDialog
     canAccept: true
 
-    property int currentBg: 0
+    property int currentColor: 0
     property bool useExternalImage: false
     property string bgImagePath : ""
     property bool bgImageRotate : false
@@ -48,52 +49,23 @@ Dialog
                 text: qsTr("Select color")
             }
 
-            Grid
+            ColorSelector
             {
-                id: colorSelector
-                columns: 4
-                Repeater
-                {
-                    model: colors
-                    Rectangle
-                    {
-                        width: col.width/colorSelector.columns
-                        height: col.width/colorSelector.columns
-                        radius: 10
-                        color: (index == currentBg) ? colors[index] : "transparent"
-                        Rectangle
-                        {
-                            width: parent.width - 20
-                            height: parent.height - 20
-                            radius: 5
-                            color: colors[index]
-                            anchors.centerIn: parent
-                        }
-                        BackgroundItem
-                        {
-                            anchors.fill: parent
-                            onClicked:
-                            {
-                                useExternalImage = false
-                                currentBg = index
-                            }
-                        }
-                    }
-                }
+                previewColor: currentColor === colors.length ? "#000000" : colors[currentColor]
             }
 
             TextSwitch
             {
                 id: ts
                 text: qsTr("None")
-                checked: (currentBg === colors.length) && !useExternalImage
+                checked: (currentColor === colors.length) && !useExternalImage
                 automaticCheck: false
                 onDownChanged:
                 {
                     if (down)
                     {
                         useExternalImage = false
-                        currentBg = colors.length
+                        currentColor = colors.length
                     }
                 }
             }
@@ -108,14 +80,14 @@ Dialog
                 {
                     id: tsEf
                     text: qsTr("Image")
-                    checked: (currentBg === colors.length) && useExternalImage
+                    checked: (currentColor === colors.length) && useExternalImage
                     automaticCheck: false
                     onDownChanged:
                     {
                         if (down)
                         {
                             useExternalImage = true
-                            currentBg = colors.length
+                            currentColor = colors.length
                         }
                     }
                 }
