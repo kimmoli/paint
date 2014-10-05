@@ -61,17 +61,17 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellipse zeichnen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Gefülltes Ellipse zeichnen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Fill mode toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>Gefüllt</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
@@ -144,7 +144,7 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="22"/>
         <source>Edit color %1</source>
-        <translation type="unfinished">Farbe %1 bearbeiten</translation>
+        <translation>Farbe %1 bearbeiten</translation>
     </message>
 </context>
 <context>
