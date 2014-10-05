@@ -5,6 +5,7 @@
 TARGET = harbour-paint
 
 CONFIG += sailfishapp
+QT += dbus
 
 DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
@@ -21,8 +22,6 @@ i18n.files = i18n/translations_fi.qm \
     i18n/translations_de.qm
 
 INSTALLS += i18n
-
-QT += dbus
 
 SOURCES += src/paint.cpp \
     src/PainterClass.cpp \
