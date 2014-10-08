@@ -82,7 +82,7 @@ QList<int> GetSailfishVersion()
        while (not in.atEnd())
        {
            QString line = in.readLine();
-           if (line.startsWith("dVERSION_ID="))
+           if (line.startsWith("VERSION_ID="))
            {
                version.clear();
                foreach (QString tmp, line.split('=').at(1).split('.'))
