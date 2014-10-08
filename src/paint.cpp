@@ -27,6 +27,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "nemothumbnailitem.h"
 #include "nemothumbnailprovider.h"
 
+QList<int> GetSailfishVersion();
+
 int main(int argc, char *argv[])
 {
     qmlRegisterType<PainterClass>("harbour.paint.PainterClass", 1, 0, "Painter");
@@ -51,15 +53,50 @@ int main(int argc, char *argv[])
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
 
-    /* Revert some defaults due Sailfish moving to Qt5.2 not to allow releasing graphics resources.
-     * source https://lists.sailfishos.org/pipermail/devel/2014-May/004123.html */
-    view->setPersistentOpenGLContext(true);
-    view->setPersistentSceneGraph(true);
+    if (GetSailfishVersion().at(1) > 0)
+    {
+        qDebug() << "Setting persistence";
+        /* Revert some defaults due Sailfish moving to Qt5.2 not to allow releasing graphics resources.
+         * source https://lists.sailfishos.org/pipermail/devel/2014-May/004123.html */
+        view->setPersistentOpenGLContext(true);
+        view->setPersistentSceneGraph(true);
+    }
 
     view->show();
 
     return app->exec();
 }
 
+QList<int> GetSailfishVersion()
+{
+    QList<int> version;
+
+    version << -1 << -1 << -1 << -1;
+
+    QFile inputFile( "/etc/sailfish-release" );
+
+    if ( inputFile.open( QIODevice::ReadOnly | QIODevice::Text ) )
+    {
+       QTextStream in( &inputFile );
+
+       while (not in.atEnd())
+       {
+           QString line = in.readLine();
+           if (line.startsWith("dVERSION_ID="))
+           {
+               version.clear();
+               foreach (QString tmp, line.split('=').at(1).split('.'))
+               {
+                   version << tmp.toInt();
+               }
+               break;
+           }
+       }
+       inputFile.close();
+    }
+    qDebug() << "version is" << version;
+
+    return version;
+}
 
 
