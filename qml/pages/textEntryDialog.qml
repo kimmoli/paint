@@ -76,7 +76,6 @@ Dialog
                 {
                     id: previewCanvas
                     anchors.fill: parent
-                    renderTarget: Canvas.FramebufferObject
                     antialiasing: true
 
                     property bool clearNow : false
