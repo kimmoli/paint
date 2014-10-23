@@ -433,12 +433,29 @@ Page
         }
     }
 
+    SequentialAnimation
+    {
+             id: textEditActiveAnimation
+             running: textEditPending
+             loops: Animation.Infinite
+
+             NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
+             NumberAnimation { target: previewCanvas; property: "opacity"; to: 1.0; duration: 500; easing.type: Easing.InOutCubic }
+
+             onRunningChanged:
+             {
+                 if (!running)
+                     previewCanvas.opacity = 1.0
+             }
+    }
+
     Canvas
     {
         id: previewCanvas
         z: 11
         anchors.fill: canvas
         antialiasing: true
+        opacity: 1.0
 
         property real downX
         property real downY
