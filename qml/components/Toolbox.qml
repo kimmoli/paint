@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.paint.PainterClass 1.0
 
 Row
 {
@@ -35,6 +36,10 @@ Row
         remorse.execute(qsTr("Clearing"), function()
         {
             canvas.clear()
+            previewCanvas.clear()
+
+            if (textEditPending)
+                textEditCancel()
 
             /* Clear also all dimensions created */
             dimensionModel.clear()
@@ -49,6 +54,84 @@ Row
 
         var toolbarComp = Qt.createComponent(Qt.resolvedUrl("../components/Toolbar" + number + ".qml"))
         toolbar = toolbarComp.createObject(toolBox)
+    }
+
+    function showToolSettings()
+    {
+        var SettingsDialog
+
+        switch (drawMode)
+        {
+        case Painter.Eraser :
+            SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/eraserSettingsDialog.qml"),
+                                                   { "currentThickness": eraserThickness })
+
+            SettingsDialog.accepted.connect(function() {
+                eraserThickness = SettingsDialog.currentThickness
+            })
+
+            break;
+
+        case Painter.Spray :
+            SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/spraySettingsDialog.qml"),
+                                                   { "currentRadius": sprayerRadius,
+                                                     "currentParticleSize": sprayerParticleSize,
+                                                     "currentDensity": sprayerDensity,
+                                                     "currentColor": sprayerColor})
+
+            SettingsDialog.accepted.connect(function() {
+                sprayerRadius = SettingsDialog.currentRadius
+                sprayerParticleSize = SettingsDialog.currentParticleSize
+                sprayerDensity = SettingsDialog.currentDensity
+                sprayerColor = SettingsDialog.currentColor
+            })
+
+            break;
+
+        case Painter.Geometrics:
+        case Painter.Pen :
+            SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
+                                                   { "currentColor": drawColor,
+                                                     "currentThickness": drawThickness })
+
+            SettingsDialog.accepted.connect(function() {
+                drawColor = SettingsDialog.currentColor
+                drawThickness = SettingsDialog.currentThickness
+            })
+
+            break;
+
+        case Painter.Text:
+            SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                 { "currentColor": textColor,
+                                                   "currentSize": textFontSize,
+                                                   "isBold": textFontBold,
+                                                   "isItalic": textFontItalic,
+                                                   "fontNameIndex": textFontNameIndex})
+
+            SettingsDialog.accepted.connect(function()
+            {
+                textColor = SettingsDialog.currentColor
+                textFontSize = SettingsDialog.currentSize
+                textFontBold = SettingsDialog.isBold
+                textFontItalic = SettingsDialog.isItalic
+                textFontNameIndex = SettingsDialog.fontNameIndex
+                textSettingsChanged()
+            })
+            break;
+        case Painter.Dimensioning:
+            SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
+                                                   { "currentColor": drawColor,
+                                                     "currentThickness": drawThickness })
+
+            SettingsDialog.accepted.connect(function() {
+                drawColor = SettingsDialog.currentColor
+                drawThickness = SettingsDialog.currentThickness
+            })
+            break;
+        default:
+            break;
+        }
     }
 
     Behavior on opacity

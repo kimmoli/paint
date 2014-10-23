@@ -44,6 +44,8 @@ Row
                 showDimensionPopup()
             else
                 toggleDimensionPopup()
+            if (textEditPending)
+                textEditCancel()
             drawMode = Painter.Dimensioning
         }
     }
@@ -59,47 +61,20 @@ Row
     IconButton
     {
         id: toolSettingsButton
-        icon.source: "image://paintIcons/icon-m-toolsettings"
+        icon.source:
+        {
+            if (drawMode == Painter.Text)
+                return "image://paintIcons/icon-m-textsettings"
+            if (drawMode == Painter.Eraser)
+                return "image://paintIcons/icon-m-erasersettings"
+            return "image://paintIcons/icon-m-toolsettings"
+        }
+
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            var SettingsDialog
-
-            switch (drawMode)
-            {
-            case Painter.Text:
-                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
-                                                     { "currentColor": textColor,
-                                                       "currentSize": textFontSize,
-                                                       "isBold": textFontBold,
-                                                       "isItalic": textFontItalic,
-                                                       "fontNameIndex": textFontNameIndex})
-
-                SettingsDialog.accepted.connect(function()
-                {
-                    textColor = SettingsDialog.currentColor
-                    textFontSize = SettingsDialog.currentSize
-                    textFontBold = SettingsDialog.isBold
-                    textFontItalic = SettingsDialog.isItalic
-                    textFontNameIndex = SettingsDialog.fontNameIndex
-                    textSettingsChanged()
-                })
-                break;
-            case Painter.Dimensioning:
-                SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
-                                                       { "currentColor": drawColor,
-                                                         "currentThickness": drawThickness })
-
-                SettingsDialog.accepted.connect(function() {
-                    drawColor = SettingsDialog.currentColor
-                    drawThickness = SettingsDialog.currentThickness
-                })
-                break;
-            default:
-                break;
-            }
-
+            showToolSettings()
         }
     }
 

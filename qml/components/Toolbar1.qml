@@ -16,6 +16,8 @@ Row
         {
             toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
             hideGeometryPopup()
+            if (textEditPending)
+                textEditCancel()
             drawMode = Painter.Pen
         }
     }
@@ -30,6 +32,8 @@ Row
         {
             toolSettingsButton.icon.source = "image://paintIcons/icon-m-erasersettings"
             hideGeometryPopup()
+            if (textEditPending)
+                textEditCancel()
             drawMode = Painter.Eraser
         }
     }
@@ -44,6 +48,8 @@ Row
         {
             toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
             hideGeometryPopup()
+            if (textEditPending)
+                textEditCancel()
             drawMode = Painter.Spray
         }
     }
@@ -61,6 +67,8 @@ Row
                 showGeometryPopup()
             else
                 toggleGeometryPopup()
+            if (textEditPending)
+                textEditCancel()
             drawMode = Painter.Geometrics
         }
     }
@@ -69,57 +77,19 @@ Row
     IconButton
     {
         id: toolSettingsButton
-        icon.source: "image://paintIcons/icon-m-toolsettings"
+        icon.source:
+        {
+            if (drawMode == Painter.Text)
+                return "image://paintIcons/icon-m-textsettings"
+            if (drawMode == Painter.Eraser)
+                return "image://paintIcons/icon-m-erasersettings"
+            return "image://paintIcons/icon-m-toolsettings"
+        }
         anchors.bottom: parent.bottom
 
         onClicked:
         {
-            var SettingsDialog
-
-            switch (drawMode)
-            {
-                case Painter.Eraser :
-                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/eraserSettingsDialog.qml"),
-                                                           { "currentThickness": eraserThickness })
-
-                    SettingsDialog.accepted.connect(function() {
-                        eraserThickness = SettingsDialog.currentThickness
-                    })
-
-                    break;
-
-                case Painter.Spray :
-                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/spraySettingsDialog.qml"),
-                                                           { "currentRadius": sprayerRadius,
-                                                             "currentParticleSize": sprayerParticleSize,
-                                                             "currentDensity": sprayerDensity,
-                                                             "currentColor": sprayerColor})
-
-                    SettingsDialog.accepted.connect(function() {
-                        sprayerRadius = SettingsDialog.currentRadius
-                        sprayerParticleSize = SettingsDialog.currentParticleSize
-                        sprayerDensity = SettingsDialog.currentDensity
-                        sprayerColor = SettingsDialog.currentColor
-                    })
-
-                    break;
-
-                case Painter.Geometrics:
-                case Painter.Pen :
-                    SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
-                                                           { "currentColor": drawColor,
-                                                             "currentThickness": drawThickness })
-
-                    SettingsDialog.accepted.connect(function() {
-                        drawColor = SettingsDialog.currentColor
-                        drawThickness = SettingsDialog.currentThickness
-                    })
-
-                    break;
-
-                default :
-                    break;
-            }
+            showToolSettings()
         }
     }
 
