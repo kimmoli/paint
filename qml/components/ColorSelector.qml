@@ -124,6 +124,7 @@ Rectangle
             id: colorWheelCanvas
             anchors.fill: parent
             antialiasing: true
+            renderStrategy: Canvas.Immediate
 
             onPaint:
             {
