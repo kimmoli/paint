@@ -66,12 +66,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation>Gefülltes Ellipse zeichnen</translation>
+        <translation>Gefüllte Ellipse zeichnen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Fill mode toggle</source>
-        <translation>Gefüllt</translation>
+        <translation>Füllung ein/aus</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
