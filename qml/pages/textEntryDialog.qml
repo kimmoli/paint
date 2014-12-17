@@ -7,6 +7,7 @@ Dialog
 {
     id: textEntryDialog
     canAccept: ti.focus === false
+    backNavigation: ti.focus === false
 
     property string newText : ""
 
