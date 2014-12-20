@@ -14,12 +14,14 @@ message($${DEFINES})
 #system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_de.ts)
+#system(lupdate qml -ts $$PWD/i18n/translations_nl.ts)
 system(lrelease $$PWD/i18n/*.ts)
 
 i18n.path = /usr/share/harbour-paint/i18n
 i18n.files = i18n/translations_fi.qm \
     i18n/translations_sv.qm \
-    i18n/translations_de.qm
+    i18n/translations_de.qm \
+    i18n/translations_nl.qm
 
 INSTALLS += i18n
 
@@ -96,11 +98,13 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-ellipse.png \
     qml/icons/icon-m-geom-ellipse-filled.png \
     qml/icons/icon-m-geom-fill.png \
-    qml/components/ColorSelector.qml
+    qml/components/ColorSelector.qml \
+    i18n/translations_nl.ts
 
 TRANSLATIONS += i18n/translations_fi.ts \
     i18n/translations_sv.ts \
-    i18n/translations_de.ts
+    i18n/translations_de.ts \
+    i18n/translations_nl.ts
 
 RESOURCES +=
 
