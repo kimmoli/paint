@@ -23,6 +23,7 @@ Rectangle
             automaticCheck: false
             checked: isColorWheel
             width: parent.width*(3/4)-Theme.paddingLarge
+            enabled: currentColor < colors.length
 
             onClicked:
             {

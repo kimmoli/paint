@@ -51,6 +51,7 @@ Dialog
 
             ColorSelector
             {
+                id: colSelector
                 previewColor: currentColor === colors.length ? "#000000" : colors[currentColor]
             }
 
@@ -66,6 +67,7 @@ Dialog
                     {
                         useExternalImage = false
                         currentColor = colors.length
+                        colSelector.isColorWheel = false
                     }
                 }
             }
@@ -88,6 +90,7 @@ Dialog
                         {
                             useExternalImage = true
                             currentColor = colors.length
+                            colSelector.isColorWheel = false
                         }
                     }
                 }
