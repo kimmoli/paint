@@ -297,12 +297,12 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugeinstellungen</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugeinstellungen merken</translation>
     </message>
 </context>
 <context>
