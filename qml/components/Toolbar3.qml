@@ -76,12 +76,16 @@ Row
                                                        "currentColor": bgColor,
                                                        "useExternalImage": useImageAsBackground,
                                                        "bgImagePath": backgroundImagePath,
-                                                      "bgImageRotate": backgroundImageRotate })
+                                                       "bgImageRotate": backgroundImageRotate })
             bgSettingsDialog.accepted.connect(function() {
                 bgColor = bgSettingsDialog.currentColor
                 useImageAsBackground = bgSettingsDialog.useExternalImage
                 backgroundImagePath = bgSettingsDialog.bgImagePath
                 backgroundImageRotate = bgSettingsDialog.bgImageRotate
+                if (rememberToolSettings)
+                {
+                    painter.setToolSetting("bgColor", bgSettingsDialog.currentColor)
+                }
             })
 
         }

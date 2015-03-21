@@ -94,6 +94,7 @@ ApplicationWindow
             textFontNameIndex = painter.getToolSetting("textFontNameIndex", 0)
             textFontBold = (painter.getToolSetting("textFontBold", 0) === 1)
             textFontItalic = (painter.getToolSetting("textFontItalic", 0) === 1)
+            bgColor = painter.getToolSetting("bgColor", colors.length)
         }
     }
 
