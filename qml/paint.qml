@@ -67,14 +67,18 @@ ApplicationWindow
         id: painter
         Component.onCompleted:
         {
-            toolboxLocation = painter.getToolboxLocation()
-            gridSpacing = painter.getGridSpacing()
-            gridSnapTo = painter.getGridSnapTo()
+            /* Get general settings */
+            toolboxLocation = painter.getSetting("toolboxLocation", "toolboxTop")
+            gridSpacing = painter.getSetting("gridSpacing", 50)
+            gridSnapTo = (painter.getSetting("gridSnapTo", "false") === "true")
+
+            /* Get fonts */
             for (var i=0 ; i<painter.getNumberOfFonts(); i++)
             {
                 console.log("font " + i + " is " + painter.getFontName(i))
                 fontList.append( {"number": i, "name": painter.getFontName(i) } )
             }
+
             /* Get tool settings */
             drawColor = painter.getToolSetting("drawColor", 0)
             drawThickness = painter.getToolSetting("drawThickness", 3)

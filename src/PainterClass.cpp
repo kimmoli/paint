@@ -17,8 +17,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
 {
-    fileExtension = getSaveMode();
-    toolboxLocation = getToolboxLocation();
     fontFamilies = QFontDatabase().families();
 }
 
@@ -44,7 +42,7 @@ QString PainterClass::saveScreenshot()
                     .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
                     .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
                     .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
-                    .arg(fileExtension);
+                    .arg(getSetting("fileExtension", QVariant("png")).toString());
 
     QDBusMessage m = QDBusMessage::createMethodCall("org.nemomobile.lipstick",
                                                     "/org/nemomobile/lipstick/screenshot",
@@ -69,88 +67,22 @@ QString PainterClass::saveScreenshot()
 
 }
 
-QString PainterClass::getSaveMode()
+QVariant PainterClass::getSetting(QString name, QVariant defaultValue)
 {
     QSettings s("harbour-paint", "harbour-paint");
     s.beginGroup("Settings");
-    fileExtension = s.value("fileExtension", "png").toString();
+    QVariant settingValue = s.value(name, defaultValue);
     s.endGroup();
 
-    return fileExtension;
+    return settingValue;
 }
 
-void PainterClass::setSaveMode(QString extension)
+void PainterClass::setSetting(QString name, QVariant value)
 {
     QSettings s("harbour-paint", "harbour-paint");
     s.beginGroup("Settings");
-    s.setValue("fileExtension", extension);
+    s.setValue(name, value);
     s.endGroup();
-
-    fileExtension = extension;
-}
-
-QString PainterClass::getToolboxLocation()
-{
-    QSettings s("harbour-paint", "harbour-paint");
-    s.beginGroup("Settings");
-    toolboxLocation = s.value("toolboxLocation", "toolboxTop").toString();
-    s.endGroup();
-
-    return toolboxLocation;
-}
-
-void PainterClass::setToolboxLocation(QString location)
-{
-    QSettings s("harbour-paint", "harbour-paint");
-    s.beginGroup("Settings");
-    s.setValue("toolboxLocation", location);
-    s.endGroup();
-
-    toolboxLocation = location;
-}
-
-QString PainterClass::getLanguage()
-{
-    return QLocale::system().name().split('_').at(0);
-}
-
-int PainterClass::getGridSpacing()
-{
-    QSettings s("harbour-paint", "harbour-paint");
-    s.beginGroup("Settings");
-    int gridSpacing = s.value("gridSpacing", "50").toInt();
-    s.endGroup();
-
-    return gridSpacing;
-}
-
-bool PainterClass::getGridSnapTo()
-{
-    QSettings s("harbour-paint", "harbour-paint");
-    s.beginGroup("Settings");
-    bool gridSnapTo = s.value("gridSnapTo", "false").toBool();
-    s.endGroup();
-
-    return gridSnapTo;
-}
-
-void PainterClass::setGridSettings(int gridSpacing, bool gridSnapTo)
-{
-    QSettings s("harbour-paint", "harbour-paint");
-    s.beginGroup("Settings");
-    s.setValue("gridSpacing", gridSpacing);
-    s.setValue("gridSnapTo", gridSnapTo);
-    s.endGroup();
-}
-
-int PainterClass::getNumberOfFonts()
-{
-    return fontFamilies.count();
-}
-
-QString PainterClass::getFontName(int number)
-{
-    return fontFamilies.at(number);
 }
 
 int PainterClass::getToolSetting(QString name, int defaultValue)
@@ -169,4 +101,19 @@ void PainterClass::setToolSetting(QString name, int value)
     s.beginGroup("Tools");
     s.setValue(name, value);
     s.endGroup();
+}
+
+QString PainterClass::getLanguage()
+{
+    return QLocale::system().name().split('_').at(0);
+}
+
+int PainterClass::getNumberOfFonts()
+{
+    return fontFamilies.count();
+}
+
+QString PainterClass::getFontName(int number)
+{
+    return fontFamilies.at(number);
 }

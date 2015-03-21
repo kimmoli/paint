@@ -11,6 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifndef PainterClass_H
 #define PainterClass_H
 #include <QObject>
+#include <QVariant>
 #include <QStringList>
 
 class PainterClass : public QObject
@@ -27,22 +28,15 @@ public:
     QString readVersion();
 
     Q_INVOKABLE QString saveScreenshot();
-    Q_INVOKABLE QString getSaveMode();
-    Q_INVOKABLE void setSaveMode(QString extension);
 
-    Q_INVOKABLE QString getToolboxLocation();
-    Q_INVOKABLE void setToolboxLocation(QString location);
-    Q_INVOKABLE QString getLanguage();
-
-    Q_INVOKABLE int getGridSpacing();
-    Q_INVOKABLE bool getGridSnapTo();
-    Q_INVOKABLE void setGridSettings(int gridSpacing, bool gridSnapTo);
-
-    Q_INVOKABLE int getNumberOfFonts();
-    Q_INVOKABLE QString getFontName(int number);
-
+    Q_INVOKABLE QVariant getSetting(QString name, QVariant defaultValue);
+    Q_INVOKABLE void setSetting(QString name, QVariant value);
     Q_INVOKABLE int getToolSetting(QString name, int defaultValue);
     Q_INVOKABLE void setToolSetting(QString name, int value);
+
+    Q_INVOKABLE QString getLanguage();
+    Q_INVOKABLE int getNumberOfFonts();
+    Q_INVOKABLE QString getFontName(int number);
 
     enum Mode
     {
@@ -67,8 +61,6 @@ signals:
     void versionChanged();
 
 private:
-    QString fileExtension;
-    QString toolboxLocation;
     QStringList fontFamilies;
 
 };
