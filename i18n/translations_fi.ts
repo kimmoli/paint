@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fi_FI">
+<TS version="2.1" language="fi_FI">
 <context>
     <name>AboutPage</name>
     <message>
@@ -170,7 +170,7 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="43"/>
+        <location filename="../qml/components/Toolbar3.qml" line="45"/>
         <source>File format</source>
         <translation>Tiedostomuoto</translation>
     </message>
@@ -178,7 +178,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="35"/>
+        <location filename="../qml/components/Toolbox.qml" line="36"/>
         <source>Clearing</source>
         <translation>Tyhjennetään</translation>
     </message>
@@ -196,12 +196,12 @@
         <translation>Valitse väri</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="60"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="61"/>
         <source>None</source>
         <translation>Ei mitään</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="82"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="84"/>
         <source>Image</source>
         <translation>Kuva</translation>
     </message>
@@ -255,44 +255,54 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="33"/>
+        <location filename="../qml/pages/genSettings.qml" line="35"/>
         <source>General settings</source>
         <translation>Yleiset asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="52"/>
+        <location filename="../qml/pages/genSettings.qml" line="54"/>
         <source>File format</source>
         <translation>Tiedostomuoto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="90"/>
+        <location filename="../qml/pages/genSettings.qml" line="92"/>
         <source>Toolbox location</source>
         <translation>Työkalupalkin sijainti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="100"/>
+        <location filename="../qml/pages/genSettings.qml" line="102"/>
         <source>Top</source>
         <translation>Yläreuna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="114"/>
+        <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Bottom</source>
         <translation>Alareuna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="128"/>
+        <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Grid settings</source>
         <translation>Ruudukon asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="135"/>
+        <location filename="../qml/pages/genSettings.qml" line="137"/>
         <source>Snap to Grid</source>
         <translation>Tartu ruudukkoon</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="143"/>
+        <location filename="../qml/pages/genSettings.qml" line="145"/>
         <source>Grid spacing</source>
         <translation>Ruudukon väli</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="156"/>
+        <source>Tool settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="163"/>
+        <source>Remember tool settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -339,22 +349,22 @@
         <translation>Valitse väri</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="123"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="122"/>
         <source>Sprayer parameters</source>
         <translation>Yksityiskohdat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="129"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="128"/>
         <source>Size</source>
         <translation>Koko</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="142"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="141"/>
         <source>Density</source>
         <translation>Tiheys</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="156"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="155"/>
         <source>Particle size</source>
         <translation>Hiukkasen koko</translation>
     </message>
@@ -370,8 +380,8 @@
         <translation type="obsolete">Varoitus: Älä peruuta nyt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textEntryDialog.qml" line="52"/>
-        <location filename="../qml/pages/textEntryDialog.qml" line="60"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="53"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="61"/>
         <source>Enter some text</source>
         <translation>Syötä teksti tähän</translation>
     </message>
