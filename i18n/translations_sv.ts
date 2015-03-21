@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<TS version="2.0" language="sv_SE">
 <context>
     <name>AboutPage</name>
     <message>
@@ -216,7 +216,7 @@
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="43"/>
         <source>Warning: Do not cancel now</source>
-        <translation>Varning! Avbryt inte nu.</translation>
+        <translation>Varning! Avbryt inte nu</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="78"/>
@@ -297,12 +297,12 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Verktygsinställningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kom ihåg verktygsinställningar</translation>
     </message>
 </context>
 <context>
