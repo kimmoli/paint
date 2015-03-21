@@ -68,6 +68,7 @@ Row
 
             SettingsDialog.accepted.connect(function() {
                 eraserThickness = SettingsDialog.currentThickness
+                painter.setToolSetting("eraserThickness", eraserThickness)
             })
 
             break;
@@ -84,6 +85,10 @@ Row
                 sprayerParticleSize = SettingsDialog.currentParticleSize
                 sprayerDensity = SettingsDialog.currentDensity
                 sprayerColor = SettingsDialog.currentColor
+                painter.setToolSetting("sprayerRadius", sprayerRadius)
+                painter.setToolSetting("sprayerParticleSize", sprayerParticleSize)
+                painter.setToolSetting("sprayerDensity", sprayerDensity)
+                painter.setToolSetting("sprayerColor", sprayerColor)
             })
 
             break;
@@ -97,6 +102,8 @@ Row
             SettingsDialog.accepted.connect(function() {
                 drawColor = SettingsDialog.currentColor
                 drawThickness = SettingsDialog.currentThickness
+                painter.setToolSetting("drawColor", drawColor)
+                painter.setToolSetting("drawThickness", drawThickness)
             })
 
             break;
@@ -117,6 +124,11 @@ Row
                 textFontItalic = SettingsDialog.isItalic
                 textFontNameIndex = SettingsDialog.fontNameIndex
                 textSettingsChanged()
+                painter.setToolSetting("textColor", textColor)
+                painter.setToolSetting("textFontSize", textFontSize)
+                painter.setToolSetting("textFontBold", textFontBold)
+                painter.setToolSetting("textFontItalic", textFontItalic)
+                painter.setToolSetting("textFontNameIndex", textFontNameIndex)
             })
             break;
         case Painter.Dimensioning:
@@ -127,6 +139,8 @@ Row
             SettingsDialog.accepted.connect(function() {
                 drawColor = SettingsDialog.currentColor
                 drawThickness = SettingsDialog.currentThickness
+                painter.setToolSetting("drawColor", drawColor)
+                painter.setToolSetting("drawThickness", drawThickness)
             })
             break;
         default:

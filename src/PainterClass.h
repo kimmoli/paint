@@ -41,6 +41,9 @@ public:
     Q_INVOKABLE int getNumberOfFonts();
     Q_INVOKABLE QString getFontName(int number);
 
+    Q_INVOKABLE int getToolSetting(QString name, int defaultValue);
+    Q_INVOKABLE void setToolSetting(QString name, int value);
+
     enum Mode
     {
         None = -1,

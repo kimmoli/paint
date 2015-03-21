@@ -9,8 +9,8 @@ Name:       harbour-paint
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Paint
-Version:    0.6.devel
-Release:    15
+Version:    0.7.devel
+Release:    16
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/

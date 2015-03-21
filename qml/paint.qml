@@ -75,6 +75,19 @@ ApplicationWindow
                 console.log("font " + i + " is " + painter.getFontName(i))
                 fontList.append( {"number": i, "name": painter.getFontName(i) } )
             }
+            /* Get tool settings */
+            drawColor = painter.getToolSetting("drawColor", 0)
+            drawThickness = painter.getToolSetting("drawThickness", 3)
+            eraserThickness = painter.getToolSetting("eraserThickness", 15)
+            sprayerRadius = painter.getToolSetting("sprayerRadius", 20)
+            sprayerDensity = painter.getToolSetting("sprayerDensity", 50)
+            sprayerParticleSize = painter.getToolSetting("sprayerParticleSize", 3)
+            sprayerColor = painter.getToolSetting("sprayerColor", 0)
+            textColor = painter.getToolSetting("textColor", 0)
+            textFontSize = painter.getToolSetting("textFontSize", 40)
+            textFontNameIndex = painter.getToolSetting("textFontNameIndex", 0)
+            textFontBold = (painter.getToolSetting("textFontBold", 0) === 1)
+            textFontItalic = (painter.getToolSetting("textFontItalic", 0) === 1)
         }
     }
 

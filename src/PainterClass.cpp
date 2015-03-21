@@ -153,3 +153,20 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
+int PainterClass::getToolSetting(QString name, int defaultValue)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Tools");
+    int toolSettingValue = s.value(name, defaultValue).toInt();
+    s.endGroup();
+
+    return toolSettingValue;
+}
+
+void PainterClass::setToolSetting(QString name, int value)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("Tools");
+    s.setValue(name, value);
+    s.endGroup();
+}
