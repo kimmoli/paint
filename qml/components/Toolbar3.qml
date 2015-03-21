@@ -34,7 +34,8 @@ Row
                                                    {"saveFormat": saveModeWas ,
                                                     "toolboxLocation": toolboxLocation,
                                                     "gridSpacing": gridSpacing,
-                                                    "gridSnapTo": gridSnapTo })
+                                                    "gridSnapTo": gridSnapTo,
+                                                    "rememberToolSettings": rememberToolSettings})
 
             genSettingsDialog.accepted.connect(function()
             {
@@ -45,12 +46,14 @@ Row
                 toolboxLocation = genSettingsDialog.toolboxLocation
                 gridSpacing = genSettingsDialog.gridSpacing
                 gridSnapTo = genSettingsDialog.gridSnapTo
+                rememberToolSettings = genSettingsDialog.rememberToolSettings
                 gridSettingsChanged()
 
                 painter.setSetting("fileExtension", genSettingsDialog.saveFormat)
                 painter.setSetting("toolboxLocation", genSettingsDialog.toolboxLocation)
                 painter.setSetting("gridSpacing", genSettingsDialog.gridSpacing)
                 painter.setSetting("gridSnapTo", genSettingsDialog.gridSnapTo ? "true" : "false")
+                painter.setSetting("rememberToolSettings", genSettingsDialog.rememberToolSettings ? "true" : "false")
             })
         }
     }

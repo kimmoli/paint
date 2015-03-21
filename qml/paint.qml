@@ -50,6 +50,7 @@ ApplicationWindow
     property bool gridSnapTo: false
     property bool gridVisible: false
     property bool isColorWheel: false
+    property bool rememberToolSettings: false
 
     /*****************************************************/
 
@@ -71,6 +72,7 @@ ApplicationWindow
             toolboxLocation = painter.getSetting("toolboxLocation", "toolboxTop")
             gridSpacing = painter.getSetting("gridSpacing", 50)
             gridSnapTo = (painter.getSetting("gridSnapTo", "false") === "true")
+            rememberToolSettings = (painter.getSetting("rememberToolSettings", "false") === "true")
 
             /* Get fonts */
             for (var i=0 ; i<painter.getNumberOfFonts(); i++)

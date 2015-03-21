@@ -10,11 +10,13 @@ Dialog
     property string toolboxLocation : "NaN"
     property int gridSpacing : 50
     property bool gridSnapTo : false
+    property bool rememberToolSettings : false
 
     onAccepted:
     {
         gridSpacing = gridSpacingSlider.value
         gridSnapTo = gridSnapSwitch.checked
+        rememberToolSettings = rememberToolSettingsSwitch.checked
     }
 
     SilicaFlickable
@@ -147,6 +149,20 @@ Dialog
                 minimumValue: 20
                 maximumValue: 100
                 stepSize: 1
+            }
+
+            SectionHeader
+            {
+                text: qsTr("Tool settings")
+            }
+
+
+            TextSwitch
+            {
+                id: rememberToolSettingsSwitch
+                text: qsTr("Remember tool settings")
+                checked: rememberToolSettings
+                width: parent.width
             }
 
 
