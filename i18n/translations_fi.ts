@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fi_FI">
+<TS version="2.0" language="fi_FI">
 <context>
     <name>AboutPage</name>
     <message>
@@ -297,12 +297,12 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Työkalujen asetukset</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Muista asetukset</translation>
     </message>
 </context>
 <context>
