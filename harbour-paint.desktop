@@ -2,6 +2,6 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Name=Paint
+Name[zh_CN]=绘画
 Icon=harbour-paint
 Exec=harbour-paint
-
