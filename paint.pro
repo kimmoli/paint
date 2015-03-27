@@ -11,6 +11,7 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
 message($${DEFINES})
 
+#system(lupdate qml -ts $$PWD/i18n/translations_en.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
 #system(lupdate qml -ts $$PWD/i18n/translations_de.ts)
@@ -102,9 +103,11 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-fill.png \
     qml/components/ColorSelector.qml \
     i18n/translations_nl.ts \
-    i18n/translations_zh_CN.ts
+    i18n/translations_zh_CN.ts \
+    i18n/translations_en.ts
 
-TRANSLATIONS += i18n/translations_fi.ts \
+TRANSLATIONS += i18n/translations_en.ts \
+    i18n/translations_fi.ts \
     i18n/translations_sv.ts \
     i18n/translations_de.ts \
     i18n/translations_nl.ts \
