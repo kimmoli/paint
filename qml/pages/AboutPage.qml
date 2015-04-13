@@ -113,7 +113,7 @@ Page
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
-                visible: language === "de" || language === "sv" || language === "nl"
+                visible: language !== "en" && language !== "fi"
             }
             SectionHeader
             {

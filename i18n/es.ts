@@ -1,142 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fi_FI">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="27"/>
         <source>Change toolbar</source>
-        <translation>Vaihda työkalurivi</translation>
+        <translation>Cambiar barra de herramientas</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
-        <translation>Vapaapiirto</translation>
+        <translation>Dibujar línea a mano alzada</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
-        <translation>Pyyhin</translation>
+        <translation>Goma de borrar</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
-        <translation>Sumutin</translation>
+        <translation>Pulverizador</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
-        <translation>Piirrä muotoja</translation>
+        <translation>Dibujar forma geométrica</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
-        <translation>Vaihda väri, leveys</translation>
+        <translation>Cambiar color, ancho</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
-        <translation>Piirrä viiva</translation>
+        <translation>Dibujar línea</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
-        <translation>Piirrä suorakaide</translation>
+        <translation>Dibujar rectángulo</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Täytetty suorakaide</translation>
+        <translation>Dibujar rectángulo relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw circle</source>
-        <translation>Piirrä ympyrä</translation>
+        <translation>Dibujar círculo</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled circle</source>
-        <translation>Täytetty ympyrä</translation>
+        <translation>Dibujar círculo relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw ellipse</source>
-        <translation>Piirrä ellipsi</translation>
+        <translation>Dibujar elipse</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation>Täytetty ellipsi</translation>
+        <translation>Dibujar elipse rellena</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Fill mode toggle</source>
-        <translation>Täyttö päälle/pois</translation>
+        <translation>Activar/desactivar modo relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Text tool (cancel text)</source>
-        <translation>Tekstityökalu (peruuta)</translation>
+        <translation>Herramienta de texto (cancelar texto)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Accept current text</source>
-        <translation>Hyväksy teksti</translation>
+        <translation>Aceptar texto actual</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Dimensioning tool</source>
-        <translation>Mittatyökalu</translation>
+        <translation>Herramienta de acotación</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Grid</source>
-        <translation>Ruudukko</translation>
+        <translation>Cuadrícula</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>About Paint</source>
-        <translation>Tietoja ohjelmasta</translation>
+        <translation>Acerca de Paint</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Change settings</source>
-        <translation>Asetukset</translation>
+        <translation>Cambiar ajustes</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>Clear drawing</source>
-        <translation>Tyhjennä piirrustus</translation>
+        <translation>Limpiar dibujo</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Change background</source>
-        <translation>Vaihda tausta</translation>
+        <translation>Cambiar fondo</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
         <source>Save snapshot</source>
-        <translation>Tallenna</translation>
+        <translation>Guardar instantánea</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>About </source>
-        <translation>Tämä on </translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>Version: </source>
-        <translation>Versio: </translation>
+        <translation>Versión:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="112"/>
         <source>translation credit placeholder</source>
-        <translation>itten käänsin</translation>
+        <translation>Carmen Fernández B.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Help</source>
-        <translation>Pika-apu</translation>
+        <translation>Ayuda</translation>
     </message>
 </context>
 <context>
@@ -144,7 +142,7 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="22"/>
         <source>Edit color %1</source>
-        <translation>Muokkaa väriä %1</translation>
+        <translation>Editar color %1</translation>
     </message>
 </context>
 <context>
@@ -152,19 +150,12 @@
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
-        <translation>Kuva valittu</translation>
+        <translation>Imagen seleccionada</translation>
     </message>
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Select image</source>
-        <translation>Valitse kuva</translation>
-    </message>
-</context>
-<context>
-    <name>Toolbar2</name>
-    <message>
-        <source>File format</source>
-        <translation type="obsolete">Tiedostomuoto</translation>
+        <translation>Seleccionar imagen</translation>
     </message>
 </context>
 <context>
@@ -172,7 +163,7 @@
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="45"/>
         <source>File format</source>
-        <translation>Tiedostomuoto</translation>
+        <translation>Formato del fichero</translation>
     </message>
 </context>
 <context>
@@ -180,7 +171,7 @@
     <message>
         <location filename="../qml/components/Toolbox.qml" line="36"/>
         <source>Clearing</source>
-        <translation>Tyhjennetään</translation>
+        <translation>Limpiando</translation>
     </message>
 </context>
 <context>
@@ -188,55 +179,55 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="30"/>
         <source>Select background</source>
-        <translation>Valitse tausta</translation>
+        <translation>Seleccionar fondo</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="49"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Seleccionar color</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="61"/>
         <source>None</source>
-        <translation>Ei mitään</translation>
+        <translation>Ninguno</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="84"/>
         <source>Image</source>
-        <translation>Kuva</translation>
+        <translation>Imagen</translation>
     </message>
 </context>
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
-        <source>Dimensioning</source>
-        <translation>Mittaukset</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="43"/>
         <source>Warning: Do not cancel now</source>
-        <translation>Varoitus: Älä peruuta nyt</translation>
+        <translation>Atención: No canceles ahora</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
+        <source>Dimensioning</source>
+        <translation>Acotación</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="78"/>
         <source>Scale all dimensions</source>
-        <translation>Skaalaa kaikki mittaukset</translation>
+        <translation>Escalar todas las dimensiones</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="84"/>
         <source>Reference length %1</source>
-        <translation>Referenssimitta %1</translation>
+        <translation>Longitud de referencia %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="90"/>
         <source>Currently scaled length %1</source>
-        <translation>Skaalattu mitta %1</translation>
+        <translation>Longitud a escala usada actualmente %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="98"/>
         <source>Enter true length</source>
-        <translation>Syötä todellinen pituus</translation>
+        <translation>Introduce la longitud correcta</translation>
     </message>
 </context>
 <context>
@@ -244,12 +235,12 @@
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="34"/>
         <source>Eraser settings</source>
-        <translation>Pyyhekumin asetukset</translation>
+        <translation>Ajustes de la goma de borrar</translation>
     </message>
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="52"/>
         <source>Eraser size</source>
-        <translation>Koko</translation>
+        <translation>Tamaño de la goma de borrar</translation>
     </message>
 </context>
 <context>
@@ -257,52 +248,52 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="35"/>
         <source>General settings</source>
-        <translation>Yleiset asetukset</translation>
+        <translation>Ajustes generales</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="54"/>
         <source>File format</source>
-        <translation>Tiedostomuoto</translation>
+        <translation>Formato del fichero</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="92"/>
         <source>Toolbox location</source>
-        <translation>Työkalupalkin sijainti</translation>
+        <translation>Ubicación de la caja de herramientas</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="102"/>
         <source>Top</source>
-        <translation>Yläreuna</translation>
+        <translation>Arriba</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Bottom</source>
-        <translation>Alareuna</translation>
+        <translation>Abajo</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Grid settings</source>
-        <translation>Ruudukon asetukset</translation>
+        <translation>Ajustes de la cuadrícula</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="137"/>
         <source>Snap to Grid</source>
-        <translation>Tartu ruudukkoon</translation>
+        <translation>Ajustar a la cuadrícula</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="145"/>
         <source>Grid spacing</source>
-        <translation>Ruudukon väli</translation>
+        <translation>Espaciado de la cuadrícula</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation>Työkalujen asetukset</translation>
+        <translation>Ajustes de la herramienta</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation>Muista asetukset</translation>
+        <translation>Guardar los ajustes de las herramientas</translation>
     </message>
 </context>
 <context>
@@ -310,12 +301,12 @@
     <message>
         <location filename="../qml/paint.qml" line="13"/>
         <source>Accept</source>
-        <translation>Hyväksy</translation>
+        <translation>Aceptar</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Peru</translation>
+        <translation>Cancelar</translation>
     </message>
 </context>
 <context>
@@ -323,17 +314,17 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="35"/>
         <source>Pen settings</source>
-        <translation>Kynän asetukset</translation>
+        <translation>Ajustes del lápiz</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="53"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Seleccionar color</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="64"/>
         <source>Pen width</source>
-        <translation>Leveys</translation>
+        <translation>Ancho del lápiz</translation>
     </message>
 </context>
 <context>
@@ -341,49 +332,41 @@
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="58"/>
         <source>Sprayer settings</source>
-        <translation>Sumuttimen asetukset</translation>
+        <translation>Ajustes del pulverizador</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="77"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Seleccionar color</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="122"/>
         <source>Sprayer parameters</source>
-        <translation>Yksityiskohdat</translation>
+        <translation>Parámetros del pulverizador</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="128"/>
         <source>Size</source>
-        <translation>Koko</translation>
+        <translation>Tamaño</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="141"/>
         <source>Density</source>
-        <translation>Tiheys</translation>
+        <translation>Densidad</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="155"/>
         <source>Particle size</source>
-        <translation>Hiukkasen koko</translation>
+        <translation>Tamaño de la partícula</translation>
     </message>
 </context>
 <context>
     <name>textEntryDialog</name>
     <message>
-        <source>Text entry</source>
-        <translation type="obsolete">Tekstinsyöttö</translation>
-    </message>
-    <message>
-        <source>Warning: Do not cancel now</source>
-        <translation type="obsolete">Varoitus: Älä peruuta nyt</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="53"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="61"/>
         <source>Enter some text</source>
-        <translation>Syötä teksti tähän</translation>
+        <translation>Introduce algún texto</translation>
     </message>
 </context>
 <context>
@@ -391,32 +374,32 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="39"/>
         <source>Text settings</source>
-        <translation>Tekstin asetukset</translation>
+        <translation>Ajustes del texto</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="57"/>
         <source>Select color</source>
-        <translation>Valitse väri</translation>
+        <translation>Seleccionar color</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="67"/>
         <source>Font size</source>
-        <translation>Kirjaisimen koko</translation>
+        <translation>Tamaño de la fuente</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="89"/>
         <source>Bold</source>
-        <translation>Lihavoitu</translation>
+        <translation>Negrita</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="96"/>
         <source>Italic</source>
-        <translation>Kursiivi</translation>
+        <translation>Cursiva</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="104"/>
         <source>Font</source>
-        <translation>Fontti</translation>
+        <translation>Fuente</translation>
     </message>
 </context>
 </TS>

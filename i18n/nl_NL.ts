@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -161,13 +159,6 @@
     </message>
 </context>
 <context>
-    <name>Toolbar2</name>
-    <message>
-        <source>File format</source>
-        <translation type="obsolete">Filformat</translation>
-    </message>
-</context>
-<context>
     <name>Toolbar3</name>
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="45"/>
@@ -209,14 +200,14 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
-        <source>Dimensioning</source>
-        <translation>Afmetingen</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="43"/>
         <source>Warning: Do not cancel now</source>
         <translation>Waarschuwing: nu niet annuleren!</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
+        <source>Dimensioning</source>
+        <translation>Afmetingen</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="78"/>
@@ -297,12 +288,12 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolinstellingen</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolinstellingen onthouden</translation>
     </message>
 </context>
 <context>
@@ -361,7 +352,7 @@
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="141"/>
         <source>Density</source>
-        <translation>Verspreiding</translation>
+        <translation>Dichtheid</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="155"/>
@@ -371,14 +362,6 @@
 </context>
 <context>
     <name>textEntryDialog</name>
-    <message>
-        <source>Text entry</source>
-        <translation type="obsolete">Textinmatning</translation>
-    </message>
-    <message>
-        <source>Warning: Do not cancel now</source>
-        <translation type="obsolete">Waarschuwing: nu niet annuleren!</translation>
-    </message>
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="53"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="61"/>
@@ -401,7 +384,7 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="67"/>
         <source>Font size</source>
-        <translation>Lettertypegrootte</translation>
+        <translation>Lettergrootte</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="89"/>

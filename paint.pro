@@ -11,20 +11,11 @@ DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
 message($${DEFINES})
 
-#system(lupdate qml -ts $$PWD/i18n/translations_en.ts)
-#system(lupdate qml -ts $$PWD/i18n/translations_fi.ts)
-#system(lupdate qml -ts $$PWD/i18n/translations_sv.ts)
-#system(lupdate qml -ts $$PWD/i18n/translations_de.ts)
-#system(lupdate qml -ts $$PWD/i18n/translations_nl.ts)
-#system(lupdate qml -ts $$PWD/i18n/translations_zh_CN.ts)
+#system(lupdate qml -ts $$PWD/i18n/*.ts)
 system(lrelease $$PWD/i18n/*.ts)
 
 i18n.path = /usr/share/harbour-paint/i18n
-i18n.files = i18n/translations_fi.qm \
-    i18n/translations_sv.qm \
-    i18n/translations_de.qm \
-    i18n/translations_nl.qm \
-    i18n/translations_zh_CN.qm
+i18n.files = i18n/*.qm
 
 INSTALLS += i18n
 
@@ -54,7 +45,6 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/bgSettingsDialog.qml \
     harbour-paint.desktop \
     harbour-paint.png \
-    i18n/translations_fi.ts \
     qml/components/Messagebox.qml \
     qml/components/Toolbox.qml \
     qml/pages/genSettings.qml \
@@ -71,7 +61,6 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-circle.png \
     qml/icons/icon-m-geom-rectangle-filled.png \
     qml/icons/icon-m-geom-circle-filled.png \
-    i18n/translations_sv.ts \
     qml/pages/eraserSettingsDialog.qml \
     qml/pages/spraySettingsDialog.qml \
     qml/icons/icon-m-save.png \
@@ -93,7 +82,6 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-erasersettings.png \
     qml/icons/icon-m-eraser.png \
     qml/icons/icon-m-dimensiontool.png \
-    i18n/translations_de.ts \
     qml/pages/dimensionDialog.qml \
     qml/components/DimensionPopup.qml \
     qml/icons/icon-m-move.png \
@@ -102,16 +90,9 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-ellipse-filled.png \
     qml/icons/icon-m-geom-fill.png \
     qml/components/ColorSelector.qml \
-    i18n/translations_nl.ts \
-    i18n/translations_zh_CN.ts \
-    i18n/translations_en.ts
+    i18n/*.ts
 
-TRANSLATIONS += i18n/translations_en.ts \
-    i18n/translations_fi.ts \
-    i18n/translations_sv.ts \
-    i18n/translations_de.ts \
-    i18n/translations_nl.ts \
-    i18n/translations_zh_CN.ts
+TRANSLATIONS += i18n/*.ts
 
 RESOURCES +=
 

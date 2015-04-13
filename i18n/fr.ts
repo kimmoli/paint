@@ -1,142 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="27"/>
         <source>Change toolbar</source>
-        <translation>Werkzeugleiste anpassen</translation>
+        <translation>Modifier barre d&apos;outils</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
-        <translation>Freihandlinie zeichnen</translation>
+        <translation>Forme libre</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
-        <translation>Radierer</translation>
+        <translation>Effaceur</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
-        <translation>Airbrush</translation>
+        <translation>Spray</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
-        <translation>Form zeichnen</translation>
+        <translation>Formes géométriques</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
-        <translation>Farbe/Stärke anpassen</translation>
+        <translation>Modifier couleur, largeur</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
-        <translation>Linie zeichnen</translation>
+        <translation>Ligne</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
-        <translation>Rechteck zeichnen</translation>
+        <translation>Rectangle</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Gefülltes Rechteck zeichnen</translation>
+        <translation>Rectangle plein</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw circle</source>
-        <translation>Kreis zeichnen</translation>
+        <translation>Cercle</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled circle</source>
-        <translation>Gefüllten Kreis zeichnen</translation>
+        <translation>Cercle plein</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw ellipse</source>
-        <translation>Ellipse zeichnen</translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation>Gefüllte Ellipse zeichnen</translation>
+        <translation>Ellipse pleine</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Fill mode toggle</source>
-        <translation>Füllung ein/aus</translation>
+        <translation>Mode remplissage </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Text tool (cancel text)</source>
-        <translation>Textwerkzeug (Text verwerfen)</translation>
+        <translation>Texte ( annuler texte ) </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Accept current text</source>
-        <translation>Aktuellen Text übernehmen</translation>
+        <translation>Accepter le texte actuel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Dimensioning tool</source>
-        <translation>Skalierungswerkzeug</translation>
+        <translation>Redimensionner les outils</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Grid</source>
-        <translation>Raster</translation>
+        <translation>Grille</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>About Paint</source>
-        <translation>Über Paint</translation>
+        <translation>A propos de Paint</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Change settings</source>
-        <translation>Einstellungen ändern</translation>
+        <translation>Modifier les paramètres</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>Clear drawing</source>
-        <translation>Zeichnung leeren</translation>
+        <translation>Nettoyer la feuille</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Change background</source>
-        <translation>Hintergrund anpassen</translation>
+        <translation>Modifer l&apos;arrière-plan</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
         <source>Save snapshot</source>
-        <translation>Schnappschuss speichern</translation>
+        <translation>Sauvegarder snapshot</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="66"/>
         <source>About </source>
-        <translation>Über </translation>
+        <translation>A propos</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="104"/>
         <source>Version: </source>
-        <translation>Version: </translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="112"/>
         <source>translation credit placeholder</source>
-        <translation>Deutsche Übersetzung von Jens Klingen</translation>
+        <translation>Helped by Clovis86</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aide</translation>
     </message>
 </context>
 <context>
@@ -144,7 +142,7 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="22"/>
         <source>Edit color %1</source>
-        <translation>Farbe %1 bearbeiten</translation>
+        <translation>Modifier Couleur %1</translation>
     </message>
 </context>
 <context>
@@ -152,19 +150,12 @@
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Image selected</source>
-        <translation>Bild ausgewählt</translation>
+        <translation>Image séléctionnée</translation>
     </message>
     <message>
         <location filename="../qml/pages/MediaSelector.qml" line="73"/>
         <source>Select image</source>
-        <translation>Bild auswählen</translation>
-    </message>
-</context>
-<context>
-    <name>Toolbar2</name>
-    <message>
-        <source>File format</source>
-        <translation type="obsolete">Dateiformat</translation>
+        <translation>Sélectionner image</translation>
     </message>
 </context>
 <context>
@@ -172,7 +163,7 @@
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="45"/>
         <source>File format</source>
-        <translation>Dateiformat</translation>
+        <translation>Format de fichier</translation>
     </message>
 </context>
 <context>
@@ -180,7 +171,7 @@
     <message>
         <location filename="../qml/components/Toolbox.qml" line="36"/>
         <source>Clearing</source>
-        <translation>Leeren</translation>
+        <translation>Effacer</translation>
     </message>
 </context>
 <context>
@@ -188,55 +179,55 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="30"/>
         <source>Select background</source>
-        <translation>Hintergrund auswählen</translation>
+        <translation>Choisir arrière-plan</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="49"/>
         <source>Select color</source>
-        <translation>Farbe auswählen</translation>
+        <translation>Choisir couleur</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="61"/>
         <source>None</source>
-        <translation>Keine</translation>
+        <translation>Aucun</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="84"/>
         <source>Image</source>
-        <translation>Bild</translation>
+        <translation>Image</translation>
     </message>
 </context>
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
-        <source>Dimensioning</source>
-        <translation>Skalierung</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="43"/>
         <source>Warning: Do not cancel now</source>
-        <translation>Warnung: Jetzt nicht abbrechen</translation>
+        <translation>Attention: Ne pas annuler </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/dimensionDialog.qml" line="60"/>
+        <source>Dimensioning</source>
+        <translation>Redimensionner</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="78"/>
         <source>Scale all dimensions</source>
-        <translation>Alle Dimensionen skalieren</translation>
+        <translation>Adapter toutes les dimensions</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="84"/>
         <source>Reference length %1</source>
-        <translation>Bezugslänge %1</translation>
+        <translation>Longueur de référence %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="90"/>
         <source>Currently scaled length %1</source>
-        <translation>Aktuell skalierte Länge %1</translation>
+        <translation>Echelle actuelle %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="98"/>
         <source>Enter true length</source>
-        <translation>Tatsächliche Länge angeben</translation>
+        <translation>Saisir nouvelle longueur</translation>
     </message>
 </context>
 <context>
@@ -244,12 +235,12 @@
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="34"/>
         <source>Eraser settings</source>
-        <translation>Radierer-Einstellungen</translation>
+        <translation>Paramètres d&apos;effacement</translation>
     </message>
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="52"/>
         <source>Eraser size</source>
-        <translation>Radierer-Breite</translation>
+        <translation>Taille de l&apos;effaceur</translation>
     </message>
 </context>
 <context>
@@ -257,52 +248,52 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="35"/>
         <source>General settings</source>
-        <translation>Allgemeine Einstellungen</translation>
+        <translation>Paramètres généraux</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="54"/>
         <source>File format</source>
-        <translation>Dateiformat</translation>
+        <translation>Format de fichier</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="92"/>
         <source>Toolbox location</source>
-        <translation>Position der Werkzeugleiste</translation>
+        <translation>Emplacement des boites d&apos;outils</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="102"/>
         <source>Top</source>
-        <translation>Oben</translation>
+        <translation>Haut</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Bottom</source>
-        <translation>Unten</translation>
+        <translation>Bas</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Grid settings</source>
-        <translation>Rastereinstellungen</translation>
+        <translation>Paramètres de la grille</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="137"/>
         <source>Snap to Grid</source>
-        <translation>Am Raster ausrichten</translation>
+        <translation>Adapter à la grille</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="145"/>
         <source>Grid spacing</source>
-        <translation>Rasterabstand</translation>
+        <translation>Espacement de la grille</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation>Werkzeugeinstellungen</translation>
+        <translation>Paramètres des outils</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation>Werkzeugeinstellungen merken</translation>
+        <translation>Sauvegarder les paramètres des outils</translation>
     </message>
 </context>
 <context>
@@ -310,12 +301,12 @@
     <message>
         <location filename="../qml/paint.qml" line="13"/>
         <source>Accept</source>
-        <translation>Annehmen</translation>
+        <translation>Valider</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation>Annuler</translation>
     </message>
 </context>
 <context>
@@ -323,21 +314,17 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="35"/>
         <source>Pen settings</source>
-        <translation>Zeichenstift-Einstellungen</translation>
+        <translation>Paramètres du pinceau</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="53"/>
         <source>Select color</source>
-        <translation>Farbe auswählen</translation>
-    </message>
-    <message>
-        <source>Edit color %1</source>
-        <translation type="obsolete">Farbe %1 bearbeiten</translation>
+        <translation>Choisir la couleur</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="64"/>
         <source>Pen width</source>
-        <translation>Linienstärke</translation>
+        <translation>Largeur du pinceau</translation>
     </message>
 </context>
 <context>
@@ -345,49 +332,41 @@
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="58"/>
         <source>Sprayer settings</source>
-        <translation>Airbrush-Einstellungen</translation>
+        <translation>Paramètres du spray</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="77"/>
         <source>Select color</source>
-        <translation>Farbe auswählen</translation>
+        <translation>Choisir couleur</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="122"/>
         <source>Sprayer parameters</source>
-        <translation>Airbrush-Parameter</translation>
+        <translation>Paramètres du spray</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="128"/>
         <source>Size</source>
-        <translation>Größe</translation>
+        <translation>Taille</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="141"/>
         <source>Density</source>
-        <translation>Dichte</translation>
+        <translation>Densité</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="155"/>
         <source>Particle size</source>
-        <translation>Partikelgröße</translation>
+        <translation>Taille des particules</translation>
     </message>
 </context>
 <context>
     <name>textEntryDialog</name>
     <message>
-        <source>Text entry</source>
-        <translation type="obsolete">Texteingabe</translation>
-    </message>
-    <message>
-        <source>Warning: Do not cancel now</source>
-        <translation type="obsolete">Warnung: Jetzt nicht abbrechen</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="53"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="61"/>
         <source>Enter some text</source>
-        <translation>Gib einen Text ein</translation>
+        <translation>Saisissez du texte içi</translation>
     </message>
 </context>
 <context>
@@ -395,32 +374,32 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="39"/>
         <source>Text settings</source>
-        <translation>Texteinstellungen</translation>
+        <translation>Paramètres du texte</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="57"/>
         <source>Select color</source>
-        <translation>Farbe auswählen</translation>
+        <translation>Choisir couleur</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="67"/>
         <source>Font size</source>
-        <translation>Schriftgröße</translation>
+        <translation>Taille de Police</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="89"/>
         <source>Bold</source>
-        <translation>Fett</translation>
+        <translation>Gras</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="96"/>
         <source>Italic</source>
-        <translation>Kursiv</translation>
+        <translation>Italique</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="104"/>
         <source>Font</source>
-        <translation>Schriftart</translation>
+        <translation>Police</translation>
     </message>
 </context>
 </TS>
