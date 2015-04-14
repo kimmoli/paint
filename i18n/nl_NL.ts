@@ -9,7 +9,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
-        <translation>Tekenen met vrije hand</translation>
+        <translation>Vrij tekenen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Opgevulde rechthoek tekenen</translation>
+        <translation>Gevulde rechthoek tekenen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled circle</source>
-        <translation>Opgevulde cirkel tekenen</translation>
+        <translation>Gevulde cirkel tekenen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled ellipse</source>
-        <translation>Opgevulde ovaal tekenen</translation>
+        <translation>Gevulde ovaal tekenen</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Text tool (cancel text)</source>
-        <translation>Teksthulpmiddel (annuleren van tekst)</translation>
+        <translation>Tekst (of annuleren)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Grid</source>
-        <translation>Rooster</translation>
+        <translation>Raster</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
@@ -129,7 +129,10 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="112"/>
         <source>translation credit placeholder</source>
-        <translation>Heimen Stoffels aka Vistaus</translation>
+        <translation>Heimen Stoffels aka Vistaus
+Dirk van Leersum
+André Koot
+Rob Kouwenberg</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
@@ -142,7 +145,7 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="22"/>
         <source>Edit color %1</source>
-        <translation>Kleur %1 bewerken</translation>
+        <translation>Kies kleur %1</translation>
     </message>
 </context>
 <context>
@@ -273,27 +276,27 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Grid settings</source>
-        <translation>Roosterinstellingen</translation>
+        <translation>Raster</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="137"/>
         <source>Snap to Grid</source>
-        <translation>Vastgezet rooster</translation>
+        <translation>Vastzetten op raster</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="145"/>
         <source>Grid spacing</source>
-        <translation>Tussenruimte van rooster</translation>
+        <translation>Rasterbreedte</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="156"/>
         <source>Tool settings</source>
-        <translation>Toolinstellingen</translation>
+        <translation>Tools</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="163"/>
         <source>Remember tool settings</source>
-        <translation>Toolinstellingen onthouden</translation>
+        <translation>Instellingen onthouden</translation>
     </message>
 </context>
 <context>
@@ -366,7 +369,7 @@
         <location filename="../qml/pages/textEntryDialog.qml" line="53"/>
         <location filename="../qml/pages/textEntryDialog.qml" line="61"/>
         <source>Enter some text</source>
-        <translation>Voer wat tekst in</translation>
+        <translation>Voer tekst in</translation>
     </message>
 </context>
 <context>
@@ -389,7 +392,7 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="89"/>
         <source>Bold</source>
-        <translation>Dikgedrukt</translation>
+        <translation>Vetgedrukt</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="96"/>
