@@ -6,6 +6,9 @@ import "../components"
 Dialog
 {
     id: bgSettingsDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: true
 
     property int currentColor: 0
@@ -53,6 +56,7 @@ Dialog
             {
                 id: colSelector
                 previewColor: currentColor === colors.length ? "#000000" : colors[currentColor]
+                isPortrait: bgSettingsDialog.isPortrait
             }
 
             TextSwitch
@@ -134,7 +138,7 @@ Dialog
 
                     Rectangle
                     {
-                        width: (540/960) * 2* Theme.itemSizeLarge
+                        width: (bgSettingsDialog.width/bgSettingsDialog.height) * 2* Theme.itemSizeLarge
                         height: 2* Theme.itemSizeLarge
                         color: "transparent"
                         anchors.centerIn: previewPlaceHolder

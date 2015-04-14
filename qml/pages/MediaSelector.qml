@@ -6,6 +6,9 @@ import harbour.paint.Thumbnailer 1.0
 Dialog  /* Todo: Cleanup, this is just an image selector here */
 {
     id: page
+
+    allowedOrientations: Orientation.All
+
     objectName: "mediaSelector"
 
     canAccept: false

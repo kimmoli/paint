@@ -9,8 +9,7 @@ Page
 {
     id: page
 
-    width: 540
-    height: 960
+    anchors.fill: parent
 
     state: toolboxLocation
     onStateChanged: previewCanvas.clear()

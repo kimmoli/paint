@@ -5,6 +5,9 @@ import "../components"
 Dialog
 {
     id: textSettingsDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: true
 
     property int currentColor: 0
@@ -60,6 +63,7 @@ Dialog
             ColorSelector
             {
                 previewColor: colors[currentColor]
+                isPortrait: textSettingsDialog.isPortrait
             }
 
             SectionHeader

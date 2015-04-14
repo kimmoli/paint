@@ -5,6 +5,9 @@ import "../components"
 Dialog
 {
     id: eraserSettingsDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: true
 
     property int currentRadius: 0
@@ -81,6 +84,7 @@ Dialog
             {
                 previewColor: colors[currentColor]
                 onPreviewColorChanged: previewCanvas.requestPaint()
+                isPortrait: eraserSettingsDialog.isPortrait
             }
 
             Rectangle

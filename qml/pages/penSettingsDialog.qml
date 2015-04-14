@@ -5,6 +5,9 @@ import "../components"
 Dialog
 {
     id: penSettingsDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: true
 
     property int currentColor: 0
@@ -57,6 +60,7 @@ Dialog
             {
                 previewColor: colors[currentColor]
                 onPreviewColorChanged: previewLine.color = previewColor
+                isPortrait: penSettingsDialog.isPortrait
             }
 
             SectionHeader
