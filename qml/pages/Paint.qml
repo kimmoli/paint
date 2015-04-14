@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtSensors 5.0 as Sensors
 import harbour.paint.PainterClass 1.0
 import harbour.paint.Thumbnailer 1.0
 import "../components"
@@ -13,6 +14,40 @@ Page
 
     state: toolboxLocation
     onStateChanged: previewCanvas.clear()
+
+    Sensors.Accelerometer
+    {
+        id: accelerometer
+        dataRate: 25
+        active: textEditPending
+
+        property double pitch: 0.0
+        property double roll: 0.0
+        property double angle: 0.0
+
+        onReadingChanged:
+        {
+            roll = calcRoll(reading.x, reading.y, reading.z)
+            pitch = calcPitch(reading.x, reading.y, reading.z)
+
+            if (pitch < 0.0)
+                angle = Math.PI-roll
+            else
+                angle = roll
+
+            previewCanvas.requestPaint()
+        }
+
+        function calcPitch(x,y,z)
+        {
+            return (Math.atan(y / Math.sqrt(x * x + z * z)))
+        }
+
+        function calcRoll(x,y,z)
+        {
+             return (Math.atan(x / Math.sqrt(y * y + z * z)))
+        }
+    }
 
     states: [
         /* Default state is toolboxTop */
@@ -320,11 +355,15 @@ Page
 
     function drawText(ctx, txt, x, y)
     {
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate( accelerometer.angle )
         ctx.fillStyle = colors[textColor]
         ctx.font = textFont
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.fillText(txt, x, y)
+        ctx.fillText(txt, 0, 0)
+        ctx.restore()
     }
 
     function textAccept()
