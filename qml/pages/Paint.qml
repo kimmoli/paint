@@ -21,32 +21,26 @@ Page
         dataRate: 25
         active: textEditPending
 
-        property double pitch: 0.0
-        property double roll: 0.0
         property double angle: 0.0
+        property double x: 0.0
+        property double y: 0.0
+
+        Behavior on x { NumberAnimation { duration: 100 } }
+        Behavior on y { NumberAnimation { duration: 100 } }
 
         onReadingChanged:
         {
-            roll = calcRoll(reading.x, reading.y, reading.z)
-            pitch = calcPitch(reading.x, reading.y, reading.z)
+            x = reading.x
+            y = reading.y
 
-            if (pitch < 0.0)
-                angle = Math.PI-roll
+            if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
+                angle = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
             else
-                angle = roll
+                angle = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
 
             previewCanvas.requestPaint()
         }
 
-        function calcPitch(x,y,z)
-        {
-            return (Math.atan(y / Math.sqrt(x * x + z * z)))
-        }
-
-        function calcRoll(x,y,z)
-        {
-             return (Math.atan(x / Math.sqrt(y * y + z * z)))
-        }
     }
 
     states: [
