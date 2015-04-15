@@ -117,6 +117,14 @@ Dialog
                         textFontItalic = SettingsDialog.isItalic
                         textFontNameIndex = SettingsDialog.fontNameIndex
                         previewCanvas.requestPaint()
+                        if (rememberToolSettings)
+                        {
+                            painter.setToolSetting("textColor", textColor)
+                            painter.setToolSetting("textFontSize", textFontSize)
+                            painter.setToolSetting("textFontBold", textFontBold)
+                            painter.setToolSetting("textFontItalic", textFontItalic)
+                            painter.setToolSetting("textFontNameIndex", textFontNameIndex)
+                        }
                     })
                 }
             }
