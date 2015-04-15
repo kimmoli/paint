@@ -132,14 +132,14 @@ Dialog
                 Rectangle
                 {
                     id: previewPlaceHolder
-                    width: 2* Theme.itemSizeLarge
-                    height: 2* Theme.itemSizeLarge
+                    width: 2 * Theme.itemSizeLarge
+                    height: 2 * Theme.itemSizeLarge
                     color: "transparent"
 
                     Rectangle
                     {
-                        width: (bgSettingsDialog.width/bgSettingsDialog.height) * 2* Theme.itemSizeLarge
-                        height: 2* Theme.itemSizeLarge
+                        width: 1.125 * Theme.itemSizeLarge
+                        height: 2 * Theme.itemSizeLarge
                         color: "transparent"
                         anchors.centerIn: previewPlaceHolder
 
