@@ -43,6 +43,27 @@ Page
 
     }
 
+    Sensors.OrientationSensor
+    {
+        id: rotationSensor
+        active: true
+        property int angle: reading.orientation ? _getOrientation(reading.orientation) : 0
+        function _getOrientation(value)
+        {
+            switch (value)
+            {
+                case 2:
+                    return 180
+                case 3:
+                    return -90
+                case 4:
+                    return 90
+                default:
+                    return 0
+            }
+        }
+    }
+
     states: [
         /* Default state is toolboxTop */
     State

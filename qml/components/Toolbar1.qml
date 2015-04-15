@@ -11,6 +11,8 @@ Row
         icon.source: "image://theme/icon-m-edit"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Pen
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -27,6 +29,8 @@ Row
         icon.source: "image://paintIcons/icon-m-eraser"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Eraser
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -43,6 +47,8 @@ Row
         icon.source: "image://paintIcons/icon-m-spray"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Spray
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -59,6 +65,8 @@ Row
         icon.source: "image://paintIcons/icon-m-geometrics"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Geometrics
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -86,6 +94,8 @@ Row
             return "image://paintIcons/icon-m-toolsettings"
         }
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {

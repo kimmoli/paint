@@ -11,6 +11,8 @@ Row
         icon.source: "image://paintIcons/icon-m-texttool"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Text
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -27,6 +29,8 @@ Row
         icon.source: "image://theme/icon-m-enter-accept"
         anchors.bottom: parent.bottom
         enabled: textEditPending
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked: textEditAccept()
     }
@@ -36,6 +40,8 @@ Row
         icon.source: "image://paintIcons/icon-m-dimensiontool"
         anchors.bottom: parent.bottom
         highlighted: drawMode === Painter.Dimensioning
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -54,6 +60,8 @@ Row
     {
         icon.source: "image://paintIcons/icon-m-grid"
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked: toggleGridVisibility()
     }
@@ -69,8 +77,9 @@ Row
                 return "image://paintIcons/icon-m-erasersettings"
             return "image://paintIcons/icon-m-toolsettings"
         }
-
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {

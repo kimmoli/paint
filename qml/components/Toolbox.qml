@@ -183,6 +183,8 @@ Row
         icon.source: "image://theme/icon-m-repeat"
         icon.scale: 0.6
         anchors.verticalCenter: parent.verticalCenter
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
