@@ -129,7 +129,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="112"/>
         <source>translation credit placeholder</source>
-        <translation type="unfinished"/>
+        <translation>Traducció Agustí Clara</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
