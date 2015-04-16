@@ -47,6 +47,12 @@ Page
         buttonhelp.append( {"image": "image://theme/icon-m-delete", "helptext": qsTr("Clear drawing")})
         buttonhelp.append( {"image": "image://theme/icon-m-image", "helptext": qsTr("Change background")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-save", "helptext": qsTr("Save snapshot")})
+
+        if (translationcredits.text == "translation credit placeholder")
+        {
+            translationcredits.textFormat = Text.RichText
+            translationcredits.text = "Help translating<br>www.transifex.com/projects/p/paint"
+        }
     }
 
     SilicaFlickable
@@ -67,7 +73,6 @@ Page
             }
             Label
             {
-                x: Theme.paddingLarge
                 text: name
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
@@ -92,7 +97,6 @@ Page
 
             Label
             {
-                x: Theme.paddingLarge
                 text: "(C) " + year + " kimmoli"
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
@@ -100,7 +104,6 @@ Page
             }
             Label
             {
-                x: Theme.paddingLarge
                 text: qsTr("Version: ") + version
                 color: Theme.primaryColor
                 font.pixelSize: Theme.fontSizeMedium
@@ -108,9 +111,12 @@ Page
             }
             Label
             {
-                x: Theme.paddingLarge
+                id: translationcredits
+                width: parent.width - 2* Theme.paddingLarge
                 text: qsTr("translation credit placeholder")
                 color: Theme.primaryColor
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeMedium
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: language !== "en" && language !== "fi"
@@ -125,8 +131,8 @@ Page
                 model: buttonhelp
                 Row
                 {
-                    spacing: 50
-                    x: 40
+                    spacing: 25
+                    x: 25
                     Image
                     {
                         id: bim
