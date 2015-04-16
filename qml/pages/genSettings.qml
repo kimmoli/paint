@@ -4,6 +4,9 @@ import Sailfish.Silica 1.0
 Dialog
 {
     id: genSettingsDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: true
 
     property string saveFormat : "NaN"

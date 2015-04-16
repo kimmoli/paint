@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtSensors 5.0 as Sensors
 import harbour.paint.PainterClass 1.0
 import harbour.paint.Thumbnailer 1.0
 import "../components"
@@ -9,11 +10,59 @@ Page
 {
     id: page
 
-    width: 540
-    height: 960
+    anchors.fill: parent
 
     state: toolboxLocation
     onStateChanged: previewCanvas.clear()
+
+    Sensors.Accelerometer
+    {
+        id: accelerometer
+        dataRate: 25
+        active: textEditPending
+
+        property double angle: 0.0
+        property double x: 0.0
+        property double y: 0.0
+
+        Behavior on x { NumberAnimation { duration: 100 } }
+        Behavior on y { NumberAnimation { duration: 100 } }
+
+        onReadingChanged:
+        {
+            x = reading.x
+            y = reading.y
+
+            if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
+                angle = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+            else
+                angle = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+
+            previewCanvas.requestPaint()
+        }
+
+    }
+
+    Sensors.OrientationSensor
+    {
+        id: rotationSensor
+        active: true
+        property int angle: reading.orientation ? _getOrientation(reading.orientation) : 0
+        function _getOrientation(value)
+        {
+            switch (value)
+            {
+                case 2:
+                    return 180
+                case 3:
+                    return -90
+                case 4:
+                    return 90
+                default:
+                    return 0
+            }
+        }
+    }
 
     states: [
         /* Default state is toolboxTop */
@@ -321,11 +370,15 @@ Page
 
     function drawText(ctx, txt, x, y)
     {
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate( accelerometer.angle )
         ctx.fillStyle = colors[textColor]
         ctx.font = textFont
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
-        ctx.fillText(txt, x, y)
+        ctx.fillText(txt, 0, 0)
+        ctx.restore()
     }
 
     function textAccept()

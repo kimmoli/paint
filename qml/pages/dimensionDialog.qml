@@ -6,6 +6,9 @@ import Sailfish.Silica 1.0
 Dialog
 {
     id: dimensionDialog
+
+    allowedOrientations: Orientation.All
+
     canAccept: (ti.focus === false) && (Number(ti.text.replace(",","."))>0)
 
     property real currentDimensionScale : 1.0

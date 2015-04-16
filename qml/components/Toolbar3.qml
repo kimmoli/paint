@@ -10,6 +10,8 @@ Row
     {
         icon.source: "image://theme/icon-m-about"
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -25,6 +27,8 @@ Row
     {
         icon.source: "image://theme/icon-m-developer-mode"
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -62,6 +66,9 @@ Row
     {
         icon.source: "image://theme/icon-m-delete"
         anchors.verticalCenter: parent.verticalCenter
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+
         onClicked: startRemorse()
     }
 
@@ -69,6 +76,8 @@ Row
     {
         icon.source: "image://theme/icon-m-image"
         anchors.bottom: parent.bottom
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
         onClicked:
         {
@@ -95,12 +104,16 @@ Row
     {
         icon.source: "image://paintIcons/icon-m-save"
         anchors.verticalCenter: parent.verticalCenter
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+
         onClicked:
         {
             toolBox.opacity = 0.0
             toolBoxVisibility.start()
         }
     }
+
     Timer
     {
         id: toolBoxVisibility

@@ -8,13 +8,15 @@ import Sailfish.Silica 1.0
 
 Page
 {
+    id: page
+
+    allowedOrientations: Orientation.All
+
     property string name
     property string year
     property string version
     property string imagelocation
     property string language
-
-    id: page
 
     ListModel
     {

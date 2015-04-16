@@ -4,11 +4,16 @@ import Sailfish.Silica 1.0
 Rectangle
 {
     width: parent.width
-    height: editColorRow.height + width*(3/4)
+    height: editColorRow.height + (isColorWheel ? colorWheelPlaceHolder.height : colorSelector.height)
     color: "transparent"
 
     property bool isColorWheel: false
     property string previewColor: "#000000"
+    property bool isPortrait: true
+
+    onIsPortraitChanged:
+        if (isColorWheel)
+            colorWheelCanvas.requestPaint()
 
     Row
     {
@@ -22,7 +27,7 @@ Rectangle
             text: qsTr("Edit color %1").arg(previewColor)
             automaticCheck: false
             checked: isColorWheel
-            width: parent.width*(3/4)-Theme.paddingLarge
+            width: parent.width*(isPortrait ? 3/4 : 6/7)-Theme.paddingLarge
             enabled: currentColor < colors.length
 
             onClicked:
@@ -46,7 +51,7 @@ Rectangle
             id: colorWheelRect
             anchors.verticalCenter: parent.verticalCenter
             visible: isColorWheel
-            width: parent.width*(1/4)
+            width: parent.width*(isPortrait ? 1/4 : 1/7)
             height: parent.height - Theme.paddingLarge
             radius: 5
         }
@@ -57,7 +62,7 @@ Rectangle
         anchors.top: editColorRow.bottom
         id: colorSelector
         visible: !isColorWheel
-        columns: 4
+        columns: Math.floor(parent.width/((540-Theme.paddingLarge)/4))
 
         Repeater
         {
@@ -98,9 +103,8 @@ Rectangle
         anchors.top: editColorRow.bottom
 
         color: "transparent"
-        height: parent.width*(3/4)
-        width: parent.width
-        radius: 10
+        width: Math.min((540-Theme.paddingLarge), parent.width)
+        height: width*(3/4)
 
         anchors.horizontalCenter: parent.horizontalCenter
 
