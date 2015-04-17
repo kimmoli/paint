@@ -103,6 +103,7 @@ Page
     Messagebox
     {
         id: messagebox
+        rotation: rotationSensor.angle
     }
 
     Rectangle

@@ -33,6 +33,7 @@ Row
 
     function startRemorse()
     {
+        toolBox.opacity = 0.0
         remorse.execute(qsTr("Clearing"), function()
         {
             canvas.clear()
@@ -175,7 +176,11 @@ Row
         id: remorse
         z: 21
         opacity: 1.0
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
+        rotation: rotationSensor.angle
+        width: Math.abs(rotation) == 90 ? parent.height : parent.width
+        onCanceled: toolBox.opacity = 1.0
+        onTriggered: toolBox.opacity = 1.0
     }
 
     IconButton

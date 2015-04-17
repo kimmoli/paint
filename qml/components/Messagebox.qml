@@ -5,7 +5,7 @@ Rectangle
 {
     id: messagebox
     z: 20
-    width: opacity == 1.0 ? parent.width : 0
+    width: opacity == 1.0 ? (Math.abs(rotation) == 90 ? parent.height : parent.width) : 0
     height: Theme.itemSizeSmall
     opacity: 0.0
     anchors.centerIn: parent
@@ -22,6 +22,7 @@ Rectangle
     Label
     {
         id: messageboxText
+        color: "black"
         text: ""
         anchors.centerIn: parent
     }
