@@ -8,11 +8,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-
-#ifdef QT_QML_DEBUG
-#include <QtQuick>
-#endif
-
 #include <sailfishapp.h>
 #include <QtQml>
 #include <QScopedPointer>
@@ -23,21 +18,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QCoreApplication>
 #include "PainterClass.h"
 #include "IconProvider.h"
-#include "filemodel.h"
-#include "nemothumbnailitem.h"
-#include "nemothumbnailprovider.h"
 
 QList<int> GetSailfishVersion();
 
 int main(int argc, char *argv[])
 {
     qmlRegisterType<PainterClass>("harbour.paint.PainterClass", 1, 0, "Painter");
-    qmlRegisterType<Filemodel>("harbour.paint.Filemodel", 1, 0, "Filemodel");
-    qmlRegisterType<NemoThumbnailItem>("harbour.paint.Thumbnailer", 1, 0, "Thumbnail");
-
-    NemoThumbnailLoader *loader = new NemoThumbnailLoader;
-    loader->start(QThread::IdlePriority);
-    qAddPostRoutine(NemoThumbnailLoader::shutdown);
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
@@ -49,11 +35,10 @@ int main(int argc, char *argv[])
 
     QQmlEngine *engine = view->engine();
     engine->addImageProvider(QLatin1String("paintIcons"), new IconProvider);
-    engine->addImageProvider(QLatin1String("paintThumbnail"), new NemoThumbnailProvider);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
 
-    if (GetSailfishVersion().at(1) > 0)
+    if (GetSailfishVersion().at(1) > 0 || GetSailfishVersion().at(0) > 1)
     {
         qDebug() << "Setting persistence";
         /* Revert some defaults due Sailfish moving to Qt5.2 not to allow releasing graphics resources.
