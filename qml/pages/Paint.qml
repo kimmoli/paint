@@ -541,7 +541,16 @@ Page
                 break;
 
             case Painter.Dimensioning:
-                drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
+                if (dimensionMoveMode)
+                {
+                    /* Use saved visual appearance */
+                    var d=dimensionModel.get(selectedDimension)
+                    drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], dimensionMoveMode)
+                }
+                else
+                {
+                    drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
+                }
                 break;
 
             default:
@@ -694,28 +703,16 @@ Page
                     {
                         var d=dimensionModel.get(selectedDimension)
 
-                        if (d["y0"] > d["y1"])
-                        {
-                            if (mouseY > (d["y0"] + d["y1"])/2)
-                            {
-                                dimensionMoveEnd = 1
-                            }
-                            else
-                            {
-                                dimensionMoveEnd = 0
-                            }
-                        }
+                        /* Select nearest dimension end to move */
+                        var distance0 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x0"]), 2) + Math.pow(Math.abs(mouseY-d["y0"]), 2))
+                        var distance1 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x1"]), 2) + Math.pow(Math.abs(mouseY-d["y1"]), 2))
+
+                        console.log("D0 = " + distance0 + " D1 = " + distance1)
+
+                        if (distance0 > distance1)
+                            dimensionMoveEnd = 0
                         else
-                        {
-                            if (mouseY > (d["y0"] + d["y1"])/2)
-                            {
-                                dimensionMoveEnd = 0
-                            }
-                            else
-                            {
-                                dimensionMoveEnd = 1
-                            }
-                        }
+                            dimensionMoveEnd = 1
 
                         previewCanvas.downX = d[String("x%1").arg(dimensionMoveEnd)]
                         previewCanvas.downY = d[String("y%1").arg(dimensionMoveEnd)]
@@ -723,6 +720,7 @@ Page
                         // This will hide this dimension from dimensionCanvas
                         // as it is drawn to previewCanvas
                         dimensionCanvas.requestPaint()
+                        previewCanvas.requestPaint()
                     }
                     else
                     {
