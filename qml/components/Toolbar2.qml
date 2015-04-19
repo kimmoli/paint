@@ -53,6 +53,7 @@ Row
             if (textEditPending)
                 textEditCancel()
             drawMode = Painter.Dimensioning
+            previewCanvas.requestPaint()
         }
     }
 

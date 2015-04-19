@@ -18,6 +18,7 @@ Row
             dimensionMoveMode = false
             selectedDimension = (selectedDimension > 0) ? --selectedDimension : dimensionModel.count-1
             dimensionCanvas.requestPaint()
+            previewCanvas.requestPaint()
         }
     }
 
@@ -31,6 +32,7 @@ Row
             dimensionMoveMode = false
             selectedDimension = (selectedDimension < dimensionModel.count-1) ? ++selectedDimension : 0
             dimensionCanvas.requestPaint()
+            previewCanvas.requestPaint()
         }
     }
 
@@ -49,6 +51,7 @@ Row
             {
                 dimensionScale = dimensionsDialog.currentDimensionScale
                 dimensionCanvas.requestPaint()
+                previewCanvas.requestPaint()
             })
         }
     }
@@ -76,6 +79,7 @@ Row
             if (selectedDimension > dimensionModel.count-1 && selectedDimension > 0)
                 selectedDimension = dimensionModel.count-1
             dimensionCanvas.requestPaint()
+            previewCanvas.requestPaint()
         }
     }
 }

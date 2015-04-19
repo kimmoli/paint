@@ -374,7 +374,7 @@ Page
         previewCanvas.clear()
     }
 
-    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineColor, lineThickness, selected)
+    function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineColor, lineThickness)
     {
         var headlen = 15
         var angle = Math.atan2(y1-y0, x1-x0)
@@ -413,18 +413,11 @@ Page
         ctx.save()
         ctx.translate(mx, my)
         ctx.rotate(((angle > Math.PI/2)||(angle < -Math.PI/2)) ? Math.PI+angle : angle)
-        if (selected)
-        {
-            ctx.save()
-            ctx.lineWidth = 3
-            ctx.strokeRect(-textlen/2, fits ? -fontSize/2 : -15-fontSize, textlen+lineThickness, fontSize)
-            ctx.restore()
-        }
         ctx.fillStyle = colors[fontColor]
         ctx.font = font
         ctx.textAlign = "center"
-        ctx.textBaseline = "middle"
-        ctx.fillText(text, 0, fits ? fontSize/3 : -20 )
+        ctx.textBaseline = fits ? "middle" : "bottom"
+        ctx.fillText(text, 0, 0)
         ctx.restore()
     }
 
@@ -455,13 +448,13 @@ Page
                 clearNow = false
                 return
             }
-            /* This redraws all dimension lines from listmodel */
+            /* This redraws all dimension lines from listmodel, except the selected one if popup is visible */
             for (var i=0 ; i<dimensionModel.count; i++)
             {
                 var d=dimensionModel.get(i)
 
-                if (!((i === selectedDimension) && dimensionMoveMode && area.pressed))
-                    drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], (i === selectedDimension) && dimensionPopupVisible)
+                if (!((i === selectedDimension) && dimensionPopupVisible))
+                    drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"])
             }
         }
     }
@@ -469,7 +462,7 @@ Page
     SequentialAnimation
     {
              id: textEditActiveAnimation
-             running: textEditPending
+             running: (textEditPending || dimensionPopupVisible) && !area.pressed
              loops: Animation.Infinite
 
              NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
@@ -504,6 +497,7 @@ Page
         onPaint:
         {
             var ctx = getContext('2d')
+            var d
 
             ctx.clearRect(0, 0, width, height);
             if (clearNow)
@@ -543,13 +537,23 @@ Page
             case Painter.Dimensioning:
                 if (dimensionMoveMode)
                 {
-                    /* Use saved visual appearance */
-                    var d=dimensionModel.get(selectedDimension)
-                    drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"], dimensionMoveMode)
+                    /* Draw the one we are moving */
+                    d=dimensionModel.get(selectedDimension)
+                    drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"])
                 }
                 else
                 {
-                    drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, textColor, textFont, textFontSize, drawColor, drawThickness, dimensionMoveMode)
+                    if (area.pressed)
+                    {
+                        /* Draw the new one */
+                        drawDimensionLine(ctx, downX, downY, area.gMouseX, area.gMouseY, textColor, textFont, textFontSize, drawColor, drawThickness)
+                    }
+                    if ((dimensionPopupVisible || area.pressed) && dimensionModel.count > 0)
+                    {
+                        /* Draw the selected one */
+                        d=dimensionModel.get(selectedDimension)
+                        drawDimensionLine(ctx, d["x0"], d["y0"], d["x1"], d["y1"], d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"])
+                    }
                 }
                 break;
 
@@ -794,7 +798,8 @@ Page
                                                 "lineColor": drawColor,
                                                 "lineThickness": drawThickness})
                     }
-                    previewCanvas.clear()
+                    //previewCanvas.clear()
+                    previewCanvas.requestPaint()
                     dimensionCanvas.requestPaint()
 
                     break;
