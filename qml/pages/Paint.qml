@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtSensors 5.0 as Sensors
 import harbour.paint.PainterClass 1.0
-import harbour.paint.Thumbnailer 1.0
+
 import "../components"
 
 
@@ -184,41 +184,20 @@ Page
         onColorChanged: gridCanvas.requestPaint()
     }
 
-    Thumbnail
+    Image
     {
         id: bgImg
         visible: useImageAsBackground
         z: 7
         source: backgroundImagePath
-        height: bg.height
-        width: bg.width
-        sourceSize.height: bg.height
-        sourceSize.width: bg.width
+        height: backgroundImageRotate ? bg.width : bg.height
+        width: backgroundImageRotate ? bg.height : bg.width
         anchors.centerIn: bg
         clip: true
         smooth: true
-        mimeType: "image"
-        fillMode: backgroundImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
-
-
-        states:
-            [
-            State
-            {
-                name: 'loaded'; when: image.status == Thumbnail.Ready
-                PropertyChanges { target: image; opacity: 1; }
-            },
-            State
-            {
-                name: 'loading'; when: image.status != Thumbnail.Ready
-                PropertyChanges { target: image; opacity: 0; }
-            }
-        ]
-
-        Behavior on opacity
-        {
-            FadeAnimation {}
-        }
+        //mimeType: "image"
+        rotation: backgroundImageRotate ? 90 : 0
+        fillMode: Image.PreserveAspectFit
     }
 
     Canvas

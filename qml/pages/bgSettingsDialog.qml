@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import harbour.paint.Thumbnailer 1.0
+
 import "../components"
 
 Dialog
@@ -16,6 +16,18 @@ Dialog
     property string bgImagePath : ""
     property bool bgImageRotate : false
 
+    onCurrentColorChanged:
+        if (currentColor < colors.length)
+            useExternalImage = false
+
+    Timer
+    {
+        running: true
+        interval: 10
+        onTriggered:
+            if (useExternalImage)
+                flick.scrollToBottom()
+    }
 
     SilicaFlickable
     {
@@ -76,7 +88,6 @@ Dialog
                 }
             }
 
-
             Row
             {
                 width: parent.width
@@ -95,6 +106,7 @@ Dialog
                             useExternalImage = true
                             currentColor = colors.length
                             colSelector.isColorWheel = false
+                            flick.scrollToBottom()
                         }
                     }
                 }
@@ -103,29 +115,25 @@ Dialog
                 {
                     id: ibEf
                     icon.source: "image://theme/icon-m-right"
-                    visible: useExternalImage
-                    enabled: useExternalImage
                     anchors.verticalCenter: tsEf.verticalCenter
                     onClicked:
                     {
-                        var imageSelectDialog = pageStack.push(Qt.resolvedUrl("../pages/MediaSelector.qml"),
-                                                               {"mode": "image",
-                                                                "datesort": true,
-                                                                "multiple": false})
-
-                        imageSelectDialog.accepted.connect(function()
+                        var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                        imagePicker.selectedContentChanged.connect(function()
                         {
-                            var mediaFiles = imageSelectDialog.selectedFiles
-                            bgImagePath = mediaFiles[0]
+                            bgImagePath = imagePicker.selectedContent
                             bgImageRotate = false
-                        })
+                            useExternalImage = true
+                            currentColor = colors.length
+                            colSelector.isColorWheel = false
+                            flick.scrollToBottom()
+                         });
                     }
                 }
             }
 
             Row
             {
-                visible: useExternalImage
                 spacing: Theme.paddingLarge
                 x: Theme.paddingLarge
 
@@ -143,38 +151,17 @@ Dialog
                         color: "transparent"
                         anchors.centerIn: previewPlaceHolder
 
-                        Thumbnail
+                        Image
                         {
                             id: image
                             source: bgImagePath
-                            height: parent.height
-                            width: parent.width
-                            sourceSize.height: parent.height
-                            sourceSize.width: parent.width
+                            height: bgImageRotate ? parent.width : parent.height
+                            width: bgImageRotate ? parent.height : parent.width
                             anchors.centerIn: parent
                             clip: true
                             smooth: true
-                            mimeType: "image"
-                            fillMode: bgImageRotate ? Thumbnail.RotateFit : Thumbnail.PreserveAspectFit
-
-                            states:
-                                [
-                                State
-                                {
-                                    name: 'loaded'; when: image.status == Thumbnail.Ready
-                                    PropertyChanges { target: image; opacity: 1; }
-                                },
-                                State
-                                {
-                                    name: 'loading'; when: image.status != Thumbnail.Ready
-                                    PropertyChanges { target: image; opacity: 0; }
-                                }
-                            ]
-
-                            Behavior on opacity
-                            {
-                                FadeAnimation {}
-                            }
+                            rotation: bgImageRotate ? 90 : 0
+                            fillMode: Image.PreserveAspectFit
                         }
                     }
                 }
