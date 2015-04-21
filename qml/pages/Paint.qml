@@ -15,6 +15,14 @@ Page
     state: toolboxLocation
     onStateChanged: previewCanvas.clear()
 
+    Component.onCompleted: {
+        var toolbarHintCounter = painter.getSetting("toolbarHintCounter", 0)
+        if (toolbarHintCounter < 3) {
+            painter.setSetting("toolbarHintCounter", ++toolbarHintCounter)
+            touchInteractionHint.start()
+        }
+    }
+
     Sensors.Accelerometer
     {
         id: accelerometer
@@ -152,6 +160,20 @@ Page
         onTextSettingsChanged: previewCanvas.requestPaint()
         onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
         onGridSettingsChanged: gridCanvas.requestPaint()
+    }
+
+    InteractionHintLabel {
+        text: qsTr("Swipe to change toolbar")
+        anchors.bottom: parent.bottom
+        opacity: touchInteractionHint.running ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimation { duration: 1000 } }
+    }
+
+    TouchInteractionHint {
+        id: touchInteractionHint
+        direction: TouchInteraction.Right
+        anchors.verticalCenter: toolBox.verticalCenter
+        loops: 6
     }
 
     GeometryPopup

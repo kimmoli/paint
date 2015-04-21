@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
-Row
+Item
 {
     id: toolBox
 
@@ -46,15 +46,6 @@ Row
             dimensionModel.clear()
             dimensionCanvas.clear()
         })
-    }
-
-    function changeToolBar(number)
-    {
-        if (toolbar)
-            toolbar.destroy()
-
-        var toolbarComp = Qt.createComponent(Qt.resolvedUrl("../components/Toolbar" + number + ".qml"))
-        toolbar = toolbarComp.createObject(toolBox)
     }
 
     function showToolSettings()
@@ -169,8 +160,6 @@ Row
         FadeAnimation {}
     }
 
-    Component.onCompleted: changeToolBar(toolbarNumber)
-
     RemorsePopup
     {
         id: remorse
@@ -183,28 +172,29 @@ Row
         onTriggered: toolBox.opacity = 1.0
     }
 
-    IconButton
-    {
-        icon.source: "image://theme/icon-m-repeat"
-        icon.scale: 0.6
-        anchors.verticalCenter: parent.verticalCenter
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
-        onClicked:
-        {
-            hideGeometryPopup()
-            hideDimensionPopup()
-            dimensionMoveMode = false
-
-            toolbarNumber = (toolbarNumber >= maxToolbars) ? 1 : (++toolbarNumber)
-            changeToolBar(toolbarNumber)
+    PathView {
+        id: toolboxView
+        anchors.fill: parent
+        preferredHighlightBegin: 1/3
+        preferredHighlightEnd: 2/3
+        offset: 2.0
+        model: ListModel {
+            ListElement { name: "Toolbar1.qml" }
+            ListElement { name: "Toolbar2.qml" }
+            ListElement { name: "Toolbar3.qml" }
         }
-    }
-    Rectangle
-    {
-        height: 1
-        width: 16
-        color: "transparent"
+        delegate: Loader {
+            width: toolboxView.width
+            height: toolboxView.height
+            source: Qt.resolvedUrl(name)
+        }
+        path: Path {
+            startX: - (toolboxView.width / 2)
+            startY: toolboxView.height / 2
+            PathLine{
+                x: (toolboxView.model.count * toolboxView.width) - (toolboxView.width / 2)
+                y: toolboxView.height / 2
+            }
+        }
     }
 }
