@@ -6,7 +6,16 @@ Item
 {
     id: toolbar2
 
-    Row {
+    Row
+    {
+        spacing: (parent.width - 5*64-(parent.width - 5*64)/2)/6
+
+        Item
+        {
+            height: 1
+            width: 1.5 * parent.spacing
+        }
+
         IconButton
         {
             icon.source: "image://paintIcons/icon-m-texttool"

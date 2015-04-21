@@ -15,11 +15,13 @@ Page
     state: toolboxLocation
     onStateChanged: previewCanvas.clear()
 
-    Component.onCompleted: {
+    Component.onCompleted:
+    {
         var toolbarHintCounter = painter.getSetting("toolbarHintCounter", 0)
-        if (toolbarHintCounter < 3) {
+        if (toolbarHintCounter < 3)
+        {
             painter.setSetting("toolbarHintCounter", ++toolbarHintCounter)
-            touchInteractionHint.start()
+            toolbarInteractionHint.start()
         }
     }
 
@@ -101,6 +103,17 @@ Page
             anchors.top: undefined
             anchors.bottom: page.bottom
         }
+        AnchorChanges
+        {
+            target: toolbarHintLabel
+            anchors.top: undefined
+            anchors.bottom: toolBox.top
+        }
+        PropertyChanges
+        {
+            target: toolbarHintLabel
+            invert: false
+        }
         PropertyChanges
         {
             target: toolBoxBackgroundEffect
@@ -162,18 +175,22 @@ Page
         onGridSettingsChanged: gridCanvas.requestPaint()
     }
 
-    InteractionHintLabel {
+    InteractionHintLabel
+    {
+        id: toolbarHintLabel
         text: qsTr("Swipe to change toolbar")
-        anchors.bottom: parent.bottom
-        opacity: touchInteractionHint.running ? 1.0 : 0.0
+        anchors.top: toolbox.bottom
+        invert: true
+        opacity: toolbarInteractionHint.running ? 1.0 : 0.0
         Behavior on opacity { FadeAnimation { duration: 1000 } }
     }
 
-    TouchInteractionHint {
-        id: touchInteractionHint
+    TouchInteractionHint
+    {
+        id: toolbarInteractionHint
         direction: TouchInteraction.Right
         anchors.verticalCenter: toolBox.verticalCenter
-        loops: 6
+        loops: 4
     }
 
     GeometryPopup

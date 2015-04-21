@@ -172,26 +172,31 @@ Item
         onTriggered: toolBox.opacity = 1.0
     }
 
-    PathView {
+    PathView
+    {
         id: toolboxView
         anchors.fill: parent
         preferredHighlightBegin: 1/3
         preferredHighlightEnd: 2/3
         offset: 2.0
-        model: ListModel {
+        model: ListModel
+        {
+            ListElement { name: "Toolbar3.qml" }
             ListElement { name: "Toolbar1.qml" }
             ListElement { name: "Toolbar2.qml" }
-            ListElement { name: "Toolbar3.qml" }
         }
-        delegate: Loader {
+        delegate: Loader
+        {
             width: toolboxView.width
             height: toolboxView.height
             source: Qt.resolvedUrl(name)
         }
-        path: Path {
+        path: Path
+        {
             startX: - (toolboxView.width / 2)
             startY: toolboxView.height / 2
-            PathLine{
+            PathLine
+            {
                 x: (toolboxView.model.count * toolboxView.width) - (toolboxView.width / 2)
                 y: toolboxView.height / 2
             }
