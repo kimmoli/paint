@@ -179,7 +179,7 @@ Page
     {
         id: toolbarHintLabel
         text: qsTr("Swipe to change toolbar")
-        anchors.top: toolbox.bottom
+        anchors.top: toolBox.bottom
         invert: true
         opacity: toolbarInteractionHint.running ? 1.0 : 0.0
         Behavior on opacity { FadeAnimation { duration: 1000 } }
