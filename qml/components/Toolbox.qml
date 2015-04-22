@@ -34,6 +34,8 @@ Item
     function startRemorse()
     {
         toolBox.opacity = 0.0
+        hideDimensionPopup()
+        hideGeometryPopup()
         remorse.execute(qsTr("Clearing"), function()
         {
             canvas.clear()

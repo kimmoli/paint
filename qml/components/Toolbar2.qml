@@ -65,6 +65,12 @@ Item
                 drawMode = Painter.Dimensioning
                 previewCanvas.requestPaint()
             }
+
+            onHighlightedChanged:
+                if (!highlighted)
+                {
+                    hideDimensionPopup()
+                }
         }
 
         IconButton

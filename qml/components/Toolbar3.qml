@@ -120,6 +120,8 @@ Item
             onClicked:
             {
                 toolBox.opacity = 0.0
+                hideDimensionPopup()
+                hideGeometryPopup()
                 toolBoxVisibility.start()
             }
         }

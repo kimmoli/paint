@@ -89,6 +89,12 @@ Item
                     textEditCancel()
                 drawMode = Painter.Geometrics
             }
+
+            onHighlightedChanged:
+                if (!highlighted)
+                {
+                    hideGeometryPopup()
+                }
         }
 
 
