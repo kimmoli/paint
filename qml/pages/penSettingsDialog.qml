@@ -32,6 +32,8 @@ Dialog
 
         VerticalScrollDecorator { flickable: flick }
 
+        PalettePulldown { }
+
         DialogHeader
         {
             id: dialogHeader

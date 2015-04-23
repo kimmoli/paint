@@ -5,10 +5,11 @@ import harbour.paint.PainterClass 1.0
 
 ApplicationWindow
 {
+    property var systemColors : [ "#ff0080", "#ff0000", "#ff8000", "#ffff00", "#00ff00",
+                                  "#00ff80", "#00ffff", "#0000ff", "#8000ff", "#ff00ff",
+                                  "#000000", "#ffffff" ]
 
-    property var colors : [ "#ff0080", "#ff0000", "#ff8000", "#ffff00", "#00ff00",
-                             "#00ff80", "#00ffff", "#0000ff", "#8000ff", "#ff00ff",
-                             "#000000", "#ffffff" ] // also black and white
+    property var colors: systemColors.slice()
 
     property string dialogAcceptText : qsTr("Accept")
     property string dialogCancelText : qsTr("Cancel")

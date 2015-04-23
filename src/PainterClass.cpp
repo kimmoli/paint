@@ -103,6 +103,25 @@ void PainterClass::setToolSetting(QString name, int value)
     s.endGroup();
 }
 
+QString PainterClass::getUserColor(int number, QString defaultValue)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("UserColors");
+    QString color = s.value(QString("color%1").arg(number), defaultValue).toString();
+    s.endGroup();
+
+    return color;
+}
+
+void PainterClass::setUserColor(int number, QString value)
+{
+    QSettings s("harbour-paint", "harbour-paint");
+    s.beginGroup("UserColors");
+    s.setValue(QString("color%1").arg(number), value);
+    s.endGroup();
+}
+
+
 QString PainterClass::getLanguage()
 {
     return QLocale::system().name().split('_').at(0);

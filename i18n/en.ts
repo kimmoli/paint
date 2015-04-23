@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en">
 <context>
     <name>AboutPage</name>
     <message>
@@ -165,6 +167,24 @@
     </message>
 </context>
 <context>
+    <name>PalettePulldown</name>
+    <message>
+        <location filename="../qml/components/PalettePulldown.qml" line="8"/>
+        <source>Restore system palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/PalettePulldown.qml" line="13"/>
+        <source>Load palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/PalettePulldown.qml" line="24"/>
+        <source>Save palette</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Toolbar3</name>
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="59"/>
@@ -175,7 +195,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="37"/>
+        <location filename="../qml/components/Toolbox.qml" line="39"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>
@@ -183,22 +203,22 @@
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="45"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="47"/>
         <source>Select background</source>
         <translation>Select background</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="66"/>
         <source>Select color</source>
         <translation>Select color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="77"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="79"/>
         <source>None</source>
         <translation>None</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="99"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="101"/>
         <source>Image</source>
         <translation>Image</translation>
     </message>
@@ -305,12 +325,12 @@
 <context>
     <name>paint</name>
     <message>
-        <location filename="../qml/paint.qml" line="13"/>
+        <location filename="../qml/paint.qml" line="14"/>
         <source>Accept</source>
         <translation>Accept</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="14"/>
+        <location filename="../qml/paint.qml" line="15"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
@@ -318,17 +338,17 @@
 <context>
     <name>penSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="38"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="40"/>
         <source>Pen settings</source>
         <translation>Pen settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="56"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="58"/>
         <source>Select color</source>
         <translation>Select color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/penSettingsDialog.qml" line="68"/>
+        <location filename="../qml/pages/penSettingsDialog.qml" line="70"/>
         <source>Pen width</source>
         <translation>Pen width</translation>
     </message>
@@ -336,32 +356,32 @@
 <context>
     <name>spraySettingsDialog</name>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="61"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="63"/>
         <source>Sprayer settings</source>
         <translation>Sprayer settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="80"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="82"/>
         <source>Select color</source>
         <translation>Select color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="126"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="128"/>
         <source>Sprayer parameters</source>
         <translation>Sprayer parameters</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="132"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="134"/>
         <source>Size</source>
         <translation>Size</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="145"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="147"/>
         <source>Density</source>
         <translation>Density</translation>
     </message>
     <message>
-        <location filename="../qml/pages/spraySettingsDialog.qml" line="159"/>
+        <location filename="../qml/pages/spraySettingsDialog.qml" line="161"/>
         <source>Particle size</source>
         <translation>Particle size</translation>
     </message>
@@ -378,32 +398,32 @@
 <context>
     <name>textSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="42"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="44"/>
         <source>Text settings</source>
         <translation>Text settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="60"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="62"/>
         <source>Select color</source>
         <translation>Select color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="71"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="73"/>
         <source>Font size</source>
         <translation>Font size</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="93"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="95"/>
         <source>Bold</source>
         <translation>Bold</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="100"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="102"/>
         <source>Italic</source>
         <translation>Italic</translation>
     </message>
     <message>
-        <location filename="../qml/pages/textSettingsDialog.qml" line="108"/>
+        <location filename="../qml/pages/textSettingsDialog.qml" line="110"/>
         <source>Font</source>
         <translation>Font</translation>
     </message>

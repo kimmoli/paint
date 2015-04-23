@@ -33,6 +33,8 @@ public:
     Q_INVOKABLE void setSetting(QString name, QVariant value);
     Q_INVOKABLE int getToolSetting(QString name, int defaultValue);
     Q_INVOKABLE void setToolSetting(QString name, int value);
+    Q_INVOKABLE QString getUserColor(int number, QString defaultValue);
+    Q_INVOKABLE void setUserColor(int number, QString value);
 
     Q_INVOKABLE QString getLanguage();
     Q_INVOKABLE int getNumberOfFonts();

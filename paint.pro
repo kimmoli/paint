@@ -78,7 +78,8 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-ellipse-filled.png \
     qml/icons/icon-m-geom-fill.png \
     qml/components/ColorSelector.qml \
-    i18n/*.ts
+    i18n/*.ts \
+    qml/components/PalettePulldown.qml
 
 TRANSLATIONS += i18n/*.ts
 
