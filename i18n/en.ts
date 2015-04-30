@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="en">
 <context>
     <name>AboutPage</name>
     <message>
@@ -175,7 +177,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="37"/>
+        <location filename="../qml/components/Toolbox.qml" line="39"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>
