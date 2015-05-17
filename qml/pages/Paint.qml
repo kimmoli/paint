@@ -29,14 +29,14 @@ Page
     {
         id: accelerometer
         dataRate: 25
-        active: textEditPending
+        active: textEditPending || insertImagePending
 
         property double angle: 0.0
         property double x: 0.0
         property double y: 0.0
 
-        Behavior on x { NumberAnimation { duration: 100 } }
-        Behavior on y { NumberAnimation { duration: 100 } }
+        Behavior on x { NumberAnimation { duration: 175 } }
+        Behavior on y { NumberAnimation { duration: 175 } }
 
         onReadingChanged:
         {
@@ -44,13 +44,16 @@ Page
             y = reading.y
 
             if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
-                angle = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+                angle = -(Math.acos(x / Math.sqrt(y * y + x * x)) + (Math.PI/2) )
             else
-                angle = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+                angle = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) + (Math.PI/2) )
+
+// WARNING CAUTION REVERT BACK when sensorfw >= 0.8.13
+// https://bugs.merproject.org/show_bug.cgi?id=983
+// + (Math.PI/2) --> - (Math.PI/2)
 
             previewCanvas.requestPaint()
         }
-
     }
 
     Sensors.OrientationSensor
@@ -173,6 +176,9 @@ Page
         onTextSettingsChanged: previewCanvas.requestPaint()
         onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
         onGridSettingsChanged: gridCanvas.requestPaint()
+        onPreviewCanvasDrawImage: previewCanvas.insertNewImage()
+        onInsertImageAccept: acceptInsertedImage()
+        onInsertImageCancel: cancelInsertedImage()
     }
 
     InteractionHintLabel
@@ -307,10 +313,20 @@ Page
         return num
     }
 
-    function drawLine(ctx, x0,y0,x1,y1)
+    function drawLine(ctx, x0,y0,x1,y1, lineThick, lineColor)
     {
-        ctx.lineWidth = drawThickness
-        ctx.strokeStyle = colors[drawColor]
+        /*
+          lineThick and lineColor are optinal, use them to override linestyles
+        */
+        if (typeof(thick)==='undefined')
+            ctx.lineWidth = drawThickness
+        else
+            ctx.lineWidth = lineThick
+
+        if (typeof(color)==='undefined')
+            ctx.strokeStyle = colors[drawColor]
+        else
+            ctx.strokeStyle = lineColor
 
         ctx.beginPath()
         ctx.moveTo(x0, y0)
@@ -460,6 +476,31 @@ Page
         ctx.restore()
     }
 
+    function drawInsertedImage(ctx, x, y)
+    {
+        var w = insertedImage.width * insertImageScale
+        var h = insertedImage.height * insertImageScale
+
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate( accelerometer.angle )
+        ctx.drawImage(insertImagePath, -w/2, -h/2, w, h)
+        ctx.restore()
+    }
+
+    function acceptInsertedImage()
+    {
+        insertImagePending = false;
+        previewCanvas.clear()
+        canvas.requestPaint()
+    }
+    function cancelInsertedImage()
+    {
+        insertImagePending = false;
+        previewCanvas.clear()
+        insertImagePath = ""
+    }
+
     Canvas
     {
         id: dimensionCanvas
@@ -500,18 +541,25 @@ Page
 
     SequentialAnimation
     {
-             id: textEditActiveAnimation
-             running: (textEditPending || dimensionPopupVisible) && !area.pressed
-             loops: Animation.Infinite
+         id: textEditActiveAnimation
+         running: (textEditPending || dimensionPopupVisible) && !area.pressed
+         loops: Animation.Infinite
 
-             NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
-             NumberAnimation { target: previewCanvas; property: "opacity"; to: 1.0; duration: 500; easing.type: Easing.InOutCubic }
+         NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
+         NumberAnimation { target: previewCanvas; property: "opacity"; to: 1.0; duration: 500; easing.type: Easing.InOutCubic }
 
-             onRunningChanged:
-             {
-                 if (!running)
-                     previewCanvas.opacity = 1.0
-             }
+         onRunningChanged:
+         {
+             if (!running)
+                 previewCanvas.opacity = 1.0
+         }
+    }
+
+    Image
+    {
+        id: insertedImage
+        visible: false
+        source: insertImagePath
     }
 
     Canvas
@@ -533,6 +581,17 @@ Page
             requestPaint()
         }
 
+        function insertNewImage()
+        {
+            loadImage(insertImagePath)
+            // Calculate scale so the image fits, and center it on screen
+            insertImageScale = Math.min(1.0, width/Math.max(insertedImage.width, insertedImage.height))
+            insertImageX = width/2
+            insertImageY = height/2
+            insertImagePending = true
+            requestPaint()
+        }
+
         onPaint:
         {
             var ctx = getContext('2d')
@@ -544,10 +603,22 @@ Page
                 clearNow = false
                 return
             }
+
             ctx.lineJoin = ctx.lineCap = 'round';
 
             switch (drawMode)
             {
+            case Painter.Image:
+                if (insertImagePending && insertImagePath.length>0)
+                {
+                    if (area.pressed)
+                        drawInsertedImage(ctx, insertImageX + area.gMouseX - previewCanvas.downX,
+                                      insertImageY + area.gMouseY - previewCanvas.downY)
+                    else
+                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                }
+                break;
+
             case Painter.Geometrics:
                 switch(geometricsMode)
                 {
@@ -695,6 +766,14 @@ Page
                     }
                     break;
 
+                case Painter.Image:
+                    if (!insertImagePending && insertImagePath.length>0)
+                    {
+                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                        insertImagePath = ""
+                    }
+                    break;
+
                 default:
                     console.error("Unimplemented feature")
                     break;
@@ -737,6 +816,7 @@ Page
                 switch (drawMode)
                 {
                 case Painter.Geometrics:
+                case Painter.Image:
                     previewCanvas.downX = gMouseX
                     previewCanvas.downY = gMouseY
                     break;
@@ -851,6 +931,12 @@ Page
                     previewCanvas.clear()
                     break;
 
+                case Painter.Image:
+                    insertImageX += area.gMouseX - previewCanvas.downX
+                    insertImageY += area.gMouseY - previewCanvas.downY
+                    previewCanvas.requestPaint()
+                    break;
+
                 default:
                     break;
                 }
@@ -876,8 +962,10 @@ Page
                 case Painter.Text:
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
+                case Painter.Image:
                     previewCanvas.requestPaint()
                     break;
+
                 default:
                     canvas.requestPaint()
                     break;

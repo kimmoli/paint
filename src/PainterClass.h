@@ -46,7 +46,8 @@ public:
         Spray,
         Geometrics,
         Text,
-        Dimensioning
+        Dimensioning,
+        Image
     };
 
     enum GeometricsMode

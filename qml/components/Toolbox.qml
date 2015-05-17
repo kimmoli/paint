@@ -14,7 +14,7 @@ Item
     property var popup
 
     property int toolbarNumber : 1
-    property int maxToolbars: 3
+    property int maxToolbars: 4
 
     signal showMessage(string message, int delay)
     signal showGeometryPopup()
@@ -30,6 +30,10 @@ Item
 
     signal toggleGridVisibility()
     signal gridSettingsChanged()
+
+    signal previewCanvasDrawImage()
+    signal insertImageAccept()
+    signal insertImageCancel()
 
     function startRemorse()
     {
@@ -178,12 +182,13 @@ Item
     {
         id: toolboxView
         anchors.fill: parent
-        preferredHighlightBegin: 1/3
-        preferredHighlightEnd: 2/3
+        preferredHighlightBegin: 1/4
+        preferredHighlightEnd: 2/4
         offset: 2.0
         model: ListModel
         {
             ListElement { name: "Toolbar3.qml" }
+            ListElement { name: "Toolbar4.qml" }
             ListElement { name: "Toolbar1.qml" }
             ListElement { name: "Toolbar2.qml" }
         }

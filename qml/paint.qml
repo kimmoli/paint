@@ -51,6 +51,11 @@ ApplicationWindow
     property bool gridVisible: false
     property bool isColorWheel: false
     property bool rememberToolSettings: false
+    property string insertImagePath: ""
+    property bool insertImagePending: false
+    property real insertImageScale: 1.0
+    property real insertImageX: 0.0
+    property real insertImageY: 0.0
 
     /*****************************************************/
 
