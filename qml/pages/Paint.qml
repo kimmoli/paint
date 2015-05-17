@@ -677,7 +677,6 @@ Page
         }
     }
 
-
     Canvas
     {
         id: canvas

@@ -173,6 +173,11 @@
         <source>File format</source>
         <translation>File format</translation>
     </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="112"/>
+        <source>Save failed...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Toolbox</name>

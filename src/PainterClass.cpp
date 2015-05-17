@@ -13,6 +13,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 #include <QFontDatabase>
+#include <QImage>
+#include <QTransform>
 
 PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
@@ -55,12 +57,12 @@ QString PainterClass::saveScreenshot()
 
     if (QDBusConnection::sessionBus().send(m))
     {
-        printf("Screenshot success to %s\n", qPrintable(ssFilename));
+        qDebug() << "Screenshot success to" << qPrintable(ssFilename);
         return ssFilename.split('/').last();
     }
     else
     {
-        printf("Screenshot failed\n");
+        qWarning() << "Screenshot failed";
         return QString("Failed");
     }
 
@@ -116,4 +118,36 @@ int PainterClass::getNumberOfFonts()
 QString PainterClass::getFontName(int number)
 {
     return fontFamilies.at(number);
+}
+
+QString PainterClass::saveCanvas(QString dataURL, int angle)
+{
+    // QTransform is counterclockwise
+    if (angle == 90 || angle == -90)
+        angle = angle * (-1);
+
+    QImage p;
+    p.loadFromData(QByteArray::fromBase64(dataURL.split(",").at(1).toLatin1()), "png");
+
+    QTransform t;
+    t.rotate(angle);
+    QImage q = p.transformed(t);
+
+    QDate ssDate = QDate::currentDate();
+    QTime ssTime = QTime::currentTime();
+
+    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
+                    .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
+                    .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
+                    .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
+                    .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
+                    .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
+                    .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
+                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                    .arg(getSetting("fileExtension", QVariant("png")).toString());
+
+    if (q.save(ssFilename))
+        return ssFilename.split('/').last();
+    else
+        return QString();
 }

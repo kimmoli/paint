@@ -107,21 +107,9 @@ Item
 
             onClicked:
             {
-                toolBox.opacity = 0.0
-                hideDimensionPopup()
-                hideGeometryPopup()
-                toolBoxVisibility.start()
-            }
-        }
-
-        Timer
-        {
-            id: toolBoxVisibility
-            interval: 1000
-            onTriggered:
-            {
-                var fileName = painter.saveScreenshot()
-                toolBox.opacity = 1.0
+                var fileName = painter.saveCanvas(canvas.toDataURL(), rotationSensor.angle)
+                if (fileName === "")
+                    fileName = qsTr("Save failed...")
                 showMessage(fileName, 0)
             }
         }

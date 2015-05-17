@@ -38,6 +38,8 @@ public:
     Q_INVOKABLE int getNumberOfFonts();
     Q_INVOKABLE QString getFontName(int number);
 
+    Q_INVOKABLE QString saveCanvas(QString dataURL, int angle);
+
     enum Mode
     {
         None = -1,

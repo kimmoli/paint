@@ -20,6 +20,11 @@ Item
 
         ToolbarButton
         {
+            icon.source: "image://theme/icon-m-swipe"
+        }
+
+        ToolbarButton
+        {
             icon.source: "image://theme/icon-m-close"
             enabled: insertImagePending
             onClicked: insertImageCancel()
