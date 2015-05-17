@@ -15,6 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QFontDatabase>
 #include <QImage>
 #include <QTransform>
+#include <QPainter>
 
 PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
@@ -120,18 +121,32 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-QString PainterClass::saveCanvas(QString dataURL, int angle)
+QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, int angle)
 {
     // QTransform is counterclockwise
     if (angle == 90 || angle == -90)
         angle = angle * (-1);
 
-    QImage p;
-    p.loadFromData(QByteArray::fromBase64(dataURL.split(",").at(1).toLatin1()), "png");
+    QImage p1;
+    p1.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
+
+    QImage s(p1);
+
+    if (!dataURL2.isEmpty())
+    {
+        QImage p2;
+        p2.loadFromData(QByteArray::fromBase64(dataURL2.split(",").at(1).toLatin1()), "png");
+
+        QPainter p;
+        p.begin(&s);
+        p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+        p.drawImage(0, 0, p2);
+        p.end();
+    }
 
     QTransform t;
     t.rotate(angle);
-    QImage q = p.transformed(t);
+    QImage q = s.transformed(t);
 
     QDate ssDate = QDate::currentDate();
     QTime ssTime = QTime::currentTime();

@@ -107,7 +107,7 @@ Item
 
             onClicked:
             {
-                var fileName = painter.saveCanvas(canvas.toDataURL(), rotationSensor.angle)
+                var fileName = painter.saveCanvas(canvas.toDataURL(), dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL(), rotationSensor.angle)
                 if (fileName === "")
                     fileName = qsTr("Save failed...")
                 showMessage(fileName, 0)
