@@ -8,7 +8,9 @@ Item
 
     Row
     {
-        spacing: (parent.width - 5*64-(parent.width - 5*64)/2)/6
+        property int n: children.length-1
+
+        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
 
         Item
         {
@@ -16,12 +18,9 @@ Item
             width: 1.5 * parent.spacing
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-about"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {
@@ -33,12 +32,10 @@ Item
                                         "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
             }
         }
-        IconButton
+
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-developer-mode"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {
@@ -72,22 +69,16 @@ Item
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-delete"
-            anchors.verticalCenter: parent.verticalCenter
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked: startRemorse()
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-image"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {
@@ -110,12 +101,9 @@ Item
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-save"
-            anchors.verticalCenter: parent.verticalCenter
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {

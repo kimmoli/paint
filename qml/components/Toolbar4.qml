@@ -4,11 +4,13 @@ import harbour.paint.PainterClass 1.0
 
 Item
 {
-    id: toolbar3
+    id: toolbar4
 
     Row
     {
-        spacing: (parent.width - 5*64-(parent.width - 5*64)/2)/6
+        property int n: children.length-1
+
+        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
 
         Item
         {
@@ -16,53 +18,24 @@ Item
             width: 1.5 * parent.spacing
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-close"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
+            enabled: insertImagePending
             onClicked: insertImageCancel()
         }
 
-        IconButton
+        ToolbarButton
         {
-            icon.source: "image://theme/icon-m-cloud-upload"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
-            onClicked: if (insertImageScale < 5.0)
-                           insertImageScale += 0.05
-        }
-
-        IconButton
-        {
-            icon.source: "image://theme/icon-m-cloud-download"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
-            onClicked: if (insertImageScale > 0.1)
-                           insertImageScale -= 0.05
-        }
-        IconButton
-        {
-            icon.source: "image://theme/icon-m-dialpad"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
+            icon.source: "image://theme/icon-m-enter-accept"
+            enabled: insertImagePending
             onClicked: acceptInsertedImage()
         }
-        IconButton
+
+        ToolbarButton
         {
-            icon.source: "image://theme/icon-m-favorite"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Image
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            icon.source: "image://theme/icon-m-image"
+            mode: Painter.Image
 
             onClicked:
             {
@@ -70,7 +43,7 @@ Item
                 imagePicker.selectedContentChanged.connect(function()
                 {
                     insertImagePath = imagePicker.selectedContent
-                    drawMode = Painter.Image
+                    drawMode = mode
                     previewCanvasDrawImage()
                 });
             }

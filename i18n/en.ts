@@ -169,7 +169,7 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="59"/>
+        <location filename="../qml/components/Toolbar3.qml" line="56"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
