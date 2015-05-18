@@ -46,7 +46,8 @@ Item
                                                         "toolboxLocation": toolboxLocation,
                                                         "gridSpacing": gridSpacing,
                                                         "gridSnapTo": gridSnapTo,
-                                                        "rememberToolSettings": rememberToolSettings})
+                                                        "rememberToolSettings": rememberToolSettings,
+                                                        "askSaveFilename": askSaveFilename})
 
                 genSettingsDialog.accepted.connect(function()
                 {
@@ -58,6 +59,7 @@ Item
                     gridSpacing = genSettingsDialog.gridSpacing
                     gridSnapTo = genSettingsDialog.gridSnapTo
                     rememberToolSettings = genSettingsDialog.rememberToolSettings
+                    askSaveFilename = genSettingsDialog.askSaveFilename
                     gridSettingsChanged()
 
                     painter.setSetting("fileExtension", genSettingsDialog.saveFormat)
@@ -65,6 +67,7 @@ Item
                     painter.setSetting("gridSpacing", genSettingsDialog.gridSpacing)
                     painter.setSetting("gridSnapTo", genSettingsDialog.gridSnapTo ? "true" : "false")
                     painter.setSetting("rememberToolSettings", genSettingsDialog.rememberToolSettings ? "true" : "false")
+                    painter.setSetting("askSaveFilename", genSettingsDialog.askSaveFilename ? "true" : "false")
                 })
             }
         }
@@ -107,11 +110,31 @@ Item
 
             onClicked:
             {
-                var fileName = painter.saveCanvas(canvas.toDataURL(),
+                var fileName = ""
+                if (askSaveFilename)
+                {
+                    var askFilenameDialog = pageStack.push(Qt.resolvedUrl("../pages/askFilenameDialog.qml"), {
+                                                           "saveFormat": painter.getSetting("fileExtension", "png")})
+
+                    askFilenameDialog.accepted.connect(function() {
+                        console.log(askFilenameDialog.filename)
+                        save(askFilenameDialog.filename)
+                    })
+                }
+                else
+                {
+                    save(fileName)
+                }
+            }
+
+            function save(fileName)
+            {
+                fileName = painter.saveCanvas(canvas.toDataURL(),
                                                   dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL(),
                                                   useImageAsBackground ? backgroundImagePath : "",
                                                   backgroundImageRotate,
-                                                  rotationSensor.angle)
+                                                  rotationSensor.angle,
+                                                  fileName)
                 if (fileName === "")
                     fileName = qsTr("Save failed...")
                 showMessage(fileName, 0)

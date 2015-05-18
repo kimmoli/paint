@@ -169,12 +169,12 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="56"/>
+        <location filename="../qml/components/Toolbar3.qml" line="57"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="116"/>
+        <location filename="../qml/components/Toolbar3.qml" line="139"/>
         <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -185,6 +185,20 @@
         <location filename="../qml/components/Toolbox.qml" line="43"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
+    </message>
+</context>
+<context>
+    <name>askFilenameDialog</name>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="58"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="66"/>
+        <source>Enter filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <source>File already exists</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -259,52 +273,61 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="38"/>
+        <location filename="../qml/pages/genSettings.qml" line="40"/>
         <source>General settings</source>
         <translation>General settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="57"/>
         <source>File format</source>
-        <translation>File format</translation>
+        <translation type="vanished">File format</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="95"/>
+        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <source>Saving options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <source>Ask filename when saving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="106"/>
         <source>Toolbox location</source>
         <translation>Toolbox location</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="105"/>
+        <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Top</source>
         <translation>Top</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="119"/>
+        <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Bottom</source>
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="133"/>
+        <location filename="../qml/pages/genSettings.qml" line="144"/>
         <source>Grid settings</source>
         <translation>Grid settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="140"/>
+        <location filename="../qml/pages/genSettings.qml" line="151"/>
         <source>Snap to Grid</source>
         <translation>Snap to Grid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="148"/>
+        <location filename="../qml/pages/genSettings.qml" line="159"/>
         <source>Grid spacing</source>
         <translation>Grid spacing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="170"/>
         <source>Tool settings</source>
         <translation>Tool settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="166"/>
+        <location filename="../qml/pages/genSettings.qml" line="177"/>
         <source>Remember tool settings</source>
         <translation>Remember tool settings</translation>
     </message>

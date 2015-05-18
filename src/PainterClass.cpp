@@ -84,7 +84,7 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle)
+QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename)
 {
     QImage s;
     s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
@@ -134,21 +134,47 @@ QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString bac
     t.rotate((-1) * angle); // this is counterclockwise
     QImage q = s.transformed(t);
 
-    QDate ssDate = QDate::currentDate();
-    QTime ssTime = QTime::currentTime();
+    QString ssFilename;
 
-    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
-                    .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
-                    .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
-                    .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
-                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
-                    .arg(getSetting("fileExtension", QVariant("png")).toString());
+    if (filename.isEmpty())
+    {
+        QDate ssDate = QDate::currentDate();
+        QTime ssTime = QTime::currentTime();
+
+        ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
+                        .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
+                        .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
+                        .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
+                        .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                        .arg(getSetting("fileExtension", QVariant("png")).toString());
+    }
+    else
+    {
+        ssFilename = QString("%1/%2.%3")
+                .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                .arg(filename)
+                .arg(getSetting("fileExtension", QVariant("png")).toString());
+    }
 
     if (q.save(ssFilename))
         return ssFilename.split('/').last();
     else
         return QString();
+}
+
+bool PainterClass::fileExists(QString filename)
+{
+    QString filepath = QString("%1/%2.%3")
+            .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+            .arg(filename)
+            .arg(getSetting("fileExtension", QVariant("png")).toString());
+
+    QFile test(filepath);
+
+    qDebug() << "checking" << filepath << test.exists();
+
+    return test.exists();
 }

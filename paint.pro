@@ -79,7 +79,8 @@ OTHER_FILES += qml/paint.qml \
     qml/components/ColorSelector.qml \
     i18n/*.ts \
     qml/components/Toolbar4.qml \
-    qml/components/ToolbarButton.qml
+    qml/components/ToolbarButton.qml \
+    qml/pages/askFilenameDialog.qml
 
 TRANSLATIONS += i18n/*.ts
 

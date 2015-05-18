@@ -36,7 +36,14 @@ public:
     Q_INVOKABLE int getNumberOfFonts();
     Q_INVOKABLE QString getFontName(int number);
 
-    Q_INVOKABLE QString saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle);
+    Q_INVOKABLE QString saveCanvas(QString dataURL1,
+                                   QString dataURL2,
+                                   QString background,
+                                   bool bgRotate,
+                                   int angle,
+                                   QString filename);
+
+    Q_INVOKABLE bool fileExists(QString filename);
 
     enum Mode
     {

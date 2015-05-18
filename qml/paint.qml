@@ -56,6 +56,7 @@ ApplicationWindow
     property real insertImageScale: 1.0
     property real insertImageX: 0.0
     property real insertImageY: 0.0
+    property bool askSaveFilename: false
 
     /*****************************************************/
 
@@ -78,6 +79,7 @@ ApplicationWindow
             gridSpacing = painter.getSetting("gridSpacing", 50)
             gridSnapTo = (painter.getSetting("gridSnapTo", "false") === "true")
             rememberToolSettings = (painter.getSetting("rememberToolSettings", "false") === "true")
+            askSaveFilename = (painter.getSetting("askSaveFilename", "false") === "true")
 
             /* Get fonts */
             for (var i=0 ; i<painter.getNumberOfFonts(); i++)
