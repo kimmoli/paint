@@ -27,8 +27,6 @@ public:
 
     QString readVersion();
 
-    Q_INVOKABLE QString saveScreenshot();
-
     Q_INVOKABLE QVariant getSetting(QString name, QVariant defaultValue);
     Q_INVOKABLE void setSetting(QString name, QVariant value);
     Q_INVOKABLE int getToolSetting(QString name, int defaultValue);

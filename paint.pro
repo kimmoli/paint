@@ -5,7 +5,6 @@
 TARGET = harbour-paint
 
 CONFIG += sailfishapp
-QT += dbus
 
 DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 

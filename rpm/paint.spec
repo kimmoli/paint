@@ -21,7 +21,6 @@ BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  desktop-file-utils
 
@@ -49,11 +48,7 @@ desktop-file-install --delete-original       \
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}
-%{_datadir}/%{name}/qml
+%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-/usr/bin
-/usr/share/harbour-paint
-/usr/share/applications
-/usr/share/icons/hicolor/86x86/apps
 
