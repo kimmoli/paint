@@ -174,7 +174,7 @@
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="112"/>
+        <location filename="../qml/components/Toolbar3.qml" line="116"/>
         <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>

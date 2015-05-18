@@ -121,16 +121,37 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, int angle)
+QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle)
 {
-    // QTransform is counterclockwise
-    if (angle == 90 || angle == -90)
-        angle = angle * (-1);
+    QImage s;
+    s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
 
-    QImage p1;
-    p1.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
+    if (!background.isEmpty())
+    {
+        QImage bg(QUrl(background).toLocalFile());
 
-    QImage s(p1);
+        if (bgRotate)
+        {
+            QTransform tBg;
+            tBg.rotate(90);
+            QImage qBg = bg.transformed(tBg);
+            bg = QImage(qBg);
+        }
+
+        /* Scale and center background image as it is done in qml */
+        QRectF sRect(s.rect());
+
+        qreal height = ((qreal)sRect.width()/(qreal)bg.rect().width()*(qreal)bg.rect().height());
+        sRect.setTop( ((qreal)s.rect().height() - height) / 2);
+        sRect.setBottom( (qreal)s.rect().height() - sRect.top());
+
+        QPainter p;
+        /* Draw background behind the canvas */
+        p.begin(&s);
+        p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+        p.drawImage(sRect, bg, bg.rect());
+        p.end();
+    }
 
     if (!dataURL2.isEmpty())
     {
@@ -138,14 +159,16 @@ QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, int angle)
         p2.loadFromData(QByteArray::fromBase64(dataURL2.split(",").at(1).toLatin1()), "png");
 
         QPainter p;
+        /* Draw dimension canvas on top of canvas */
         p.begin(&s);
         p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-        p.drawImage(0, 0, p2);
+        p.drawImage(QPointF(0.0, 0.0), p2);
         p.end();
     }
 
+    /* Rotate output according to device orientation */
     QTransform t;
-    t.rotate(angle);
+    t.rotate((-1) * angle); // this is counterclockwise
     QImage q = s.transformed(t);
 
     QDate ssDate = QDate::currentDate();
