@@ -161,7 +161,7 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="187"/>
+        <location filename="../qml/pages/Paint.qml" line="195"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
