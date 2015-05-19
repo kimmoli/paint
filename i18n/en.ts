@@ -182,7 +182,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="44"/>
+        <location filename="../qml/components/Toolbox.qml" line="46"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>
