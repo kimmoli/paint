@@ -171,6 +171,7 @@ Page
         id: toolBox
         z: 15
 
+        opacity: area.pressedAndHolded ? 0.0 : 1.0
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
@@ -820,12 +821,13 @@ Page
 
                 property real gMouseX: 0.0
                 property real gMouseY: 0.0
+                property bool pressedAndHolded: false
 
                 onPressAndHold:
                 {
                     geometryPopupVisible = false
                     dimensionPopupVisible = false
-                    toolBox.opacity = 0.0
+                    pressedAndHolded = true
                 }
                 onPressed:
                 {
@@ -913,7 +915,7 @@ Page
 
                 onReleased:
                 {
-
+                    pressedAndHolded = false
                     if (gridVisible && gridSnapTo)
                     {
                         area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
@@ -971,7 +973,6 @@ Page
                     default:
                         break;
                     }
-                    toolBox.opacity = 1.0
                 }
 
                 onPositionChanged:

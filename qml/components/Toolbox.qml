@@ -9,6 +9,7 @@ Item
     anchors.horizontalCenter: parent.horizontalCenter
     height: 80
     width: parent.width
+    clip: true
 
     property var toolbar
     property var popup
