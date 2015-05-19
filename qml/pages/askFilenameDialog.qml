@@ -55,7 +55,7 @@ Dialog
 
             SectionHeader
             {
-                text: qsTr("Enter filename") + "(." + saveFormat + ")"
+                text: qsTr("Enter filename") + " (." + saveFormat + ")"
             }
 
             TextField
@@ -70,14 +70,27 @@ Dialog
                     ti.focus = false
                     vkbClose.start()
                 }
-                onTextChanged: fileExistsNotification.visible = painter.fileExists(ti.text)
+                onTextChanged: fileExistsNotification.opacity = painter.fileExists(ti.text) ? 0.6 : 0.0
             }
-            Label
+
+            Rectangle
             {
                 id: fileExistsNotification
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("File already exists")
-                visible: false
+                width: askFilenameDialog.width
+                height: Theme.itemSizeLarge
+                x: -Theme.paddingLarge/2
+                color: "red"
+                opacity: 0
+                Behavior on opacity { NumberAnimation { duration: 200 } }
+
+                Label
+                {
+                    anchors.centerIn: parent
+                    color: "white"
+                    text: qsTr("File already exists")
+                    opacity: parent.opacity * 2
+                    font.bold: true
+                }
             }
         }
     }

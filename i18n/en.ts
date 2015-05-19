@@ -161,7 +161,7 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="195"/>
+        <location filename="../qml/pages/Paint.qml" line="196"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
@@ -196,7 +196,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="90"/>
         <source>File already exists</source>
         <translation type="unfinished"></translation>
     </message>
