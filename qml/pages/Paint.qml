@@ -45,20 +45,14 @@ Page
             var a
 
             if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
-                a = -(Math.acos(x / Math.sqrt(y * y + x * x)) + (Math.PI/2) )
+                a = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
             else
-                a = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) + (Math.PI/2) )
+                a = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
 
             if (gridVisible && gridSnapTo)
                 angle = a - ((a + Math.PI/72) % (Math.PI/36)) + Math.PI/72
             else
                 angle = a
-
-
-
-// WARNING CAUTION REVERT BACK when sensorfw >= 0.8.13
-// https://bugs.merproject.org/show_bug.cgi?id=983
-// + (Math.PI/2) --> - (Math.PI/2)
 
             previewCanvas.requestPaint()
         }
