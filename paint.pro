@@ -5,7 +5,6 @@
 TARGET = harbour-paint
 
 CONFIG += sailfishapp
-QT += dbus
 
 DEFINES += "APPVERSION=\\\"$${SPECVERSION}\\\""
 
@@ -78,7 +77,10 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-ellipse-filled.png \
     qml/icons/icon-m-geom-fill.png \
     qml/components/ColorSelector.qml \
-    i18n/*.ts
+    i18n/*.ts \
+    qml/components/Toolbar4.qml \
+    qml/components/ToolbarButton.qml \
+    qml/pages/askFilenameDialog.qml
 
 TRANSLATIONS += i18n/*.ts
 

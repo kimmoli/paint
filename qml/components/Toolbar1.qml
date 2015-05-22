@@ -8,7 +8,9 @@ Item
 
     Row
     {
-        spacing: (parent.width - 5*64-(parent.width - 5*64)/2)/6
+        property int n: children.length-1
+
+        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
 
         Item
         {
@@ -16,13 +18,10 @@ Item
             width: 1.5 * parent.spacing
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-edit"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Pen
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Pen
 
             onClicked:
             {
@@ -30,17 +29,14 @@ Item
                 hideGeometryPopup()
                 if (textEditPending)
                     textEditCancel()
-                drawMode = Painter.Pen
+                drawMode = mode
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-eraser"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Eraser
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Eraser
 
             onClicked:
             {
@@ -48,17 +44,14 @@ Item
                 hideGeometryPopup()
                 if (textEditPending)
                     textEditCancel()
-                drawMode = Painter.Eraser
+                drawMode = mode
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-spray"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Spray
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Spray
 
             onClicked:
             {
@@ -66,28 +59,25 @@ Item
                 hideGeometryPopup()
                 if (textEditPending)
                     textEditCancel()
-                drawMode = Painter.Spray
+                drawMode = mode
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-geometrics"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Geometrics
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Geometrics
 
             onClicked:
             {
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
-                if (drawMode != Painter.Geometrics)
+                if (drawMode != mode)
                     showGeometryPopup()
                 else
                     toggleGeometryPopup()
                 if (textEditPending)
                     textEditCancel()
-                drawMode = Painter.Geometrics
+                drawMode = mode
             }
 
             onHighlightedChanged:
@@ -98,7 +88,7 @@ Item
         }
 
 
-        IconButton
+        ToolbarButton
         {
             id: toolSettingsButton
             icon.source:
@@ -109,9 +99,6 @@ Item
                     return "image://paintIcons/icon-m-erasersettings"
                 return "image://paintIcons/icon-m-toolsettings"
             }
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {

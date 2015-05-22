@@ -6,15 +6,19 @@ Item
 {
     id: toolBox
 
+    ListModel
+    {
+        id: toolbarModel
+        ListElement { name: "Toolbar3.qml" }
+        ListElement { name: "Toolbar4.qml" }
+        ListElement { name: "Toolbar1.qml" }
+        ListElement { name: "Toolbar2.qml" }
+    }
+
     anchors.horizontalCenter: parent.horizontalCenter
     height: 80
     width: parent.width
-
-    property var toolbar
-    property var popup
-
-    property int toolbarNumber : 1
-    property int maxToolbars: 3
+    clip: true
 
     signal showMessage(string message, int delay)
     signal showGeometryPopup()
@@ -31,9 +35,12 @@ Item
     signal toggleGridVisibility()
     signal gridSettingsChanged()
 
+    signal previewCanvasDrawImage()
+    signal insertImageAccept()
+    signal insertImageCancel()
+
     function startRemorse()
     {
-        toolBox.opacity = 0.0
         hideDimensionPopup()
         hideGeometryPopup()
         remorse.execute(qsTr("Clearing"), function()
@@ -43,6 +50,8 @@ Item
 
             if (textEditPending)
                 textEditCancel()
+            if (insertImagePending)
+                insertImageCancel()
 
             /* Clear also all dimensions created */
             dimensionModel.clear()
@@ -170,23 +179,16 @@ Item
         anchors.centerIn: parent
         rotation: rotationSensor.angle
         width: Math.abs(rotation) == 90 ? parent.height : parent.width
-        onCanceled: toolBox.opacity = 1.0
-        onTriggered: toolBox.opacity = 1.0
     }
 
     PathView
     {
         id: toolboxView
         anchors.fill: parent
-        preferredHighlightBegin: 1/3
-        preferredHighlightEnd: 2/3
+        preferredHighlightBegin: 1/model.count
+        preferredHighlightEnd: 2/model.count
         offset: 2.0
-        model: ListModel
-        {
-            ListElement { name: "Toolbar3.qml" }
-            ListElement { name: "Toolbar1.qml" }
-            ListElement { name: "Toolbar2.qml" }
-        }
+        model: toolbarModel
         delegate: Loader
         {
             width: toolboxView.width

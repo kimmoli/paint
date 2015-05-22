@@ -8,7 +8,9 @@ Item
 
     Row
     {
-        spacing: (parent.width - 5*64-(parent.width - 5*64)/2)/6
+        property int n: children.length-1
+
+        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
 
         Item
         {
@@ -16,53 +18,44 @@ Item
             width: 1.5 * parent.spacing
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-texttool"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Text
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Text
 
             onClicked:
             {
                 hideDimensionPopup()
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-textsettings"
-                drawMode = Painter.Text
+                drawMode = mode
                 if (textEditPending)
                     textEditCancel()
             }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://theme/icon-m-enter-accept"
-            anchors.bottom: parent.bottom
             enabled: textEditPending
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked: textEditAccept()
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-dimensiontool"
-            anchors.bottom: parent.bottom
-            highlighted: drawMode === Painter.Dimensioning
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            mode: Painter.Dimensioning
 
             onClicked:
             {
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
-                if (drawMode != Painter.Dimensioning)
+                if (drawMode != mode)
                     showDimensionPopup()
                 else
                     toggleDimensionPopup()
                 if (textEditPending)
                     textEditCancel()
-                drawMode = Painter.Dimensioning
+                drawMode = mode
                 previewCanvas.requestPaint()
             }
 
@@ -73,17 +66,14 @@ Item
                 }
         }
 
-        IconButton
+        ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-grid"
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked: toggleGridVisibility()
         }
 
-        IconButton
+        ToolbarButton
         {
             id: toolSettingsButton
             icon.source:
@@ -94,9 +84,6 @@ Item
                     return "image://paintIcons/icon-m-erasersettings"
                 return "image://paintIcons/icon-m-toolsettings"
             }
-            anchors.bottom: parent.bottom
-            rotation: rotationSensor.angle
-            Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
             onClicked:
             {

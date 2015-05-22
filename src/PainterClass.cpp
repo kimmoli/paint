@@ -9,10 +9,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include "PainterClass.h"
+#include <sailfishapp.h>
 #include <QCoreApplication>
-#include <QtDBus/QtDBus>
-#include <QDBusArgument>
+#include <QtQml>
+#include <QGuiApplication>
 #include <QFontDatabase>
+#include <QImage>
+#include <QTransform>
+#include <QPainter>
 
 PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
@@ -27,44 +31,6 @@ QString PainterClass::readVersion()
 
 PainterClass::~PainterClass()
 {
-}
-
-QString PainterClass::saveScreenshot()
-{
-    QDate ssDate = QDate::currentDate();
-    QTime ssTime = QTime::currentTime();
-
-    QString ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
-                    .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
-                    .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
-                    .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
-                    .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
-                    .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
-                    .arg(getSetting("fileExtension", QVariant("png")).toString());
-
-    QDBusMessage m = QDBusMessage::createMethodCall("org.nemomobile.lipstick",
-                                                    "/org/nemomobile/lipstick/screenshot",
-                                                    "",
-                                                    "saveScreenshot" );
-
-    QList<QVariant> args;
-    args.append(ssFilename);
-    m.setArguments(args);
-
-    if (QDBusConnection::sessionBus().send(m))
-    {
-        printf("Screenshot success to %s\n", qPrintable(ssFilename));
-        return ssFilename.split('/').last();
-    }
-    else
-    {
-        printf("Screenshot failed\n");
-        return QString("Failed");
-    }
-
-
 }
 
 QVariant PainterClass::getSetting(QString name, QVariant defaultValue)
@@ -116,4 +82,99 @@ int PainterClass::getNumberOfFonts()
 QString PainterClass::getFontName(int number)
 {
     return fontFamilies.at(number);
+}
+
+QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename)
+{
+    QImage s;
+    s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
+
+    if (!background.isEmpty())
+    {
+        QImage bg(QUrl(background).toLocalFile());
+
+        if (bgRotate)
+        {
+            QTransform tBg;
+            tBg.rotate(90);
+            QImage qBg = bg.transformed(tBg);
+            bg = QImage(qBg);
+        }
+
+        /* Scale and center background image as it is done in qml */
+        QRectF sRect(s.rect());
+
+        qreal height = ((qreal)sRect.width()/(qreal)bg.rect().width()*(qreal)bg.rect().height());
+        sRect.setTop( ((qreal)s.rect().height() - height) / 2);
+        sRect.setBottom( (qreal)s.rect().height() - sRect.top());
+
+        QPainter p;
+        /* Draw background behind the canvas */
+        p.begin(&s);
+        p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+        p.drawImage(sRect, bg, bg.rect());
+        p.end();
+    }
+
+    if (!dataURL2.isEmpty())
+    {
+        QImage p2;
+        p2.loadFromData(QByteArray::fromBase64(dataURL2.split(",").at(1).toLatin1()), "png");
+
+        QPainter p;
+        /* Draw dimension canvas on top of canvas */
+        p.begin(&s);
+        p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+        p.drawImage(QPointF(0.0, 0.0), p2);
+        p.end();
+    }
+
+    /* Rotate output according to device orientation */
+    QTransform t;
+    t.rotate((-1) * angle); // this is counterclockwise
+    QImage q = s.transformed(t);
+
+    QString ssFilename;
+
+    if (filename.isEmpty())
+    {
+        QDate ssDate = QDate::currentDate();
+        QTime ssTime = QTime::currentTime();
+
+        ssFilename = QString("%7/paint-%1%2%3-%4%5%6.%8")
+                        .arg((int) ssDate.day(),    2, 10, QLatin1Char('0'))
+                        .arg((int) ssDate.month(),  2, 10, QLatin1Char('0'))
+                        .arg((int) ssDate.year(),   2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.hour(),   2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.minute(), 2, 10, QLatin1Char('0'))
+                        .arg((int) ssTime.second(), 2, 10, QLatin1Char('0'))
+                        .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                        .arg(getSetting("fileExtension", QVariant("png")).toString());
+    }
+    else
+    {
+        ssFilename = QString("%1/%2.%3")
+                .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+                .arg(filename)
+                .arg(getSetting("fileExtension", QVariant("png")).toString());
+    }
+
+    if (q.save(ssFilename))
+        return ssFilename.split('/').last();
+    else
+        return QString();
+}
+
+bool PainterClass::fileExists(QString filename)
+{
+    QString filepath = QString("%1/%2.%3")
+            .arg(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation))
+            .arg(filename)
+            .arg(getSetting("fileExtension", QVariant("png")).toString());
+
+    QFile test(filepath);
+
+    qDebug() << "checking" << filepath << test.exists();
+
+    return test.exists();
 }

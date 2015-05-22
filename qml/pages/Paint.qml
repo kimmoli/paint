@@ -29,28 +29,33 @@ Page
     {
         id: accelerometer
         dataRate: 25
-        active: textEditPending
+        active: textEditPending || insertImagePending
 
         property double angle: 0.0
         property double x: 0.0
         property double y: 0.0
 
-        Behavior on x { NumberAnimation { duration: 100 } }
-        Behavior on y { NumberAnimation { duration: 100 } }
+        Behavior on x { NumberAnimation { duration: 175 } }
+        Behavior on y { NumberAnimation { duration: 175 } }
 
         onReadingChanged:
         {
             x = reading.x
             y = reading.y
+            var a
 
             if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
-                angle = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+                a = -(Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
             else
-                angle = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+                a = Math.PI + (Math.acos(x / Math.sqrt(y * y + x * x)) - (Math.PI/2) )
+
+            if (gridVisible && gridSnapTo)
+                angle = a - ((a + Math.PI/72) % (Math.PI/36)) + Math.PI/72
+            else
+                angle = a
 
             previewCanvas.requestPaint()
         }
-
     }
 
     Sensors.OrientationSensor
@@ -160,6 +165,7 @@ Page
         id: toolBox
         z: 15
 
+        opacity: area.pressedAndHolded ? 0.0 : 1.0
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
@@ -173,6 +179,9 @@ Page
         onTextSettingsChanged: previewCanvas.requestPaint()
         onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
         onGridSettingsChanged: gridCanvas.requestPaint()
+        onPreviewCanvasDrawImage: previewCanvas.insertNewImage()
+        onInsertImageAccept: acceptInsertedImage()
+        onInsertImageCancel: cancelInsertedImage()
     }
 
     InteractionHintLabel
@@ -307,10 +316,20 @@ Page
         return num
     }
 
-    function drawLine(ctx, x0,y0,x1,y1)
+    function drawLine(ctx, x0,y0,x1,y1, lineThick, lineColor)
     {
-        ctx.lineWidth = drawThickness
-        ctx.strokeStyle = colors[drawColor]
+        /*
+          lineThick and lineColor are optinal, use them to override linestyles
+        */
+        if (typeof(thick)==='undefined')
+            ctx.lineWidth = drawThickness
+        else
+            ctx.lineWidth = lineThick
+
+        if (typeof(color)==='undefined')
+            ctx.strokeStyle = colors[drawColor]
+        else
+            ctx.strokeStyle = lineColor
 
         ctx.beginPath()
         ctx.moveTo(x0, y0)
@@ -460,6 +479,30 @@ Page
         ctx.restore()
     }
 
+    function drawInsertedImage(ctx, x, y)
+    {
+        var w = insertedImage.width * insertImageScale
+        var h = insertedImage.height * insertImageScale
+
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate( accelerometer.angle )
+        ctx.drawImage(insertImagePath, -w/2, -h/2, w, h)
+        ctx.restore()
+    }
+
+    function acceptInsertedImage()
+    {
+        insertImagePending = false;
+        previewCanvas.clear()
+        canvas.requestPaint()
+    }
+    function cancelInsertedImage()
+    {
+        insertImagePending = false;
+        previewCanvas.clear()
+    }
+
     Canvas
     {
         id: dimensionCanvas
@@ -472,6 +515,11 @@ Page
         function clear()
         {
             clearNow = true
+            if (insertImagePath.length>0)
+            {
+                unloadImage(insertImagePath)
+                insertImagePath = ""
+            }
             requestPaint()
         }
 
@@ -500,18 +548,25 @@ Page
 
     SequentialAnimation
     {
-             id: textEditActiveAnimation
-             running: (textEditPending || dimensionPopupVisible) && !area.pressed
-             loops: Animation.Infinite
+         id: textEditActiveAnimation
+         running: (textEditPending || dimensionPopupVisible) && !area.pressed
+         loops: Animation.Infinite
 
-             NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
-             NumberAnimation { target: previewCanvas; property: "opacity"; to: 1.0; duration: 500; easing.type: Easing.InOutCubic }
+         NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }
+         NumberAnimation { target: previewCanvas; property: "opacity"; to: 1.0; duration: 500; easing.type: Easing.InOutCubic }
 
-             onRunningChanged:
-             {
-                 if (!running)
-                     previewCanvas.opacity = 1.0
-             }
+         onRunningChanged:
+         {
+             if (!running)
+                 previewCanvas.opacity = 1.0
+         }
+    }
+
+    Image
+    {
+        id: insertedImage
+        visible: false
+        source: insertImagePath
     }
 
     Canvas
@@ -533,6 +588,17 @@ Page
             requestPaint()
         }
 
+        function insertNewImage()
+        {
+            loadImage(insertImagePath)
+            // Calculate scale so the image fits, and center it on screen
+            pinchtarget.scale = Math.min(1.0, width/Math.max(insertedImage.width, insertedImage.height))
+            insertImageX = width/2
+            insertImageY = height/2
+            insertImagePending = true
+            requestPaint()
+        }
+
         onPaint:
         {
             var ctx = getContext('2d')
@@ -544,10 +610,22 @@ Page
                 clearNow = false
                 return
             }
+
             ctx.lineJoin = ctx.lineCap = 'round';
 
             switch (drawMode)
             {
+            case Painter.Image:
+                if (insertImagePending && insertImagePath.length>0)
+                {
+                    if (area.pressed)
+                        drawInsertedImage(ctx, insertImageX + area.gMouseX - previewCanvas.downX,
+                                      insertImageY + area.gMouseY - previewCanvas.downY)
+                    else
+                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                }
+                break;
+
             case Painter.Geometrics:
                 switch(geometricsMode)
                 {
@@ -601,7 +679,6 @@ Page
             }
         }
     }
-
 
     Canvas
     {
@@ -695,6 +772,15 @@ Page
                     }
                     break;
 
+                case Painter.Image:
+                    if (!insertImagePending && insertImagePath.length>0)
+                    {
+                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                        unloadImage(insertImagePath)
+                        insertImagePath = ""
+                    }
+                    break;
+
                 default:
                     console.error("Unimplemented feature")
                     break;
@@ -703,184 +789,213 @@ Page
             lastY = area.gMouseY
         }
 
-        MouseArea
+        Item
         {
-            id: area
+            // Dummy item to get pinch scale
+            id: pinchtarget
+            onScaleChanged: insertImageScale = scale
+        }
+
+        PinchArea
+        {
+            id: pincharea
             anchors.fill: canvas
 
-            property real gMouseX: 0.0
-            property real gMouseY: 0.0
+            pinch.target: pinchtarget
+            pinch.dragAxis: Pinch.NoDrag
+            pinch.minimumRotation: 0
+            pinch.maximumRotation: 0
+            pinch.minimumScale: 0.1
+            pinch.maximumScale: 5.0
 
-            onPressAndHold:
+            MouseArea
             {
-                geometryPopupVisible = false
-                dimensionPopupVisible = false
-                toolBox.opacity = 0.0
-            }
-            onPressed:
-            {
-                if (gridVisible && gridSnapTo)
+                id: area
+                anchors.fill: parent
+
+                property real gMouseX: 0.0
+                property real gMouseY: 0.0
+                property bool pressedAndHolded: false
+
+                onPressAndHold:
                 {
-                    // =PYÖRISTÄ.KERR.ALAS((A1-$C$1/2)/($C$1);1)*$C$1+$C$1
-                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
-                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                    geometryPopupVisible = false
+                    dimensionPopupVisible = false
+                    pressedAndHolded = true
                 }
-                else
+                onPressed:
                 {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
-                }
-
-                canvas.lastX = gMouseX
-                canvas.lastY = gMouseY
-
-                switch (drawMode)
-                {
-                case Painter.Geometrics:
-                    previewCanvas.downX = gMouseX
-                    previewCanvas.downY = gMouseY
-                    break;
-
-                case Painter.Dimensioning:
-                    if (dimensionMoveMode)
+                    if (gridVisible && gridSnapTo)
                     {
-                        var d=dimensionModel.get(selectedDimension)
-
-                        /* Select nearest dimension end to move */
-                        var distance0 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x0"]), 2) + Math.pow(Math.abs(mouseY-d["y0"]), 2))
-                        var distance1 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x1"]), 2) + Math.pow(Math.abs(mouseY-d["y1"]), 2))
-
-                        console.log("D0 = " + distance0 + " D1 = " + distance1)
-
-                        if (distance0 > distance1)
-                            dimensionMoveEnd = 0
-                        else
-                            dimensionMoveEnd = 1
-
-                        previewCanvas.downX = d[String("x%1").arg(dimensionMoveEnd)]
-                        previewCanvas.downY = d[String("y%1").arg(dimensionMoveEnd)]
-
-                        // This will hide this dimension from dimensionCanvas
-                        // as it is drawn to previewCanvas
-                        dimensionCanvas.requestPaint()
-                        previewCanvas.requestPaint()
+                        // =PYÖRISTÄ.KERR.ALAS((A1-$C$1/2)/($C$1);1)*$C$1+$C$1
+                        area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                        area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
                     }
                     else
                     {
+                        area.gMouseX = mouseX
+                        area.gMouseY = mouseY
+                    }
+
+                    canvas.lastX = gMouseX
+                    canvas.lastY = gMouseY
+
+                    switch (drawMode)
+                    {
+                    case Painter.Geometrics:
+                    case Painter.Image:
                         previewCanvas.downX = gMouseX
                         previewCanvas.downY = gMouseY
-                    }
-                    break;
+                        break;
 
-                case Painter.Text:
-                    previewCanvas.downX = gMouseX
-                    previewCanvas.downY = gMouseY
-
-                    if (!textEditPending)
-                    {
-                        var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"))
-
-                        textEntryDialog.accepted.connect(function()
+                    case Painter.Dimensioning:
+                        if (dimensionMoveMode)
                         {
-                            thisTextEntry = textEntryDialog.newText
-                            if (thisTextEntry.length>0)
+                            var d=dimensionModel.get(selectedDimension)
+
+                            /* Select nearest dimension end to move */
+                            var distance0 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x0"]), 2) + Math.pow(Math.abs(mouseY-d["y0"]), 2))
+                            var distance1 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x1"]), 2) + Math.pow(Math.abs(mouseY-d["y1"]), 2))
+
+                            console.log("D0 = " + distance0 + " D1 = " + distance1)
+
+                            if (distance0 > distance1)
+                                dimensionMoveEnd = 0
+                            else
+                                dimensionMoveEnd = 1
+
+                            previewCanvas.downX = d[String("x%1").arg(dimensionMoveEnd)]
+                            previewCanvas.downY = d[String("y%1").arg(dimensionMoveEnd)]
+
+                            // This will hide this dimension from dimensionCanvas
+                            // as it is drawn to previewCanvas
+                            dimensionCanvas.requestPaint()
+                            previewCanvas.requestPaint()
+                        }
+                        else
+                        {
+                            previewCanvas.downX = gMouseX
+                            previewCanvas.downY = gMouseY
+                        }
+                        break;
+
+                    case Painter.Text:
+                        previewCanvas.downX = gMouseX
+                        previewCanvas.downY = gMouseY
+
+                        if (!textEditPending)
+                        {
+                            var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"))
+
+                            textEntryDialog.accepted.connect(function()
                             {
-                                textEditPending = true
-                                previewCanvas.requestPaint()
-                            }
-                        })
+                                thisTextEntry = textEntryDialog.newText
+                                if (thisTextEntry.length>0)
+                                {
+                                    textEditPending = true
+                                    previewCanvas.requestPaint()
+                                }
+                            })
+                        }
+                        else
+                            previewCanvas.requestPaint()
+
+                        break;
+
+                    default:
+                        break;
+                    }
+                }
+
+                onReleased:
+                {
+                    pressedAndHolded = false
+                    if (gridVisible && gridSnapTo)
+                    {
+                        area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                        area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
                     }
                     else
+                    {
+                        area.gMouseX = mouseX
+                        area.gMouseY = mouseY
+                    }
+
+                    switch (drawMode)
+                    {
+                    case Painter.Dimensioning:
+
+                        dimensionPopupVisible = true
+
+                        if (dimensionMoveMode)
+                        {
+                            dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseX)
+                            dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseY)
+                        }
+                        else
+                        {
+                            dimensionModel.append( {"x0": previewCanvas.downX,
+                                                    "y0": previewCanvas.downY,
+                                                    "x1": area.gMouseX,
+                                                    "y1": area.gMouseY,
+                                                    "font": textFont,
+                                                    "fontSize": textFontSize,
+                                                    "fontColor": textColor,
+                                                    "lineColor": drawColor,
+                                                    "lineThickness": drawThickness})
+                        }
+                        //previewCanvas.clear()
                         previewCanvas.requestPaint()
+                        dimensionCanvas.requestPaint()
 
-                    break;
+                        break;
 
-                default:
-                    break;
+                    case Painter.Geometrics:
+
+                        geometryPopupVisible = true
+
+                        canvas.requestPaint()
+                        previewCanvas.clear()
+                        break;
+
+                    case Painter.Image:
+                        insertImageX += area.gMouseX - previewCanvas.downX
+                        insertImageY += area.gMouseY - previewCanvas.downY
+                        previewCanvas.requestPaint()
+                        break;
+
+                    default:
+                        break;
+                    }
                 }
-            }
 
-            onReleased:
-            {
-
-                if (gridVisible && gridSnapTo)
+                onPositionChanged:
                 {
-                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
-                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
-                }
-                else
-                {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
-                }
 
-                switch (drawMode)
-                {
-                case Painter.Dimensioning:
-
-                    dimensionPopupVisible = true
-
-                    if (dimensionMoveMode)
+                    if (gridVisible && gridSnapTo)
                     {
-                        dimensionModel.setProperty ( selectedDimension, String("x%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseX)
-                        dimensionModel.setProperty ( selectedDimension, String("y%1").arg(dimensionMoveEnd === 0 ? 1 : 0) , area.gMouseY)
+                        area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
+                        area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
                     }
                     else
                     {
-                        dimensionModel.append( {"x0": previewCanvas.downX,
-                                                "y0": previewCanvas.downY,
-                                                "x1": area.gMouseX,
-                                                "y1": area.gMouseY,
-                                                "font": textFont,
-                                                "fontSize": textFontSize,
-                                                "fontColor": textColor,
-                                                "lineColor": drawColor,
-                                                "lineThickness": drawThickness})
+                        area.gMouseX = mouseX
+                        area.gMouseY = mouseY
                     }
-                    //previewCanvas.clear()
-                    previewCanvas.requestPaint()
-                    dimensionCanvas.requestPaint()
 
-                    break;
+                    switch (drawMode)
+                    {
+                    case Painter.Text:
+                    case Painter.Geometrics:
+                    case Painter.Dimensioning:
+                    case Painter.Image:
+                        previewCanvas.requestPaint()
+                        break;
 
-                case Painter.Geometrics:
-
-                    geometryPopupVisible = true
-
-                    canvas.requestPaint()
-                    previewCanvas.clear()
-                    break;
-
-                default:
-                    break;
-                }
-                toolBox.opacity = 1.0
-            }
-
-            onPositionChanged:
-            {
-
-                if (gridVisible && gridSnapTo)
-                {
-                    area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
-                    area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
-                }
-                else
-                {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
-                }
-
-                switch (drawMode)
-                {
-                case Painter.Text:
-                case Painter.Geometrics:
-                case Painter.Dimensioning:
-                    previewCanvas.requestPaint()
-                    break;
-                default:
-                    canvas.requestPaint()
-                    break;
+                    default:
+                        canvas.requestPaint()
+                        break;
+                    }
                 }
             }
         }

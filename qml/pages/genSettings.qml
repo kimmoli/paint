@@ -14,12 +14,14 @@ Dialog
     property int gridSpacing : 50
     property bool gridSnapTo : false
     property bool rememberToolSettings : false
+    property bool askSaveFilename: false
 
     onAccepted:
     {
         gridSpacing = gridSpacingSlider.value
         gridSnapTo = gridSnapSwitch.checked
         rememberToolSettings = rememberToolSettingsSwitch.checked
+        askSaveFilename = askSaveFilenameSwitch.checked
     }
 
     SilicaFlickable
@@ -51,10 +53,11 @@ Dialog
             width: parent.width - Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: dialogHeader.bottom
+            spacing: Theme.paddingSmall
 
             SectionHeader
             {
-                text: qsTr("File format")
+                text: qsTr("Saving options")
             }
 
             Row
@@ -89,6 +92,14 @@ Dialog
                     }
                 }
             }
+            TextSwitch
+            {
+                id: askSaveFilenameSwitch
+                text: qsTr("Ask filename when saving")
+                checked: askSaveFilename
+                width: parent.width
+            }
+
 
             SectionHeader
             {

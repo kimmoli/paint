@@ -27,8 +27,6 @@ public:
 
     QString readVersion();
 
-    Q_INVOKABLE QString saveScreenshot();
-
     Q_INVOKABLE QVariant getSetting(QString name, QVariant defaultValue);
     Q_INVOKABLE void setSetting(QString name, QVariant value);
     Q_INVOKABLE int getToolSetting(QString name, int defaultValue);
@@ -38,6 +36,15 @@ public:
     Q_INVOKABLE int getNumberOfFonts();
     Q_INVOKABLE QString getFontName(int number);
 
+    Q_INVOKABLE QString saveCanvas(QString dataURL1,
+                                   QString dataURL2,
+                                   QString background,
+                                   bool bgRotate,
+                                   int angle,
+                                   QString filename);
+
+    Q_INVOKABLE bool fileExists(QString filename);
+
     enum Mode
     {
         None = -1,
@@ -46,7 +53,8 @@ public:
         Spray,
         Geometrics,
         Text,
-        Dimensioning
+        Dimensioning,
+        Image
     };
 
     enum GeometricsMode
