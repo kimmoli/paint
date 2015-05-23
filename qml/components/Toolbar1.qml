@@ -18,7 +18,6 @@ Item
 
             onClicked:
             {
-                toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
@@ -32,7 +31,6 @@ Item
 
             onClicked:
             {
-                toolSettingsButton.icon.source = "image://paintIcons/icon-m-erasersettings"
                 hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
@@ -46,7 +44,6 @@ Item
 
             onClicked:
             {
-                toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
@@ -60,7 +57,6 @@ Item
 
             onClicked:
             {
-                toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 if (drawMode != mode)
                     showGeometryPopup()
                 else

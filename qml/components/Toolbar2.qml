@@ -89,7 +89,6 @@ Item
 
             onClicked:
             {
-                toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 if (drawMode != mode)
                     showDimensionPopup()
                 else
