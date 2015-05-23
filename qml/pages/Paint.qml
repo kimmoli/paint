@@ -12,9 +12,6 @@ Page
 
     anchors.fill: parent
 
-    state: toolboxLocation
-    onStateChanged: previewCanvas.clear()
-
     Component.onCompleted:
     {
         var toolbarHintCounter = painter.getSetting("toolbarHintCounter", 0)
@@ -22,6 +19,16 @@ Page
         {
             painter.setSetting("toolbarHintCounter", ++toolbarHintCounter)
             toolbarInteractionHint.start()
+        }
+    }
+
+    function checkPinchHint(tool)
+    {
+        var pinchHintCounter = painter.getSetting(tool + "PinchHintCounter", 0)
+        if (pinchHintCounter < 2)
+        {
+            painter.setSetting(tool + "PinchHintCounter", ++pinchHintCounter)
+            pinchHint.start()
         }
     }
 
@@ -79,52 +86,58 @@ Page
         }
     }
 
-    states: [
-        /* Default state is toolboxTop */
-    State
+    Item
     {
-        name: "toolboxBottom"
-        AnchorChanges
+        state: toolboxLocation
+        onStateChanged: previewCanvas.clear()
+
+        states: [
+            /* Default state is toolboxTop */
+        State
         {
-            target: toolBox
-            anchors.top: undefined
-            anchors.bottom: page.bottom
-        }
-        AnchorChanges
-        {
-            target: geometryPopup
-            anchors.top: undefined
-            anchors.bottom: toolBox.top
-        }
-        AnchorChanges
-        {
-            target: dimensionPopup
-            anchors.top: undefined
-            anchors.bottom: toolBox.top
-        }
-        AnchorChanges
-        {
-            target: toolBoxBackground
-            anchors.top: undefined
-            anchors.bottom: page.bottom
-        }
-        AnchorChanges
-        {
-            target: toolbarHintLabel
-            anchors.top: undefined
-            anchors.bottom: toolBox.top
-        }
-        PropertyChanges
-        {
-            target: toolbarHintLabel
-            invert: false
-        }
-        PropertyChanges
-        {
-            target: toolBoxBackgroundEffect
-            direction: OpacityRamp.BottomToTop
-        }
-    } ]
+            name: "toolboxBottom"
+            AnchorChanges
+            {
+                target: toolBox
+                anchors.top: undefined
+                anchors.bottom: page.bottom
+            }
+            AnchorChanges
+            {
+                target: geometryPopup
+                anchors.top: undefined
+                anchors.bottom: toolBox.top
+            }
+            AnchorChanges
+            {
+                target: dimensionPopup
+                anchors.top: undefined
+                anchors.bottom: toolBox.top
+            }
+            AnchorChanges
+            {
+                target: toolBoxBackground
+                anchors.top: undefined
+                anchors.bottom: page.bottom
+            }
+            AnchorChanges
+            {
+                target: toolbarHintLabel
+                anchors.top: undefined
+                anchors.bottom: toolBox.top
+            }
+            PropertyChanges
+            {
+                target: toolbarHintLabel
+                invert: false
+            }
+            PropertyChanges
+            {
+                target: toolBoxBackgroundEffect
+                direction: OpacityRamp.BottomToTop
+            }
+        } ]
+    }
 
     Messagebox
     {
@@ -171,16 +184,24 @@ Page
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
         onShowGeometryPopup: geometryPopupVisible = true
         onHideGeometryPopup: geometryPopupVisible = false
-        onToggleDimensionPopup: { dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
-        onShowDimensionPopup: { dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
-        onHideDimensionPopup: { dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
-        onPreviewCanvasDrawText: previewCanvas.insertNewText()
+        onToggleDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
+        onShowDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
+        onHideDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
+        onPreviewCanvasDrawText:
+        {
+            checkPinchHint("text")
+            previewCanvas.insertNewText()
+        }
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
         onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
         onGridSettingsChanged: gridCanvas.requestPaint()
-        onPreviewCanvasDrawImage: previewCanvas.insertNewImage()
+        onPreviewCanvasDrawImage:
+        {
+            checkPinchHint("image")
+            previewCanvas.insertNewImage()
+        }
         onInsertImageAccept: acceptInsertedImage()
         onInsertImageCancel: cancelInsertedImage()
     }
@@ -192,7 +213,7 @@ Page
         anchors.top: toolBox.bottom
         invert: true
         opacity: toolbarInteractionHint.running ? 1.0 : 0.0
-        Behavior on opacity { FadeAnimation { duration: 1000 } }
+        Behavior on opacity { FadeAnimation { duration: 500 } }
     }
 
     TouchInteractionHint
@@ -201,6 +222,37 @@ Page
         direction: TouchInteraction.Right
         anchors.verticalCenter: toolBox.verticalCenter
         loops: 4
+    }
+
+    InteractionHintLabel
+    {
+        z: 30
+        id: pinchHintLabel
+        text: qsTr("Pinch to zoom")
+        anchors.centerIn: page
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        opacity: pinchHint.running ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimation { duration: 500 } }
+    }
+
+    TouchInteractionHint
+    {
+        id: pinchHint
+        z: 30
+        direction: TouchInteraction.Up
+        anchors.horizontalCenter: parent.horizontalCenter
+        onRunningChanged: if (running) pinchHintSlave.start()
+        loops: 3
+    }
+
+    TouchInteractionHint
+    {
+        id: pinchHintSlave
+        z: 30
+        direction: TouchInteraction.Down
+        anchors.horizontalCenter: parent.horizontalCenter
+        loops: 3
     }
 
     GeometryPopup
@@ -591,7 +643,6 @@ Page
 
         function insertNewText()
         {
-            console.log("this text = " + thisTextEntry)
             pinchtarget.scale = 1.0
             panX = width/2
             panY = height/2
@@ -875,8 +926,6 @@ Page
                             /* Select nearest dimension end to move */
                             var distance0 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x0"]), 2) + Math.pow(Math.abs(mouseY-d["y0"]), 2))
                             var distance1 = Math.sqrt(Math.pow(Math.abs(mouseX-d["x1"]), 2) + Math.pow(Math.abs(mouseY-d["y1"]), 2))
-
-                            console.log("D0 = " + distance0 + " D1 = " + distance1)
 
                             if (distance0 > distance1)
                                 dimensionMoveEnd = 0

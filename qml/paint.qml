@@ -86,7 +86,6 @@ ApplicationWindow
             /* Get fonts */
             for (var i=0 ; i<painter.getNumberOfFonts(); i++)
             {
-                console.log("font " + i + " is " + painter.getFontName(i))
                 fontList.append( {"number": i, "name": painter.getFontName(i) } )
             }
 

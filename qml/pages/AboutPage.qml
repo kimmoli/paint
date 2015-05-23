@@ -25,7 +25,6 @@ Page
 
     Component.onCompleted:
     {
-        console.log("Language " + language)
         buttonhelp.append( {"image": "image://theme/icon-m-repeat", "helptext": qsTr("Change toolbar")})
         buttonhelp.append( {"image": "image://theme/icon-m-edit", "helptext": qsTr("Draw freehand line")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-eraser", "helptext": qsTr("Eraser")})
@@ -41,7 +40,8 @@ Page
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-ellipse-filled", "helptext": qsTr("Draw filled ellipse")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-fill", "helptext": qsTr("Fill mode toggle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-texttool", "helptext": qsTr("Text tool (cancel text)")})
-        buttonhelp.append( {"image": "image://theme/icon-m-enter-accept", "helptext": qsTr("Accept current text")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-addimage", "helptext": qsTr("Add image")})
+        buttonhelp.append( {"image": "image://theme/icon-m-enter-accept", "helptext": qsTr("Accept current text/image")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-dimensiontool", "helptext": qsTr("Dimensioning tool")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-grid", "helptext": qsTr("Grid")})
         buttonhelp.append( {"image": "image://theme/icon-m-about", "helptext": qsTr("About Paint")})

@@ -57,7 +57,7 @@ Item
                 else
                 {
                     cancelPendingFunctions()
-                    var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                    var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage", { "allowedOrientations" : Orientation.All });
                     imagePicker.selectedContentChanged.connect(function()
                     {
                         insertImagePath = imagePicker.selectedContent

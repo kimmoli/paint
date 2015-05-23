@@ -208,7 +208,6 @@ Rectangle
                     var ctx = colorWheelCanvas.getContext('2d')
                     var p = ctx.getImageData(mouseX, mouseY, 1, 1).data;
                     var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6)
-                    console.log("color at " + mouseX + "x" + mouseY + " is " + hex)
 
                     /* Just set them all ... */
                     colorWheelRect.color = hex

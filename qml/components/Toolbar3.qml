@@ -109,8 +109,8 @@ Item
                     var askFilenameDialog = pageStack.push(Qt.resolvedUrl("../pages/askFilenameDialog.qml"), {
                                                            "saveFormat": painter.getSetting("fileExtension", "png")})
 
-                    askFilenameDialog.accepted.connect(function() {
-                        console.log(askFilenameDialog.filename)
+                    askFilenameDialog.accepted.connect(function()
+                    {
                         save(askFilenameDialog.filename)
                     })
                 }

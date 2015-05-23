@@ -4,84 +4,93 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Change toolbar</source>
         <translation>Change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Draw freehand line</source>
         <translation>Draw freehand line</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Eraser</source>
         <translation>Eraser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Sprayer</source>
         <translation>Sprayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Draw geometric shape</source>
         <translation>Draw geometric shape</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Change color, width</source>
         <translation>Change color, width</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw line</source>
         <translation>Draw line</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw rectangle</source>
         <translation>Draw rectangle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw filled rectangle</source>
         <translation>Draw filled rectangle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw circle</source>
         <translation>Draw circle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw filled circle</source>
         <translation>Draw filled circle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw ellipse</source>
         <translation>Draw ellipse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Draw filled ellipse</source>
         <translation>Draw filled ellipse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Fill mode toggle</source>
         <translation>Fill mode toggle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Text tool (cancel text)</source>
         <translation>Text tool (cancel text)</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <source>Add image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <source>Accept current text/image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Accept current text</source>
-        <translation>Accept current text</translation>
+        <translation type="vanished">Accept current text</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
@@ -161,9 +170,14 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="191"/>
+        <location filename="../qml/pages/Paint.qml" line="212"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="231"/>
+        <source>Pinch to zoom</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -227,32 +241,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="46"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="47"/>
         <source>Warning: Do not cancel now</source>
         <translation>Warning: Do not cancel now</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="63"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="64"/>
         <source>Dimensioning</source>
         <translation>Dimensioning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="81"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="82"/>
         <source>Scale all dimensions</source>
         <translation>Scale all dimensions</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="87"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="88"/>
         <source>Reference length %1</source>
         <translation>Reference length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="94"/>
         <source>Currently scaled length %1</source>
         <translation>Currently scaled length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="101"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="102"/>
         <source>Enter true length</source>
         <translation>Enter true length</translation>
     </message>

@@ -13,6 +13,8 @@ Row
         icon.source: "image://theme/icon-m-left"
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 1
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             dimensionMoveMode = false
@@ -27,6 +29,8 @@ Row
         icon.source: "image://theme/icon-m-right"
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 1
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             dimensionMoveMode = false
@@ -41,6 +45,8 @@ Row
         icon.source: "image://theme/icon-m-edit"
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 0
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             dimensionMoveMode = false
@@ -61,6 +67,8 @@ Row
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 0
         highlighted: dimensionMoveMode
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             dimensionMoveMode = !dimensionMoveMode
@@ -72,6 +80,8 @@ Row
         icon.source: "image://theme/icon-m-dismiss"
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 0
+        rotation: rotationSensor.angle
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             dimensionMoveMode = false

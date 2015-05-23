@@ -10,6 +10,7 @@ Dialog
     allowedOrientations: Orientation.All
 
     canAccept: (ti.focus === false) && (Number(ti.text.replace(",","."))>0)
+    backNavigation: ti.focus === false
 
     property real currentDimensionScale : 1.0
     property real currentDimension: 0
