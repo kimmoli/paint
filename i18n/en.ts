@@ -169,12 +169,12 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="57"/>
+        <location filename="../qml/components/Toolbar3.qml" line="50"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="139"/>
+        <location filename="../qml/components/Toolbar3.qml" line="132"/>
         <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -182,7 +182,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="46"/>
+        <location filename="../qml/components/Toolbox.qml" line="45"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>

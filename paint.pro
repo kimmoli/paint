@@ -78,9 +78,9 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-fill.png \
     qml/components/ColorSelector.qml \
     i18n/*.ts \
-    qml/components/Toolbar4.qml \
     qml/components/ToolbarButton.qml \
-    qml/pages/askFilenameDialog.qml
+    qml/pages/askFilenameDialog.qml \
+    qml/icons/icon-m-addimage.png
 
 TRANSLATIONS += i18n/*.ts
 

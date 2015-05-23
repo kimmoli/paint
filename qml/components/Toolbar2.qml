@@ -8,15 +8,8 @@ Item
 
     Row
     {
-        property int n: children.length-1
-
-        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
-
-        Item
-        {
-            height: 1
-            width: 1.5 * parent.spacing
-        }
+        spacing: (parent.width - children.length*80)/(children.length+1)
+        anchors.horizontalCenter: parent.horizontalCenter
 
         ToolbarButton
         {
@@ -26,19 +19,51 @@ Item
             onClicked:
             {
                 hideDimensionPopup()
+                cancelPendingFunctions()
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-textsettings"
                 drawMode = mode
-                if (textEditPending)
-                    textEditCancel()
+            }
+        }
+
+        ToolbarButton
+        {
+            icon.source: "image://paintIcons/icon-m-addimage"
+            mode: Painter.Image
+
+            onClicked:
+            {
+                hideDimensionPopup()
+
+                if (insertImagePending)
+                {
+                    insertImageCancel()
+                }
+                else
+                {
+                    cancelPendingFunctions()
+                    var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage");
+                    imagePicker.selectedContentChanged.connect(function()
+                    {
+                        insertImagePath = imagePicker.selectedContent
+                        drawMode = mode
+                        previewCanvasDrawImage()
+                    });
+                }
             }
         }
 
         ToolbarButton
         {
             icon.source: "image://theme/icon-m-enter-accept"
-            enabled: textEditPending
+            enabled: textEditPending || insertImagePending
 
-            onClicked: textEditAccept()
+            onClicked:
+            {
+                if (textEditPending)
+                    textEditAccept()
+                else if (insertImagePending)
+                    insertImageAccept()
+            }
         }
 
         ToolbarButton
@@ -53,8 +78,7 @@ Item
                     showDimensionPopup()
                 else
                     toggleDimensionPopup()
-                if (textEditPending)
-                    textEditCancel()
+                cancelPendingFunctions()
                 drawMode = mode
                 previewCanvas.requestPaint()
             }

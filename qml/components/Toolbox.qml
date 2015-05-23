@@ -10,7 +10,6 @@ Item
     {
         id: toolbarModel
         ListElement { name: "Toolbar3.qml" }
-        ListElement { name: "Toolbar4.qml" }
         ListElement { name: "Toolbar1.qml" }
         ListElement { name: "Toolbar2.qml" }
     }
@@ -48,10 +47,7 @@ Item
             canvas.clear()
             previewCanvas.clear()
 
-            if (textEditPending)
-                textEditCancel()
-            if (insertImagePending)
-                insertImageCancel()
+            cancelPendingFunctions()
 
             /* Clear also all dimensions created */
             dimensionModel.clear()
@@ -164,6 +160,14 @@ Item
         default:
             break;
         }
+    }
+
+    function cancelPendingFunctions()
+    {
+        if (textEditPending)
+            textEditCancel()
+        if (insertImagePending)
+            insertImageCancel()
     }
 
     Behavior on opacity

@@ -8,15 +8,8 @@ Item
 
     Row
     {
-        property int n: children.length-1
-
-        spacing: (parent.width - n*64-(parent.width - n*64)/2)/(n+1)
-
-        Item
-        {
-            height: 1
-            width: 1.5 * parent.spacing
-        }
+        spacing: (parent.width - children.length*80)/(children.length+1)
+        anchors.horizontalCenter: parent.horizontalCenter
 
         ToolbarButton
         {
@@ -27,8 +20,7 @@ Item
             {
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 hideGeometryPopup()
-                if (textEditPending)
-                    textEditCancel()
+                cancelPendingFunctions()
                 drawMode = mode
             }
         }
@@ -42,8 +34,7 @@ Item
             {
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-erasersettings"
                 hideGeometryPopup()
-                if (textEditPending)
-                    textEditCancel()
+                cancelPendingFunctions()
                 drawMode = mode
             }
         }
@@ -57,8 +48,7 @@ Item
             {
                 toolSettingsButton.icon.source = "image://paintIcons/icon-m-toolsettings"
                 hideGeometryPopup()
-                if (textEditPending)
-                    textEditCancel()
+                cancelPendingFunctions()
                 drawMode = mode
             }
         }
@@ -75,8 +65,7 @@ Item
                     showGeometryPopup()
                 else
                     toggleGeometryPopup()
-                if (textEditPending)
-                    textEditCancel()
+                cancelPendingFunctions()
                 drawMode = mode
             }
 
