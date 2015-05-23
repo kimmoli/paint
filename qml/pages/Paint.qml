@@ -174,6 +174,7 @@ Page
         onToggleDimensionPopup: { dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
         onShowDimensionPopup: { dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
         onHideDimensionPopup: { dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
+        onPreviewCanvasDrawText: previewCanvas.insertNewText()
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
@@ -412,7 +413,7 @@ Page
         ctx.translate(x, y)
         ctx.rotate( accelerometer.angle )
         ctx.fillStyle = colors[textColor]
-        ctx.font = textFont
+        ctx.font = (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
         ctx.fillText(txt, 0, 0)
@@ -481,8 +482,8 @@ Page
 
     function drawInsertedImage(ctx, x, y)
     {
-        var w = insertedImage.width * insertImageScale
-        var h = insertedImage.height * insertImageScale
+        var w = insertedImage.width * pinchScale
+        var h = insertedImage.height * pinchScale
 
         ctx.save()
         ctx.translate(x, y)
@@ -588,13 +589,23 @@ Page
             requestPaint()
         }
 
+        function insertNewText()
+        {
+            console.log("this text = " + thisTextEntry)
+            pinchtarget.scale = 1.0
+            panX = width/2
+            panY = height/2
+            textEditPending = true
+            requestPaint()
+        }
+
         function insertNewImage()
         {
             loadImage(insertImagePath)
             // Calculate scale so the image fits, and center it on screen
             pinchtarget.scale = Math.min(1.0, width/Math.max(insertedImage.width, insertedImage.height))
-            insertImageX = width/2
-            insertImageY = height/2
+            panX = width/2
+            panY = height/2
             insertImagePending = true
             requestPaint()
         }
@@ -619,10 +630,10 @@ Page
                 if (insertImagePending && insertImagePath.length>0)
                 {
                     if (area.pressed)
-                        drawInsertedImage(ctx, insertImageX + area.gMouseX - previewCanvas.downX,
-                                      insertImageY + area.gMouseY - previewCanvas.downY)
+                        drawInsertedImage(ctx, panX + area.gMouseX - previewCanvas.downX,
+                                      panY + area.gMouseY - previewCanvas.downY)
                     else
-                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                        drawInsertedImage(ctx, panX, panY)
                 }
                 break;
 
@@ -646,9 +657,16 @@ Page
                         break;
                 }
                 break;
+
             case Painter.Text:
-                if (thisTextEntry.length>0)
-                    drawText(ctx, thisTextEntry, area.gMouseX, area.gMouseY)
+                if (textEditPending && thisTextEntry.length>0)
+                {
+                    if (area.pressed)
+                        drawText(ctx, thisTextEntry, panX + area.gMouseX - previewCanvas.downX,
+                                 panY + area.gMouseY - previewCanvas.downY)
+                    else
+                        drawText(ctx, thisTextEntry, panX, panY)
+                }
                 break;
 
             case Painter.Dimensioning:
@@ -767,7 +785,7 @@ Page
                 case Painter.Text:
                     if (!textEditPending && thisTextEntry.length>0)
                     {
-                        drawText(ctx, thisTextEntry, area.gMouseX, area.gMouseY)
+                        drawText(ctx, thisTextEntry, panX, panY)
                         thisTextEntry = ""
                     }
                     break;
@@ -775,7 +793,7 @@ Page
                 case Painter.Image:
                     if (!insertImagePending && insertImagePath.length>0)
                     {
-                        drawInsertedImage(ctx, insertImageX, insertImageY)
+                        drawInsertedImage(ctx, panX, panY)
                         unloadImage(insertImagePath)
                         insertImagePath = ""
                     }
@@ -793,7 +811,7 @@ Page
         {
             // Dummy item to get pinch scale
             id: pinchtarget
-            onScaleChanged: insertImageScale = scale
+            onScaleChanged: pinchScale = scale
         }
 
         PinchArea
@@ -843,6 +861,7 @@ Page
                     switch (drawMode)
                     {
                     case Painter.Geometrics:
+                    case Painter.Text:
                     case Painter.Image:
                         previewCanvas.downX = gMouseX
                         previewCanvas.downY = gMouseY
@@ -877,29 +896,6 @@ Page
                             previewCanvas.downX = gMouseX
                             previewCanvas.downY = gMouseY
                         }
-                        break;
-
-                    case Painter.Text:
-                        previewCanvas.downX = gMouseX
-                        previewCanvas.downY = gMouseY
-
-                        if (!textEditPending)
-                        {
-                            var textEntryDialog = pageStack.push(Qt.resolvedUrl("../pages/textEntryDialog.qml"))
-
-                            textEntryDialog.accepted.connect(function()
-                            {
-                                thisTextEntry = textEntryDialog.newText
-                                if (thisTextEntry.length>0)
-                                {
-                                    textEditPending = true
-                                    previewCanvas.requestPaint()
-                                }
-                            })
-                        }
-                        else
-                            previewCanvas.requestPaint()
-
                         break;
 
                     default:
@@ -959,8 +955,9 @@ Page
                         break;
 
                     case Painter.Image:
-                        insertImageX += area.gMouseX - previewCanvas.downX
-                        insertImageY += area.gMouseY - previewCanvas.downY
+                    case Painter.Text:
+                        panX += area.gMouseX - previewCanvas.downX
+                        panY += area.gMouseY - previewCanvas.downY
                         previewCanvas.requestPaint()
                         break;
 

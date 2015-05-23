@@ -35,6 +35,8 @@ ApplicationWindow
     property string textFontName: painter.getFontName(textFontNameIndex)
     property string textFont: (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + textFontSize + "px " + textFontName
     property bool textEditPending: false
+    property real textEntryX: 0.0
+    property real textEntryY: 0.0
     property string thisTextEntry : ""
     property int bgColor: colors.length
     property string toolboxLocation : "toolboxTop"
@@ -53,9 +55,9 @@ ApplicationWindow
     property bool rememberToolSettings: false
     property string insertImagePath: ""
     property bool insertImagePending: false
-    property real insertImageScale: 1.0
-    property real insertImageX: 0.0
-    property real insertImageY: 0.0
+    property real pinchScale: 1.0
+    property real panX: 0.0
+    property real panY: 0.0
     property bool askSaveFilename: false
 
     /*****************************************************/

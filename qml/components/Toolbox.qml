@@ -27,6 +27,7 @@ Item
     signal toggleDimensionPopup()
     signal hideDimensionPopup()
 
+    signal previewCanvasDrawText()
     signal textEditAccept()
     signal textEditCancel()
     signal textSettingsChanged()
