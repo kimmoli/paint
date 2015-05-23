@@ -459,6 +459,35 @@ Page
             ctx.strokeRect(x, y, w, h);
     }
 
+    function drawSquare(ctx, x0,y0,x1,y1, fill)
+    {
+        ctx.lineWidth = drawThickness
+        ctx.strokeStyle = colors[drawColor]
+        ctx.fillStyle  = colors[drawColor]
+
+        var seglen = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+        var angle = Math.atan2(y1-y0, x1-x0)
+        // Center
+        var cx = x0+seglen/2*Math.cos(angle)
+        var cy = y0+seglen/2*Math.sin(angle)
+        // 2 other corners
+        var mx = cx+seglen/2*Math.cos(angle-Math.PI/2)
+        var my = cy+seglen/2*Math.sin(angle-Math.PI/2)
+        var nx = cx+seglen/2*Math.cos(angle+Math.PI/2)
+        var ny = cy+seglen/2*Math.sin(angle+Math.PI/2)
+
+        ctx.beginPath()
+        ctx.moveTo(x0, y0)
+        ctx.lineTo(mx, my)
+        ctx.lineTo(x1, y1)
+        ctx.lineTo(nx, ny)
+        ctx.lineTo(x0, y0)
+        ctx.closePath()
+        if (fill)
+            ctx.fill()
+        ctx.stroke()
+    }
+
     function drawText(ctx, txt, x, y)
     {
         ctx.save()
@@ -703,6 +732,9 @@ Page
                     case Painter.Ellipse :
                         drawEllipse(ctx, downX, downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
+                    case Painter.Square :
+                        drawSquare(ctx, downX, downY, area.gMouseX, area.gMouseY, geometryFill)
+                        break;
 
                     default:
                         break;
@@ -824,6 +856,9 @@ Page
                         break;
                     case Painter.Ellipse:
                         drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, geometryFill)
+                        break;
+                    case Painter.Square:
+                        drawSquare(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, geometryFill)
                         break;
 
                     default:

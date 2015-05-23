@@ -80,7 +80,10 @@ OTHER_FILES += qml/paint.qml \
     i18n/*.ts \
     qml/components/ToolbarButton.qml \
     qml/pages/askFilenameDialog.qml \
-    qml/icons/icon-m-addimage.png
+    qml/icons/icon-m-addimage.png \
+    qml/components/GeometryButton.qml \
+    qml/icons/icon-m-geom-square-filled.png \
+    qml/icons/icon-m-geom-square.png
 
 TRANSLATIONS += i18n/*.ts
 

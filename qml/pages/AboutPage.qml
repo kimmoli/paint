@@ -34,6 +34,8 @@ Page
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-line", "helptext": qsTr("Draw line")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-rectangle", "helptext": qsTr("Draw rectangle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-rectangle-filled", "helptext": qsTr("Draw filled rectangle")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-square", "helptext": qsTr("Draw square")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-square-filled", "helptext": qsTr("Draw filled square")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle", "helptext": qsTr("Draw circle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-circle-filled", "helptext": qsTr("Draw filled circle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-ellipse", "helptext": qsTr("Draw ellipse")})

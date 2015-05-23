@@ -10,69 +10,65 @@ Row
 
     property bool geometryFillToggled: false
 
-    IconButton
+    GeometryButton
     {
         icon.source: "image://paintIcons/icon-m-geom-line"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Line)
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        mode: Painter.Line
         onClicked:
         {
             drawMode = Painter.Geometrics
-            geometricsMode = Painter.Line
+            geometricsMode = mode
         }
     }
 
-    IconButton
+    GeometryButton
     {
         icon.source: geometryFill ? "image://paintIcons/icon-m-geom-rectangle-filled" : "image://paintIcons/icon-m-geom-rectangle"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Rectangle) && !geometryFillToggled
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        mode: Painter.Rectangle
         onClicked:
         {
             drawMode = Painter.Geometrics
-            geometricsMode = Painter.Rectangle
+            geometricsMode = mode
         }
     }
 
-    IconButton
+    GeometryButton
+    {
+        icon.source: geometryFill ? "image://paintIcons/icon-m-geom-square-filled" : "image://paintIcons/icon-m-geom-square"
+        mode: Painter.Square
+        onClicked:
+        {
+            drawMode = Painter.Geometrics
+            geometricsMode = mode
+        }
+    }
+
+    GeometryButton
     {
         icon.source: geometryFill ? "image://paintIcons/icon-m-geom-circle-filled" : "image://paintIcons/icon-m-geom-circle"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Circle) && !geometryFillToggled
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        mode: Painter.Circle
         onClicked:
         {
             drawMode = Painter.Geometrics
-            geometricsMode = Painter.Circle
+            geometricsMode = mode
         }
     }
 
-    IconButton
+    GeometryButton
     {
         icon.source: geometryFill ? "image://paintIcons/icon-m-geom-ellipse-filled" : "image://paintIcons/icon-m-geom-ellipse"
-        anchors.bottom: parent.bottom
-        highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === Painter.Ellipse) && !geometryFillToggled
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        mode: Painter.Ellipse
         onClicked:
         {
             drawMode = Painter.Geometrics
-            geometricsMode = Painter.Ellipse
+            geometricsMode = mode
         }
     }
 
-    IconButton
+    GeometryButton
     {
         icon.source: "image://paintIcons/icon-m-geom-fill"
-        anchors.bottom: parent.bottom
         highlighted: geometryFill
-        rotation: rotationSensor.angle
-        Behavior on rotation { SmoothedAnimation { duration: 500 } }
         onClicked:
         {
             /* geometryFillToggled is used as workaround as highlighted iconButton does not follow icon.source
@@ -83,7 +79,5 @@ Row
             geometryFillToggled = false
         }
     }
-
-
 }
 

@@ -62,7 +62,8 @@ public:
         Line = 0,
         Rectangle,
         Circle,
-        Ellipse
+        Ellipse,
+        Square
     };
 
 signals:
