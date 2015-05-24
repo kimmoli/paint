@@ -83,7 +83,12 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-addimage.png \
     qml/components/GeometryButton.qml \
     qml/icons/icon-m-geom-square-filled.png \
-    qml/icons/icon-m-geom-square.png
+    qml/icons/icon-m-geom-square.png \
+    qml/code/drawinghelpers.js \
+    qml/components/DimensionCanvas.qml \
+    qml/components/GridCanvas.qml \
+    qml/components/PreviewCanvas.qml \
+    qml/components/DrawingCanvas.qml
 
 TRANSLATIONS += i18n/*.ts
 

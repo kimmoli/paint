@@ -45,7 +45,7 @@ Item
         hideGeometryPopup()
         remorse.execute(qsTr("Clearing"), function()
         {
-            canvas.clear()
+            drawingCanvas.clear()
             previewCanvas.clear()
 
             cancelPendingFunctions()

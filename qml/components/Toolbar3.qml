@@ -122,7 +122,7 @@ Item
 
             function save(fileName)
             {
-                fileName = painter.saveCanvas(canvas.toDataURL(),
+                fileName = painter.saveCanvas(drawingCanvas.toDataURL(),
                                                   dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL(),
                                                   useImageAsBackground ? backgroundImagePath : "",
                                                   backgroundImageRotate,

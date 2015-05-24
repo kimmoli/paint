@@ -5,7 +5,7 @@ Canvas
 {
     id: gridCanvas
     z: 8
-    anchors.fill: canvas
+    anchors.fill: drawingCanvas
     antialiasing: true
     
     property bool clearNow : false
