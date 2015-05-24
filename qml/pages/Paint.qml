@@ -1032,7 +1032,7 @@ Page
 
                     case Painter.Geometrics:
 
-                        geometryPopupVisible = true
+                        //geometryPopupVisible = true
 
                         canvas.requestPaint()
                         previewCanvas.clear()

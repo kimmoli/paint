@@ -52,7 +52,27 @@ Item
 
         ToolbarButton
         {
-            icon.source: "image://paintIcons/icon-m-geometrics"
+            icon.source:
+            {
+                if (drawMode == Painter.Geometrics)
+                {
+                    if (geometricsMode == Painter.Line)
+                        return "image://paintIcons/icon-m-geom-line"
+                    if (geometricsMode == Painter.Rectangle)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-rectangle-filled" : "image://paintIcons/icon-m-geom-rectangle"
+                    if (geometricsMode == Painter.Square)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-square-filled" : "image://paintIcons/icon-m-geom-square"
+                    if (geometricsMode == Painter.Circle)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-circle-filled" : "image://paintIcons/icon-m-geom-circle"
+                    if (geometricsMode == Painter.Ellipse)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-ellipse-filled" : "image://paintIcons/icon-m-geom-ellipse"
+                }
+                else
+                {
+                    return "image://paintIcons/icon-m-geometrics"
+                }
+            }
+
             mode: Painter.Geometrics
 
             onClicked:
@@ -66,12 +86,13 @@ Item
             }
 
             onHighlightedChanged:
+            {
                 if (!highlighted)
                 {
                     hideGeometryPopup()
                 }
+            }
         }
-
 
         ToolbarButton
         {

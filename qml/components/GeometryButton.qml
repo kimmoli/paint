@@ -10,4 +10,10 @@ IconButton
     highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === mode) && !geometryFillToggled
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
+    onClicked:
+    {
+        drawMode = Painter.Geometrics
+        geometricsMode = mode
+        geometryPopupVisible = false
+    }
 }
