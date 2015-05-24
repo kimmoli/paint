@@ -74,6 +74,12 @@ Canvas
             case Painter.Square :
                 Draw.drawSquare(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
                 break;
+            case Painter.EquilateralTriangle:
+                Draw.drawEquilateralTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
+            case Painter.RightIsoscelesTriangle:
+                Draw.drawRightIsoscelesTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
                 
             default:
                 break;

@@ -110,6 +110,64 @@ function drawSquare(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
     ctx.stroke()
 }
 
+function drawEquilateralTriangle(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
+{
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    // x0,y0 is tip of triangle, x1,y1 is the middle-base of triangle
+    // height
+    var h = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+    // edge length
+    var len = h/Math.sin(Math.PI/3)
+    // angle of whole triangle
+    var angle = Math.atan2(y1-y0, x1-x0)
+
+    // mx,my,nx,ny are the 2 other corners
+    var mx = x0+len*Math.cos(angle-Math.PI/6)
+    var my = y0+len*Math.sin(angle-Math.PI/6)
+    var nx = x0+len*Math.cos(angle+Math.PI/6)
+    var ny = y0+len*Math.sin(angle+Math.PI/6)
+
+    ctx.beginPath()
+    ctx.moveTo(x0, y0)
+    ctx.lineTo(mx, my)
+    ctx.lineTo(nx, ny)
+    ctx.lineTo(x0, y0)
+    ctx.closePath()
+    if (fill)
+        ctx.fill()
+    ctx.stroke()
+}
+
+function drawRightIsoscelesTriangle(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
+{
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    // x0,y0 and x1,y1 are ends of hypotenuse
+    // short edge length (hypotenuse/sqrt(2))
+    var len = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))/Math.sqrt(2)
+    // angle of whole triangle
+    var angle = Math.atan2(y1-y0, x1-x0)
+
+    // mx,my is the 3rd corner
+    var mx = x0+len*Math.cos(angle+Math.PI/4)
+    var my = y0+len*Math.sin(angle+Math.PI/4)
+
+    ctx.beginPath()
+    ctx.moveTo(x0, y0)
+    ctx.lineTo(x1, y1)
+    ctx.lineTo(mx, my)
+    ctx.lineTo(x0, y0)
+    ctx.closePath()
+    if (fill)
+        ctx.fill()
+    ctx.stroke()
+}
+
 function drawText(ctx, txt, x, y, color, font, angle)
 {
     ctx.save()

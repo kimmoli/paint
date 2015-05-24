@@ -88,7 +88,11 @@ OTHER_FILES += qml/paint.qml \
     qml/components/DimensionCanvas.qml \
     qml/components/GridCanvas.qml \
     qml/components/PreviewCanvas.qml \
-    qml/components/DrawingCanvas.qml
+    qml/components/DrawingCanvas.qml \
+    qml/icons/icon-m-geom-etriangle.png \
+    qml/icons/icon-m-geom-etriangle-filled.png \
+    qml/icons/icon-m-geom-ritriangle.png \
+    qml/icons/icon-m-geom-ritriangle-filled.png
 
 TRANSLATIONS += i18n/*.ts
 

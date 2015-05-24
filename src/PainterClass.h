@@ -63,7 +63,9 @@ public:
         Rectangle,
         Circle,
         Ellipse,
-        Square
+        Square,
+        EquilateralTriangle,
+        RightIsoscelesTriangle
     };
 
 signals:

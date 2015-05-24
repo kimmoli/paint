@@ -66,6 +66,10 @@ Item
                         return geometryFill ? "image://paintIcons/icon-m-geom-circle-filled" : "image://paintIcons/icon-m-geom-circle"
                     if (geometricsMode == Painter.Ellipse)
                         return geometryFill ? "image://paintIcons/icon-m-geom-ellipse-filled" : "image://paintIcons/icon-m-geom-ellipse"
+                    if (geometricsMode == Painter.EquilateralTriangle)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-etriangle-filled" : "image://paintIcons/icon-m-geom-etriangle"
+                    if (geometricsMode == Painter.RightIsoscelesTriangle)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-ritriangle-filled" : "image://paintIcons/icon-m-geom-ritriangle"
                 }
                 else
                 {

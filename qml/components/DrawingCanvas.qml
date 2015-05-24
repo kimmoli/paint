@@ -88,6 +88,12 @@ Canvas
             case Painter.Square:
                 Draw.drawSquare(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
                 break;
+            case Painter.EquilateralTriangle:
+                Draw.drawEquilateralTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
+            case Painter.RightIsoscelesTriangle:
+                Draw.drawRightIsoscelesTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
                 
             default:
                 console.error("Unimplemented feature")
