@@ -124,7 +124,7 @@ Item
             {
                 fileName = painter.saveCanvas(drawingCanvas.toDataURL(),
                                                   dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL(),
-                                                  useImageAsBackground ? backgroundImagePath : "",
+                                                  useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
                                                   backgroundImageRotate,
                                                   rotationSensor.angle,
                                                   fileName)

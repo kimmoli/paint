@@ -91,29 +91,41 @@ QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString bac
 
     if (!background.isEmpty())
     {
-        QImage bg(QUrl(background).toLocalFile());
-
-        if (bgRotate)
+        if (QColor::isValidColor(background))
         {
-            QTransform tBg;
-            tBg.rotate(90);
-            QImage qBg = bg.transformed(tBg);
-            bg = QImage(qBg);
+            QPainter p;
+            /* Fill background with solid color */
+            p.begin(&s);
+            p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+            p.fillRect(s.rect(), QColor(background));
+            p.end();
         }
+        else
+        {
+            QImage bg(QUrl(background).toLocalFile());
 
-        /* Scale and center background image as it is done in qml */
-        QRectF sRect(s.rect());
+            if (bgRotate)
+            {
+                QTransform tBg;
+                tBg.rotate(90);
+                QImage qBg = bg.transformed(tBg);
+                bg = QImage(qBg);
+            }
 
-        qreal height = ((qreal)sRect.width()/(qreal)bg.rect().width()*(qreal)bg.rect().height());
-        sRect.setTop( ((qreal)s.rect().height() - height) / 2);
-        sRect.setBottom( (qreal)s.rect().height() - sRect.top());
+            /* Scale and center background image as it is done in qml */
+            QRectF sRect(s.rect());
 
-        QPainter p;
-        /* Draw background behind the canvas */
-        p.begin(&s);
-        p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
-        p.drawImage(sRect, bg, bg.rect());
-        p.end();
+            qreal height = ((qreal)sRect.width()/(qreal)bg.rect().width()*(qreal)bg.rect().height());
+            sRect.setTop( ((qreal)s.rect().height() - height) / 2);
+            sRect.setBottom( (qreal)s.rect().height() - sRect.top());
+
+            QPainter p;
+            /* Draw background behind the canvas */
+            p.begin(&s);
+            p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+            p.drawImage(sRect, bg, bg.rect());
+            p.end();
+        }
     }
 
     if (!dataURL2.isEmpty())
@@ -173,8 +185,6 @@ bool PainterClass::fileExists(QString filename)
             .arg(getSetting("fileExtension", QVariant("png")).toString());
 
     QFile test(filepath);
-
-    qDebug() << "checking" << filepath << test.exists();
 
     return test.exists();
 }
