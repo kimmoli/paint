@@ -168,6 +168,93 @@ function drawRightIsoscelesTriangle(ctx, x0,y0,x1,y1, lineThick, lineColor, fill
     ctx.stroke()
 }
 
+function drawPolygon(ctx, vertices, x0,y0,x1,y1, lineThick, lineColor, fill, step)
+{
+    if (typeof(step) == 'undefined')
+        step = 1
+
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    // x0,y0 is center of polygon, x1,y1 is one of the points
+    // radius is distance between these two points
+    var r = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+    // angle of point x1,y1
+    var angle = Math.atan2(y1-y0, x1-x0)
+
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+
+    var jump = false
+
+    for (var i=step; i<(vertices*step); i=i+step)
+    {
+        // point on circle edge
+        var mx = x0+r*Math.cos(angle+(2*Math.PI/vertices)*i)
+        var my = y0+r*Math.sin(angle+(2*Math.PI/vertices)*i)
+        ctx.lineTo(mx, my)
+
+        // if polygram, and hit starting point, lift pen up
+        if (step > 1)
+            if (Math.floor(mx) == Math.floor(x1) && Math.floor(my) == Math.floor(y1))
+            {
+                i--
+                mx = x0+r*Math.cos(angle+(2*Math.PI/vertices)*i)
+                my = y0+r*Math.sin(angle+(2*Math.PI/vertices)*i)
+                ctx.moveTo(mx, my)
+                // do not finish to starting point as we were already there
+                jump = true
+            }
+    }
+
+    if (!jump)
+        ctx.lineTo(x1, y1)
+    ctx.closePath()
+    if (fill)
+        ctx.fill()
+    ctx.stroke()
+}
+
+function drawPolygram(ctx, vertices, x0,y0,x1,y1, lineThick, lineColor, fill)
+{
+    drawPolygon(ctx, vertices, x0,y0,x1,y1, lineThick, lineColor, fill, 2)
+}
+
+function drawArrow(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
+{
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    // x0,y0 is the point of arrow, x1,y1 is end of arrow
+    // len is distance between these two points
+    var len = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
+    var angle = Math.atan2(y1-y0, x1-x0)
+
+    // arrow tip is 1/3 of length
+    // arrow base width is 1/4 of length
+
+    ctx.beginPath()
+    ctx.moveTo(x0, y0)
+
+    var cx = x0+len/3*Math.cos(angle)
+    var cy = y0+len/3*Math.sin(angle)
+
+    ctx.lineTo(cx+len/4*Math.cos(angle-Math.PI/2), cy+len/4*Math.sin(angle-Math.PI/2))
+    ctx.lineTo(cx+len/8*Math.cos(angle-Math.PI/2), cy+len/8*Math.sin(angle-Math.PI/2))
+    ctx.lineTo(x1+len/8*Math.cos(angle-Math.PI/2), y1+len/8*Math.sin(angle-Math.PI/2))
+    ctx.lineTo(x1+len/8*Math.cos(angle+Math.PI/2), y1+len/8*Math.sin(angle+Math.PI/2))
+    ctx.lineTo(cx+len/8*Math.cos(angle+Math.PI/2), cy+len/8*Math.sin(angle+Math.PI/2))
+    ctx.lineTo(cx+len/4*Math.cos(angle+Math.PI/2), cy+len/4*Math.sin(angle+Math.PI/2))
+    ctx.lineTo(x0, y0)
+
+    ctx.closePath()
+    if (fill)
+        ctx.fill()
+    ctx.stroke()
+}
+
 function drawText(ctx, txt, x, y, color, font, angle)
 {
     ctx.save()

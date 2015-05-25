@@ -131,11 +131,6 @@ Page
                 target: toolbarHintLabel
                 invert: false
             }
-            PropertyChanges
-            {
-                target: toolBoxBackgroundEffect
-                direction: OpacityRamp.BottomToTop
-            }
         } ]
     }
 
@@ -152,24 +147,14 @@ Page
 
         anchors.top: page.top
         width: page.width
-        height: Theme.paddingLarge + toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0) + (dimensionPopup.visible ? dimensionPopup.height : 0)
-        color: Theme.secondaryHighlightColor
-    }
+        height: /*Theme.paddingLarge +*/ toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0) + (dimensionPopup.visible ? dimensionPopup.height : 0)
+        color: Theme.highlightDimmerColor
+        opacity: Math.max(0.0, toolBox.opacity - 0.1)
 
-    OpacityRampEffect
-    {
-
-        id: toolBoxBackgroundEffect
-        z: 14
-        clampMax: toolBox.opacity > 0.5 ? 0.65 : 0.0
-        slope: 2.0
-        offset: 0.6
-        direction: OpacityRamp.TopToBottom
-        sourceItem: toolBoxBackground
-
-        Behavior on clampMax
+        MouseArea
         {
-            FadeAnimation {}
+            anchors.fill: parent
+            onClicked: console.log("huti")
         }
     }
 

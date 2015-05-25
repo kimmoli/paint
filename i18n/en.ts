@@ -4,117 +4,150 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Change toolbar</source>
-        <translation>Change toolbar</translation>
+        <translation type="vanished">Change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
         <translation>Draw freehand line</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
         <translation>Eraser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
         <translation>Sprayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
         <translation>Draw geometric shape</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
         <translation>Change color, width</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
         <translation>Draw line</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
         <translation>Draw rectangle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
         <translation>Draw filled rectangle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw square</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled square</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw circle</source>
         <translation>Draw circle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled circle</source>
         <translation>Draw filled circle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
+        <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Draw ellipse</source>
         <translation>Draw ellipse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Draw filled ellipse</source>
         <translation>Draw filled ellipse</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Draw equilateral triangle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Draw filled e-triangle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Draw right isosceles triangle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>Draw filled ri-triangle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <source>Draw regular polygon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
-        <source>Fill mode toggle</source>
-        <translation>Fill mode toggle</translation>
+        <source>Draw filled regular polygon</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
-        <source>Text tool (cancel text)</source>
-        <translation>Text tool (cancel text)</translation>
+        <source>Draw regular polygram</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
-        <source>Add image</source>
+        <source>Draw filled regular polygram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <source>Add/cancel text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>Add/cancel image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <source>Draw thick arrow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <source>Draw filled thick arrow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
+        <source>Fill mode toggle</source>
+        <translation>Fill mode toggle</translation>
+    </message>
+    <message>
+        <source>Text tool (cancel text)</source>
+        <translation type="vanished">Text tool (cancel text)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>Accept current text/image</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,57 +156,57 @@
         <translation type="vanished">Accept current text</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Dimensioning tool</source>
         <translation>Dimensioning tool</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="52"/>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Grid</source>
         <translation>Grid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>About Paint</source>
         <translation>About Paint</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Change settings</source>
         <translation>Change settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Clear drawing</source>
         <translation>Clear drawing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Change background</source>
         <translation>Change background</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Save snapshot</source>
         <translation>Save snapshot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="80"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>About </source>
         <translation>About </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="115"/>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="124"/>
+        <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>translation credit placeholder</source>
         <translation>translation credit placeholder</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="134"/>
+        <location filename="../qml/pages/AboutPage.qml" line="139"/>
         <source>Help</source>
         <translation>Help</translation>
     </message>
@@ -200,12 +233,12 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="212"/>
+        <location filename="../qml/pages/Paint.qml" line="197"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="231"/>
+        <location filename="../qml/pages/Paint.qml" line="216"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>

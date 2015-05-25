@@ -92,7 +92,13 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-etriangle.png \
     qml/icons/icon-m-geom-etriangle-filled.png \
     qml/icons/icon-m-geom-ritriangle.png \
-    qml/icons/icon-m-geom-ritriangle-filled.png
+    qml/icons/icon-m-geom-ritriangle-filled.png \
+    qml/icons/icon-m-geom-polygon.png \
+    qml/icons/icon-m-geom-polygon-filled.png \
+    qml/icons/icon-m-geom-polygram.png \
+    qml/icons/icon-m-geom-polygram-filled.png \
+    qml/icons/icon-m-geom-arrow-filled.png \
+    qml/icons/icon-m-geom-arrow.png
 
 TRANSLATIONS += i18n/*.ts
 

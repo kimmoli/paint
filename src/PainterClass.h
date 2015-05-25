@@ -65,7 +65,10 @@ public:
         Ellipse,
         Square,
         EquilateralTriangle,
-        RightIsoscelesTriangle
+        RightIsoscelesTriangle,
+        Polygon,
+        Polygram,
+        Arrow
     };
 
 signals:

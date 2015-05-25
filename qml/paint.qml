@@ -59,6 +59,7 @@ ApplicationWindow
     property real panX: 0.0
     property real panY: 0.0
     property bool askSaveFilename: false
+    property int polyVertices: 5
 
     /*****************************************************/
 

@@ -5,6 +5,7 @@ import harbour.paint.PainterClass 1.0
 IconButton
 {
     property int mode: Painter.None
+    property bool autohide: true
 
     anchors.bottom: parent.bottom
     highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === mode) && !geometryFillToggled
@@ -14,6 +15,6 @@ IconButton
     {
         drawMode = Painter.Geometrics
         geometricsMode = mode
-        geometryPopupVisible = false
+        geometryPopupVisible = !autohide
     }
 }

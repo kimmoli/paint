@@ -80,7 +80,16 @@ Canvas
             case Painter.RightIsoscelesTriangle:
                 Draw.drawRightIsoscelesTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
                 break;
-                
+            case Painter.Polygon:
+                Draw.drawPolygon(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
+            case Painter.Polygram:
+                Draw.drawPolygram(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
+            case Painter.Arrow:
+                Draw.drawArrow(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                break;
+
             default:
                 break;
             }

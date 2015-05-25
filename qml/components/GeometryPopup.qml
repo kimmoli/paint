@@ -8,6 +8,40 @@ Column
 
     property bool geometryFillToggled: false
 
+    Row // polygon/polygram vertices
+    {
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: geometricsMode == Painter.Polygon || geometricsMode == Painter.Polygram
+
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-down"
+            rotation: rotationSensor.angle
+            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            onClicked: if (polyVertices > 4) polyVertices--
+        }
+        Label
+        {
+            text: polyVertices
+            width: 80
+            height: 80
+            anchors.verticalCenter: parent.verticalCenter
+            font.bold: true
+            font.pixelSize: Theme.fontSizeLarge
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            rotation: rotationSensor.angle
+            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        }
+        IconButton
+        {
+            icon.source: "image://theme/icon-m-up"
+            rotation: rotationSensor.angle
+            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+            onClicked: if (polyVertices < 13) polyVertices++
+        }
+    }
+
     Row // Row 1
     {
         spacing: (parent.width - children.length*80)/(children.length+1)
@@ -23,6 +57,26 @@ Column
         {
             icon.source: geometryFill ? "image://paintIcons/icon-m-geom-ritriangle-filled" : "image://paintIcons/icon-m-geom-ritriangle"
             mode: Painter.RightIsoscelesTriangle
+        }
+
+        GeometryButton
+        {
+            icon.source: geometryFill ? "image://paintIcons/icon-m-geom-polygon-filled" : "image://paintIcons/icon-m-geom-polygon"
+            mode: Painter.Polygon
+            autohide: false
+        }
+
+        GeometryButton
+        {
+            icon.source: geometryFill ? "image://paintIcons/icon-m-geom-polygram-filled" : "image://paintIcons/icon-m-geom-polygram"
+            mode: Painter.Polygram
+            autohide: false
+        }
+
+        GeometryButton
+        {
+            icon.source: geometryFill ? "image://paintIcons/icon-m-geom-arrow-filled" : "image://paintIcons/icon-m-geom-arrow"
+            mode: Painter.Arrow
         }
     }
 

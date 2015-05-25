@@ -25,7 +25,6 @@ Page
 
     Component.onCompleted:
     {
-        buttonhelp.append( {"image": "image://theme/icon-m-repeat",                      "helptext": qsTr("Change toolbar")})
         buttonhelp.append( {"image": "image://theme/icon-m-edit",                        "helptext": qsTr("Draw freehand line")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-eraser",                 "helptext": qsTr("Eraser")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-spray",                  "helptext": qsTr("Sprayer")})
@@ -44,9 +43,15 @@ Page
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-etriangle-filled",  "helptext": qsTr("Draw filled e-triangle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-ritriangle",        "helptext": qsTr("Draw right isosceles triangle")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-ritriangle-filled", "helptext": qsTr("Draw filled ri-triangle")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-polygon",           "helptext": qsTr("Draw regular polygon")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-polygon-filled",    "helptext": qsTr("Draw filled regular polygon")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-polygram",          "helptext": qsTr("Draw regular polygram")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-polygram-filled",   "helptext": qsTr("Draw filled regular polygram")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-arrow",             "helptext": qsTr("Draw thick arrow")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-arrow-filled",      "helptext": qsTr("Draw filled thick arrow")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-geom-fill",              "helptext": qsTr("Fill mode toggle")})
-        buttonhelp.append( {"image": "image://paintIcons/icon-m-texttool",               "helptext": qsTr("Text tool (cancel text)")})
-        buttonhelp.append( {"image": "image://paintIcons/icon-m-addimage",               "helptext": qsTr("Add image")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-texttool",               "helptext": qsTr("Add/cancel text")})
+        buttonhelp.append( {"image": "image://paintIcons/icon-m-addimage",               "helptext": qsTr("Add/cancel image")})
         buttonhelp.append( {"image": "image://theme/icon-m-enter-accept",                "helptext": qsTr("Accept current text/image")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-dimensiontool",          "helptext": qsTr("Dimensioning tool")})
         buttonhelp.append( {"image": "image://paintIcons/icon-m-grid",                   "helptext": qsTr("Grid")})

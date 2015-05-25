@@ -70,6 +70,12 @@ Item
                         return geometryFill ? "image://paintIcons/icon-m-geom-etriangle-filled" : "image://paintIcons/icon-m-geom-etriangle"
                     if (geometricsMode == Painter.RightIsoscelesTriangle)
                         return geometryFill ? "image://paintIcons/icon-m-geom-ritriangle-filled" : "image://paintIcons/icon-m-geom-ritriangle"
+                    if (geometricsMode == Painter.Polygon)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-polygon-filled" : "image://paintIcons/icon-m-geom-polygon"
+                    if (geometricsMode == Painter.Polygram)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-polygram-filled" : "image://paintIcons/icon-m-geom-polygram"
+                    if (geometricsMode == Painter.Arrow)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-arrow-filled" : "image://paintIcons/icon-m-geom-arrow"
                 }
                 else
                 {
