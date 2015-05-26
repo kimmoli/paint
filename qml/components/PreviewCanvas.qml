@@ -28,7 +28,7 @@ Canvas
         var ctx = getContext('2d')
         var d
         
-        ctx.clearRect(0, 0, width, height);
+        Draw.clear(ctx)
         if (clearNow)
         {
             clearNow = false
@@ -99,16 +99,47 @@ Canvas
             if (textEditPending && thisTextEntry.length>0)
             {
                 if (drawingCanvas.areaPressed)
-                    Draw.drawText(ctx, thisTextEntry, panX + drawingCanvas.areagMouseX - previewCanvas.downX,
-                                  panY + drawingCanvas.areagMouseY - previewCanvas.downY,
-                                  colors[textColor],
-                                  (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
-                                  accelerometer.angle)
+                {
+                    if (textBalloonize)
+                    {
+                        Draw.drawBalloonText(ctx, thisTextEntry,
+                                             panX + drawingCanvas.areagMouseX - previewCanvas.downX,
+                                             panY + drawingCanvas.areagMouseY - previewCanvas.downY,
+                                             colors[textColor],
+                                             (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                             Math.floor(textFontSize*pinchScale),
+                                             colors[drawColor],
+                                             accelerometer.angle, textBalloonize)
+                    }
+                    else
+                    {
+                        Draw.drawText(ctx, thisTextEntry,
+                                      panX + drawingCanvas.areagMouseX - previewCanvas.downX,
+                                      panY + drawingCanvas.areagMouseY - previewCanvas.downY,
+                                      colors[textColor],
+                                      (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                      accelerometer.angle)
+                    }
+                }
                 else
-                    Draw.drawText(ctx, thisTextEntry, panX, panY,
-                                  colors[textColor],
-                                  (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
-                                  accelerometer.angle)
+                {
+                    if (textBalloonize)
+                    {
+                        Draw.drawBalloonText(ctx, thisTextEntry, panX, panY,
+                                             colors[textColor],
+                                             (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                             Math.floor(textFontSize*pinchScale),
+                                             colors[drawColor],
+                                             accelerometer.angle, textBalloonize)
+                    }
+                    else
+                    {
+                        Draw.drawText(ctx, thisTextEntry, panX, panY,
+                                      colors[textColor],
+                                      (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                      accelerometer.angle)
+                    }
+                }
             }
             break;
             

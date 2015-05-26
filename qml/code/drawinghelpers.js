@@ -1,6 +1,11 @@
 
 .pragma library
 
+function clear(ctx)
+{
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+}
+
 function drawLine(ctx, x0,y0,x1,y1, lineThick, lineColor)
 {
     ctx.lineWidth = lineThick
@@ -79,6 +84,40 @@ function drawRectangle(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
         ctx.fillRect(x, y, w, h);
     else
         ctx.strokeRect(x, y, w, h);
+}
+
+function drawRoundedRectangle(ctx, x0,y0,x1,y1, r, lineThick, lineColor, fill)
+{
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    var x = Math.min(x0, x1),
+        y = Math.min(y0, y1),
+        w = Math.abs(x1-x0),
+        h = Math.abs(y1-y0);
+
+    if (h==0 || w==0)
+        return;
+
+    r  = Math.min(r, w/2)
+    r  = Math.min(r, h/2)
+
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+
+    if (fill)
+        ctx.fill()
+    ctx.stroke();
 }
 
 function drawSquare(ctx, x0,y0,x1,y1, lineThick, lineColor, fill)
@@ -323,3 +362,33 @@ function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineC
     ctx.fillText(text, 0, 0)
     ctx.restore()
 }
+
+function drawBalloonText(ctx, text, x, y, textColor, textFont, fontSize, balloonColor, angle, tailend)
+{
+    ctx.save()
+    ctx.translate(x, y)
+    ctx.rotate( angle )
+    ctx.font = textFont
+
+    drawRoundedRectangle(ctx, -Math.max(fontSize, ctx.measureText(text).width/1.5), -fontSize,
+                              Math.max(fontSize, ctx.measureText(text).width/1.5), fontSize,
+                              fontSize*0.95,
+                              1, balloonColor, true)
+
+    if (tailend === 1)
+        drawRightIsoscelesTriangle(ctx, Math.max(fontSize, ctx.measureText(text).width/1.5), 0,
+                                        Math.max(fontSize, ctx.measureText(text).width/1.5), fontSize*1.4,
+                                        1, balloonColor, true)
+    else if (tailend === 2)
+        drawRightIsoscelesTriangle(ctx, -Math.max(fontSize, ctx.measureText(text).width/1.5), fontSize*1.4,
+                                        -Math.max(fontSize, ctx.measureText(text).width/1.5), 0,
+                                        1, balloonColor, true)
+
+    ctx.fillStyle = textColor
+    ctx.font = textFont
+    ctx.textAlign = "center"
+    ctx.textBaseline = "middle"
+    ctx.fillText(text, 0, 0)
+    ctx.restore()
+}
+

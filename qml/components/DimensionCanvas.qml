@@ -29,7 +29,7 @@ Canvas
         
         ctx.lineJoin = ctx.lineCap = 'round';
         
-        ctx.clearRect(0, 0, width, height);
+        Draw.clear(ctx)
         if (clearNow)
         {
             clearNow = false

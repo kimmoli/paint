@@ -120,6 +120,7 @@ Column
             icon.source: "image://paintIcons/icon-m-geom-fill"
             highlighted: geometryFill
             mode: geometricsMode
+            autohide: false
             onClicked:
             {
                 /* geometryFillToggled is used as workaround as highlighted iconButton does not follow icon.source
@@ -131,5 +132,4 @@ Column
             }
         }
     }
-
 }

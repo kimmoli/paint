@@ -36,7 +36,7 @@ Canvas
         
         if (clearNow)
         {
-            ctx.clearRect(0, 0, width, height);
+            Draw.clear(ctx)
             clearNow = false
             return
         }
@@ -114,10 +114,22 @@ Canvas
         case Painter.Text:
             if (!textEditPending && thisTextEntry.length>0)
             {
-                Draw.drawText(ctx, thisTextEntry, panX, panY,
-                              colors[textColor],
-                              (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
-                              accelerometer.angle)
+                if (textBalloonize)
+                {
+                    Draw.drawBalloonText(ctx, thisTextEntry, panX, panY,
+                                         colors[textColor],
+                                         (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                         Math.floor(textFontSize*pinchScale),
+                                         colors[drawColor],
+                                         accelerometer.angle, textBalloonize)
+                }
+                else
+                {
+                    Draw.drawText(ctx, thisTextEntry, panX, panY,
+                                  colors[textColor],
+                                  (textFontBold ? "bold " : "") + (textFontItalic ? "italic " : "") + Math.floor(textFontSize*pinchScale) + "px " + textFontName,
+                                  accelerometer.angle)
+                }
                 thisTextEntry = ""
             }
             break;

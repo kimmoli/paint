@@ -33,8 +33,16 @@ Dialog
     Timer
     {
         id: vkbClose
-        interval: 500
+        interval: vkbCloseInterval
         onTriggered: dimensionDialog.accept()
+    }
+
+    BusyIndicator
+    {
+        running: visible
+        visible: vkbClose.running
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
     }
 
     Label

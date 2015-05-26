@@ -15,7 +15,7 @@ Dialog
 
     onDone:
     {
-        if (result === DialogResult.Accepted)
+        if (result === DialogResult.Accepted && currentThickness > 0)
         {
             currentThickness = thicknessSlider.value
         }
@@ -66,6 +66,7 @@ Dialog
             SectionHeader
             {
                 text: qsTr("Pen width")
+                visible: currentThickness > 0
             }
 
             Rectangle
@@ -73,6 +74,7 @@ Dialog
                 color: "transparent"
                 height: 80
                 width: parent.width
+                visible: currentThickness > 0
 
                 Rectangle
                 {
@@ -87,6 +89,7 @@ Dialog
             Slider
             {
                 id: thicknessSlider
+                visible: currentThickness > 0
                 value: currentThickness
                 valueText: value
                 minimumValue: 1

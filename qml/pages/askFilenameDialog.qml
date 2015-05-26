@@ -27,8 +27,16 @@ Dialog
     Timer
     {
         id: vkbClose
-        interval: 500
+        interval: vkbCloseInterval
         onTriggered: askFilenameDialog.accept()
+    }
+
+    BusyIndicator
+    {
+        running: visible
+        visible: vkbClose.running
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
     }
 
     SilicaFlickable

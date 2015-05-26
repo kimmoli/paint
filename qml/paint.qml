@@ -13,6 +13,8 @@ ApplicationWindow
     property string dialogAcceptText : qsTr("Accept")
     property string dialogCancelText : qsTr("Cancel")
 
+    property int vkbCloseInterval: 1000
+
     property int drawMode : Painter.Pen
     property int geometricsMode : Painter.Line
 
@@ -60,6 +62,7 @@ ApplicationWindow
     property real panY: 0.0
     property bool askSaveFilename: false
     property int polyVertices: 5
+    property int textBalloonize: 0
 
     /*****************************************************/
 
