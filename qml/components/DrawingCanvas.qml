@@ -264,7 +264,6 @@ Canvas
                 switch (drawMode)
                 {
                 case Painter.Dimensioning:
-                    
                     dimensionPopupVisible = true
                     
                     if (dimensionMoveMode)
@@ -291,9 +290,6 @@ Canvas
                     break;
                     
                 case Painter.Geometrics:
-                    
-                    //geometryPopupVisible = true
-                    
                     drawingCanvas.requestPaint()
                     previewCanvas.clear()
                     break;

@@ -3,13 +3,13 @@ import Sailfish.Silica 1.0
 
 import "../code/drawinghelpers.js" as Draw
 
-/* Canvas get borked if closing dialog with vkb visible. */
-
 Dialog
 {
     id: textEntryDialog
 
     allowedOrientations: Orientation.All
+
+    canAccept: ti.text.length > 0
 
     property string newText : ""
 
@@ -52,7 +52,7 @@ Dialog
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked:
                 {
-                    ti.focus = false
+                    textEntryDialog.accept()
                 }
                 onTextChanged: previewCanvas.requestPaint()
             }

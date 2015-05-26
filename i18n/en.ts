@@ -233,12 +233,12 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="197"/>
+        <location filename="../qml/pages/Paint.qml" line="189"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="216"/>
+        <location filename="../qml/pages/Paint.qml" line="208"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -304,32 +304,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="39"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="37"/>
         <source>Warning: Do not cancel now</source>
         <translation>Warning: Do not cancel now</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="55"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="53"/>
         <source>Dimensioning</source>
         <translation>Dimensioning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="73"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Scale all dimensions</source>
         <translation>Scale all dimensions</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="79"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Reference length %1</source>
         <translation>Reference length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="85"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="83"/>
         <source>Currently scaled length %1</source>
         <translation>Currently scaled length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="91"/>
         <source>Enter true length</source>
         <translation>Enter true length</translation>
     </message>

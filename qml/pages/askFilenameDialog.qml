@@ -1,13 +1,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-/* Canvas get borked if closing dialog with vkb visible. */
-
 Dialog
 {
     id: askFilenameDialog
 
     allowedOrientations: Orientation.All
+
+    canAccept: ti.text.length > 0
 
     property string filename : ""
     property string saveFormat : ""
@@ -57,7 +57,7 @@ Dialog
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
                 EnterKey.onClicked:
                 {
-                    ti.focus = false
+                    askFilenameDialog.accept()
                 }
                 onTextChanged: fileExistsNotification.opacity = painter.fileExists(ti.text) ? 0.6 : 0.0
             }

@@ -1,8 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-/* Canvas get borked if closing dialog with vkb visible. */
-
 Dialog
 {
     id: dimensionDialog
@@ -98,7 +96,7 @@ Dialog
                 EnterKey.enabled: Number(text.replace(",","."))>0
                 EnterKey.onClicked:
                 {
-                    ti.focus = false
+                    dimensionDialog.accept()
                 }
                 inputMethodHints: Qt.ImhDigitsOnly
             }

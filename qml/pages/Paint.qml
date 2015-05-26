@@ -147,14 +147,14 @@ Page
 
         anchors.top: page.top
         width: page.width
-        height: /*Theme.paddingLarge +*/ toolBox.height + (geometryPopup.visible ? geometryPopup.height : 0) + (dimensionPopup.visible ? dimensionPopup.height : 0)
+        height: toolBox.height + (geometryPopup.opacity != 0 ? geometryPopup.height : 0) + (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0)
         color: Theme.highlightDimmerColor
-        opacity: Math.max(0.0, toolBox.opacity - 0.1)
+        opacity: Math.max(0.0, toolBox.opacity - 0.15)
 
         MouseArea
         {
+            // block missed presses from drawing on canvas behind
             anchors.fill: parent
-            onClicked: console.log("huti")
         }
     }
 
@@ -172,21 +172,13 @@ Page
         onToggleDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
         onShowDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
         onHideDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
-        onPreviewCanvasDrawText:
-        {
-            checkPinchHint("text")
-            insertNewText()
-        }
+        onPreviewCanvasDrawText: { checkPinchHint("text"); insertNewText(); }
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
         onTextSettingsChanged: previewCanvas.requestPaint()
         onToggleGridVisibility: { gridVisible = !gridVisible; gridCanvas.requestPaint(); }
         onGridSettingsChanged: gridCanvas.requestPaint()
-        onPreviewCanvasDrawImage:
-        {
-            checkPinchHint("image")
-            insertNewImage()
-        }
+        onPreviewCanvasDrawImage: { checkPinchHint("image"); insertNewImage(); }
         onInsertImageAccept: acceptInsertedImage()
         onInsertImageCancel: cancelInsertedImage()
     }
@@ -243,22 +235,22 @@ Page
     GeometryPopup
     {
         id: geometryPopup
-        z: 0
 
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: geometryPopupVisible && (drawMode === Painter.Geometrics)
-        onVisibleChanged: z = visible ? 15 : 0
+        opacity: (geometryPopupVisible && (drawMode === Painter.Geometrics)) ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimation {} }
+        z: opacity != 0 ? 15 : 0
     }
     DimensionPopup
     {
         id: dimensionPopup
-        z: 0
 
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: dimensionPopupVisible && (drawMode === Painter.Dimensioning)
-        onVisibleChanged: z = visible ? 15 : 0
+        opacity: (dimensionPopupVisible && (drawMode === Painter.Dimensioning)) ? 1.0 : 00
+        Behavior on opacity { FadeAnimation {} }
+        z: opacity != 0 ? 15 : 0
     }
 
     Rectangle
