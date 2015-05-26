@@ -236,7 +236,7 @@ function drawPolygon(ctx, vertices, x0,y0,x1,y1, lineThick, lineColor, fill, ste
 
         // if polygram, and hit starting point, lift pen up
         if (step > 1)
-            if (Math.floor(mx) == Math.floor(x1) && Math.floor(my) == Math.floor(y1))
+            if (Math.abs(mx-x1) < 1 && Math.abs(my-y1) < 1)
             {
                 i--
                 mx = x0+r*Math.cos(angle+(2*Math.PI/vertices)*i)
