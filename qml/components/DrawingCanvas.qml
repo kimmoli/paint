@@ -9,7 +9,13 @@ Canvas
     id: drawingCanvas
     z: 9
     
-    anchors.fill: page
+    Component.onCompleted:
+    {
+        width = parent.width
+        height = parent.height
+        requestPaint()
+    }
+
     antialiasing: true
     
     property real lastX

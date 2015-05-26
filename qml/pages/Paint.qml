@@ -163,7 +163,7 @@ Page
         id: toolBox
         z: 15
 
-        opacity: drawingCanvas.areaPressedAndHolded ? 0.0 : 1.0
+        opacity: drawingCanvas.areaPressedAndHolded || pageStack.busy ? 0.0 : 1.0
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
         onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible

@@ -9,8 +9,7 @@ Dialog
 
     allowedOrientations: Orientation.All
 
-    canAccept: (ti.focus === false) && (Number(ti.text.replace(",","."))>0)
-    backNavigation: ti.focus === false
+    canAccept: (Number(ti.text.replace(",","."))>0)
 
     property real currentDimensionScale : 1.0
     property real currentDimension: 0
@@ -30,21 +29,6 @@ Dialog
         }
     }
 
-    Timer
-    {
-        id: vkbClose
-        interval: vkbCloseInterval
-        onTriggered: dimensionDialog.accept()
-    }
-
-    BusyIndicator
-    {
-        running: visible
-        visible: vkbClose.running
-        size: BusyIndicatorSize.Large
-        anchors.centerIn: parent
-    }
-
     Label
     {
         anchors.top: parent.top
@@ -54,7 +38,6 @@ Dialog
         font.bold: true
         text: qsTr("Warning: Do not cancel now")
     }
-
 
     SilicaFlickable
     {
@@ -116,7 +99,6 @@ Dialog
                 EnterKey.onClicked:
                 {
                     ti.focus = false
-                    vkbClose.start()
                 }
                 inputMethodHints: Qt.ImhDigitsOnly
             }

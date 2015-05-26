@@ -9,9 +9,6 @@ Dialog
 
     allowedOrientations: Orientation.All
 
-    canAccept: ti.focus === false
-    backNavigation: ti.focus === false
-
     property string filename : ""
     property string saveFormat : ""
 
@@ -22,21 +19,6 @@ Dialog
             /* todo: add checks that filename is valid */
             filename = ti.text
         }
-    }
-
-    Timer
-    {
-        id: vkbClose
-        interval: vkbCloseInterval
-        onTriggered: askFilenameDialog.accept()
-    }
-
-    BusyIndicator
-    {
-        running: visible
-        visible: vkbClose.running
-        size: BusyIndicatorSize.Large
-        anchors.centerIn: parent
     }
 
     SilicaFlickable
@@ -76,7 +58,6 @@ Dialog
                 EnterKey.onClicked:
                 {
                     ti.focus = false
-                    vkbClose.start()
                 }
                 onTextChanged: fileExistsNotification.opacity = painter.fileExists(ti.text) ? 0.6 : 0.0
             }

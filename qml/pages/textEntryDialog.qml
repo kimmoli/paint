@@ -11,9 +11,6 @@ Dialog
 
     allowedOrientations: Orientation.All
 
-    canAccept: ti.focus === false
-    backNavigation: ti.focus === false
-
     property string newText : ""
 
     onDone:
@@ -22,21 +19,6 @@ Dialog
         {
             newText = ti.text
         }
-    }
-
-    Timer
-    {
-        id: vkbClose
-        interval: vkbCloseInterval
-        onTriggered: textEntryDialog.accept()
-    }
-
-    BusyIndicator
-    {
-        running: visible
-        visible: vkbClose.running
-        size: BusyIndicatorSize.Large
-        anchors.centerIn: parent
     }
 
     SilicaFlickable
@@ -61,11 +43,6 @@ Dialog
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: dialogHeader.bottom
 
-//            SectionHeader
-//            {
-//                text: qsTr("Enter some text")
-//            }
-
             TextField
             {
                 id: ti
@@ -76,7 +53,6 @@ Dialog
                 EnterKey.onClicked:
                 {
                     ti.focus = false
-                    vkbClose.start()
                 }
                 onTextChanged: previewCanvas.requestPaint()
             }

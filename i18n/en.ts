@@ -267,13 +267,13 @@
 <context>
     <name>askFilenameDialog</name>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="66"/>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="74"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
         <source>Enter filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="98"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
         <source>File already exists</source>
         <translation type="unfinished"></translation>
     </message>
@@ -304,32 +304,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="55"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="39"/>
         <source>Warning: Do not cancel now</source>
         <translation>Warning: Do not cancel now</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="72"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="55"/>
         <source>Dimensioning</source>
         <translation>Dimensioning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="90"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="73"/>
         <source>Scale all dimensions</source>
         <translation>Scale all dimensions</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="96"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="79"/>
         <source>Reference length %1</source>
         <translation>Reference length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="102"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="85"/>
         <source>Currently scaled length %1</source>
         <translation>Currently scaled length %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="110"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
         <source>Enter true length</source>
         <translation>Enter true length</translation>
     </message>
@@ -476,7 +476,7 @@
 <context>
     <name>textEntryDialog</name>
     <message>
-        <location filename="../qml/pages/textEntryDialog.qml" line="74"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="51"/>
         <source>Enter some text</source>
         <translation>Enter some text</translation>
     </message>
