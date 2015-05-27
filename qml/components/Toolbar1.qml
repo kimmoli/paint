@@ -18,7 +18,6 @@ Item
 
             onClicked:
             {
-                hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
             }
@@ -31,7 +30,6 @@ Item
 
             onClicked:
             {
-                hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
             }
@@ -44,7 +42,6 @@ Item
 
             onClicked:
             {
-                hideGeometryPopup()
                 cancelPendingFunctions()
                 drawMode = mode
             }
@@ -87,11 +84,12 @@ Item
 
             onClicked:
             {
+                cancelPendingFunctions(1)
+
                 if (drawMode != mode)
-                    showGeometryPopup()
+                    geometryPopupVisible = true
                 else
-                    toggleGeometryPopup()
-                cancelPendingFunctions()
+                    geometryPopupVisible = !geometryPopupVisible
                 drawMode = mode
             }
 
@@ -99,7 +97,7 @@ Item
             {
                 if (!highlighted)
                 {
-                    hideGeometryPopup()
+                    geometryPopupVisible = false
                 }
             }
         }

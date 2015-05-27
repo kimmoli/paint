@@ -103,6 +103,10 @@ Item
 
             onClicked:
             {
+                cancelPendingFunctions()
+                geometryPopupVisible = false
+                dimensionPopupVisible = false
+
                 var fileName = ""
                 if (askSaveFilename)
                 {

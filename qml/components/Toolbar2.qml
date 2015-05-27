@@ -18,7 +18,6 @@ Item
 
             onClicked:
             {
-                hideDimensionPopup()
                 if (textEditPending)
                 {
                     textEditCancel()
@@ -48,8 +47,6 @@ Item
 
             onClicked:
             {
-                hideDimensionPopup()
-
                 if (insertImagePending)
                 {
                     insertImageCancel()
@@ -90,9 +87,10 @@ Item
             onClicked:
             {
                 if (drawMode != mode)
-                    showDimensionPopup()
+                    dimensionPopupVisible = true
                 else
-                    toggleDimensionPopup()
+                    dimensionPopupVisible = !dimensionPopupVisible
+
                 cancelPendingFunctions()
                 drawMode = mode
                 previewCanvas.requestPaint()
@@ -101,7 +99,7 @@ Item
             onHighlightedChanged:
                 if (!highlighted)
                 {
-                    hideDimensionPopup()
+                    dimensionPopupVisible = false
                 }
         }
 

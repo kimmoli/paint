@@ -166,12 +166,6 @@ Page
         opacity: drawingCanvas.areaPressedAndHolded || pageStack.busy ? 0.0 : 1.0
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
-        onToggleGeometryPopup: geometryPopupVisible = !geometryPopupVisible
-        onShowGeometryPopup: geometryPopupVisible = true
-        onHideGeometryPopup: geometryPopupVisible = false
-        onToggleDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = !dimensionPopupVisible; dimensionCanvas.requestPaint(); }
-        onShowDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = true; dimensionCanvas.requestPaint(); }
-        onHideDimensionPopup: { dimensionMoveMode = false; dimensionPopupVisible = false; dimensionCanvas.requestPaint(); }
         onPreviewCanvasDrawText: { checkPinchHint("text"); insertNewText(); }
         onTextEditAccept: textAccept()
         onTextEditCancel: textCancel()
@@ -248,7 +242,13 @@ Page
 
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        opacity: (dimensionPopupVisible && (drawMode === Painter.Dimensioning)) ? 1.0 : 00
+        opacity: (dimensionPopupVisible && (drawMode === Painter.Dimensioning)) ? 1.0 : 0.0
+        onOpacityChanged:
+            if ((opacity == 0.0 || opacity == 1.0) && (drawMode !== Painter.Dimensioning))
+            {
+                dimensionMoveMode = false
+                dimensionCanvas.requestPaint()
+            }
         Behavior on opacity { FadeAnimation {} }
         z: opacity != 0 ? 15 : 0
     }
@@ -273,7 +273,6 @@ Page
         anchors.centerIn: bg
         clip: true
         smooth: true
-        //mimeType: "image"
         rotation: backgroundImageRotate ? 90 : 0
         fillMode: Image.PreserveAspectFit
     }

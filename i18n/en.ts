@@ -233,12 +233,12 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="189"/>
+        <location filename="../qml/pages/Paint.qml" line="183"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="208"/>
+        <location filename="../qml/pages/Paint.qml" line="202"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -251,7 +251,7 @@
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="132"/>
+        <location filename="../qml/components/Toolbar3.qml" line="136"/>
         <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -259,7 +259,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="46"/>
+        <location filename="../qml/components/Toolbox.qml" line="42"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>

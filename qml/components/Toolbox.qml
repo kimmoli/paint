@@ -20,12 +20,6 @@ Item
     clip: true
 
     signal showMessage(string message, int delay)
-    signal showGeometryPopup()
-    signal toggleGeometryPopup()
-    signal hideGeometryPopup()
-    signal showDimensionPopup()
-    signal toggleDimensionPopup()
-    signal hideDimensionPopup()
 
     signal previewCanvasDrawText()
     signal textEditAccept()
@@ -41,14 +35,14 @@ Item
 
     function startRemorse()
     {
-        hideDimensionPopup()
-        hideGeometryPopup()
+        dimensionPopupVisible = false
+        geometryPopupVisible = false
+        cancelPendingFunctions()
+
         remorse.execute(qsTr("Clearing"), function()
         {
             drawingCanvas.clear()
             previewCanvas.clear()
-
-            cancelPendingFunctions()
 
             /* Clear also all dimensions created */
             dimensionModel.clear()
