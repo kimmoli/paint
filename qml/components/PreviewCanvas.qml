@@ -151,6 +151,7 @@ Canvas
                 Draw.drawDimensionLine(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY,
                                        d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"],
                                        colors, dimensionScale)
+                loupeCanvas.requestPaint()
             }
             else
             {

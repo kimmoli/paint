@@ -98,7 +98,8 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-polygram.png \
     qml/icons/icon-m-geom-polygram-filled.png \
     qml/icons/icon-m-geom-arrow-filled.png \
-    qml/icons/icon-m-geom-arrow.png
+    qml/icons/icon-m-geom-arrow.png \
+    qml/components/LoupeCanvas.qml
 
 TRANSLATIONS += i18n/*.ts
 
