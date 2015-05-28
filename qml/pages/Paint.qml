@@ -378,7 +378,7 @@ Page
     LoupeCanvas
     {
         id: loupeCanvas
-        opacity: dimensionMoveMode && drawingCanvas.areaPressed ? 1.0 : 0.0
+        opacity: drawMode == Painter.Dimensioning && drawingCanvas.areaPressed ? 1.0 : 0.0
         z: opacity !== 0.0 ? 16 : 0
     }
 }

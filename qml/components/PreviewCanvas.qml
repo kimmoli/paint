@@ -144,6 +144,15 @@ Canvas
             break;
             
         case Painter.Dimensioning:
+            if (drawingCanvas.areagMouseX > (loupeCanvas.x - Theme.paddingLarge) &&
+                drawingCanvas.areagMouseX < (loupeCanvas.x + loupeCanvas.width + Theme.paddingLarge) &&
+                drawingCanvas.areagMouseY < (loupeCanvas.y + loupeCanvas.height + Theme.paddingLarge))
+            {
+                loupeCanvas.dodge = true
+            }
+
+            loupeCanvas.requestPaint()
+
             if (dimensionMoveMode)
             {
                 /* Draw the one we are moving */
@@ -151,7 +160,6 @@ Canvas
                 Draw.drawDimensionLine(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY,
                                        d["fontColor"], d["font"], d["fontSize"], d["lineColor"], d["lineThickness"],
                                        colors, dimensionScale)
-                loupeCanvas.requestPaint()
             }
             else
             {
