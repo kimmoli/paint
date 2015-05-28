@@ -2,11 +2,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
-
-
 Row
 {
     id: dimensionPopup
+    spacing: (parent.width - children.length*80)/(children.length+1)
+    anchors.horizontalCenter: parent.horizontalCenter
 
     IconButton
     {
@@ -92,4 +92,38 @@ Row
             previewCanvas.requestPaint()
         }
     }
+
+    ToolbarButton
+    {
+        id: toolSettingsButton
+        icon.source: "image://paintIcons/icon-m-textsettings"
+        onClicked:
+        {
+            var TextSettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/textSettingsDialog.qml"),
+                                                 { "currentColor": textColor,
+                                                   "currentSize": textFontSize,
+                                                   "isBold": textFontBold,
+                                                   "isItalic": textFontItalic,
+                                                   "fontNameIndex": textFontNameIndex})
+
+            TextSettingsDialog.accepted.connect(function()
+            {
+                textColor = TextSettingsDialog.currentColor
+                textFontSize = TextSettingsDialog.currentSize
+                textFontBold = TextSettingsDialog.isBold
+                textFontItalic = TextSettingsDialog.isItalic
+                textFontNameIndex = TextSettingsDialog.fontNameIndex
+                textSettingsChanged()
+                if (rememberToolSettings)
+                {
+                    painter.setToolSetting("textColor", textColor)
+                    painter.setToolSetting("textFontSize", textFontSize)
+                    painter.setToolSetting("textFontBold", textFontBold)
+                    painter.setToolSetting("textFontItalic", textFontItalic)
+                    painter.setToolSetting("textFontNameIndex", textFontNameIndex)
+                }
+            })
+        }
+    }
+
 }

@@ -374,4 +374,11 @@ Page
     {
         id: drawingCanvas
     }
+
+    LoupeCanvas
+    {
+        id: loupeCanvas
+        opacity: drawMode == Painter.Dimensioning && drawingCanvas.areaPressed ? 1.0 : 0.0
+        z: opacity !== 0.0 ? 16 : 0
+    }
 }

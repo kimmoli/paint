@@ -93,7 +93,12 @@ Item
 
                 cancelPendingFunctions()
                 drawMode = mode
+
+                if (!dimensionPopupVisible)
+                    dimensionMoveMode = false
+
                 previewCanvas.requestPaint()
+                dimensionCanvas.requestPaint()
             }
 
             onHighlightedChanged:
