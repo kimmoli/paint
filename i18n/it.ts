@@ -2,49 +2,58 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Change toolbar</source>
-        <translation>Cambia barra degli strumenti</translation>
+        <translation type="vanished">Cambia barra degli strumenti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
         <translation>Disegna a mano libera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
         <translation>Gomma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
         <translation>Spray</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
         <translation>Disegna una forma geometrica</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
         <translation>Cambia colore, larghezza</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
         <translation>Disegna una linea</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
         <translation>Disegna un rettangolo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
         <translation>Disegna un rettangolo pieno</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <source>Draw square</source>
+        <translation>Disegna un quadrato</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <source>Draw filled square</source>
+        <translation>Disegna un quadrato pieno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
@@ -68,71 +77,134 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source>Draw equilateral triangle</source>
+        <translation>Disegna triangolo equilatero</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <source>Draw filled e-triangle</source>
+        <translation>Disegna triangolo eq. pieno</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <source>Draw right isosceles triangle</source>
+        <translation>Disegna triangolo rett. iso.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <source>Draw filled ri-triangle</source>
+        <translation>Disegna triangolo rett. iso. pieno</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <source>Draw regular polygon</source>
+        <translation>Disegna poligono regolare</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <source>Draw filled regular polygon</source>
+        <translation>Disegna poligono regolare pieno</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <source>Draw regular polygram</source>
+        <translation>Disegna poligono gen. regolare</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <source>Draw filled regular polygram</source>
+        <translation>Disegna poligono gen. reg. pieno</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <source>Add/cancel text</source>
+        <translation>Aggiungi/cancella testo</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>Add/cancel image</source>
+        <translation>Aggiungi/cancella immagine</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <source>Draw thick arrow</source>
+        <translation>Disegna freccia larga</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <source>Draw filled thick arrow</source>
+        <translation>Disegna freccia larga piena</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Fill mode toggle</source>
         <translation>Commuta modo di riempimento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Text tool (cancel text)</source>
-        <translation>Testo (cancella)</translation>
+        <translation type="vanished">Testo (cancella)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>Accept current text/image</source>
+        <translation>Accetta testo/immagine corrente</translation>
+    </message>
+    <message>
         <source>Accept current text</source>
-        <translation>Accetta testo</translation>
+        <translation type="vanished">Accetta testo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Dimensioning tool</source>
         <translation>Strumento per misurare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Grid</source>
         <translation>Griglia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>About Paint</source>
         <translation>Informazioni su Paint</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Change settings</source>
         <translation>Cambia impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Clear drawing</source>
         <translation>Cancella il disegno</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Change background</source>
         <translation>Cambia sfondo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Save snapshot</source>
         <translation>Salva istantanea</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="74"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>About </source>
         <translation>Informazioni </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="109"/>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Version: </source>
         <translation>Versione: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>translation credit placeholder</source>
         <translation>Traduzione: stezz, simosagi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="128"/>
+        <location filename="../qml/pages/AboutPage.qml" line="139"/>
         <source>Help</source>
         <translation>Aiuto</translation>
     </message>
@@ -159,25 +231,49 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="181"/>
+        <location filename="../qml/pages/Paint.qml" line="189"/>
         <source>Swipe to change toolbar</source>
-        <translation>Scorri per cambiare la barra strumenti</translation>
+        <translation>Scorri per cambiare barra strumenti</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="208"/>
+        <source>Pinch to zoom</source>
+        <translation>Allarga le dita per ingrandire</translation>
     </message>
 </context>
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="59"/>
+        <location filename="../qml/components/Toolbar3.qml" line="50"/>
         <source>File format</source>
         <translation>Formato del file</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="132"/>
+        <source>Save failed...</source>
+        <translation>Salvataggio fallito</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="37"/>
+        <location filename="../qml/components/Toolbox.qml" line="46"/>
         <source>Clearing</source>
         <translation>Cancellando</translation>
+    </message>
+</context>
+<context>
+    <name>askFilenameDialog</name>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
+        <source>Enter filename</source>
+        <translation>Inserisci nome del file</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <source>File already exists</source>
+        <translation>File già esistente</translation>
     </message>
 </context>
 <context>
@@ -206,32 +302,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="46"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="37"/>
         <source>Warning: Do not cancel now</source>
         <translation>Attenzione: non annullare ora</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="63"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="53"/>
         <source>Dimensioning</source>
         <translation>Misurazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="81"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Scale all dimensions</source>
         <translation>Scala tutte le dimensioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="87"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Reference length %1</source>
         <translation>Lunghezza di riferimento %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="83"/>
         <source>Currently scaled length %1</source>
         <translation>Lunghezza scalata %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="101"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="91"/>
         <source>Enter true length</source>
         <translation>Inserisci lunghezza reale</translation>
     </message>
@@ -252,52 +348,61 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="38"/>
+        <location filename="../qml/pages/genSettings.qml" line="40"/>
         <source>General settings</source>
         <translation>Impostazioni generali</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="57"/>
         <source>File format</source>
-        <translation>Formato del file</translation>
+        <translation type="vanished">Formato del file</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="95"/>
+        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <source>Saving options</source>
+        <translation>Salvataggio opzioni</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <source>Ask filename when saving</source>
+        <translation>Chiedi nome del file al salvataggio</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="106"/>
         <source>Toolbox location</source>
         <translation>Posizione del pannello strumenti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="105"/>
+        <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Top</source>
         <translation>Cima</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="119"/>
+        <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Bottom</source>
         <translation>Fondo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="133"/>
+        <location filename="../qml/pages/genSettings.qml" line="144"/>
         <source>Grid settings</source>
         <translation>Impostazioni della griglia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="140"/>
+        <location filename="../qml/pages/genSettings.qml" line="151"/>
         <source>Snap to Grid</source>
         <translation>Griglia magnetica</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="148"/>
+        <location filename="../qml/pages/genSettings.qml" line="159"/>
         <source>Grid spacing</source>
         <translation>Spaziatura della griglia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="170"/>
         <source>Tool settings</source>
         <translation>Impostazioni strumento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="166"/>
+        <location filename="../qml/pages/genSettings.qml" line="177"/>
         <source>Remember tool settings</source>
         <translation>Ricorda impostazioni strumento</translation>
     </message>
@@ -369,8 +474,7 @@
 <context>
     <name>textEntryDialog</name>
     <message>
-        <location filename="../qml/pages/textEntryDialog.qml" line="56"/>
-        <location filename="../qml/pages/textEntryDialog.qml" line="64"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="51"/>
         <source>Enter some text</source>
         <translation>Inserisci del testo</translation>
     </message>

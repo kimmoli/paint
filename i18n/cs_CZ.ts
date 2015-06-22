@@ -2,49 +2,58 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Change toolbar</source>
-        <translation>Změnit nabídku</translation>
+        <translation type="vanished">Změnit nabídku</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
         <translation>Kreslení od ruky</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
         <translation>Guma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
         <translation>Sprej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
         <translation>Nakreslit geometrický útvar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
         <translation>Změnit barvu, tloušťku</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
         <translation>Nakreslit čáru</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
         <translation>Nakreslit obdelník</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Nakreslit vyplňený obdelník</translation>
+        <translation>Nakreslit vyplněný obdelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <source>Draw square</source>
+        <translation>Nakreslit čtverec</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <source>Draw filled square</source>
+        <translation>Nakreslit vyplněný čtverec</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
@@ -54,7 +63,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled circle</source>
-        <translation>Nakreslit vyplňenou kružnici</translation>
+        <translation>Nakreslit vyplněnou kružnici</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
@@ -64,75 +73,138 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Draw filled ellipse</source>
-        <translation>Nakreslit vyplňenou elipsu</translation>
+        <translation>Nakreslit vyplněnou elipsu</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source>Draw equilateral triangle</source>
+        <translation>Nakreslit rovnostranný trojúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <source>Draw filled e-triangle</source>
+        <translation>Nakreslit vyplňený rovn. trojúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <source>Draw right isosceles triangle</source>
+        <translation>Nakreslit vpravo rovnoramenný trojúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <source>Draw filled ri-triangle</source>
+        <translation>Nakreslit vyplněný rovnoramený trojúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <source>Draw regular polygon</source>
+        <translation>Nakreslit pravidelný mnohoúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <source>Draw filled regular polygon</source>
+        <translation>Nakreslit pravidelný vyplněný mnohoúhelník</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <source>Draw regular polygram</source>
+        <translation>Nakreslit pravidelný polygram</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <source>Draw filled regular polygram</source>
+        <translation>Nakreslit pravidelný vyplněný polygram</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <source>Add/cancel text</source>
+        <translation>Vložit/zrušit text</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>Add/cancel image</source>
+        <translation>Vložit/zrušit obrázek</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <source>Draw thick arrow</source>
+        <translation>Nakreslit tlustou šipku</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <source>Draw filled thick arrow</source>
+        <translation>Nakreslit vyplněnou tlustou šipku</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Fill mode toggle</source>
         <translation>Přepnout výplň</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Text tool (cancel text)</source>
-        <translation>Psaní textu (zrušit)</translation>
+        <translation type="vanished">Psaní textu (zrušit)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>Accept current text/image</source>
+        <translation>Použít napsaný text/obrázek</translation>
+    </message>
+    <message>
         <source>Accept current text</source>
-        <translation>Použít napsaný text</translation>
+        <translation type="vanished">Použít napsaný text</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Dimensioning tool</source>
         <translation>Nástroj pro měření</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Grid</source>
         <translation>Mřížka</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>About Paint</source>
         <translation>O programu malování</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Change settings</source>
         <translation>Změnit nastavení</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Clear drawing</source>
         <translation>Vymazat obrázek</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Change background</source>
         <translation>Změnit pozadí</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Save snapshot</source>
         <translation>Uložit momentku</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="74"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>About </source>
         <translation>O programu</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="109"/>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Version: </source>
         <translation>Verze: </translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>translation credit placeholder</source>
         <translation>Jozef Mlich</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="128"/>
+        <location filename="../qml/pages/AboutPage.qml" line="139"/>
         <source>Help</source>
         <translation>Nápověda</translation>
     </message>
@@ -159,25 +231,49 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="181"/>
+        <location filename="../qml/pages/Paint.qml" line="189"/>
         <source>Swipe to change toolbar</source>
         <translation>Smykem změníte panel nástrojů</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="208"/>
+        <source>Pinch to zoom</source>
+        <translation>Přiblížení dvěma prsty</translation>
     </message>
 </context>
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="59"/>
+        <location filename="../qml/components/Toolbar3.qml" line="50"/>
         <source>File format</source>
         <translation>Formát souboru</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="132"/>
+        <source>Save failed...</source>
+        <translation>Ukládání selhalo...</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="37"/>
+        <location filename="../qml/components/Toolbox.qml" line="46"/>
         <source>Clearing</source>
         <translation>Maže se</translation>
+    </message>
+</context>
+<context>
+    <name>askFilenameDialog</name>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
+        <source>Enter filename</source>
+        <translation>Zadejte jméno souboru</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <source>File already exists</source>
+        <translation>Soubor již existuje</translation>
     </message>
 </context>
 <context>
@@ -206,32 +302,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="46"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="37"/>
         <source>Warning: Do not cancel now</source>
         <translation>Varování: teď nepřerušujte</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="63"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="53"/>
         <source>Dimensioning</source>
         <translation>Rozměry</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="81"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Scale all dimensions</source>
         <translation>Roztáhnout na rozměr</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="87"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Reference length %1</source>
         <translation>Referenční velikost %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="83"/>
         <source>Currently scaled length %1</source>
         <translation>Momentálně zvětšeno na %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="101"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="91"/>
         <source>Enter true length</source>
         <translation>Nastavte skutečnou velikost</translation>
     </message>
@@ -252,52 +348,61 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="38"/>
+        <location filename="../qml/pages/genSettings.qml" line="40"/>
         <source>General settings</source>
         <translation>Obecné nastavení</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="57"/>
         <source>File format</source>
-        <translation>formát souboru</translation>
+        <translation type="vanished">formát souboru</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="95"/>
+        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <source>Saving options</source>
+        <translation>Možnosti uložení</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <source>Ask filename when saving</source>
+        <translation>Zeptat se na jméno souboru při ukládání</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="106"/>
         <source>Toolbox location</source>
         <translation>Umístění panelu nástrojů</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="105"/>
+        <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Top</source>
         <translation>Horní okraj</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="119"/>
+        <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Bottom</source>
         <translation>Dolní okraj</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="133"/>
+        <location filename="../qml/pages/genSettings.qml" line="144"/>
         <source>Grid settings</source>
         <translation>Nastavní mřížky</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="140"/>
+        <location filename="../qml/pages/genSettings.qml" line="151"/>
         <source>Snap to Grid</source>
         <translation>Zarovnat k mřížce</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="148"/>
+        <location filename="../qml/pages/genSettings.qml" line="159"/>
         <source>Grid spacing</source>
         <translation>Rozteč mřížky</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="170"/>
         <source>Tool settings</source>
         <translation>Nastavení nástroje</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="166"/>
+        <location filename="../qml/pages/genSettings.qml" line="177"/>
         <source>Remember tool settings</source>
         <translation>Zapamatovat si nastavení nástroje</translation>
     </message>
@@ -369,8 +474,7 @@
 <context>
     <name>textEntryDialog</name>
     <message>
-        <location filename="../qml/pages/textEntryDialog.qml" line="56"/>
-        <location filename="../qml/pages/textEntryDialog.qml" line="64"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="51"/>
         <source>Enter some text</source>
         <translation>Zadejte nějaký text</translation>
     </message>

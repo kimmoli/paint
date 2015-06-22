@@ -2,49 +2,58 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Change toolbar</source>
-        <translation>Переключить панель</translation>
+        <translation type="vanished">Переключить панель</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
         <translation>Карандаш</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
         <translation>Ластик</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
         <translation>Распылитель</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
         <translation>Простые формы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
         <translation>Цвет линии, размер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="35"/>
+        <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
         <translation>Линия</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
         <translation>Прямоугольник</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Заполненный прямоугольник</translation>
+        <translation>Залитый прямоугольник</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="36"/>
+        <source>Draw square</source>
+        <translation>Квадрат</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <source>Draw filled square</source>
+        <translation>Залитый квадрат</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
@@ -54,7 +63,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled circle</source>
-        <translation>Заполненный круг</translation>
+        <translation>Залитый круг</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
@@ -64,75 +73,138 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Draw filled ellipse</source>
-        <translation>Заполненный эллипс</translation>
+        <translation>Залитый эллипс</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <source>Draw equilateral triangle</source>
+        <translation>Равносторонний треугольник</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="43"/>
+        <source>Draw filled e-triangle</source>
+        <translation>Залитый равностор. треугольник</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <source>Draw right isosceles triangle</source>
+        <translation>Прямоугольный треугольник</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <source>Draw filled ri-triangle</source>
+        <translation>Залитый прямоуг. треугольник</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <source>Draw regular polygon</source>
+        <translation>Полигон</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <source>Draw filled regular polygon</source>
+        <translation>Залитый полигон</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <source>Draw regular polygram</source>
+        <translation>Полиграм</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <source>Draw filled regular polygram</source>
+        <translation>Залитый полиграм</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="53"/>
+        <source>Add/cancel text</source>
+        <translation>Добавить/убрать текст</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="54"/>
+        <source>Add/cancel image</source>
+        <translation>Добавить/убрать изображение</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <source>Draw thick arrow</source>
+        <translation>Стрелка</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <source>Draw filled thick arrow</source>
+        <translation>Залитая стрелка</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Fill mode toggle</source>
         <translation>Заливка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Text tool (cancel text)</source>
-        <translation>Вставка (отмена) текста</translation>
+        <translation type="vanished">Вставка (отмена) текста</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <source>Accept current text/image</source>
+        <translation>Подтвердить текст/изображение</translation>
+    </message>
+    <message>
         <source>Accept current text</source>
-        <translation>Подтвердить текст</translation>
+        <translation type="vanished">Подтвердить текст</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Dimensioning tool</source>
         <translation>Линейка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Grid</source>
         <translation>Сетка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>About Paint</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="48"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Change settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="49"/>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Clear drawing</source>
         <translation>Очистить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Change background</source>
         <translation>Изменить фон</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Save snapshot</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="74"/>
+        <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>About </source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="109"/>
+        <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Version: </source>
         <translation>Версия:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="118"/>
+        <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>translation credit placeholder</source>
         <translation>Переведено и озвучено кем-то с ником coderus</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="128"/>
+        <location filename="../qml/pages/AboutPage.qml" line="139"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
@@ -159,25 +231,49 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="181"/>
+        <location filename="../qml/pages/Paint.qml" line="189"/>
         <source>Swipe to change toolbar</source>
         <translation>Проведите, чтобы сменить панель</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="208"/>
+        <source>Pinch to zoom</source>
+        <translation>Ущипнуть, чтобы изменить масштаб</translation>
     </message>
 </context>
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="59"/>
+        <location filename="../qml/components/Toolbar3.qml" line="50"/>
         <source>File format</source>
         <translation>Формат файла</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="132"/>
+        <source>Save failed...</source>
+        <translation>Сохранение не удалось...</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="37"/>
+        <location filename="../qml/components/Toolbox.qml" line="46"/>
         <source>Clearing</source>
         <translation>Очистка</translation>
+    </message>
+</context>
+<context>
+    <name>askFilenameDialog</name>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
+        <source>Enter filename</source>
+        <translation>Введите имя файла</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <source>File already exists</source>
+        <translation>Файл уже существует</translation>
     </message>
 </context>
 <context>
@@ -206,32 +302,32 @@
 <context>
     <name>dimensionDialog</name>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="46"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="37"/>
         <source>Warning: Do not cancel now</source>
         <translation>Внимание: не отменяйте сейчас</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="63"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="53"/>
         <source>Dimensioning</source>
         <translation>Размеры</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="81"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Scale all dimensions</source>
         <translation>Масштабирование</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="87"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Reference length %1</source>
         <translation>Фактический размер: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="93"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="83"/>
         <source>Currently scaled length %1</source>
         <translation>Текущий размер: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/dimensionDialog.qml" line="101"/>
+        <location filename="../qml/pages/dimensionDialog.qml" line="91"/>
         <source>Enter true length</source>
         <translation>Введите нужный размер</translation>
     </message>
@@ -252,52 +348,61 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="38"/>
+        <location filename="../qml/pages/genSettings.qml" line="40"/>
         <source>General settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="57"/>
         <source>File format</source>
-        <translation>Формат файла</translation>
+        <translation type="vanished">Формат файла</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="95"/>
+        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <source>Saving options</source>
+        <translation>Настройки сохраниения</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <source>Ask filename when saving</source>
+        <translation>Спросить имя файла перед сохранением</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="106"/>
         <source>Toolbox location</source>
         <translation>Положение панели</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="105"/>
+        <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Top</source>
         <translation>Сверху</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="119"/>
+        <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Bottom</source>
         <translation>Снизу</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="133"/>
+        <location filename="../qml/pages/genSettings.qml" line="144"/>
         <source>Grid settings</source>
         <translation>Сетка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="140"/>
+        <location filename="../qml/pages/genSettings.qml" line="151"/>
         <source>Snap to Grid</source>
         <translation>Привязка к сетке</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="148"/>
+        <location filename="../qml/pages/genSettings.qml" line="159"/>
         <source>Grid spacing</source>
         <translation>Шаг сетки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="170"/>
         <source>Tool settings</source>
         <translation>Инструменты</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="166"/>
+        <location filename="../qml/pages/genSettings.qml" line="177"/>
         <source>Remember tool settings</source>
         <translation>Запомнить настройки</translation>
     </message>
@@ -369,8 +474,7 @@
 <context>
     <name>textEntryDialog</name>
     <message>
-        <location filename="../qml/pages/textEntryDialog.qml" line="56"/>
-        <location filename="../qml/pages/textEntryDialog.qml" line="64"/>
+        <location filename="../qml/pages/textEntryDialog.qml" line="51"/>
         <source>Enter some text</source>
         <translation>Введите текст</translation>
     </message>
