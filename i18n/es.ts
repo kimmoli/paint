@@ -83,17 +83,17 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Draw filled e-triangle</source>
-        <translation>Dibujar triángulo equilatero relleno</translation>
+        <translation>Dibujar t. equilátero relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Draw right isosceles triangle</source>
-        <translation>Dibujar triángulo isósceles rectángulo</translation>
+        <translation>Dibujar triángulo isósceles rect.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>Draw filled ri-triangle</source>
-        <translation>Dibujar triángulo rectángulo relleno</translation>
+        <translation>Dibujar triángulo rect. relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
@@ -108,12 +108,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Draw regular polygram</source>
-        <translation>Dibujar polígono regular</translation>
+        <translation>Dibujar pol. estrellado reg.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
         <source>Draw filled regular polygram</source>
-        <translation>Dibujar polígono regular relleno</translation>
+        <translation>Dibujar pol. estrellado reg. relleno</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>

@@ -1,212 +1,212 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nb" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
         <source>Change toolbar</source>
-        <translation type="vanished">Byt verktygsfält</translation>
+        <translation type="vanished">Bytt verktøylinje</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="28"/>
         <source>Draw freehand line</source>
-        <translation>Rita frihandslinje</translation>
+        <translation>Frihåndstegning</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="29"/>
         <source>Eraser</source>
-        <translation>Radera</translation>
+        <translation>Viskelær</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="30"/>
         <source>Sprayer</source>
-        <translation>Färgspruta</translation>
+        <translation>Sprayboks</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Draw geometric shape</source>
-        <translation>Rita geometrisk figur</translation>
+        <translation>Geometrisk form</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="32"/>
         <source>Change color, width</source>
-        <translation>Ändra färg och tjocklek</translation>
+        <translation>Endre farge, bredde</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>Draw line</source>
-        <translation>Rita linje</translation>
+        <translation>Linje</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Draw rectangle</source>
-        <translation>Rita rektangel</translation>
+        <translation>Rektangel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="35"/>
         <source>Draw filled rectangle</source>
-        <translation>Rita fylld rektangel</translation>
+        <translation>Fylt rektangel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="36"/>
         <source>Draw square</source>
-        <translation>Rita kvadrat</translation>
+        <translation>Kvadrat</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Draw filled square</source>
-        <translation>Rita fylld kvadrat</translation>
+        <translation>Fylt kvadrat</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="38"/>
         <source>Draw circle</source>
-        <translation>Rita cirkel</translation>
+        <translation>Sirkel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Draw filled circle</source>
-        <translation>Rita fylld cirkel</translation>
+        <translation>Fylt sirkel</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="40"/>
         <source>Draw ellipse</source>
-        <translation>Rita ellips</translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="41"/>
         <source>Draw filled ellipse</source>
-        <translation>Rita fylld ellips</translation>
+        <translation>Fylt ellipse</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="42"/>
         <source>Draw equilateral triangle</source>
-        <translation>Rita liksidig triangel</translation>
+        <translation>Likesidet trekant</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="43"/>
         <source>Draw filled e-triangle</source>
-        <translation>Rita fylld l-rektangel</translation>
+        <translation>Fylt likesidet trekant</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="44"/>
         <source>Draw right isosceles triangle</source>
-        <translation>Rita likbent triangel</translation>
+        <translation>Høyrevendt rettvinklet likebeint trekant</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="45"/>
         <source>Draw filled ri-triangle</source>
-        <translation>Rita fylld l-triangel</translation>
+        <translation>Fylt høyrevendt rettvinklet likebeint trekant</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Draw regular polygon</source>
-        <translation>Rita regelbunden polygon</translation>
+        <translation>Likesidet polygon</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="47"/>
         <source>Draw filled regular polygon</source>
-        <translation>Rita fylld regelbunden polygon</translation>
+        <translation>Fylt likesidet polygon</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Draw regular polygram</source>
-        <translation>Rita regelbunden polygon</translation>
+        <translation>Likesidet polygram</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="49"/>
         <source>Draw filled regular polygram</source>
-        <translation>Rita fylld regelbunden polygon</translation>
+        <translation>Fylt likesidet polygram</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="53"/>
         <source>Add/cancel text</source>
-        <translation>Lägg till/Avbryt text</translation>
+        <translation>Legg til/slett tekst</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="54"/>
         <source>Add/cancel image</source>
-        <translation>Lägg till/Avbryt bild</translation>
+        <translation>Legg til/slett bilde</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="50"/>
         <source>Draw thick arrow</source>
-        <translation>Rita tjock pil</translation>
+        <translation>Bred pil</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="51"/>
         <source>Draw filled thick arrow</source>
-        <translation>Rita fylld tjock pil</translation>
+        <translation>Fylt bred pil</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Fill mode toggle</source>
-        <translation>Växla fyllnad/transparens</translation>
+        <translation>Slå av/på fyllmodus</translation>
     </message>
     <message>
         <source>Text tool (cancel text)</source>
-        <translation type="vanished">Textverktyg (avbryt text)</translation>
+        <translation type="vanished">Tekstverktøy (fjern tekst)</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>Accept current text/image</source>
-        <translation>Acceptera aktuell text/bild</translation>
+        <translation>Bruk tekst/bilde</translation>
     </message>
     <message>
         <source>Accept current text</source>
-        <translation type="vanished">Acceptera aktuell text</translation>
+        <translation type="vanished">Bruk tekst</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="56"/>
         <source>Dimensioning tool</source>
-        <translation>Dimensioneringsverktyg</translation>
+        <translation>Skaleringsverktøy</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="57"/>
         <source>Grid</source>
-        <translation>Stödlinjer</translation>
+        <translation>Rutenett</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>About Paint</source>
-        <translation>Om Paint</translation>
+        <translation>Om Male</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Change settings</source>
-        <translation>Ändra inställningar</translation>
+        <translation>Endre innstillinger</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Clear drawing</source>
-        <translation>Rensa skärmen</translation>
+        <translation>Fjern alt</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="61"/>
         <source>Change background</source>
-        <translation>Ändra bakgrund</translation>
+        <translation>Endre bakgrunn</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Save snapshot</source>
-        <translation>Spara ögonblicksbild</translation>
+        <translation>Lagre øyeblikksbilde</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="85"/>
         <source>About </source>
-        <translation>Om </translation>
+        <translation>Om</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="120"/>
         <source>Version: </source>
-        <translation>Version: </translation>
+        <translation>Versjon</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="129"/>
         <source>translation credit placeholder</source>
-        <translation>Svensk översättning av Åke Engelbrektson</translation>
+        <translation>Kjetil Kilhavn</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="139"/>
         <source>Help</source>
-        <translation>Hjälp</translation>
+        <translation>Hjelp</translation>
     </message>
 </context>
 <context>
@@ -214,18 +214,18 @@
     <message>
         <location filename="../qml/components/ColorSelector.qml" line="27"/>
         <source>Edit color %1</source>
-        <translation>Ändra färg %1</translation>
+        <translation>Rediger farge %1</translation>
     </message>
 </context>
 <context>
     <name>MediaSelector</name>
     <message>
         <source>Image selected</source>
-        <translation type="vanished">Bild vald</translation>
+        <translation type="vanished">Bilde valgt</translation>
     </message>
     <message>
         <source>Select image</source>
-        <translation type="vanished">Välj bild</translation>
+        <translation type="vanished">Velg bilde</translation>
     </message>
 </context>
 <context>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../qml/pages/Paint.qml" line="189"/>
         <source>Swipe to change toolbar</source>
-        <translation>Svep för att byta verktygsfält</translation>
+        <translation>Sveip for å bytte verktøylinje</translation>
     </message>
     <message>
         <location filename="../qml/pages/Paint.qml" line="208"/>
         <source>Pinch to zoom</source>
-        <translation>Nyp för att zooma</translation>
+        <translation>Knip for å forstørre/forminske</translation>
     </message>
 </context>
 <context>
@@ -251,7 +251,7 @@
     <message>
         <location filename="../qml/components/Toolbar3.qml" line="132"/>
         <source>Save failed...</source>
-        <translation>Kunde inte spara...</translation>
+        <translation>Lagring feilet...</translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <message>
         <location filename="../qml/components/Toolbox.qml" line="46"/>
         <source>Clearing</source>
-        <translation>Rensar</translation>
+        <translation>Fjerner</translation>
     </message>
 </context>
 <context>
@@ -268,12 +268,12 @@
         <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
         <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
         <source>Enter filename</source>
-        <translation>Ange filnamn</translation>
+        <translation>Angi filnavn</translation>
     </message>
     <message>
         <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
         <source>File already exists</source>
-        <translation>Filen finns redan</translation>
+        <translation>Fila eksisterer allerede</translation>
     </message>
 </context>
 <context>
@@ -281,12 +281,12 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="45"/>
         <source>Select background</source>
-        <translation>Välj bakgrund</translation>
+        <translation>Velg bakgrunn</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
         <source>Select color</source>
-        <translation>Välj färg</translation>
+        <translation>Velg farge</translation>
     </message>
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="77"/>
@@ -296,7 +296,7 @@
     <message>
         <location filename="../qml/pages/bgSettingsDialog.qml" line="99"/>
         <source>Image</source>
-        <translation>Bild</translation>
+        <translation>Bilde</translation>
     </message>
 </context>
 <context>
@@ -304,32 +304,32 @@
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="37"/>
         <source>Warning: Do not cancel now</source>
-        <translation>Varning! Avbryt inte nu</translation>
+        <translation>Advarsel: Ikke avbryt nå</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="53"/>
         <source>Dimensioning</source>
-        <translation>Dimensionering</translation>
+        <translation>Skalerer</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="71"/>
         <source>Scale all dimensions</source>
-        <translation>Skala samtliga dimensioner</translation>
+        <translation>Skaler alle dimensjoner</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="77"/>
         <source>Reference length %1</source>
-        <translation>Referenslängd %1</translation>
+        <translation>Referanselengde %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="83"/>
         <source>Currently scaled length %1</source>
-        <translation>Aktuell skalad längd %1</translation>
+        <translation>Nåværende skalert lengde %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/dimensionDialog.qml" line="91"/>
         <source>Enter true length</source>
-        <translation>Ange verklig längd</translation>
+        <translation>Angi faktisk lengde</translation>
     </message>
 </context>
 <context>
@@ -337,12 +337,12 @@
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="37"/>
         <source>Eraser settings</source>
-        <translation>Raderingsinställningar</translation>
+        <translation>Innstillinger for viskelær</translation>
     </message>
     <message>
         <location filename="../qml/pages/eraserSettingsDialog.qml" line="55"/>
         <source>Eraser size</source>
-        <translation>Raderingsbredd</translation>
+        <translation>Størrelse</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="40"/>
         <source>General settings</source>
-        <translation>Allmäna inställningar</translation>
+        <translation>Generelle innstillinger</translation>
     </message>
     <message>
         <source>File format</source>
@@ -359,52 +359,52 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="60"/>
         <source>Saving options</source>
-        <translation>Spara-alternativ</translation>
+        <translation>Valg for lagring</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="98"/>
         <source>Ask filename when saving</source>
-        <translation>Fråga efter filnamn vid Spara</translation>
+        <translation>Spør om filnavn ved lagring</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="106"/>
         <source>Toolbox location</source>
-        <translation>Verktygsplacering</translation>
+        <translation>Plassering av verktøylinje</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="116"/>
         <source>Top</source>
-        <translation>I överkant</translation>
+        <translation>Øverst</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="130"/>
         <source>Bottom</source>
-        <translation>I underkant</translation>
+        <translation>Nederst</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="144"/>
         <source>Grid settings</source>
-        <translation>Stödlinjeinställningar</translation>
+        <translation>Innstillinger for rutenett</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="151"/>
         <source>Snap to Grid</source>
-        <translation>Fäst vid stödlinjer</translation>
+        <translation>Fest til rutenett</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="159"/>
         <source>Grid spacing</source>
-        <translation>Stödlinjeavstånd</translation>
+        <translation>Rutestørrelse</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="170"/>
         <source>Tool settings</source>
-        <translation>Verktygsinställningar</translation>
+        <translation>Innstillinger for verktøy</translation>
     </message>
     <message>
         <location filename="../qml/pages/genSettings.qml" line="177"/>
         <source>Remember tool settings</source>
-        <translation>Kom ihåg verktygsinställningar</translation>
+        <translation>Husk innstillinger for verktøy</translation>
     </message>
 </context>
 <context>
@@ -412,7 +412,7 @@
     <message>
         <location filename="../qml/paint.qml" line="13"/>
         <source>Accept</source>
-        <translation>Verkställ</translation>
+        <translation>Godta</translation>
     </message>
     <message>
         <location filename="../qml/paint.qml" line="14"/>
@@ -425,17 +425,17 @@
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="38"/>
         <source>Pen settings</source>
-        <translation>Penninställningar</translation>
+        <translation>Innstillinger for penn</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="56"/>
         <source>Select color</source>
-        <translation>Välj färg</translation>
+        <translation>Velg farge</translation>
     </message>
     <message>
         <location filename="../qml/pages/penSettingsDialog.qml" line="68"/>
         <source>Pen width</source>
-        <translation>Penntjocklek</translation>
+        <translation>Pennbredde</translation>
     </message>
 </context>
 <context>
@@ -443,32 +443,32 @@
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="61"/>
         <source>Sprayer settings</source>
-        <translation>Spray-inställningar</translation>
+        <translation>Innstillinger for sprayboks</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="80"/>
         <source>Select color</source>
-        <translation>Välj färg</translation>
+        <translation>Velg farge</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="126"/>
         <source>Sprayer parameters</source>
-        <translation>Spray-parametrar</translation>
+        <translation>Parametere for sprayboks</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="132"/>
         <source>Size</source>
-        <translation>Storlek</translation>
+        <translation>Størrelse</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="145"/>
         <source>Density</source>
-        <translation>Densitet</translation>
+        <translation>Tetthet</translation>
     </message>
     <message>
         <location filename="../qml/pages/spraySettingsDialog.qml" line="159"/>
         <source>Particle size</source>
-        <translation>Partikelstorlek</translation>
+        <translation>Partikkelstørrelse</translation>
     </message>
 </context>
 <context>
@@ -476,7 +476,7 @@
     <message>
         <location filename="../qml/pages/textEntryDialog.qml" line="51"/>
         <source>Enter some text</source>
-        <translation>Mata in text</translation>
+        <translation>Skriv inn tekst</translation>
     </message>
 </context>
 <context>
@@ -484,32 +484,32 @@
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="42"/>
         <source>Text settings</source>
-        <translation>Textinställningar</translation>
+        <translation>Innstillinger for tekst</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="60"/>
         <source>Select color</source>
-        <translation>Välj färg</translation>
+        <translation>Velg farge</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="71"/>
         <source>Font size</source>
-        <translation>Teckenstorlek</translation>
+        <translation>Skriftstørrelse</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="93"/>
         <source>Bold</source>
-        <translation>Fet</translation>
+        <translation>Fet skrift</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="100"/>
         <source>Italic</source>
-        <translation>Kursiv</translation>
+        <translation>Kursivskrift</translation>
     </message>
     <message>
         <location filename="../qml/pages/textSettingsDialog.qml" line="108"/>
         <source>Font</source>
-        <translation>Teckensnitt</translation>
+        <translation>Skrift</translation>
     </message>
 </context>
 </TS>
