@@ -72,7 +72,7 @@ Dialog
             Rectangle
             {
                 color: "transparent"
-                height: 80
+                height: Theme.itemSizeMedium
                 width: parent.width
                 visible: currentThickness > 0
 
@@ -80,7 +80,7 @@ Dialog
                 {
                     id: previewLine
                     height: thicknessSlider.value
-                    width: parent.width - 170
+                    width: parent.width - (2 * Theme.itemSizeMedium)
                     color: colors[currentColor]
                     anchors.centerIn: parent
                 }

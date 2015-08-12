@@ -96,15 +96,15 @@ Page
             {
                 visible: imagelocation.length > 0
                 anchors.horizontalCenter: parent.horizontalCenter
-                height: 120
-                width: 120
+                height: Theme.iconSizeExtraLarge
+                width: Theme.iconSizeExtraLarge
                 color: "transparent"
 
                 Image
                 {
                     visible: imagelocation.length > 0
                     source: imagelocation
-                    anchors.centerIn: parent
+                    anchors.fill: parent
                 }
             }
 
@@ -144,8 +144,8 @@ Page
                 model: buttonhelp
                 Row
                 {
-                    spacing: 25
-                    x: 25
+                    spacing: Theme.paddingLarge
+                    x: Theme.paddingLarge
                     Image
                     {
                         id: bim

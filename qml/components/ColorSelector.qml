@@ -62,7 +62,7 @@ Rectangle
         anchors.top: editColorRow.bottom
         id: colorSelector
         visible: !isColorWheel
-        columns: Math.floor(parent.width/((540-Theme.paddingLarge)/4))
+        columns: Math.floor(parent.width/Theme.iconSizeExtraLarge)
 
         Repeater
         {
@@ -103,7 +103,7 @@ Rectangle
         anchors.top: editColorRow.bottom
 
         color: "transparent"
-        width: Math.min((540-Theme.paddingLarge), parent.width)
+        width: Math.min(window.height, window.width) - Theme.paddingLarge
         height: width*(3/4)
 
         anchors.horizontalCenter: parent.horizontalCenter

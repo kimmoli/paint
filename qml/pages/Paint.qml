@@ -29,6 +29,7 @@ Page
         {
             painter.setSetting(tool + "PinchHintCounter", ++pinchHintCounter)
             pinchHint.start()
+            pinchHintSlave.start()
         }
     }
 
@@ -190,6 +191,7 @@ Page
     TouchInteractionHint
     {
         id: toolbarInteractionHint
+        z: 999
         direction: TouchInteraction.Right
         anchors.verticalCenter: toolBox.verticalCenter
         loops: 4
@@ -197,8 +199,8 @@ Page
 
     InteractionHintLabel
     {
-        z: 30
         id: pinchHintLabel
+        z: 999
         text: qsTr("Pinch to zoom")
         anchors.centerIn: page
         rotation: rotationSensor.angle
@@ -210,17 +212,16 @@ Page
     TouchInteractionHint
     {
         id: pinchHint
-        z: 30
+        z: 999
         direction: TouchInteraction.Up
         anchors.horizontalCenter: parent.horizontalCenter
-        onRunningChanged: if (running) pinchHintSlave.start()
         loops: 3
     }
 
     TouchInteractionHint
     {
         id: pinchHintSlave
-        z: 30
+        z: 999
         direction: TouchInteraction.Down
         anchors.horizontalCenter: parent.horizontalCenter
         loops: 3

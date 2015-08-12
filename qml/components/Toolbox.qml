@@ -15,7 +15,7 @@ Item
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
-    height: 80
+    height: Theme.itemSizeMedium
     width: parent.width
     clip: true
 

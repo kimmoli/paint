@@ -23,8 +23,8 @@ Column
         Label
         {
             text: polyVertices
-            width: 80
-            height: 80
+            width: Theme.itemSizeMedium
+            height: Theme.itemSizeMedium
             anchors.verticalCenter: parent.verticalCenter
             font.bold: true
             font.pixelSize: Theme.fontSizeLarge

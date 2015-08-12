@@ -26,7 +26,8 @@ Dialog
         interval: 10
         onTriggered:
             if (useExternalImage)
-                flick.scrollToBottom()
+                if (flick.contentHeight > flick.height)
+                    flick.scrollToBottom()
     }
 
     SilicaFlickable
@@ -106,7 +107,8 @@ Dialog
                             useExternalImage = true
                             currentColor = colors.length
                             colSelector.isColorWheel = false
-                            flick.scrollToBottom()
+                            if (flick.contentHeight > flick.height)
+                                flick.scrollToBottom()
                         }
                     }
                 }
@@ -126,7 +128,8 @@ Dialog
                             useExternalImage = true
                             currentColor = colors.length
                             colSelector.isColorWheel = false
-                            flick.scrollToBottom()
+                            if (flick.contentHeight > flick.height)
+                                flick.scrollToBottom()
                          });
                     }
                 }
