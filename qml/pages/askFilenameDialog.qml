@@ -11,6 +11,7 @@ Dialog
 
     property string filename : ""
     property string saveFormat : ""
+    property bool crop : false
 
     onDone:
     {
@@ -55,32 +56,35 @@ Dialog
                 focus: true
                 placeholderText: qsTr("Enter filename")
                 EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-                EnterKey.onClicked:
+                EnterKey.onClicked: askFilenameDialog.accept()
+                onTextChanged: fileExistsNotification.opacity = painter.fileExists(ti.text) ? 0.4 : 0.0
+
+                Rectangle
                 {
-                    askFilenameDialog.accept()
+                    id: fileExistsNotification
+                    anchors.fill: parent
+                    color: "red"
+                    opacity: 0
+                    Behavior on opacity { NumberAnimation { duration: 200 } }
                 }
-                onTextChanged: fileExistsNotification.opacity = painter.fileExists(ti.text) ? 0.6 : 0.0
-            }
-
-            Rectangle
-            {
-                id: fileExistsNotification
-                width: askFilenameDialog.width
-                height: Theme.itemSizeLarge
-                x: -Theme.paddingLarge/2
-                color: "red"
-                opacity: 0
-                Behavior on opacity { NumberAnimation { duration: 200 } }
-
                 Label
                 {
-                    anchors.centerIn: parent
-                    color: "white"
+                    anchors.top: fileExistsNotification.bottom
+                    anchors.left: fileExistsNotification.left
+                    color: Theme.highlightColor
                     text: qsTr("File already exists")
-                    opacity: parent.opacity * 2
+                    opacity: fileExistsNotification.opacity * 3
                     font.bold: true
                 }
             }
+
+            IconTextSwitch
+            {
+                icon.source: "image://theme/icon-m-crop"
+                text: qsTr("Crop before saving")
+                onCheckedChanged: crop = checked
+            }
+
         }
     }
 }

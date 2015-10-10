@@ -392,3 +392,27 @@ function drawBalloonText(ctx, text, x, y, textColor, textFont, fontSize, balloon
     ctx.restore()
 }
 
+function pad(num)
+{
+  if (num.length < 2)
+    return "0" + num
+  else
+    return num
+}
+
+function inverse(hex)
+{
+  if (hex.length !== 7 || hex.indexOf('#') !== 0)
+      return "#ffffff"
+  return "#" + pad((255 - parseInt(hex.substring(1, 3), 16)).toString(16)) + pad((255 - parseInt(hex.substring(3, 5), 16)).toString(16)) + pad((255 - parseInt(hex.substring(5, 7), 16)).toString(16))
+}
+
+function drawCropRubberBand(ctx, rect, lineColor)
+{
+    ctx.lineWidth = 1
+    ctx.strokeStyle = lineColor
+    ctx.strokeRect(rect[0], rect[1], rect[2], rect[3]);
+
+    ctx.strokeStyle = inverse(lineColor)
+    ctx.strokeRect(rect[0]-1, rect[1]-1, rect[2]+2, rect[3]+2);
+}

@@ -65,6 +65,8 @@ ApplicationWindow
     property int polyVertices: 5
     property int textBalloonize: 0
 
+    property var cropArea: [ 0,0,0,0 ]
+
     /*****************************************************/
 
     initialPage: Qt.resolvedUrl("pages/Paint.qml")

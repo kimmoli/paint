@@ -9,6 +9,7 @@ Canvas
     z: 10
     anchors.fill: drawingCanvas
     antialiasing: true
+    tileSize: Qt.size(100, 100)
     
     property bool clearNow : false
     

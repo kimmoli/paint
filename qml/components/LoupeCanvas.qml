@@ -8,6 +8,7 @@ Canvas
 {
     id: loupeCanvas
     antialiasing: true
+    tileSize: Qt.size(100, 100)
 
     property bool dodge: false
 

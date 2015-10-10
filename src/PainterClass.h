@@ -13,6 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QObject>
 #include <QVariant>
 #include <QStringList>
+#include <QList>
 
 class PainterClass : public QObject
 {
@@ -41,7 +42,8 @@ public:
                                    QString background,
                                    bool bgRotate,
                                    int angle,
-                                   QString filename);
+                                   QString filename,
+                                   QList<int> cropArea);
 
     Q_INVOKABLE bool fileExists(QString filename);
 
@@ -54,7 +56,8 @@ public:
         Geometrics,
         Text,
         Dimensioning,
-        Image
+        Image,
+        Crop
     };
 
     enum GeometricsMode

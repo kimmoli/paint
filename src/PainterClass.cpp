@@ -84,7 +84,7 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename)
+QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename, QList<int> cropArea)
 {
     QImage s;
     s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
@@ -139,6 +139,13 @@ QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString bac
         p.setCompositionMode(QPainter::CompositionMode_SourceOver);
         p.drawImage(QPointF(0.0, 0.0), p2);
         p.end();
+    }
+
+    if (cropArea.at(2) > 0 && cropArea.at(3) > 0)
+    {
+        QRect crop(cropArea.at(0), cropArea.at(1), cropArea.at(2), cropArea.at(3));
+        QImage cropped = s.copy(crop);
+        s = QImage(cropped);
     }
 
     /* Rotate output according to device orientation */

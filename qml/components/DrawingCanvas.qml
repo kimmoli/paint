@@ -8,6 +8,7 @@ Canvas
 {
     id: drawingCanvas
     z: 9
+    tileSize: Qt.size(100, 100)
     
     Component.onCompleted:
     {
@@ -209,10 +210,11 @@ Canvas
                 case Painter.Geometrics:
                 case Painter.Text:
                 case Painter.Image:
+                case Painter.Crop:
                     previewCanvas.downX = gMouseX
                     previewCanvas.downY = gMouseY
                     break;
-                    
+
                 case Painter.Dimensioning:
                     if (dimensionMoveMode)
                     {
@@ -300,6 +302,13 @@ Canvas
                     panY += area.gMouseY - previewCanvas.downY
                     previewCanvas.requestPaint()
                     break;
+
+                case Painter.Crop:
+                    cropArea = [ Math.min(previewCanvas.downX, area.gMouseX),
+                                 Math.min(previewCanvas.downY, area.gMouseY),
+                                 Math.abs(previewCanvas.downX - area.gMouseX),
+                                 Math.abs(previewCanvas.downY - area.gMouseY) ]
+                    break;
                     
                 default:
                     break;
@@ -326,6 +335,7 @@ Canvas
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
                 case Painter.Image:
+                case Painter.Crop:
                     previewCanvas.requestPaint()
                     break;
                     

@@ -11,6 +11,7 @@ Canvas
     anchors.fill: drawingCanvas
     antialiasing: true
     opacity: 1.0
+    tileSize: Qt.size(100, 100)
     
     property real downX
     property real downY
@@ -181,6 +182,15 @@ Canvas
             }
             break;
             
+        case Painter.Crop:
+            cropArea = [ Math.min(downX, drawingCanvas.areagMouseX),
+                         Math.min(downY, drawingCanvas.areagMouseY),
+                         Math.abs(downX - drawingCanvas.areagMouseX),
+                         Math.abs(downY - drawingCanvas.areagMouseY) ]
+
+            Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
+            break;
+
         default:
             break;
         }

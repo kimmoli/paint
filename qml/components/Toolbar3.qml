@@ -6,6 +6,10 @@ Item
 {
     id: toolbar3
 
+    property bool cropPending: false
+    property string pendingFilename: ""
+    property int prevDrawMode: Painter.None
+
     Row
     {
         spacing: (parent.width - children.length*80)/(children.length+1)
@@ -107,6 +111,18 @@ Item
                 geometryPopupVisible = false
                 dimensionPopupVisible = false
 
+                if (cropPending && drawMode === Painter.Crop)
+                {
+                    cropPending = false
+                    drawMode = prevDrawMode
+                    previewCanvas.clear()
+                    save(pendingFilename)
+                    return
+                }
+
+                cropPending = false
+                cropArea = [ 0,0,0,0 ]
+
                 var fileName = ""
                 if (askSaveFilename)
                 {
@@ -115,7 +131,18 @@ Item
 
                     askFilenameDialog.accepted.connect(function()
                     {
-                        save(askFilenameDialog.filename)
+                        if (askFilenameDialog.crop)
+                        {
+                            pendingFilename = askFilenameDialog.filename
+                            cropPending = true
+                            showMessage(qsTr("Mark area and click save again"), 0)
+                            prevDrawMode = drawMode
+                            drawMode = Painter.Crop
+                        }
+                        else
+                        {
+                            save(askFilenameDialog.filename)
+                        }
                     })
                 }
                 else
@@ -131,7 +158,8 @@ Item
                                                   useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
                                                   backgroundImageRotate,
                                                   rotationSensor.angle,
-                                                  fileName)
+                                                  fileName,
+                                                  cropArea)
                 if (fileName === "")
                     fileName = qsTr("Save failed...")
                 showMessage(fileName, 0)

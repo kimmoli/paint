@@ -43,13 +43,11 @@ Page
         property double x: 0.0
         property double y: 0.0
 
-        Behavior on x { NumberAnimation { duration: 175 } }
-        Behavior on y { NumberAnimation { duration: 175 } }
-
         onReadingChanged:
         {
-            x = reading.x
-            y = reading.y
+            x = (x*6 + reading.x) / 7
+            y = (y*6 + reading.y) / 7
+
             var a
 
             if ( (Math.atan(y / Math.sqrt(y * y + x * x))) >= 0 )
