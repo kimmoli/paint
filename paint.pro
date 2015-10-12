@@ -16,7 +16,10 @@ system(lrelease $$PWD/i18n/*.ts)
 i18n.path = /usr/share/harbour-paint/i18n
 i18n.files = i18n/*.qm
 
-INSTALLS += i18n
+appicons.path = /usr/share/icons/hicolor
+appicons.files = appicons/*
+
+INSTALLS += i18n appicons
 
 SOURCES += src/paint.cpp \
     src/PainterClass.cpp
@@ -32,7 +35,6 @@ OTHER_FILES += qml/paint.qml \
     rpm/paint.spec \
     qml/pages/bgSettingsDialog.qml \
     harbour-paint.desktop \
-    harbour-paint.png \
     qml/components/Messagebox.qml \
     qml/components/Toolbox.qml \
     qml/pages/genSettings.qml \
@@ -99,7 +101,11 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-polygram-filled.png \
     qml/icons/icon-m-geom-arrow-filled.png \
     qml/icons/icon-m-geom-arrow.png \
-    qml/components/LoupeCanvas.qml
+    qml/components/LoupeCanvas.qml \
+    appicons/86x86/apps/harbour-paint.png \
+    appicons/108x108/apps/harbour-paint.png \
+    appicons/128x128/apps/harbour-paint.png \
+    appicons/256x256/apps/harbour-paint.png
 
 TRANSLATIONS += i18n/*.ts
 
