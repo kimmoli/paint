@@ -153,13 +153,15 @@ Item
 
             function save(fileName)
             {
-                fileName = painter.saveCanvas(drawingCanvas.toDataURL(),
-                                                  dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL(),
-                                                  useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
-                                                  backgroundImageRotate,
-                                                  rotationSensor.angle,
-                                                  fileName,
-                                                  cropArea)
+                var dataUrl1 = drawingCanvas.toDataURL()
+                var dataUrl2 = dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL()
+                fileName = painter.saveCanvas(dataUrl1,
+                                              dataUrl2,
+                                              useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
+                                              backgroundImageRotate,
+                                              rotationSensor.angle,
+                                              fileName,
+                                              cropArea)
                 if (fileName === "")
                     fileName = qsTr("Save failed...")
                 showMessage(fileName, 0)
