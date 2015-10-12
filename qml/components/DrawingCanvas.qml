@@ -8,12 +8,14 @@ Canvas
 {
     id: drawingCanvas
     z: 9
-    tileSize: Qt.size(100, 100)
+
+    property var _start: 0
     
     Component.onCompleted:
     {
         width = parent.width
         height = parent.height
+        tileSize = Qt.size(width/10, height/10)
         requestPaint()
     }
 
@@ -36,6 +38,28 @@ Canvas
         clearNow = true
         requestPaint()
     }
+
+    function setOptions()
+    {
+        var ctx = getContext('2d')
+
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.globalCompositeOperation = 'source-over'
+
+        switch (drawMode)
+        {
+        case Painter.Eraser :
+        case Painter.Pen :
+            if (drawMode === Painter.Eraser)
+                ctx.globalCompositeOperation = 'destination-out'
+            ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
+            ctx.strokeStyle = colors[drawColor]
+            break;
+
+        default:
+            break;
+        }
+    }
     
     onPaint:
     {
@@ -48,23 +72,16 @@ Canvas
             return
         }
         
-        ctx.lineJoin = ctx.lineCap = 'round';
-        
         switch (drawMode)
         {
         case Painter.Eraser :
         case Painter.Pen :
-            if (drawMode === Painter.Eraser)
-                ctx.globalCompositeOperation = 'destination-out'
-            ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
-            ctx.strokeStyle = colors[drawColor]
             ctx.beginPath()
             ctx.moveTo(lastX, lastY)
             lastX = area.gMouseX
             lastY = area.gMouseY
             ctx.lineTo(lastX, lastY)
             ctx.stroke()
-            ctx.globalCompositeOperation = 'source-over'
             break;
             
         case Painter.Spray :
@@ -190,6 +207,9 @@ Canvas
             }
             onPressed:
             {
+                if (showFps)
+                    _start = new Date().getTime()
+
                 if (gridVisible && gridSnapTo)
                 {
                     // =PYÖRISTÄ.KERR.ALAS((A1-$C$1/2)/($C$1);1)*$C$1+$C$1
@@ -198,12 +218,14 @@ Canvas
                 }
                 else
                 {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
+                    area.gMouseX = Math.round(mouseX)
+                    area.gMouseY = Math.round(mouseY)
                 }
                 
                 drawingCanvas.lastX = gMouseX
                 drawingCanvas.lastY = gMouseY
+
+                drawingCanvas.setOptions()
                 
                 switch (drawMode)
                 {
@@ -259,8 +281,8 @@ Canvas
                 }
                 else
                 {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
+                    area.gMouseX = Math.round(mouseX)
+                    area.gMouseY = Math.round(mouseY)
                 }
                 
                 switch (drawMode)
@@ -317,7 +339,12 @@ Canvas
             
             onPositionChanged:
             {
-                
+                if (showFps)
+                {
+                    calculatedFps = Math.round(1000/(new Date().getTime() - _start))
+                    _start = new Date().getTime()
+                }
+
                 if (gridVisible && gridSnapTo)
                 {
                     area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
@@ -325,12 +352,17 @@ Canvas
                 }
                 else
                 {
-                    area.gMouseX = mouseX
-                    area.gMouseY = mouseY
+                    area.gMouseX = Math.round(mouseX)
+                    area.gMouseY = Math.round(mouseY)
                 }
-                
+
                 switch (drawMode)
                 {
+                case Painter.Eraser:
+                case Painter.Pen:
+                    drawingCanvas.markDirty(Qt.rect(lastX, lastY, area.gMouseX, area.gMouseY))
+                    break;
+
                 case Painter.Text:
                 case Painter.Geometrics:
                 case Painter.Dimensioning:

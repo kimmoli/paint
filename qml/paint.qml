@@ -64,6 +64,8 @@ ApplicationWindow
     property bool askSaveFilename: false
     property int polyVertices: 5
     property int textBalloonize: 0
+    property bool showFps: false
+    property int calculatedFps: 0
 
     property var cropArea: [ 0,0,0,0 ]
 
@@ -110,6 +112,8 @@ ApplicationWindow
             textFontBold = (painter.getToolSetting("textFontBold", 0) === 1)
             textFontItalic = (painter.getToolSetting("textFontItalic", 0) === 1)
             bgColor = painter.getToolSetting("bgColor", colors.length)
+            /* Show FPS only on devel version */
+            showFps = (painter.version.indexOf("devel") > -1)
         }
     }
 

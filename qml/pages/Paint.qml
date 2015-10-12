@@ -33,6 +33,17 @@ Page
         }
     }
 
+    Label
+    {
+        x:50
+        y:50
+        text: calculatedFps
+        font.pixelSize: Theme.fontSizeLarge
+        font.bold: true
+        z: 1000
+        visible: showFps
+    }
+
     Sensors.Accelerometer
     {
         id: accelerometer

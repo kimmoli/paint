@@ -8,7 +8,6 @@ Canvas
 {
     id: loupeCanvas
     antialiasing: true
-    tileSize: Qt.size(100, 100)
 
     property bool dodge: false
 
@@ -32,8 +31,8 @@ Canvas
 
     Component.onCompleted:
     {
-        width = Math.min(parent.width, parent.height)/2 - 2*Theme.paddingLarge
-        height = width
+        width = Theme.itemSizeHuge
+        height = Theme.itemSizeHuge
         x = Theme.paddingLarge
         y = Theme.paddingLarge
         requestPaint()
