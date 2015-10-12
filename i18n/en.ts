@@ -233,12 +233,12 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="183"/>
+        <location filename="../qml/pages/Paint.qml" line="193"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="202"/>
+        <location filename="../qml/pages/Paint.qml" line="213"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -246,12 +246,17 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="50"/>
+        <location filename="../qml/components/Toolbar3.qml" line="54"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="136"/>
+        <location filename="../qml/components/Toolbar3.qml" line="138"/>
+        <source>Mark area and click save again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="166"/>
         <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -267,36 +272,41 @@
 <context>
     <name>askFilenameDialog</name>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="49"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="57"/>
         <source>Enter filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="75"/>
         <source>File already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="84"/>
+        <source>Crop before saving</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="45"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="46"/>
         <source>Select background</source>
         <translation>Select background</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="65"/>
         <source>Select color</source>
         <translation>Select color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="77"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="78"/>
         <source>None</source>
         <translation>None</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="99"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="100"/>
         <source>Image</source>
         <translation>Image</translation>
     </message>
@@ -412,12 +422,12 @@
 <context>
     <name>paint</name>
     <message>
-        <location filename="../qml/paint.qml" line="13"/>
+        <location filename="../qml/paint.qml" line="14"/>
         <source>Accept</source>
         <translation>Accept</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="14"/>
+        <location filename="../qml/paint.qml" line="15"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
