@@ -231,12 +231,12 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="189"/>
+        <location filename="../qml/pages/Paint.qml" line="193"/>
         <source>Swipe to change toolbar</source>
         <translation>Feu lliscar per canviar la barra d&apos;eines</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="208"/>
+        <location filename="../qml/pages/Paint.qml" line="213"/>
         <source>Pinch to zoom</source>
         <translation>Pinceu per fer zoom</translation>
     </message>
@@ -244,12 +244,17 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="50"/>
+        <location filename="../qml/components/Toolbar3.qml" line="54"/>
         <source>File format</source>
         <translation>Format de fitxer</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="132"/>
+        <location filename="../qml/components/Toolbar3.qml" line="138"/>
+        <source>Mark area and click save again</source>
+        <translation>Marqueu l&apos;àrea i cliqueu &apos;desa&apos; un altre cop</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Toolbar3.qml" line="166"/>
         <source>Save failed...</source>
         <translation>No s&apos;ha pogut desar</translation>
     </message>
@@ -257,7 +262,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="46"/>
+        <location filename="../qml/components/Toolbox.qml" line="42"/>
         <source>Clearing</source>
         <translation>Netejant</translation>
     </message>
@@ -265,36 +270,41 @@
 <context>
     <name>askFilenameDialog</name>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="48"/>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="56"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="49"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="57"/>
         <source>Enter filename</source>
         <translation>Introduïu el nom del fitxer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/askFilenameDialog.qml" line="79"/>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="75"/>
         <source>File already exists</source>
         <translation>El fitxer ja existeix</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/askFilenameDialog.qml" line="84"/>
+        <source>Crop before saving</source>
+        <translation>Retalleu abans de desar</translation>
     </message>
 </context>
 <context>
     <name>bgSettingsDialog</name>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="45"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="46"/>
         <source>Select background</source>
         <translation>Selecciona un fons</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="64"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="65"/>
         <source>Select color</source>
         <translation>Seleccioneu el color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="77"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="78"/>
         <source>None</source>
         <translation>Cap</translation>
     </message>
     <message>
-        <location filename="../qml/pages/bgSettingsDialog.qml" line="99"/>
+        <location filename="../qml/pages/bgSettingsDialog.qml" line="100"/>
         <source>Image</source>
         <translation>Imatge</translation>
     </message>
@@ -410,12 +420,12 @@
 <context>
     <name>paint</name>
     <message>
-        <location filename="../qml/paint.qml" line="13"/>
+        <location filename="../qml/paint.qml" line="14"/>
         <source>Accept</source>
         <translation>Accepta</translation>
     </message>
     <message>
-        <location filename="../qml/paint.qml" line="14"/>
+        <location filename="../qml/paint.qml" line="15"/>
         <source>Cancel</source>
         <translation>Cancel·la</translation>
     </message>
