@@ -40,23 +40,6 @@ Canvas
         
         switch (drawMode)
         {
-        case Painter.Image:
-            if (insertImagePending && insertImagePath.length>0)
-            {
-                if (drawingCanvas.areaPressed)
-                    Draw.drawInsertedImage(ctx, insertImagePath,
-                                           panX + drawingCanvas.areagMouseX - previewCanvas.downX,
-                                           panY + drawingCanvas.areagMouseY - previewCanvas.downY,
-                                           insertedImage.width * pinchScale, insertedImage.height * pinchScale,
-                                           accelerometer.angle)
-                else
-                    Draw.drawInsertedImage(ctx, insertImagePath,
-                                           panX, panY,
-                                           insertedImage.width * pinchScale, insertedImage.height * pinchScale,
-                                           accelerometer.angle)
-            }
-            break;
-            
         case Painter.Geometrics:
             switch(geometricsMode)
             {
