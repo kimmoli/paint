@@ -366,9 +366,12 @@ Canvas
                 case Painter.Text:
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
-                case Painter.Image:
                 case Painter.Crop:
                     previewCanvas.requestPaint()
+                    break;
+
+                case Painter.Image:
+                    /* Do nothing */
                     break;
                     
                 default:

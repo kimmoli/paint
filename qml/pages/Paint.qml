@@ -331,7 +331,6 @@ Page
         panX = width/2
         panY = height/2
         insertImagePending = true
-        previewCanvas.requestPaint()
     }
 
     SequentialAnimation
@@ -352,9 +351,14 @@ Page
 
     Image
     {
-        // Dummy image to get image width and height
+        // Preview of inserted image (a lot faster than drawing it on previewcanvas)
         id: insertedImage
-        visible: false
+        z: 12
+        visible: insertImagePending
+        x: (drawingCanvas.areaPressed ? (panX + drawingCanvas.areagMouseX - previewCanvas.downX) : panX) - width/2
+        y: (drawingCanvas.areaPressed ? (panY + drawingCanvas.areagMouseY - previewCanvas.downY) : panY) - height/2
+        scale: pinchScale
+        rotation: accelerometer.angle * (180/Math.PI)
         source: insertImagePath
     }
 
