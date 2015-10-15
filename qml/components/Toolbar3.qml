@@ -103,7 +103,28 @@ Item
 
         ToolbarButton
         {
+            id: saveButton
             icon.source: "image://paintIcons/icon-m-save"
+
+            property bool pageStackBusy : pageStack.busy
+            property bool doSave : false
+            property string saveFileName: ""
+
+            Timer
+            {
+                id: letTheBusyIndShow
+                interval: 200
+                onTriggered: saveButton.save(saveButton.saveFileName)
+            }
+
+            onPageStackBusyChanged:
+            {
+                if (!pageStackBusy && doSave && askSaveFilename)
+                {
+                    doSave = false
+                    save(saveFileName)
+                }
+            }
 
             onClicked:
             {
@@ -141,13 +162,17 @@ Item
                         }
                         else
                         {
-                            save(askFilenameDialog.filename)
+                            doSave = true
+                            busyInd.running = true
+                            saveFileName = askFilenameDialog.filename
                         }
                     })
                 }
                 else
                 {
-                    save(fileName)
+                    busyInd.running = true
+                    saveFileName = fileName
+                    letTheBusyIndShow.start()
                 }
             }
 
@@ -155,16 +180,13 @@ Item
             {
                 var dataUrl1 = drawingCanvas.toDataURL()
                 var dataUrl2 = dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL()
-                fileName = painter.saveCanvas(dataUrl1,
-                                              dataUrl2,
-                                              useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
-                                              backgroundImageRotate,
-                                              rotationSensor.angle,
-                                              fileName,
-                                              cropArea)
-                if (fileName === "")
-                    fileName = qsTr("Save failed...")
-                showMessage(fileName, 0)
+                painter.saveCanvas(dataUrl1,
+                                   dataUrl2,
+                                   useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
+                                   backgroundImageRotate,
+                                   rotationSensor.angle,
+                                   fileName,
+                                   cropArea)
             }
         }
     }

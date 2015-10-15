@@ -37,13 +37,13 @@ public:
     Q_INVOKABLE int getNumberOfFonts();
     Q_INVOKABLE QString getFontName(int number);
 
-    Q_INVOKABLE QString saveCanvas(QString dataURL1,
-                                   QString dataURL2,
-                                   QString background,
-                                   bool bgRotate,
-                                   int angle,
-                                   QString filename,
-                                   QList<int> cropArea);
+    Q_INVOKABLE void saveCanvas(QString dataURL1,
+                                QString dataURL2,
+                                QString background,
+                                bool bgRotate,
+                                int angle,
+                                QString filename,
+                                QList<int> cropArea);
 
     Q_INVOKABLE bool fileExists(QString filename);
 
@@ -76,6 +76,7 @@ public:
 
 signals:
     void versionChanged();
+    void saveComplete(QString filename);
 
 private:
     QStringList fontFamilies;

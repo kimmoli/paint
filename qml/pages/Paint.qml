@@ -33,6 +33,27 @@ Page
         }
     }
 
+    Connections
+    {
+        target: painter
+        onSaveComplete:
+        {
+            if (filename === "")
+                filename = qsTr("Save failed...")
+            messagebox.showMessage(filename, 0)
+            busyInd.running = false
+         }
+    }
+
+    BusyIndicator
+    {
+        id: busyInd
+        z: 999
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        running: false
+    }
+
     Label
     {
         x:50

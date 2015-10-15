@@ -84,7 +84,7 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename, QList<int> cropArea)
+void PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename, QList<int> cropArea)
 {
     QImage s;
     s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
@@ -179,9 +179,9 @@ QString PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString bac
     }
 
     if (q.save(ssFilename))
-        return ssFilename.split('/').last();
+        emit saveComplete(ssFilename.split('/').last());
     else
-        return QString();
+        emit saveComplete(QString());
 }
 
 bool PainterClass::fileExists(QString filename)
