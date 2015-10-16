@@ -22,11 +22,13 @@ appicons.files = appicons/*
 INSTALLS += i18n appicons
 
 SOURCES += src/paint.cpp \
-    src/PainterClass.cpp
+    src/PainterClass.cpp \
+    src/helper.cpp
 	
 HEADERS += \
     src/PainterClass.h \
-    src/IconProvider.h
+    src/IconProvider.h \
+    src/helper.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \

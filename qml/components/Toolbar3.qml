@@ -44,7 +44,8 @@ Item
                                                         "gridSpacing": gridSpacing,
                                                         "gridSnapTo": gridSnapTo,
                                                         "rememberToolSettings": rememberToolSettings,
-                                                        "askSaveFilename": askSaveFilename})
+                                                        "askSaveFilename": askSaveFilename,
+                                                        "childsPlayMode": childsPlayMode})
 
                 genSettingsDialog.accepted.connect(function()
                 {
@@ -57,6 +58,7 @@ Item
                     gridSnapTo = genSettingsDialog.gridSnapTo
                     rememberToolSettings = genSettingsDialog.rememberToolSettings
                     askSaveFilename = genSettingsDialog.askSaveFilename
+                    childsPlayMode = genSettingsDialog.childsPlayMode
                     gridSettingsChanged()
 
                     painter.setSetting("fileExtension", genSettingsDialog.saveFormat)
@@ -65,6 +67,7 @@ Item
                     painter.setSetting("gridSnapTo", genSettingsDialog.gridSnapTo ? "true" : "false")
                     painter.setSetting("rememberToolSettings", genSettingsDialog.rememberToolSettings ? "true" : "false")
                     painter.setSetting("askSaveFilename", genSettingsDialog.askSaveFilename ? "true" : "false")
+                    painter.setSetting("childsPlayMode", genSettingsDialog.childsPlayMode ? "true" : "false")
                 })
             }
         }

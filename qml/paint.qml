@@ -66,6 +66,7 @@ ApplicationWindow
     property int textBalloonize: 0
     property bool showFps: false
     property int calculatedFps: 0
+    property bool childsPlayMode: false
 
     property var cropArea: [ 0,0,0,0 ]
 
@@ -80,6 +81,18 @@ ApplicationWindow
       return Math.random() * (max - min) + min;
     }
 
+    onChildsPlayModeChanged:
+    {
+        helper.setGestureOverride(childsPlayMode)
+        showChilsPlayModeIcon.running = childsPlayMode
+    }
+
+    Timer
+    {
+        id: showChilsPlayModeIcon
+        interval: 10000
+    }
+
     Painter
     {
         id: painter
@@ -91,6 +104,7 @@ ApplicationWindow
             gridSnapTo = (painter.getSetting("gridSnapTo", "false") === "true")
             rememberToolSettings = (painter.getSetting("rememberToolSettings", "false") === "true")
             askSaveFilename = (painter.getSetting("askSaveFilename", "false") === "true")
+            childsPlayMode = (painter.getSetting("childsPlayMode", "false") === "true")
 
             /* Get fonts */
             for (var i=0 ; i<painter.getNumberOfFonts(); i++)

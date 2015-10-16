@@ -65,6 +65,17 @@ Page
         visible: showFps
     }
 
+    Image
+    {
+        /* This is shown for 10 sec when childs play mode enabled */
+        source: "image://theme/icon-m-device-lock"
+        z: 1000
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: Theme.paddingLarge
+        visible: showChilsPlayModeIcon.running
+    }
+
     Sensors.Accelerometer
     {
         id: accelerometer

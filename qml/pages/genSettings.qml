@@ -15,6 +15,7 @@ Dialog
     property bool gridSnapTo : false
     property bool rememberToolSettings : false
     property bool askSaveFilename: false
+    property bool childsPlayMode: false
 
     onAccepted:
     {
@@ -22,6 +23,7 @@ Dialog
         gridSnapTo = gridSnapSwitch.checked
         rememberToolSettings = rememberToolSettingsSwitch.checked
         askSaveFilename = askSaveFilenameSwitch.checked
+        childsPlayMode = childsPlayModeSwitch.checked
     }
 
     SilicaFlickable
@@ -179,6 +181,19 @@ Dialog
                 width: parent.width
             }
 
+            SectionHeader
+            {
+                text: qsTr("Other")
+            }
+
+            TextSwitch
+            {
+                id: childsPlayModeSwitch
+                text: qsTr("Childs play mode")
+                description: qsTr("Disables system gestures. Press powerkey to minimize paint.")
+                checked: childsPlayMode
+                width: parent.width
+            }
 
         }
     }

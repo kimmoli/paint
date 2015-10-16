@@ -233,12 +233,17 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="193"/>
+        <location filename="../qml/pages/Paint.qml" line="42"/>
+        <source>Save failed...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="225"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="213"/>
+        <location filename="../qml/pages/Paint.qml" line="245"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -246,18 +251,13 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="54"/>
+        <location filename="../qml/components/Toolbar3.qml" line="55"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="138"/>
+        <location filename="../qml/components/Toolbar3.qml" line="162"/>
         <source>Mark area and click save again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/Toolbar3.qml" line="166"/>
-        <source>Save failed...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -360,7 +360,7 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="40"/>
+        <location filename="../qml/pages/genSettings.qml" line="42"/>
         <source>General settings</source>
         <translation>General settings</translation>
     </message>
@@ -369,54 +369,69 @@
         <translation type="vanished">File format</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <location filename="../qml/pages/genSettings.qml" line="62"/>
         <source>Saving options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <location filename="../qml/pages/genSettings.qml" line="100"/>
         <source>Ask filename when saving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="106"/>
+        <location filename="../qml/pages/genSettings.qml" line="108"/>
         <source>Toolbox location</source>
         <translation>Toolbox location</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="116"/>
+        <location filename="../qml/pages/genSettings.qml" line="118"/>
         <source>Top</source>
         <translation>Top</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="130"/>
+        <location filename="../qml/pages/genSettings.qml" line="132"/>
         <source>Bottom</source>
         <translation>Bottom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="144"/>
+        <location filename="../qml/pages/genSettings.qml" line="146"/>
         <source>Grid settings</source>
         <translation>Grid settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="151"/>
+        <location filename="../qml/pages/genSettings.qml" line="153"/>
         <source>Snap to Grid</source>
         <translation>Snap to Grid</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="161"/>
         <source>Grid spacing</source>
         <translation>Grid spacing</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="170"/>
+        <location filename="../qml/pages/genSettings.qml" line="172"/>
         <source>Tool settings</source>
         <translation>Tool settings</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="177"/>
+        <location filename="../qml/pages/genSettings.qml" line="179"/>
         <source>Remember tool settings</source>
         <translation>Remember tool settings</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="186"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="192"/>
+        <source>Childs play mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="193"/>
+        <source>Disables system gestures. Press powerkey to minimize paint.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -18,6 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QCoreApplication>
 #include "PainterClass.h"
 #include "IconProvider.h"
+#include "helper.h"
 
 QList<int> GetSailfishVersion();
 
@@ -35,6 +36,9 @@ int main(int argc, char *argv[])
 
     QQmlEngine *engine = view->engine();
     engine->addImageProvider(QLatin1String("paintIcons"), new IconProvider);
+
+    Helper *helper = new Helper(view.data());
+    view->rootContext()->setContextProperty("helper", helper);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
 
