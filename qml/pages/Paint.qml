@@ -80,7 +80,7 @@ Page
     {
         id: accelerometer
         dataRate: 25
-        active: textEditPending || insertImagePending
+        active: textEditPending || insertImagePending || previewCanvas.clipboardPreviewImage
 
         property double angle: 0.0
         property double x: 0.0

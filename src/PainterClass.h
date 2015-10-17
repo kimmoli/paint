@@ -57,7 +57,8 @@ public:
         Text,
         Dimensioning,
         Image,
-        Crop
+        Crop,
+        Clipboard
     };
 
     enum GeometricsMode

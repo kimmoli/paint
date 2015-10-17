@@ -15,6 +15,7 @@ Canvas
     
     property real downX
     property real downY
+    property bool clipboardPreviewImage: false
     
     property bool clearNow : false
     
@@ -166,12 +167,28 @@ Canvas
             break;
             
         case Painter.Crop:
-            cropArea = [ Math.min(downX, drawingCanvas.areagMouseX),
-                         Math.min(downY, drawingCanvas.areagMouseY),
-                         Math.abs(downX - drawingCanvas.areagMouseX),
-                         Math.abs(downY - drawingCanvas.areagMouseY) ]
-
             Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
+            break;
+
+        case Painter.Clipboard:
+            if (clipboardPreviewImage)
+            {
+                if (drawingCanvas.areaPressed)
+                {
+                    Draw.drawImageData(ctx, clipboardImage,
+                                       panX + drawingCanvas.areagMouseX - previewCanvas.downX,
+                                       panY + drawingCanvas.areagMouseY - previewCanvas.downY,
+                                       accelerometer.angle)
+                }
+                else
+                {
+                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle)
+                }
+            }
+            else
+            {
+                Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
+            }
             break;
 
         default:

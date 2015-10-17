@@ -316,6 +316,15 @@ function drawInsertedImage(ctx, imageSource, x, y, w, h, angle)
     ctx.restore()
 }
 
+function drawImageData(ctx, imageData, x, y, angle)
+{
+    ctx.save()
+    ctx.translate(x, y)
+    ctx.rotate( angle )
+    ctx.putImageData(imageData, -imageData.width/2, -imageData.height/2)
+    ctx.restore()
+}
+
 function drawDimensionLine(ctx, x0, y0, x1, y1, fontColor, font, fontSize, lineColor, lineThickness, colors, dimensionScale)
 {
     var headlen = 15

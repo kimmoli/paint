@@ -107,7 +107,8 @@ OTHER_FILES += qml/paint.qml \
     appicons/86x86/apps/harbour-paint.png \
     appicons/108x108/apps/harbour-paint.png \
     appicons/128x128/apps/harbour-paint.png \
-    appicons/256x256/apps/harbour-paint.png
+    appicons/256x256/apps/harbour-paint.png \
+    qml/components/Toolbar4.qml
 
 TRANSLATIONS += i18n/*.ts
 

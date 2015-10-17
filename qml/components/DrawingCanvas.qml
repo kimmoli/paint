@@ -169,6 +169,9 @@ Canvas
                 insertImagePath = ""
             }
             break;
+
+        case Painter.Clipboard:
+            break;
             
         default:
             console.error("Unimplemented feature")
@@ -234,6 +237,7 @@ Canvas
                 case Painter.Text:
                 case Painter.Image:
                 case Painter.Crop:
+                case Painter.Clipboard:
                     previewCanvas.downX = gMouseX
                     previewCanvas.downY = gMouseY
                     break;
@@ -327,6 +331,23 @@ Canvas
                     previewCanvas.requestPaint()
                     break;
 
+                case Painter.Clipboard:
+                    if (previewCanvas.clipboardPreviewImage)
+                    {
+                        panX += area.gMouseX - previewCanvas.downX
+                        panY += area.gMouseY - previewCanvas.downY
+                    }
+                    else
+                    {
+                        cropArea = [ Math.min(previewCanvas.downX, area.gMouseX),
+                                     Math.min(previewCanvas.downY, area.gMouseY),
+                                     Math.abs(previewCanvas.downX - area.gMouseX),
+                                     Math.abs(previewCanvas.downY - area.gMouseY) ]
+                        var ctx = drawingCanvas.getContext('2d')
+                        clipboardImage = ctx.getImageData(cropArea[0], cropArea[1], cropArea[2], cropArea[3])
+                    }
+                    break;
+
                 case Painter.Crop:
                     cropArea = [ Math.min(previewCanvas.downX, area.gMouseX),
                                  Math.min(previewCanvas.downY, area.gMouseY),
@@ -368,7 +389,15 @@ Canvas
                 case Painter.Text:
                 case Painter.Geometrics:
                 case Painter.Dimensioning:
+                    previewCanvas.requestPaint()
+                    break;
+
                 case Painter.Crop:
+                case Painter.Clipboard:
+                    cropArea = [ Math.min(previewCanvas.downX, area.gMouseX),
+                                 Math.min(previewCanvas.downY, area.gMouseY),
+                                 Math.abs(previewCanvas.downX - area.gMouseX),
+                                 Math.abs(previewCanvas.downY - area.gMouseY) ]
                     previewCanvas.requestPaint()
                     break;
 

@@ -70,6 +70,8 @@ ApplicationWindow
 
     property var cropArea: [ 0,0,0,0 ]
 
+    property var clipboardImage: null
+
     /*****************************************************/
 
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
