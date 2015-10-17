@@ -42,6 +42,12 @@ Page
                 filename = qsTr("Save failed...")
             messagebox.showMessage(filename, 0)
             busyInd.running = false
+
+            drawingCanvas.clear()
+            var l = layersRep.itemAt(activeLayer)
+            var ctx = drawingCanvas.getContext('2d')
+            ctx.drawImage(l, 0, 0)
+            drawingCanvas.justPaint()
          }
     }
 
@@ -68,13 +74,26 @@ Page
 
     Label
     {
-        x:50
-        y:50
+        x: 50; y: 50; z: 1000
         text: calculatedFps
         font.pixelSize: Theme.fontSizeLarge
         font.bold: true
-        z: 1000
         visible: showFps
+    }
+
+    Label
+    {
+        id: layerNameLabel
+        text: layers.get(activeLayer).name
+        font.pixelSize: Theme.fontSizeMedium
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.topMargin: Theme.paddingMedium
+        anchors.bottomMargin: Theme.paddingMedium
+        z: 1000
+        visible: layers.count > 1
+        opacity: toolBox.opacity
+        rotation: rotationSensor.angle == 180 ? 180 : 0
     }
 
     Image
@@ -180,6 +199,12 @@ Page
                 anchors.top: undefined
                 anchors.bottom: toolBox.top
             }
+            AnchorChanges
+            {
+                target: layerNameLabel
+                anchors.bottom: undefined
+                anchors.top: parent.top
+            }
             PropertyChanges
             {
                 target: toolbarHintLabel
@@ -201,7 +226,9 @@ Page
 
         anchors.top: page.top
         width: page.width
-        height: toolBox.height + (geometryPopup.opacity != 0 ? geometryPopup.height : 0) + (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0)
+        height: toolBox.height +
+                (geometryPopup.opacity != 0 ? geometryPopup.height : 0) +
+                (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0)
         color: Theme.highlightDimmerColor
         opacity: Math.max(0.0, toolBox.opacity - 0.15)
 
@@ -290,6 +317,7 @@ Page
         Behavior on opacity { FadeAnimation {} }
         z: opacity != 0 ? 15 : 0
     }
+
     DimensionPopup
     {
         id: dimensionPopup
@@ -320,7 +348,7 @@ Page
     {
         id: bgImg
         visible: useImageAsBackground
-        z: 7
+        z: 6
         source: backgroundImagePath
         height: backgroundImageRotate ? bg.width : bg.height
         width: backgroundImageRotate ? bg.height : bg.width
@@ -329,6 +357,25 @@ Page
         smooth: true
         rotation: backgroundImageRotate ? 90 : 0
         fillMode: Image.PreserveAspectFit
+    }
+
+    Repeater
+    {
+        id: layersRep
+        model: layers
+        delegate: Canvas
+        {
+            visible: show && (activeLayer != index)
+            Component.onCompleted:
+            {
+                width = window.width
+                height = window.height
+                tileSize = Qt.size(width/10, height/10)
+                requestPaint()
+            }
+            z: layers.count - index
+            onZChanged: console.log("canvas " + index + " has z " + z)
+        }
     }
 
     function textAccept()

@@ -27,6 +27,7 @@ Canvas
     property real radius
     
     property bool clearNow : false
+    property bool justPaintIt: false
 
     property alias areaPressed: area.pressed
     property alias areaPressedAndHolded: area.pressedAndHolded
@@ -36,6 +37,12 @@ Canvas
     function clear()
     {
         clearNow = true
+        requestPaint()
+    }
+
+    function justPaint()
+    {
+        justPaintIt = true
         requestPaint()
     }
 
@@ -63,6 +70,12 @@ Canvas
     
     onPaint:
     {
+        if (justPaintIt)
+        {
+            justPaintIt = false
+            return
+        }
+
         var ctx = getContext('2d')
         
         if (clearNow)
@@ -210,6 +223,7 @@ Canvas
                 dimensionPopupVisible = false
                 pressedAndHolded = true
             }
+
             onPressed:
             {
                 if (showFps)

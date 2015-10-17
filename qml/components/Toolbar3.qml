@@ -7,7 +7,6 @@ Item
     id: toolbar3
 
     property bool cropPending: false
-    property string pendingFilename: ""
     property int prevDrawMode: Painter.None
 
     Row
@@ -140,7 +139,8 @@ Item
                     cropPending = false
                     drawMode = prevDrawMode
                     previewCanvas.clear()
-                    save(pendingFilename)
+                    busyInd.running = true
+                    letTheBusyIndShow.start()
                     return
                 }
 
@@ -155,9 +155,9 @@ Item
 
                     askFilenameDialog.accepted.connect(function()
                     {
+                        saveFileName = askFilenameDialog.filename
                         if (askFilenameDialog.crop)
                         {
-                            pendingFilename = askFilenameDialog.filename
                             cropPending = true
                             showMessage(qsTr("Mark area and click save again"), 0)
                             prevDrawMode = drawMode
@@ -167,8 +167,7 @@ Item
                         {
                             doSave = true
                             busyInd.running = true
-                            saveFileName = askFilenameDialog.filename
-                        }
+                       }
                     })
                 }
                 else
@@ -181,8 +180,30 @@ Item
 
             function save(fileName)
             {
+                var l = layersRep.itemAt(activeLayer)
+                var ctx = l.getContext('2d')
+                ctx.drawImage(drawingCanvas, 0, 0)
+                l.requestPaint()
+
+                drawingCanvas.clear()
+
+                ctx = drawingCanvas.getContext('2d')
+
+                for (var i=(layers.count-1) ; i >= 0; i--)
+                {
+                    if (layers.get(i).show)
+                    {
+                        console.log("drawing layer " + layers.get(i).name)
+                        ctx.drawImage(layersRep.itemAt(i), 0, 0)
+                    }
+                }
+                if (dimensionModel.count > 0)
+                    ctx.drawImage(dimensionCanvas, 0, 0)
+
+                drawingCanvas.justPaint()
+
                 var dataUrl1 = drawingCanvas.toDataURL()
-                var dataUrl2 = dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL()
+                var dataUrl2 = "" //dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL()
                 painter.saveCanvas(dataUrl1,
                                    dataUrl2,
                                    useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),

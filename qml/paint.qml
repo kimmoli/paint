@@ -72,6 +72,8 @@ ApplicationWindow
 
     property var clipboardImage: null
 
+    property int activeLayer: 0
+
     /*****************************************************/
 
     initialPage: Qt.resolvedUrl("pages/Paint.qml")
@@ -130,6 +132,7 @@ ApplicationWindow
             bgColor = painter.getToolSetting("bgColor", colors.length)
             /* Show FPS only on devel version */
             showFps = (painter.version.indexOf("devel") > -1)
+            layers.append({name: "Layer 1", show: true})
         }
     }
 
@@ -141,6 +144,11 @@ ApplicationWindow
     ListModel
     {
         id: fontList
+    }
+
+    ListModel
+    {
+        id: layers
     }
 }
 

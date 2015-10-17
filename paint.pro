@@ -108,7 +108,10 @@ OTHER_FILES += qml/paint.qml \
     appicons/108x108/apps/harbour-paint.png \
     appicons/128x128/apps/harbour-paint.png \
     appicons/256x256/apps/harbour-paint.png \
-    qml/components/Toolbar4.qml
+    qml/components/Toolbar4.qml \
+    qml/pages/layersDialog.qml \
+    qml/icons/icon-m-visible.png \
+    qml/icons/icon-m-visible-not.png
 
 TRANSLATIONS += i18n/*.ts
 
