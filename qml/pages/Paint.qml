@@ -54,6 +54,18 @@ Page
         running: false
     }
 
+    Rectangle
+    {
+        z: 998
+        anchors.centerIn: parent
+        width: Theme.itemSizeHuge
+        height: width
+        radius: width/2
+        color: "black"
+        opacity: 0.7
+        visible: busyInd.running
+    }
+
     Label
     {
         x:50
