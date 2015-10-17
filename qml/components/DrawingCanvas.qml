@@ -189,6 +189,8 @@ Canvas
         pinch.maximumRotation: 0
         pinch.minimumScale: 0.1
         pinch.maximumScale: 5.0
+        /* Enabled pincharea only when it is needed */
+        enabled: textEditPending || insertImagePending
         
         MouseArea
         {
@@ -212,7 +214,6 @@ Canvas
 
                 if (gridVisible && gridSnapTo)
                 {
-                    // =PYÖRISTÄ.KERR.ALAS((A1-$C$1/2)/($C$1);1)*$C$1+$C$1
                     area.gMouseX = (Math.floor( ( mouseX - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
                     area.gMouseY = (Math.floor( ( mouseY - ( gridSpacing / 2 )) / gridSpacing ) * gridSpacing ) + gridSpacing
                 }
@@ -307,7 +308,6 @@ Canvas
                                                   "lineColor": drawColor,
                                                   "lineThickness": drawThickness})
                     }
-                    //previewCanvas.clear()
                     previewCanvas.requestPaint()
                     dimensionCanvas.requestPaint()
                     
