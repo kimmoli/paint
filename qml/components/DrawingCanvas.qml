@@ -307,6 +307,8 @@ Canvas
                                                   "fontColor": textColor,
                                                   "lineColor": drawColor,
                                                   "lineThickness": drawThickness})
+                        /* Make the newest dimension line selected */
+                        selectedDimension = dimensionModel.count - 1
                     }
                     previewCanvas.requestPaint()
                     dimensionCanvas.requestPaint()
