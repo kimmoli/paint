@@ -38,7 +38,7 @@ Item
                 if (previewCanvas.clipboardPreviewImage)
                 {
                     var ctx = drawingCanvas.getContext('2d')
-                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle)
+                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle, pinchScale)
 
                     drawingCanvas.requestPaint()
                     previewCanvas.clipboardPreviewImage = false
@@ -47,6 +47,7 @@ Item
                 else
                 {
                     previewCanvas.clear()
+                    pinchtarget.scale = 1.0
                     panX = previewCanvas.width/2
                     panY = previewCanvas.height/2
                     previewCanvas.clipboardPreviewImage = true
@@ -67,6 +68,5 @@ Item
                 cropArea = [ 0,0,0,0 ]
             }
         }
-
     }
 }

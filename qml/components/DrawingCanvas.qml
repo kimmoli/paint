@@ -193,7 +193,7 @@ Canvas
         pinch.minimumScale: 0.1
         pinch.maximumScale: 5.0
         /* Enabled pincharea only when it is needed */
-        enabled: textEditPending || insertImagePending
+        enabled: textEditPending || insertImagePending || previewCanvas.clipboardPreviewImage
         
         MouseArea
         {

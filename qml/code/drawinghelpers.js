@@ -316,11 +316,12 @@ function drawInsertedImage(ctx, imageSource, x, y, w, h, angle)
     ctx.restore()
 }
 
-function drawImageData(ctx, imageData, x, y, angle)
+function drawImageData(ctx, imageData, x, y, angle, scale)
 {
     ctx.save()
     ctx.translate(x, y)
     ctx.rotate( angle )
+    ctx.scale(scale, scale)
     ctx.putImageData(imageData, -imageData.width/2, -imageData.height/2)
     ctx.restore()
 }

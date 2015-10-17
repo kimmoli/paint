@@ -178,11 +178,11 @@ Canvas
                     Draw.drawImageData(ctx, clipboardImage,
                                        panX + drawingCanvas.areagMouseX - previewCanvas.downX,
                                        panY + drawingCanvas.areagMouseY - previewCanvas.downY,
-                                       accelerometer.angle)
+                                       accelerometer.angle, pinchScale)
                 }
                 else
                 {
-                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle)
+                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle, pinchScale)
                 }
             }
             else
