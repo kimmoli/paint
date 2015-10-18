@@ -238,12 +238,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="225"/>
+        <location filename="../qml/pages/Paint.qml" line="264"/>
         <source>Swipe to change toolbar</source>
         <translation>Swipe to change toolbar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="245"/>
+        <location filename="../qml/pages/Paint.qml" line="284"/>
         <source>Pinch to zoom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -251,7 +251,7 @@
 <context>
     <name>Toolbar3</name>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="55"/>
+        <location filename="../qml/components/Toolbar3.qml" line="54"/>
         <source>File format</source>
         <translation>File format</translation>
     </message>
@@ -264,7 +264,7 @@
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="42"/>
+        <location filename="../qml/components/Toolbox.qml" line="43"/>
         <source>Clearing</source>
         <translation>Clearing</translation>
     </message>
@@ -431,6 +431,34 @@
     <message>
         <location filename="../qml/pages/genSettings.qml" line="193"/>
         <source>Disables system gestures. Press powerkey to minimize paint.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>layersDialog</name>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="23"/>
+        <source>Layers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="29"/>
+        <source>Add new layer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="35"/>
+        <source>Current layers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="40"/>
+        <source>Active layer is always shown on top when editing. Layers are saved in order shown here. Only visible layers are saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="113"/>
+        <source>Deleting</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
