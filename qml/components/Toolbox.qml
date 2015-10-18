@@ -48,6 +48,11 @@ Item
             /* Clear also all dimensions created */
             dimensionModel.clear()
             dimensionCanvas.clear()
+
+            /* Delete all layers and create one new */
+            activeLayer = 0
+            layers.clear()
+            layers.append({name: "Layer 1", show: true})
         })
     }
 

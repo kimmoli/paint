@@ -61,7 +61,7 @@ Page
         header: Item
         {
             id: headerItem
-            width: headerCol.width
+            width: parent.width
             height: headerCol.height
 
             Component.onCompleted: headerCol.parent = headerItem
@@ -75,70 +75,124 @@ Page
         {
             id: layerDelegate
 
-            width: parent.width
+            width: flick.width
             height: Theme.itemSizeLarge
+
+            state: (1.5*layerActions.width > flick.width) ? "narrow" : "wide"
+
+            states:
+            [
+            State
+            {
+                name: "narrow"
+                AnchorChanges
+                {
+                    target: layerNameLabel
+                    anchors.right: parent.right
+                }
+                AnchorChanges
+                {
+                    target: layersActionItem
+                    anchors.right: undefined
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                PropertyChanges
+                {
+                    target: layerDelegate
+                    height: 2*Theme.itemSizeLarge
+                }
+            }]
 
             RemorseItem
             {
                 id: remorse
             }
 
-            function showRemorse(idx)
+            function showRemorse()
             {
-                remorse.execute(layerDelegate, qsTr("Deleting"), function() { removeLayer(idx) })
+                remorse.execute(layerDelegate, qsTr("Deleting"), function() { removeLayer(index) })
             }
 
-            Row
+            Item
             {
-                spacing: Theme.paddingMedium
-                anchors.fill: parent
-                x: Theme.paddingLarge
+                id: layerItem
+                width: parent.width - 2*Theme.paddingMedium
+                height: parent.height
+                anchors.horizontalCenter: parent.horizontalCenter
 
-                TextField
+                Item
                 {
-                    text: name
-                    focus: false
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width/2
-                    color: activeLayer == index ? Theme.highlightColor : Theme.primaryColor
-                    onFocusChanged: if (!focus) layers.setProperty(index, "name", text)
-                    EnterKey.enabled: text.length > 0
-                    EnterKey.iconSource: "image://theme/icon-m-enter"
-                    EnterKey.onClicked: focus = false
-                }
-                IconButton
-                {
-                    icon.source: activeLayer == index ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
-                    onClicked: if (activeLayer != index) changeLayer(index)
-                }
-                IconButton
-                {
-                    icon.source: "image://paintIcons/icon-m-visible" + ((show || (activeLayer == index)) ? "" : "-not")
-                    onClicked: if (activeLayer != index) layers.setProperty(index, "show", !show)
-                }
-                IconButton
-                {
-                    icon.source: "image://theme/icon-m-up"
-                    enabled: index > 0
-                    onClicked:
+                    id: layerNameLabel
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.paddingSmall
+                    anchors.right: layersActionItem.left
+                    height: Theme.itemSizeLarge
+
+                    TextField
                     {
-                        moveLayer(index, index-1, 1)
+                        text: name
+                        focus: false
+                        width: parent.width
+                        anchors.centerIn: parent
+                        color: activeLayer == index ? Theme.highlightColor : Theme.primaryColor
+                        onFocusChanged: if (!focus) layers.setProperty(index, "name", text)
+                        EnterKey.enabled: text.length > 0
+                        EnterKey.iconSource: "image://theme/icon-m-enter"
+                        EnterKey.onClicked: focus = false
                     }
                 }
-                IconButton
+                Item
                 {
-                    icon.source: "image://theme/icon-m-down"
-                    enabled: index < layers.count-1
-                    onClicked:
+                    id: layersActionItem
+                    anchors.bottom: parent.bottom
+                    anchors.right: parent.right
+                    width: layerActions.width
+                    height: Theme.itemSizeLarge
+
+                    Row
                     {
-                        moveLayer(index, index+1, 1)
+                        id: layerActions
+                        spacing: Theme.paddingMedium
+                        anchors.bottom: parent.bottom
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        IconButton
+                        {
+                            icon.source: activeLayer == index ? "image://theme/icon-m-favorite-selected" : "image://theme/icon-m-favorite"
+                            onClicked: if (activeLayer != index) changeLayer(index)
+                        }
+                        IconButton
+                        {
+                            icon.source: "image://paintIcons/icon-m-visible" + ((show || (activeLayer == index)) ? "" : "-not")
+                            onClicked: if (activeLayer != index) layers.setProperty(index, "show", !show)
+                        }
+                        IconButton
+                        {
+                            icon.source: "image://theme/icon-m-up"
+                            enabled: index > 0
+                            onClicked:
+                            {
+                                moveLayer(index, index-1, 1)
+                            }
+                        }
+                        IconButton
+                        {
+                            icon.source: "image://theme/icon-m-down"
+                            enabled: index < layers.count-1
+                            onClicked:
+                            {
+                                moveLayer(index, index+1, 1)
+                            }
+                        }
+                        IconButton
+                        {
+                            icon.source: "image://theme/icon-m-delete"
+                            enabled: (layers.count > 1) && (activeLayer != index)
+                            onClicked: showRemorse()
+                        }
                     }
-                }
-                IconButton
-                {
-                    icon.source: "image://theme/icon-m-delete"
-                    enabled: (layers.count > 1) && (activeLayer != index)
-                    onClicked: showRemorse(index)
                 }
             }
         }

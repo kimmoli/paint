@@ -365,7 +365,7 @@ Page
         model: layers
         delegate: Canvas
         {
-            visible: show && (activeLayer != index)
+            visible: (typeof show != 'undefined') ? (show && (activeLayer != index)) : false
             Component.onCompleted:
             {
                 width = window.width
