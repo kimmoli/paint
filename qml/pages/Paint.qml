@@ -43,9 +43,9 @@ Page
             messagebox.showMessage(filename, 0)
             busyInd.running = false
 
-            drawingCanvas.clear()
             var l = layersRep.itemAt(activeLayer)
             var ctx = drawingCanvas.getContext('2d')
+            Draw.clear(ctx)
             ctx.drawImage(l, 0, 0)
             drawingCanvas.justPaint()
          }
@@ -369,7 +369,6 @@ Page
                 requestPaint()
             }
             z: layers.count - index
-            onZChanged: console.log("canvas " + index + " has z " + z)
         }
     }
 

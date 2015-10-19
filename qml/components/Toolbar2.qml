@@ -87,9 +87,14 @@ Item
             onClicked:
             {
                 if (drawMode != mode)
+                {
+                    drawingCanvas.saveActive()
                     dimensionPopupVisible = true
+                }
                 else
+                {
                     dimensionPopupVisible = !dimensionPopupVisible
+                }
 
                 cancelPendingFunctions()
                 drawMode = mode
@@ -101,11 +106,7 @@ Item
                 dimensionCanvas.requestPaint()
             }
 
-            onHighlightedChanged:
-                if (!highlighted)
-                {
-                    dimensionPopupVisible = false
-                }
+            onHighlightedChanged: if (!highlighted) dimensionPopupVisible = false
         }
 
         ToolbarButton

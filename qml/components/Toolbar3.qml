@@ -2,6 +2,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
+import "../code/drawinghelpers.js" as Draw
+
 Item
 {
     id: toolbar3
@@ -134,6 +136,9 @@ Item
                 geometryPopupVisible = false
                 dimensionPopupVisible = false
 
+                dimensionCanvas.requestPaint()
+                drawingCanvas.saveActive()
+
                 if (cropPending && drawMode === Painter.Crop)
                 {
                     cropPending = false
@@ -180,22 +185,13 @@ Item
 
             function save(fileName)
             {
-                var l = layersRep.itemAt(activeLayer)
-                var ctx = l.getContext('2d')
-                ctx.drawImage(drawingCanvas, 0, 0)
-                l.requestPaint()
-
-                drawingCanvas.clear()
-
-                ctx = drawingCanvas.getContext('2d')
+                var ctx = drawingCanvas.getContext('2d')
+                Draw.clear(ctx)
 
                 for (var i=(layers.count-1) ; i >= 0; i--)
                 {
                     if (layers.get(i).show)
-                    {
-                        console.log("drawing layer " + layers.get(i).name)
                         ctx.drawImage(layersRep.itemAt(i), 0, 0)
-                    }
                 }
                 if (dimensionModel.count > 0)
                     ctx.drawImage(dimensionCanvas, 0, 0)

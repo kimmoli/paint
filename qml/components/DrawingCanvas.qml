@@ -67,6 +67,16 @@ Canvas
             break;
         }
     }
+
+    function saveActive()
+    {
+        drawingCanvas.justPaint()
+        var l = layersRep.itemAt(activeLayer)
+        var ctx = l.getContext('2d')
+        Draw.clear(ctx)
+        ctx.drawImage(drawingCanvas, 0, 0)
+        l.requestPaint()
+    }
     
     onPaint:
     {

@@ -100,7 +100,6 @@ Item
                 {
                     layers.insert(0, {name: "Layer " + Number(layers.count+1), show: true})
                     activeLayer++
-                    console.log("new layer added")
                 })
                 ls.changeLayer.connect(function(index)
                 {
@@ -112,7 +111,6 @@ Item
                 })
                 ls.removeLayer.connect(function(index)
                 {
-                    console.log("remove layer " + index)
                     layers.remove(index)
                     if (index < activeLayer)
                         activeLayer--
@@ -121,17 +119,10 @@ Item
 
             function changeLayer(index)
             {
-                console.log("store to " + activeLayer + ", change to layer " + index)
+                drawingCanvas.saveActive()
 
-                drawingCanvas.justPaint()
-                var l = layersRep.itemAt(activeLayer)
-                var ctx = l.getContext('2d')
-                Draw.clear(ctx)
-                ctx.drawImage(drawingCanvas, 0, 0)
-                l.requestPaint()
-
-                l = layersRep.itemAt(index)
-                ctx = drawingCanvas.getContext('2d')
+                var l = layersRep.itemAt(index)
+                var ctx = drawingCanvas.getContext('2d')
                 Draw.clear(ctx)
                 ctx.drawImage(l, 0, 0)
                 drawingCanvas.justPaint()
@@ -141,8 +132,6 @@ Item
 
             function moveLayer(from, to)
             {
-                console.log("move from " + from + " to " + to)
-
                 layers.move(from, to, 1)
 
                 if (from == activeLayer)
