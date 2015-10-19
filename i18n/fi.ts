@@ -231,12 +231,17 @@
 <context>
     <name>Paint</name>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="193"/>
+        <location filename="../qml/pages/Paint.qml" line="42"/>
+        <source>Save failed...</source>
+        <translation>Tallennus epäonnistui...</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Paint.qml" line="264"/>
         <source>Swipe to change toolbar</source>
         <translation>Työkalurivi vaihtuu pyyhkäisemällä</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Paint.qml" line="213"/>
+        <location filename="../qml/pages/Paint.qml" line="284"/>
         <source>Pinch to zoom</source>
         <translation>Muuta kokoa nipistämällä</translation>
     </message>
@@ -249,20 +254,15 @@
         <translation>Tiedostomuoto</translation>
     </message>
     <message>
-        <location filename="../qml/components/Toolbar3.qml" line="138"/>
+        <location filename="../qml/components/Toolbar3.qml" line="162"/>
         <source>Mark area and click save again</source>
         <translation>Merkitse alue ja paina Tallenna</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/Toolbar3.qml" line="166"/>
-        <source>Save failed...</source>
-        <translation>Tallennus epäonnistui</translation>
     </message>
 </context>
 <context>
     <name>Toolbox</name>
     <message>
-        <location filename="../qml/components/Toolbox.qml" line="42"/>
+        <location filename="../qml/components/Toolbox.qml" line="43"/>
         <source>Clearing</source>
         <translation>Tyhjennetään</translation>
     </message>
@@ -358,7 +358,7 @@
 <context>
     <name>genSettings</name>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="40"/>
+        <location filename="../qml/pages/genSettings.qml" line="42"/>
         <source>General settings</source>
         <translation>Yleiset asetukset</translation>
     </message>
@@ -367,54 +367,97 @@
         <translation type="vanished">Tiedostomuoto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="60"/>
+        <location filename="../qml/pages/genSettings.qml" line="62"/>
         <source>Saving options</source>
         <translation>Tallennusasetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="98"/>
+        <location filename="../qml/pages/genSettings.qml" line="100"/>
         <source>Ask filename when saving</source>
         <translation>Kysy nimeä tallennettaessa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="106"/>
+        <location filename="../qml/pages/genSettings.qml" line="108"/>
         <source>Toolbox location</source>
         <translation>Työkalupalkin sijainti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="116"/>
+        <location filename="../qml/pages/genSettings.qml" line="118"/>
         <source>Top</source>
         <translation>Yläreuna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="130"/>
+        <location filename="../qml/pages/genSettings.qml" line="132"/>
         <source>Bottom</source>
         <translation>Alareuna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="144"/>
+        <location filename="../qml/pages/genSettings.qml" line="146"/>
         <source>Grid settings</source>
         <translation>Ruudukon asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="151"/>
+        <location filename="../qml/pages/genSettings.qml" line="153"/>
         <source>Snap to Grid</source>
         <translation>Tartu ruudukkoon</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="159"/>
+        <location filename="../qml/pages/genSettings.qml" line="161"/>
         <source>Grid spacing</source>
         <translation>Ruudukon väli</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="170"/>
+        <location filename="../qml/pages/genSettings.qml" line="172"/>
         <source>Tool settings</source>
         <translation>Työkalujen asetukset</translation>
     </message>
     <message>
-        <location filename="../qml/pages/genSettings.qml" line="177"/>
+        <location filename="../qml/pages/genSettings.qml" line="179"/>
         <source>Remember tool settings</source>
         <translation>Muista asetukset</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="186"/>
+        <source>Other</source>
+        <translation>Muut</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="192"/>
+        <source>Childs play mode</source>
+        <translation>Lapsilukko</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/genSettings.qml" line="193"/>
+        <source>Disables system gestures. Press powerkey to minimize paint.</source>
+        <translation>Estää järjestelmän eleet. Paina virtapainiketta poistuaksesi Paintista.</translation>
+    </message>
+</context>
+<context>
+    <name>layersDialog</name>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="23"/>
+        <source>Layers</source>
+        <translation>Kerrokset</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="29"/>
+        <source>Add new layer</source>
+        <translation>Lisää uusi kerros</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="35"/>
+        <source>Current layers</source>
+        <translation>Nykyiset kerrokset</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="40"/>
+        <source>Active layer is always shown on top when editing. Layers are saved in order shown here. Only visible layers are saved.</source>
+        <translation>Aktiivinen kerros näytetään piirrettäessa aina päällimmäisenä. Kerrokset tallennetaan tämän luettelon järjestyksessä. Vain näkyvät kerrokset tallennetaan.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/layersDialog.qml" line="113"/>
+        <source>Deleting</source>
+        <translation>Poistetaan</translation>
     </message>
 </context>
 <context>

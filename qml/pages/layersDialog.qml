@@ -165,8 +165,8 @@ Page
                         }
                         IconButton
                         {
-                            icon.source: "image://paintIcons/icon-m-visible" + ((show || (activeLayer == index)) ? "" : "-not")
-                            onClicked: if (activeLayer != index) layers.setProperty(index, "show", !show)
+                            icon.source: "image://paintIcons/icon-m-visible" + (show ? "" : "-not")
+                            onClicked: layers.setProperty(index, "show", !show)
                         }
                         IconButton
                         {

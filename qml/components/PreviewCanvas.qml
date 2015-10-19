@@ -15,8 +15,6 @@ Canvas
     
     property real downX
     property real downY
-    property bool clipboardPreviewImage: false
-    
     property bool clearNow : false
     
     function clear()
@@ -171,7 +169,7 @@ Canvas
             break;
 
         case Painter.Clipboard:
-            if (clipboardPreviewImage)
+            if (clipboardPastePending)
             {
                 if (drawingCanvas.areaPressed)
                 {

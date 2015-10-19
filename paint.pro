@@ -111,7 +111,8 @@ OTHER_FILES += qml/paint.qml \
     qml/components/Toolbar4.qml \
     qml/pages/layersDialog.qml \
     qml/icons/icon-m-visible.png \
-    qml/icons/icon-m-visible-not.png
+    qml/icons/icon-m-visible-not.png \
+    qml/components/LayersNameLabel.qml
 
 TRANSLATIONS += i18n/*.ts
 

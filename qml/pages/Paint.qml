@@ -51,6 +51,15 @@ Page
          }
     }
 
+    LayersNameLabel
+    {
+        id: layersNameLabel
+        anchors.bottom: parent.bottom
+        z: 1000
+        visible: layers.count > 1
+        opacity: toolBox.opacity
+    }
+
     BusyIndicator
     {
         id: busyInd
@@ -81,21 +90,6 @@ Page
         visible: showFps
     }
 
-    Label
-    {
-        id: layerNameLabel
-        text: layers.get(activeLayer).name
-        font.pixelSize: Theme.fontSizeMedium
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.topMargin: Theme.paddingMedium
-        anchors.bottomMargin: Theme.paddingMedium
-        z: 1000
-        visible: layers.count > 1
-        opacity: toolBox.opacity
-        rotation: rotationSensor.angle == 180 ? 180 : 0
-    }
-
     Image
     {
         /* This is shown for 10 sec when childs play mode enabled */
@@ -111,7 +105,7 @@ Page
     {
         id: accelerometer
         dataRate: 25
-        active: textEditPending || insertImagePending || previewCanvas.clipboardPreviewImage
+        active: textEditPending || insertImagePending || clipboardPastePending
 
         property double angle: 0.0
         property double x: 0.0
@@ -201,7 +195,7 @@ Page
             }
             AnchorChanges
             {
-                target: layerNameLabel
+                target: layersNameLabel
                 anchors.bottom: undefined
                 anchors.top: parent.top
             }
@@ -256,6 +250,7 @@ Page
         onPreviewCanvasDrawImage: { checkPinchHint("image"); insertNewImage(); }
         onInsertImageAccept: acceptInsertedImage()
         onInsertImageCancel: cancelInsertedImage()
+        onClipboardPasteCancel: cancelClipboardPaste()
     }
 
     InteractionHintLabel
@@ -422,6 +417,12 @@ Page
         panX = width/2
         panY = height/2
         insertImagePending = true
+    }
+
+    function cancelClipboardPaste()
+    {
+        clipboardPastePending = false
+        previewCanvas.clear()
     }
 
     SequentialAnimation

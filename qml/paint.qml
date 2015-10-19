@@ -71,6 +71,7 @@ ApplicationWindow
     property var cropArea: [ 0,0,0,0 ]
 
     property var clipboardImage: null
+    property bool clipboardPastePending: false
 
     property int activeLayer: 0
 

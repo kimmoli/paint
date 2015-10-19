@@ -206,7 +206,7 @@ Canvas
         pinch.minimumScale: 0.1
         pinch.maximumScale: 5.0
         /* Enabled pincharea only when it is needed */
-        enabled: textEditPending || insertImagePending || previewCanvas.clipboardPreviewImage
+        enabled: textEditPending || insertImagePending || clipboardPastePending
         
         MouseArea
         {
@@ -346,7 +346,7 @@ Canvas
                     break;
 
                 case Painter.Clipboard:
-                    if (previewCanvas.clipboardPreviewImage)
+                    if (clipboardPastePending)
                     {
                         panX += area.gMouseX - previewCanvas.downX
                         panY += area.gMouseY - previewCanvas.downY

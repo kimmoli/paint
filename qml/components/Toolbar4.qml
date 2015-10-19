@@ -20,9 +20,8 @@ Item
 
             onClicked:
             {
-                previewCanvas.clipboardPreviewImage = false
-                cropArea = [ 0,0,0,0 ]
                 cancelPendingFunctions()
+                cropArea = [ 0,0,0,0 ]
                 drawMode = mode
                 previewCanvas.requestPaint()
             }
@@ -30,47 +29,59 @@ Item
 
         ToolbarButton
         {
-            icon.source: previewCanvas.clipboardPreviewImage ? "image://theme/icon-m-enter-accept" : "image://theme/icon-m-add"
+            icon.source: clipboardPastePending ? "image://theme/icon-m-enter-accept" : "image://theme/icon-m-add"
             enabled: clipboardImage != null
 
             onClicked:
             {
-                if (previewCanvas.clipboardPreviewImage)
+                if (clipboardPastePending)
                 {
                     var ctx = drawingCanvas.getContext('2d')
                     Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle, pinchScale)
 
                     drawingCanvas.requestPaint()
-                    previewCanvas.clipboardPreviewImage = false
+                    clipboardPastePending = false
                     previewCanvas.clear()
                 }
                 else
                 {
+                    cancelPendingFunctions()
+                    drawMode = Painter.Clipboard
                     previewCanvas.clear()
                     pinchtarget.scale = 1.0
                     panX = previewCanvas.width/2
                     panY = previewCanvas.height/2
-                    previewCanvas.clipboardPreviewImage = true
+                    clipboardPastePending = true
                     previewCanvas.requestPaint()
                 }
             }
         }
+
         ToolbarButton
         {
-            icon.source: "image://theme/icon-m-clear"
-            enabled: clipboardImage != null
+            icon.source: "image://theme/icon-m-page-down"
+            enabled: (layers.count > 1) && (activeLayer < (layers.count-1))
 
             onClicked:
             {
-                previewCanvas.clipboardPreviewImage = false
-                previewCanvas.clear()
-                clipboardImage = null
-                cropArea = [ 0,0,0,0 ]
+                levelsButton.changeLayer(activeLayer+1)
             }
         }
 
         ToolbarButton
         {
+            icon.source: "image://theme/icon-m-page-up"
+            enabled: (layers.count > 1) && (activeLayer > 0)
+
+            onClicked:
+            {
+                levelsButton.changeLayer(activeLayer-1)
+            }
+        }
+
+        ToolbarButton
+        {
+            id: levelsButton
             icon.source: "image://theme/icon-m-levels"
 
             Label
@@ -112,8 +123,10 @@ Item
             {
                 console.log("store to " + activeLayer + ", change to layer " + index)
 
+                drawingCanvas.justPaint()
                 var l = layersRep.itemAt(activeLayer)
                 var ctx = l.getContext('2d')
+                Draw.clear(ctx)
                 ctx.drawImage(drawingCanvas, 0, 0)
                 l.requestPaint()
 

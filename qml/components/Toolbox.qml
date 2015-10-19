@@ -34,6 +34,8 @@ Item
     signal insertImageAccept()
     signal insertImageCancel()
 
+    signal clipboardPasteCancel()
+
     function startRemorse()
     {
         dimensionPopupVisible = false
@@ -169,6 +171,8 @@ Item
             textEditCancel()
         if (insertImagePending)
             insertImageCancel()
+        if (clipboardPastePending || (clipboardImage != null))
+            clipboardPasteCancel()
     }
 
     Behavior on opacity
