@@ -52,15 +52,16 @@ Canvas
 
         ctx.lineJoin = ctx.lineCap = 'round';
         ctx.globalCompositeOperation = 'source-over'
+        ctx.strokeStyle = colors[drawColor]
 
         switch (drawMode)
         {
         case Painter.Eraser :
+            ctx.lineWidth = eraserThickness
+            break;
+
         case Painter.Pen :
-            if (drawMode === Painter.Eraser)
-                ctx.globalCompositeOperation = 'destination-out'
-            ctx.lineWidth = (drawMode === Painter.Eraser) ? eraserThickness : drawThickness
-            ctx.strokeStyle = colors[drawColor]
+            ctx.lineWidth = drawThickness
             break;
 
         default:
@@ -98,6 +99,16 @@ Canvas
         switch (drawMode)
         {
         case Painter.Eraser :
+            ctx.globalCompositeOperation = 'destination-out'
+            ctx.beginPath()
+            ctx.moveTo(lastX, lastY)
+            lastX = area.gMouseX
+            lastY = area.gMouseY
+            ctx.lineTo(lastX, lastY)
+            ctx.stroke()
+            ctx.globalCompositeOperation = 'source-over'
+            break;
+
         case Painter.Pen :
             ctx.beginPath()
             ctx.moveTo(lastX, lastY)
@@ -313,9 +324,14 @@ Canvas
                     area.gMouseX = Math.round(mouseX)
                     area.gMouseY = Math.round(mouseY)
                 }
-                
+
                 switch (drawMode)
                 {
+                case Painter.Eraser:
+                case Painter.Pen:
+                    drawingCanvas.markDirty(Qt.rect(lastX, lastY, area.gMouseX, area.gMouseY))
+                    break;
+
                 case Painter.Dimensioning:
                     dimensionPopupVisible = true
                     
@@ -433,6 +449,7 @@ Canvas
                     drawingCanvas.requestPaint()
                     break;
                 }
+
             }
         }
     }
