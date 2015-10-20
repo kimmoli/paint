@@ -411,8 +411,6 @@ Page
     function insertNewImage()
     {
         drawingCanvas.loadImage(insertImagePath)
-        // Calculate scale so the image fits, and center it on screen
-        pinchtarget.scale = Math.min(1.0, width/Math.max(insertedImage.width, insertedImage.height))
         panX = width/2
         panY = height/2
         insertImagePending = true
@@ -451,6 +449,8 @@ Page
         scale: pinchScale
         rotation: accelerometer.angle * (180/Math.PI)
         source: insertImagePath
+        // Calculate scale so the image fits, and center it on screen
+        onStatusChanged: if (status == Image.Ready) pinchtarget.scale = Math.min(1.0, Screen.width/Math.max(insertedImage.width, insertedImage.height))
     }
 
     Item

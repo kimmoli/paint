@@ -57,7 +57,7 @@ Item
                     var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage", { "allowedOrientations" : Orientation.All });
                     imagePicker.selectedContentChanged.connect(function()
                     {
-                        insertImagePath = imagePicker.selectedContent
+                        insertImagePath = "image://paintImage/" + imagePicker.selectedContent
                         drawMode = mode
                         previewCanvasDrawImage()
                     });

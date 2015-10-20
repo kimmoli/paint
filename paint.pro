@@ -23,12 +23,15 @@ INSTALLS += i18n appicons
 
 SOURCES += src/paint.cpp \
     src/PainterClass.cpp \
-    src/helper.cpp
+    src/helper.cpp \
+    src/nemoimagemetadata.cpp
 	
 HEADERS += \
     src/PainterClass.h \
     src/IconProvider.h \
-    src/helper.h
+    src/helper.h \
+    src/nemoimagemetadata.h \
+    src/ImageProvider.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
