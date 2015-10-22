@@ -33,7 +33,7 @@ Canvas
     property alias areaPressedAndHolded: area.pressedAndHolded
     property alias areagMouseX: area.gMouseX
     property alias areagMouseY: area.gMouseY
-    
+
     function clear()
     {
         clearNow = true
@@ -385,6 +385,16 @@ Canvas
                                      Math.abs(previewCanvas.downY - area.gMouseY) ]
                         var ctx = drawingCanvas.getContext('2d')
                         clipboardImage = ctx.getImageData(cropArea[0], cropArea[1], cropArea[2], cropArea[3])
+
+                        var tempCanvasObj = Qt.createQmlObject("import QtQuick 2.0; import Sailfish.Silica 1.0; Canvas { visible: false; }", this)
+
+                        tempCanvasObj.width = clipboardImage.width
+                        tempCanvasObj.height = clipboardImage.height
+                        ctx = tempCanvasObj.getContext('2d')
+                        ctx.putImageData(clipboardImage, 0, 0)
+                        insertImagePath = tempCanvasObj.toDataURL()
+
+                        tempCanvasObj.destroy()
                     }
                     break;
 
@@ -399,7 +409,7 @@ Canvas
                     break;
                 }
             }
-            
+
             onPositionChanged:
             {
                 if (showFps)

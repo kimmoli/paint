@@ -358,8 +358,7 @@ Page
     {
         id: layersRep
         model: layers
-        delegate: Canvas
-        {
+        delegate: Canvas {
             visible: (typeof show != 'undefined') ? (show && (activeLayer != index)) : false
             Component.onCompleted:
             {
@@ -443,7 +442,7 @@ Page
         // Preview of inserted image (a lot faster than drawing it on previewcanvas)
         id: insertedImage
         z: 12
-        visible: insertImagePending
+        visible: insertImagePending || clipboardPastePending
         x: (drawingCanvas.areaPressed ? (panX + drawingCanvas.areagMouseX - previewCanvas.downX) : panX) - width/2
         y: (drawingCanvas.areaPressed ? (panY + drawingCanvas.areagMouseY - previewCanvas.downY) : panY) - height/2
         scale: pinchScale

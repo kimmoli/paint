@@ -169,21 +169,7 @@ Canvas
             break;
 
         case Painter.Clipboard:
-            if (clipboardPastePending)
-            {
-                if (drawingCanvas.areaPressed)
-                {
-                    Draw.drawImageData(ctx, clipboardImage,
-                                       panX + drawingCanvas.areagMouseX - previewCanvas.downX,
-                                       panY + drawingCanvas.areagMouseY - previewCanvas.downY,
-                                       accelerometer.angle, pinchScale)
-                }
-                else
-                {
-                    Draw.drawImageData(ctx, clipboardImage, panX, panY, accelerometer.angle, pinchScale)
-                }
-            }
-            else
+            if (!clipboardPastePending)
             {
                 Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
             }
