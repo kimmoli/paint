@@ -187,7 +187,31 @@ Item
         opacity: 1.0
         anchors.centerIn: parent
         rotation: rotationSensor.angle
-        width: Math.abs(rotation) == 90 ? parent.height : parent.width
+        width: Math.abs(rotationSensor.angle) == 90 ? parent.height : parent.width
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        Behavior on width { SmoothedAnimation { duration: 500 } }
+
+        Rectangle
+        {
+            anchors.centerIn: parent
+            anchors.verticalCenterOffset: Theme.itemSizeLarge
+            width: Theme.itemSizeMedium
+            height: width
+            radius: width/2
+            color: Qt.rgba(0, 0, 0, 0.6)
+
+            IconButton
+            {
+                icon.source: "image://theme/icon-m-delete"
+                anchors.centerIn: parent
+                onClicked:
+                {
+                    remorse._execute()
+                    remorse._timeout = 0
+                    remorse._close()
+                }
+            }
+        }
     }
 
     PathView

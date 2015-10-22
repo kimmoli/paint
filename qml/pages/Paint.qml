@@ -76,8 +76,7 @@ Page
         width: Theme.itemSizeHuge
         height: width
         radius: width/2
-        color: "black"
-        opacity: 0.7
+        color: Qt.rgba(0, 0, 0, 0.6)
         visible: busyInd.running
     }
 
