@@ -1,20 +1,31 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-Rectangle
+BackgroundItem
 {
     id: messagebox
     z: 20
-    width: opacity == 1.0 ? (Math.abs(rotation) == 90 ? parent.height : parent.width) : 0
-    height: Theme.itemSizeSmall
-    opacity: 0.0
+    visible: messageboxVisibility.running
+    height: Theme.itemSizeSmall + Theme.paddingSmall
     anchors.centerIn: parent
-    color: Theme.highlightBackgroundColor
+    onClicked: messageboxVisibility.stop()
+
+    Rectangle
+    {
+        height: Theme.paddingSmall
+        width: parent.width
+        color: Theme.highlightBackgroundColor
+    }
+
+    Rectangle
+    {
+        anchors.fill: parent
+        color: Qt.rgba(0, 0, 0, 0.6)
+    }
 
     function showMessage(message, delay)
     {
         messageboxText.text = message
-        messagebox.opacity = 1.0
         messageboxVisibility.interval = (delay>0) ? delay : 3000
         messageboxVisibility.restart()
     }
@@ -22,32 +33,15 @@ Rectangle
     Label
     {
         id: messageboxText
-        color: "black"
+        color: Theme.primaryColor
         text: ""
         anchors.centerIn: parent
-    }
-
-    Behavior on opacity
-    {
-        FadeAnimation {}
     }
 
     Timer
     {
         id: messageboxVisibility
         interval: 3000
-        onTriggered: messagebox.opacity = 0.0
-    }
-
-    BackgroundItem
-    {
-
-        anchors.fill: parent
-        onClicked:
-        {
-            messageboxVisibility.stop()
-            messagebox.opacity = 0.0
-        }
     }
 }
 

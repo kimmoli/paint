@@ -210,6 +210,9 @@ Page
     {
         id: messagebox
         rotation: rotationSensor.angle
+        width: Math.abs(rotationSensor.angle) == 90 ? parent.height : parent.width
+        Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        Behavior on width { SmoothedAnimation { duration: 500 } }
     }
 
     Rectangle
