@@ -84,7 +84,7 @@ QString PainterClass::getFontName(int number)
     return fontFamilies.at(number);
 }
 
-void PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString background, bool bgRotate, int angle, QString filename, QList<int> cropArea)
+void PainterClass::saveCanvas(QString dataURL1, QString background, bool bgRotate, int angle, QString filename, QList<int> cropArea)
 {
     QImage s;
     s.loadFromData(QByteArray::fromBase64(dataURL1.split(",").at(1).toLatin1()), "png");
@@ -126,19 +126,6 @@ void PainterClass::saveCanvas(QString dataURL1, QString dataURL2, QString backgr
             p.drawImage(sRect, bg, bg.rect());
             p.end();
         }
-    }
-
-    if (!dataURL2.isEmpty())
-    {
-        QImage p2;
-        p2.loadFromData(QByteArray::fromBase64(dataURL2.split(",").at(1).toLatin1()), "png");
-
-        QPainter p;
-        /* Draw dimension canvas on top of canvas */
-        p.begin(&s);
-        p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-        p.drawImage(QPointF(0.0, 0.0), p2);
-        p.end();
     }
 
     if (cropArea.at(2) > 0 && cropArea.at(3) > 0)

@@ -199,9 +199,8 @@ Item
                 drawingCanvas.justPaint()
 
                 var dataUrl1 = drawingCanvas.toDataURL()
-                var dataUrl2 = "" //dimensionModel.count === 0 ? "" : dimensionCanvas.toDataURL()
+
                 painter.saveCanvas(dataUrl1,
-                                   dataUrl2,
                                    useImageAsBackground ? backgroundImagePath : (bgColor < colors.length ? colors[bgColor] : "" ),
                                    backgroundImageRotate,
                                    rotationSensor.angle,

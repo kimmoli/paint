@@ -38,7 +38,6 @@ public:
     Q_INVOKABLE QString getFontName(int number);
 
     Q_INVOKABLE void saveCanvas(QString dataURL1,
-                                QString dataURL2,
                                 QString background,
                                 bool bgRotate,
                                 int angle,
