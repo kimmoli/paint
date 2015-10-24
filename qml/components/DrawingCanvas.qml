@@ -34,6 +34,8 @@ Canvas
     property alias areagMouseX: area.gMouseX
     property alias areagMouseY: area.gMouseY
 
+    property var brush: "image://paintBrush/" + Brushes.getName(penStyle) + "?" + colors[drawColor]
+
     function clear()
     {
         clearNow = true
@@ -62,6 +64,10 @@ Canvas
 
         case Painter.Pen :
             ctx.lineWidth = drawThickness
+            if (!isImageLoaded(brush))
+            {
+                loadImage(brush)
+            }
             break;
 
         default:
@@ -110,12 +116,9 @@ Canvas
             break;
 
         case Painter.Pen :
-            ctx.beginPath()
-            ctx.moveTo(lastX, lastY)
+            Draw.drawBrush(ctx, lastX, lastY, area.gMouseX, area.gMouseY, brush, 1+(drawThickness/16))
             lastX = area.gMouseX
             lastY = area.gMouseY
-            ctx.lineTo(lastX, lastY)
-            ctx.stroke()
             break;
             
         case Painter.Spray :

@@ -77,7 +77,7 @@ Dialog
                 value: currentThickness
                 valueText: value
                 minimumValue: 3
-                maximumValue: 100
+                maximumValue: Theme.itemSizeExtraLarge
                 stepSize: 1
                 width: parent.width - 2*Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter

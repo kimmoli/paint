@@ -170,7 +170,7 @@ NemoImageMetadata::Orientation exifOrientationFromJpeg(const QString &fname)
     bool msbFirst;
     quint32 ifdOff;
     quint16 fieldCount;
-    quint16 o;
+    quint16 o = static_cast<quint16>(NemoImageMetadata::TopLeft);
 
     QFile f(fname);
     if (f.open(QIODevice::ReadOnly) == false || getExifData(f, data) == false)

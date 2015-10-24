@@ -24,14 +24,17 @@ INSTALLS += i18n appicons
 SOURCES += src/paint.cpp \
     src/PainterClass.cpp \
     src/helper.cpp \
-    src/nemoimagemetadata.cpp
+    src/nemoimagemetadata.cpp \
+    src/BrushModel.cpp
 	
 HEADERS += \
     src/PainterClass.h \
     src/IconProvider.h \
     src/helper.h \
     src/nemoimagemetadata.h \
-    src/ImageProvider.h
+    src/ImageProvider.h \
+    src/BrushProvider.h \
+    src/BrushModel.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
@@ -115,7 +118,16 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/layersDialog.qml \
     qml/icons/icon-m-visible.png \
     qml/icons/icon-m-visible-not.png \
-    qml/components/LayersNameLabel.qml
+    qml/components/LayersNameLabel.qml \
+    qml/brush/g4161.png \
+    qml/brush/g4197.png \
+    qml/brush/path4138.png \
+    qml/brush/path4147.png \
+    qml/brush/path4185.png \
+    qml/brush/path4185-9.png \
+    qml/brush/path4138-1.png \
+    qml/brush/path4169.png \
+    qml/brush/rect4171.png
 
 TRANSLATIONS += i18n/*.ts
 

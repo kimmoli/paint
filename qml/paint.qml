@@ -1,4 +1,3 @@
-
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
@@ -25,6 +24,7 @@ ApplicationWindow
 
     property int drawColor: 0
     property int drawThickness: 3
+    property int penStyle: 0
     property int eraserThickness: 15
     property int sprayerRadius: 20
     property int sprayerDensity: 50

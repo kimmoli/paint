@@ -1,6 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import harbour.paint.PainterClass 1.0
 import "../components"
+
+import "../code/drawinghelpers.js" as Draw
 
 Dialog
 {
@@ -20,7 +23,6 @@ Dialog
             currentThickness = thicknessSlider.value
         }
     }
-
 
     SilicaFlickable
     {
@@ -59,7 +61,13 @@ Dialog
             ColorSelector
             {
                 previewColor: colors[currentColor]
-                onPreviewColorChanged: previewLine.color = previewColor
+                onPreviewColorChanged:
+                {
+                    if (drawMode == Painter.Pen)
+                        penPreviewCanvas.requestPaint()
+                    else
+                        previewLine.color = previewColor
+                }
                 isPortrait: penSettingsDialog.isPortrait
             }
 
@@ -69,12 +77,35 @@ Dialog
                 visible: currentThickness > 0
             }
 
+            Canvas
+            {
+                id: penPreviewCanvas
+                height: Theme.itemSizeLarge
+                width: parent.width
+                visible: drawMode == Painter.Pen
+
+                property var brush: "image://paintBrush/" + Brushes.getName(penStyle) + "?" + colors[currentColor]
+
+                onPaint:
+                {
+                    if (!isImageLoaded(brush))
+                    {
+                        loadImage(brush)
+                    }
+
+                    var ctx = getContext('2d')
+                    Draw.clear(ctx)
+
+                    Draw.drawBrush(ctx, width/2 - Theme.itemSizeHuge, 0, width/2 + Theme.itemSizeHuge, 0, brush, 1+(thicknessSlider.value/16))
+                }
+            }
+
             Rectangle
             {
                 color: "transparent"
                 height: Theme.itemSizeMedium
                 width: parent.width
-                visible: currentThickness > 0
+                visible: drawMode != Painter.Pen
 
                 Rectangle
                 {
@@ -93,10 +124,67 @@ Dialog
                 value: currentThickness
                 valueText: value
                 minimumValue: 1
-                maximumValue: 25
+                maximumValue: Theme.itemSizeExtraSmall
                 stepSize: 1
                 width: parent.width - 2*Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
+                onValueChanged: if (drawMode == Painter.Pen) penPreviewCanvas.requestPaint()
+            }
+
+            SectionHeader
+            {
+                text: qsTr("Brush style")
+                visible: drawMode == Painter.Pen
+            }
+
+            Repeater
+            {
+                model: (drawMode == Painter.Pen) ? Brushes : 0
+
+                Item
+                {
+                    width: parent.width
+                    height: Theme.itemSizeMedium
+
+                    Row
+                    {
+                        height: parent.height
+                        spacing: Theme.paddingMedium
+
+                        Switch
+                        {
+                            checked: index == penStyle
+                            automaticCheck: false
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        Item
+                        {
+                            height: parent.height
+                            width: height
+                            Image
+                            {
+                                source: "image://paintBrush/" + name + "?" + colors[currentColor]
+                                anchors.centerIn: parent
+                                scale: Theme.itemSizeSmall/width
+                            }
+                        }
+                        Label
+                        {
+                            text: name
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+                    }
+                    BackgroundItem
+                    {
+                        anchors.fill: parent
+                        onClicked:
+                        {
+                            penStyle = index
+                            penPreviewCanvas.requestPaint()
+                        }
+                    }
+                }
             }
         }
     }

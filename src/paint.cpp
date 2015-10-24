@@ -19,6 +19,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "PainterClass.h"
 #include "IconProvider.h"
 #include "ImageProvider.h"
+#include "BrushProvider.h"
+#include "BrushModel.h"
 #include "helper.h"
 
 QList<int> GetSailfishVersion();
@@ -38,9 +40,13 @@ int main(int argc, char *argv[])
     QQmlEngine *engine = view->engine();
     engine->addImageProvider(QLatin1String("paintIcons"), new IconProvider);
     engine->addImageProvider(QLatin1String("paintImage"), new ImageProvider);
+    engine->addImageProvider(QLatin1String("paintBrush"), new BrushProvider);
 
     Helper *helper = new Helper(view.data());
     view->rootContext()->setContextProperty("helper", helper);
+
+    BrushModel *bm = new BrushModel();
+    view->rootContext()->setContextProperty("Brushes", bm);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
 
