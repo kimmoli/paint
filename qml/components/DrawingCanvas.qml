@@ -16,6 +16,7 @@ Canvas
         width = parent.width
         height = parent.height
         tileSize = Qt.size(width/10, height/10)
+        setBrush()
         requestPaint()
     }
 
@@ -34,7 +35,26 @@ Canvas
     property alias areagMouseX: area.gMouseX
     property alias areagMouseY: area.gMouseY
 
-    property var brush: "image://paintBrush/" + Brushes.getName(penStyle) + "?" + colors[drawColor]
+    property var brush
+
+    Connections
+    {
+        target: toolBox
+        onColorChanged: setBrush()
+    }
+
+    function setBrush()
+    {
+        brush = "image://paintBrush/" + Brushes.getName(penStyle) + "?" + colors[drawColor]
+    }
+
+    Image
+    {
+        id: brushSize
+        source: brush
+        visible: false
+        property int size: ((width+height)/2) * (1+(drawThickness/16))
+    }
 
     function clear()
     {
@@ -116,7 +136,7 @@ Canvas
             break;
 
         case Painter.Pen :
-            Draw.drawBrush(ctx, lastX, lastY, area.gMouseX, area.gMouseY, brush, 1+(drawThickness/16))
+            Draw.drawBrush(ctx, lastX, lastY, area.gMouseX, area.gMouseY, brush, 1+(drawThickness/16), brushSize.size, brushContinuous)
             lastX = area.gMouseX
             lastY = area.gMouseY
             break;

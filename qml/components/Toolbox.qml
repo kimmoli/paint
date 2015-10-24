@@ -35,6 +35,7 @@ Item
     signal insertImageCancel()
 
     signal clipboardPasteCancel()
+    signal colorChanged()
 
     function startRemorse()
     {
@@ -105,15 +106,23 @@ Item
         case Painter.Pen :
             SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
                                                    { "currentColor": drawColor,
-                                                     "currentThickness": drawThickness })
+                                                     "currentThickness": drawThickness,
+                                                     "currentPenStyle": penStyle,
+                                                     "brushContinuous": brushContinuous})
 
             SettingsDialog.accepted.connect(function() {
                 drawColor = SettingsDialog.currentColor
                 drawThickness = SettingsDialog.currentThickness
+                penStyle = SettingsDialog.currentPenStyle
+                brushContinuous = SettingsDialog.brushContinuous
+                colorChanged()
+
                 if (rememberToolSettings)
                 {
                     painter.setToolSetting("drawColor", drawColor)
                     painter.setToolSetting("drawThickness", drawThickness)
+                    painter.setToolSetting("penStyle", penStyle)
+                    painter.setToolSetting("brushContinuous", brushContinuous ? 1 : 0)
                 }
             })
 

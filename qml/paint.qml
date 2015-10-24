@@ -25,6 +25,7 @@ ApplicationWindow
     property int drawColor: 0
     property int drawThickness: 3
     property int penStyle: 0
+    property bool brushContinuous: false
     property int eraserThickness: 15
     property int sprayerRadius: 20
     property int sprayerDensity: 50
@@ -120,6 +121,8 @@ ApplicationWindow
             /* Get tool settings */
             drawColor = painter.getToolSetting("drawColor", 0)
             drawThickness = painter.getToolSetting("drawThickness", 3)
+            penStyle = painter.getToolSetting("penStyle", 0)
+            brushContinuous = (painter.getToolSetting("brushContinuous", 0) === 1)
             eraserThickness = painter.getToolSetting("eraserThickness", 15)
             sprayerRadius = painter.getToolSetting("sprayerRadius", 20)
             sprayerDensity = painter.getToolSetting("sprayerDensity", 50)

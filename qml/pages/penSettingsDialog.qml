@@ -15,6 +15,9 @@ Dialog
 
     property int currentColor: 0
     property int currentThickness: 0
+    property int currentPenStyle: 0
+    property var brush: "image://paintBrush/" + Brushes.getName(currentPenStyle) + "?" + colors[currentColor]
+    property bool brushContinuous: false
 
     onDone:
     {
@@ -84,7 +87,13 @@ Dialog
                 width: parent.width
                 visible: drawMode == Painter.Pen
 
-                property var brush: "image://paintBrush/" + Brushes.getName(penStyle) + "?" + colors[currentColor]
+                Image
+                {
+                    id: brushSize
+                    source: brush
+                    visible: false
+                    property int size: ((width+height)/2) * (1+(thicknessSlider.value/16))
+                }
 
                 onPaint:
                 {
@@ -96,7 +105,7 @@ Dialog
                     var ctx = getContext('2d')
                     Draw.clear(ctx)
 
-                    Draw.drawBrush(ctx, width/2 - Theme.itemSizeHuge, 0, width/2 + Theme.itemSizeHuge, 0, brush, 1+(thicknessSlider.value/16))
+                    Draw.drawBrush(ctx, width/2 - Theme.itemSizeHuge, height/2, width/2 + Theme.itemSizeHuge, height/2, brush, 1+(thicknessSlider.value/16), brushSize.size, brushContinuous)
                 }
             }
 
@@ -137,6 +146,41 @@ Dialog
                 visible: drawMode == Painter.Pen
             }
 
+            Item
+            {
+                width: parent.width
+                height: Theme.itemSizeMedium
+                visible: drawMode == Painter.Pen
+
+                Row
+                {
+                    height: parent.height
+                    spacing: Theme.paddingMedium
+
+                    Switch
+                    {
+                        checked: brushContinuous
+                        automaticCheck: false
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Label
+                    {
+                        text: "Continuous"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+                BackgroundItem
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        brushContinuous = !brushContinuous
+                        penPreviewCanvas.requestPaint()
+                    }
+                }
+            }
+
             Repeater
             {
                 model: (drawMode == Painter.Pen) ? Brushes : 0
@@ -153,7 +197,7 @@ Dialog
 
                         Switch
                         {
-                            checked: index == penStyle
+                            checked: index == currentPenStyle
                             automaticCheck: false
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -180,7 +224,7 @@ Dialog
                         anchors.fill: parent
                         onClicked:
                         {
-                            penStyle = index
+                            currentPenStyle = index
                             penPreviewCanvas.requestPaint()
                         }
                     }

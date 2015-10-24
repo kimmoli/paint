@@ -427,15 +427,18 @@ function drawCropRubberBand(ctx, rect, lineColor)
     ctx.strokeRect(rect[0]-1, rect[1]-1, rect[2]+2, rect[3]+2);
 }
 
-function drawBrush(ctx, x0,y0,x1,y1, brush, scale)
+function drawBrush(ctx, x0,y0,x1,y1, brush, scale, size, continuous)
 {
+    if (x0 === x1 && y0 === y1)
+        return
+
     var seglen = Math.sqrt(Math.pow(Math.abs(x1-x0), 2) + Math.pow(Math.abs(y1-y0), 2))
     var angle = Math.atan2(y1-y0, x1-x0)
 
-    for (var z=0; (z<=seglen || z==0) ; z++)
+    for (var z=0; (z<=seglen || z==0) ; z=z + (continuous ?  1 : (size/2)))
     {
         ctx.save()
-        ctx.translate(x0 + (z*Math.cos(angle)), y0 + (z*Math.sin(angle)))
+        ctx.translate(x0 + (z*Math.cos(angle)) - size/2, y0 + (z*Math.sin(angle)) - size/2)
         ctx.scale(scale, scale)
         ctx.drawImage(brush, 0, 0)
         ctx.restore()
