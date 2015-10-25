@@ -129,7 +129,10 @@ OTHER_FILES += qml/paint.qml \
     qml/brush/path4169.png \
     qml/brush/rect4171.png \
     qml/icons/icon-m-geom-freehand-closed.png \
-    qml/icons/icon-m-geom-freehand-closed-filled.png
+    qml/icons/icon-m-geom-freehand-closed-filled.png \
+    qml/components/ShaderTool.qml \
+    qml/glsl/simple.frag \
+    qml/glsl/invert.frag
 
 TRANSLATIONS += i18n/*.ts
 

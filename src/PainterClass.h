@@ -46,6 +46,8 @@ public:
 
     Q_INVOKABLE bool fileExists(QString filename);
 
+    Q_INVOKABLE QString getShader(const QString &filename);
+
     enum Mode
     {
         None = -1,
@@ -57,7 +59,8 @@ public:
         Dimensioning,
         Image,
         Crop,
-        Clipboard
+        Clipboard,
+        Shader
     };
 
     enum GeometricsMode

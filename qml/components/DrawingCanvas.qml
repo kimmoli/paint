@@ -37,6 +37,8 @@ Canvas
 
     property var brush
 
+    signal updateShader()
+
     Connections
     {
         target: toolBox
@@ -104,7 +106,7 @@ Canvas
         ctx.drawImage(drawingCanvas, 0, 0)
         l.requestPaint()
     }
-    
+
     onPaint:
     {
         if (justPaintIt)
@@ -482,6 +484,11 @@ Canvas
 
                 case Painter.Image:
                     /* Do nothing */
+                    break;
+
+                case Painter.Shader:
+                    if (!shader.pending)
+                        updateShader()
                     break;
                     
                 default:

@@ -19,7 +19,10 @@ Item
             onClicked:
             {
                 cancelPendingFunctions()
-                drawMode = mode
+                if (drawMode == mode)
+                    drawMode = Painter.Shader
+                else
+                    drawMode = mode
             }
         }
 

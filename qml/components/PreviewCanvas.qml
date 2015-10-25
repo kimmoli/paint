@@ -17,6 +17,9 @@ Canvas
     property real downY
     property bool clearNow : false
     
+    property var shaderResult: ""
+    property int shaderSize: Theme.itemSizeLarge
+
     function clear()
     {
         clearNow = true
@@ -28,9 +31,9 @@ Canvas
         var ctx = getContext('2d')
         var d
         
-        Draw.clear(ctx)
         if (clearNow)
         {
+            Draw.clear(ctx)
             clearNow = false
             return
         }
@@ -40,6 +43,7 @@ Canvas
         switch (drawMode)
         {
         case Painter.Geometrics:
+            Draw.clear(ctx)
             switch(geometricsMode)
             {
             case Painter.Line :
@@ -83,6 +87,7 @@ Canvas
             break;
             
         case Painter.Text:
+            Draw.clear(ctx)
             if (textEditPending && thisTextEntry.length>0)
             {
                 if (drawingCanvas.areaPressed)
@@ -131,6 +136,7 @@ Canvas
             break;
             
         case Painter.Dimensioning:
+            Draw.clear(ctx)
             if (drawingCanvas.areagMouseX > (loupeCanvas.x - Theme.paddingLarge) &&
                 drawingCanvas.areagMouseX < (loupeCanvas.x + loupeCanvas.width + Theme.paddingLarge) &&
                 drawingCanvas.areagMouseY < (loupeCanvas.y + loupeCanvas.height + Theme.paddingLarge))
@@ -169,14 +175,23 @@ Canvas
             break;
             
         case Painter.Crop:
+            Draw.clear(ctx)
             Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
             break;
 
         case Painter.Clipboard:
+            Draw.clear(ctx)
             if (!clipboardPastePending)
             {
                 Draw.drawCropRubberBand(ctx, cropArea, bgColor < colors.length ? colors[bgColor] : "#000000")
             }
+            break;
+
+        case Painter.Shader:
+            loadImage(shaderResult)
+            ctx.drawImage(shaderResult, shader.sourceX-shaderSize/2, shader.sourceY-shaderSize/2)
+            unloadImage(shaderResult)
+            shader.pending = false
             break;
 
         default:

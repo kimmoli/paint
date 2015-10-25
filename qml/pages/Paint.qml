@@ -474,6 +474,7 @@ Page
     PreviewCanvas
     {
         id: previewCanvas
+        shaderSize: shader.size
     }
 
     DrawingCanvas
@@ -487,4 +488,38 @@ Page
         opacity: drawMode == Painter.Dimensioning && drawingCanvas.areaPressed ? 1.0 : 0.0
         z: opacity !== 0.0 ? 16 : 0
     }
+
+    ShaderTool
+    {
+        id: shader
+        z: 1001
+        anchors.centerIn: parent
+        enabled: true
+        visible: false
+
+        property bool pending: false
+
+        fragmentShader: painter.getShader("invert.frag")
+
+        source: drawingCanvas
+        size: Theme.itemSizeSmall
+
+        Connections
+        {
+            target: drawingCanvas
+            onUpdateShader:
+            {
+                shader.pending = true
+                shader.sourceX = drawingCanvas.areagMouseX
+                shader.sourceY = drawingCanvas.areagMouseY
+
+                shader.grabToImage(function(result)
+                {
+                    previewCanvas.shaderResult = result.url
+                    previewCanvas.requestPaint()
+                })
+            }
+        }
+    }
+
 }

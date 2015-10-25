@@ -182,3 +182,18 @@ bool PainterClass::fileExists(QString filename)
 
     return test.exists();
 }
+
+QString PainterClass::getShader(const QString &filename)
+{
+    QFile f(SailfishApp::pathTo("qml/glsl/" + filename).toString(QUrl::RemoveScheme).remove(0,2));
+
+    if (!f.open(QFile::ReadOnly | QFile::Text))
+        return QString();
+
+    QTextStream s(&f);
+    QString ret = s.readAll();
+
+    f.close();
+
+    return ret;
+}
