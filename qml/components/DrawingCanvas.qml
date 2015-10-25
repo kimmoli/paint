@@ -184,6 +184,10 @@ Canvas
             case Painter.Arrow:
                 Draw.drawArrow(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
                 break;
+            case Painter.FreehandClosed:
+                Draw.drawFreehandClosed(ctx, pointData, drawThickness, colors[drawColor], geometryFill)
+                pointData = []
+                break;
 
             default:
                 console.error("Unimplemented feature")
@@ -288,6 +292,8 @@ Canvas
                 drawingCanvas.lastY = gMouseY
 
                 drawingCanvas.setOptions()
+
+                pointData = []
                 
                 switch (drawMode)
                 {

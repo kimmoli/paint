@@ -72,6 +72,10 @@ Canvas
             case Painter.Arrow:
                 Draw.drawArrow(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
                 break;
+            case Painter.FreehandClosed:
+                pointData.push({x:drawingCanvas.areagMouseX, y:drawingCanvas.areagMouseY})
+                Draw.drawFreehandClosed(ctx, pointData, drawThickness, colors[drawColor], geometryFill)
+                break;
 
             default:
                 break;

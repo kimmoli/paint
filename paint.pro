@@ -127,7 +127,9 @@ OTHER_FILES += qml/paint.qml \
     qml/brush/path4185-9.png \
     qml/brush/path4138-1.png \
     qml/brush/path4169.png \
-    qml/brush/rect4171.png
+    qml/brush/rect4171.png \
+    qml/icons/icon-m-geom-freehand-closed.png \
+    qml/icons/icon-m-geom-freehand-closed-filled.png
 
 TRANSLATIONS += i18n/*.ts
 

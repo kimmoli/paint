@@ -75,6 +75,7 @@ ApplicationWindow
     property bool clipboardPastePending: false
 
     property int activeLayer: 0
+    property var pointData: []
 
     /*****************************************************/
 

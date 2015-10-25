@@ -71,7 +71,8 @@ public:
         RightIsoscelesTriangle,
         Polygon,
         Polygram,
-        Arrow
+        Arrow,
+        FreehandClosed
     };
 
 signals:

@@ -78,6 +78,12 @@ Column
             icon.source: geometryFill ? "image://paintIcons/icon-m-geom-arrow-filled" : "image://paintIcons/icon-m-geom-arrow"
             mode: Painter.Arrow
         }
+
+        GeometryButton
+        {
+            icon.source: geometryFill ? "image://paintIcons/icon-m-geom-freehand-closed-filled" : "image://paintIcons/icon-m-geom-freehand-closed"
+            mode: Painter.FreehandClosed
+        }
     }
 
     Row // Row 2

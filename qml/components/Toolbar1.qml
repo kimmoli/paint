@@ -73,6 +73,8 @@ Item
                         return geometryFill ? "image://paintIcons/icon-m-geom-polygram-filled" : "image://paintIcons/icon-m-geom-polygram"
                     if (geometricsMode == Painter.Arrow)
                         return geometryFill ? "image://paintIcons/icon-m-geom-arrow-filled" : "image://paintIcons/icon-m-geom-arrow"
+                    if (geometricsMode == Painter.FreehandClosed)
+                        return geometryFill ? "image://paintIcons/icon-m-geom-freehand-closed-filled" : "image://paintIcons/icon-m-geom-freehand-closed"
                 }
                 else
                 {

@@ -444,3 +444,28 @@ function drawBrush(ctx, x0,y0,x1,y1, brush, scale, size, continuous)
         ctx.restore()
     }
 }
+
+function drawFreehandClosed(ctx, points, lineThick, lineColor, fill)
+{
+    if (points.length < 2)
+        return
+
+    ctx.lineWidth = lineThick
+    ctx.strokeStyle = lineColor
+    ctx.fillStyle  = lineColor
+
+    ctx.beginPath()
+    ctx.moveTo(points[0].x, points[0].y)
+
+    for (var i = 1; i<points.length; i++)
+    {
+        ctx.lineTo(points[i].x, points[i].y)
+    }
+
+    ctx.closePath()
+
+    if (fill)
+        ctx.fill()
+
+    ctx.stroke()
+}
