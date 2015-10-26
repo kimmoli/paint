@@ -337,6 +337,11 @@ Canvas
                     }
                     break;
                     
+                case Painter.Shader:
+                    if (!shader.pending)
+                        updateShader()
+                    break;
+
                 default:
                     break;
                 }
