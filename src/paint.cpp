@@ -21,6 +21,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "ImageProvider.h"
 #include "BrushProvider.h"
 #include "BrushModel.h"
+#include "ShaderModel.h"
 #include "helper.h"
 
 QList<int> GetSailfishVersion();
@@ -47,6 +48,9 @@ int main(int argc, char *argv[])
 
     BrushModel *bm = new BrushModel();
     view->rootContext()->setContextProperty("Brushes", bm);
+
+    ShaderModel *sm = new ShaderModel();
+    view->rootContext()->setContextProperty("Shaders", sm);
 
     view->setSource(SailfishApp::pathTo("qml/paint.qml"));
 

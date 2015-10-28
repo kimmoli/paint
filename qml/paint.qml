@@ -74,6 +74,12 @@ ApplicationWindow
     property var clipboardImage: null
     property bool clipboardPastePending: false
 
+    property var shaderEditPending: false
+    property int activeShader: 0
+    property var shaderParam1: 1.0
+    property var shaderParam2: 1.0
+    property var shaderParam3: 1.0
+
     property int activeLayer: 0
     property var pointData: []
 

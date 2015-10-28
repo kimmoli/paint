@@ -104,7 +104,7 @@ Canvas
         ctx.drawImage(drawingCanvas, 0, 0)
         l.requestPaint()
     }
-    
+
     onPaint:
     {
         if (justPaintIt)
@@ -433,6 +433,10 @@ Canvas
                                  Math.abs(previewCanvas.downX - area.gMouseX),
                                  Math.abs(previewCanvas.downY - area.gMouseY) ]
                     break;
+
+                case Painter.Shader:
+                    shaderEditPending = true
+                    break;
                     
                 default:
                     break;
@@ -482,6 +486,10 @@ Canvas
 
                 case Painter.Image:
                     /* Do nothing */
+                    break;
+
+                case Painter.Shader:
+                    previewCanvas.requestPaint()
                     break;
                     
                 default:

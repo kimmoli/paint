@@ -218,7 +218,7 @@ Page
     Rectangle
     {
         id: toolBoxBackground
-        z: 14
+        z: 15
 
         anchors.top: page.top
         width: page.width
@@ -238,7 +238,7 @@ Page
     Toolbox
     {
         id: toolBox
-        z: 15
+        z: 16
 
         opacity: drawingCanvas.areaPressedAndHolded || pageStack.busy ? 0.0 : 1.0
         anchors.top: page.top
@@ -253,6 +253,8 @@ Page
         onInsertImageAccept: acceptInsertedImage()
         onInsertImageCancel: cancelInsertedImage()
         onClipboardPasteCancel: cancelClipboardPaste()
+        onShaderEditAccept: acceptShaderEdit()
+        onShaderEditCancel: cancelShaderEdit()
     }
 
     InteractionHintLabel
@@ -423,6 +425,28 @@ Page
         previewCanvas.clear()
     }
 
+    function acceptShaderEdit()
+    {
+        shader.grabToImage(function(result)
+        {
+            var url = result.url
+            drawingCanvas.loadImage(url)
+            var ctx = drawingCanvas.getContext('2d')
+            Draw.clear(ctx)
+            ctx.drawImage(url, 0, 0)
+            drawingCanvas.unloadImage(url)
+            drawingCanvas.justPaint()
+            previewCanvas.clear()
+            shaderEditPending = false
+        })
+    }
+
+    function cancelShaderEdit()
+    {
+        shaderEditPending = false
+        previewCanvas.clear()
+    }
+
     SequentialAnimation
     {
          id: textEditActiveAnimation
@@ -485,6 +509,39 @@ Page
     {
         id: loupeCanvas
         opacity: drawMode == Painter.Dimensioning && drawingCanvas.areaPressed ? 1.0 : 0.0
-        z: opacity !== 0.0 ? 16 : 0
+        z: opacity !== 0.0 ? 17 : 0
+    }
+
+    ShaderEffect
+    {
+        id: shader
+        z: 14
+        anchors.fill: parent
+        enabled: drawMode == Painter.Shader
+        visible: enabled
+
+        onVisibleChanged: previewCanvas.clear()
+
+        property var source: shaderSource
+        property var mask: maskSource
+        property var param1: shaderParam1
+
+        fragmentShader: Shaders.getFragmentShader(activeShader)
+        vertexShader: Shaders.getVertexShader(activeShader)
+        smooth: true
+
+        ShaderEffectSource
+        {
+            id: shaderSource
+            sourceItem: drawingCanvas
+            hideSource: shader.enabled
+        }
+
+        ShaderEffectSource
+        {
+            id: maskSource
+            sourceItem: previewCanvas
+            hideSource: shader.enabled
+        }
     }
 }
