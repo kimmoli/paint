@@ -11,6 +11,7 @@ Item
         id: toolbarModel
         ListElement { name: "Toolbar3.qml" }
         ListElement { name: "Toolbar4.qml" }
+        ListElement { name: "Toolbar5.qml" }
         ListElement { name: "Toolbar1.qml" }
         ListElement { name: "Toolbar2.qml" }
     }
@@ -36,6 +37,9 @@ Item
 
     signal clipboardPasteCancel()
     signal colorChanged()
+
+    signal shaderEditAccept()
+    signal shaderEditCancel()
 
     function startRemorse()
     {
@@ -182,6 +186,8 @@ Item
             insertImageCancel()
         if (clipboardPastePending || (clipboardImage != null))
             clipboardPasteCancel()
+        if (shaderEditPending)
+            shaderEditCancel()
     }
 
     Behavior on opacity

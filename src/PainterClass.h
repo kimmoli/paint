@@ -57,7 +57,8 @@ public:
         Dimensioning,
         Image,
         Crop,
-        Clipboard
+        Clipboard,
+        Shader
     };
 
     enum GeometricsMode

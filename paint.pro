@@ -25,7 +25,8 @@ SOURCES += src/paint.cpp \
     src/PainterClass.cpp \
     src/helper.cpp \
     src/nemoimagemetadata.cpp \
-    src/BrushModel.cpp
+    src/BrushModel.cpp \
+    src/ShaderModel.cpp
 	
 HEADERS += \
     src/PainterClass.h \
@@ -34,7 +35,8 @@ HEADERS += \
     src/nemoimagemetadata.h \
     src/ImageProvider.h \
     src/BrushProvider.h \
-    src/BrushModel.h
+    src/BrushModel.h \
+    src/ShaderModel.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
@@ -129,7 +131,21 @@ OTHER_FILES += qml/paint.qml \
     qml/brush/path4169.png \
     qml/brush/rect4171.png \
     qml/icons/icon-m-geom-freehand-closed.png \
-    qml/icons/icon-m-geom-freehand-closed-filled.png
+    qml/icons/icon-m-geom-freehand-closed-filled.png \
+    qml/glsl/invert.frag \
+    qml/components/Toolbar5.qml \
+    qml/glsl/test.vsh \
+    qml/pages/shaderSettingsDialog.qml \
+    qml/icons/sample-image.png \
+    qml/icons/sample-mask.png \
+    qml/glsl/gray_average.frag \
+    qml/glsl/gray_lightness.frag \
+    qml/glsl/gray_luminosity.frag \
+    qml/glsl/gamma_adjust.frag \
+    qml/glsl/swap_RGB-BRG.frag \
+    qml/glsl/pixelate.frag \
+    qml/glsl/sepia.frag \
+    qml/glsl/edge.frag
 
 TRANSLATIONS += i18n/*.ts
 
