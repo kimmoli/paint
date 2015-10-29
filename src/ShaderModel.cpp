@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStreamFunction>
 #include "ShaderModel.h"
+#include <QDebug>
 
 Shader::Shader(const QString &name, const QString &fragment, const QString &vertex, const QVariantList &params)
     : _name(name), _fragment(fragment), _vertex(vertex), _params(params)
@@ -64,11 +65,13 @@ ShaderModel::ShaderModel(QObject *parent)
         /* 2nd row comment are adjustable parameters, name;min;max separated with semicolon */
         QString par = fragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(1);
         QVariantList params;
+
+        int i = 0;
         if (par.startsWith("// "))
         {
             par.remove(0, 3);
             QStringList pars = par.split(";");
-            for (int i=0 ; i < pars.count(); i=i+3)
+            for (; i < pars.count(); i=i+3)
             {
                 params << pars.at(i);
                 params << pars.at(i+1).toFloat();
@@ -76,6 +79,15 @@ ShaderModel::ShaderModel(QObject *parent)
                 params << (pars.at(i+1).toFloat() + pars.at(i+2).toFloat())/2.0; // mid value
             }
         }
+        for (; i < 9; i=i+3)
+        {
+            params << "";
+            params << 0.0;
+            params << 1.0;
+            params << 0.0;
+        }
+
+        qDebug() << params;
 
         _shaders << Shader(name, fragmentShader, vertexShader, params);
 

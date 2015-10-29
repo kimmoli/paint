@@ -76,9 +76,7 @@ ApplicationWindow
 
     property var shaderEditPending: false
     property int activeShader: 0
-    property var shaderParam1: 1.0
-    property var shaderParam2: 1.0
-    property var shaderParam3: 1.0
+    property var shaderParam: [1.0, 1.0, 1.0]
 
     property int activeLayer: 0
     property var pointData: []
@@ -144,6 +142,14 @@ ApplicationWindow
             /* Show FPS only on devel version */
             showFps = (painter.version.indexOf("devel") > -1)
             layers.append({name: "Layer 1", show: true})
+
+            var temp = []
+            var s = Shaders.getParameters(activeShader)
+            for (var m = 0; m < s.length ; m=m+4)
+            {
+                temp[m/4] = s[4*m+3]
+            }
+            shaderParam = temp
         }
     }
 

@@ -524,7 +524,9 @@ Page
 
         property var source: shaderSource
         property var mask: maskSource
-        property var param1: shaderParam1
+        property var param1: shaderParam[0]
+        property var param2: shaderParam[1]
+        property var param3: shaderParam[2]
 
         fragmentShader: Shaders.getFragmentShader(activeShader)
         vertexShader: Shaders.getVertexShader(activeShader)

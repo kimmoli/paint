@@ -79,9 +79,9 @@ Page
                     {
                         source: "../icons/sample-mask.png"
                     }
-                    property var param1: shaderParam1
-                    property var param2: shaderParam2
-                    property var param3: shaderParam3
+                    property var param1: shaderParam[0]
+                    property var param2: shaderParam[1]
+                    property var param3: shaderParam[2]
                     anchors.fill: parent
                     fragmentShader: Shaders.getFragmentShader(activeShader)
                     vertexShader: Shaders.getVertexShader(activeShader)
@@ -90,21 +90,31 @@ Page
         }
         Repeater
         {
+            id: paramRepeater
             enabled: Shaders.getParameters(activeShader).length > 0
-            model: Shaders.getParameters(activeShader).length/4
+            model: 0
 
             Slider
             {
                 id: paramSlider
-                label: Shaders.getParameters(activeShader)[index+0]
-                value: Shaders.getParameters(activeShader)[index+3]
+                visible: Shaders.getParameters(activeShader)[4*index+0].length > 0
+                label: Shaders.getParameters(activeShader)[4*index+0]
+                value: (typeof shaderParam[index] !== 'undefined') ? shaderParam[index] : 0
                 valueText: value.toFixed(2)
-                minimumValue: Shaders.getParameters(activeShader)[index+1]
-                maximumValue: Shaders.getParameters(activeShader)[index+2]
+                minimumValue: Shaders.getParameters(activeShader)[4*index+1]
+                maximumValue: Shaders.getParameters(activeShader)[4*index+2]
                 stepSize: 0.01
-                width: parent.width - 2*Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
-                onValueChanged: shaderParam1 = value
+                width: headerCol.width - 2*Theme.paddingLarge
+                anchors.horizontalCenter: headerCol.horizontalCenter
+                onValueChanged:
+                {
+                    if (shaderParam[index] !== value)
+                    {
+                        var temp = shaderParam
+                        temp[index] = value
+                        shaderParam = temp
+                    }
+                }
             }
         }
 
@@ -178,7 +188,8 @@ Page
                         msg += ", adjustable: " + parameters[0]
 
                     for (var i = 4; i < parameters.length ; i=i+4)
-                        msg += ", " + parameters[i]
+                        if (parameters[i].length > 0)
+                            msg += ", " + parameters[i]
 
                     return msg
                 }
@@ -190,8 +201,20 @@ Page
                 color: activeShader == index ? Theme.highlightColor : Theme.primaryColor
             }
 
-            onClicked: activeShader = index
+            onClicked:
+            {
+                var temp = []
+                paramRepeater.model = 0
+                for (var i = 0; i < parameters.length ; i=i+4)
+                {
+                    temp[i/4] = parameters[i+3]
+                }
+                shaderParam = temp
+                activeShader = index
+                paramRepeater.model = 3
+            }
         }
+        Component.onCompleted: paramRepeater.model = 3
     }
 }
 
