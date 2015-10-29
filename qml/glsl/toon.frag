@@ -7,9 +7,8 @@ varying highp vec2 qt_TexCoord0;
 uniform lowp float qt_Opacity;
 uniform lowp float param1;
 uniform lowp float param2;
-
-const highp float resS = 150.0;
-const highp float resT = 150.0;
+uniform highp float width;
+uniform highp float height;
 
 void main()
 {
@@ -17,6 +16,8 @@ void main()
     {
         highp float quantize = param1;
         highp float magTol = param2;
+        highp float resS = width;
+        highp float resT = height;
 
         highp vec4 color = vec4(1.0, 0.0, 0.0, 1.1);
         highp vec2 uv = qt_TexCoord0.xy;
