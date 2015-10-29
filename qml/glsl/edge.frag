@@ -60,12 +60,15 @@ float IsEdge(in vec2 coords)
 
 void main()
 {
-    vec4 color = vec4(0.0,0.0,0.0,1.0);
-    color.rgb = vec3(IsEdge(qt_TexCoord0.xy));
-
     if (texture2D(mask, qt_TexCoord0.st).a > 0.5)
-        gl_FragColor = color * qt_Opacity;
-    else
-        gl_FragColor = texture2D(source, qt_TexCoord0.st) * qt_Opacity;
+    {
+        vec4 color = vec4(0.0,0.0,0.0,1.0);
+        color.rgb = vec3(IsEdge(qt_TexCoord0.xy));
 
+        gl_FragColor = color * qt_Opacity;
+    }
+    else
+    {
+        gl_FragColor = texture2D(source, qt_TexCoord0.st) * qt_Opacity;
+    }
 }
