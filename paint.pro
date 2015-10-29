@@ -146,7 +146,8 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/pixelate.frag \
     qml/glsl/sepia.frag \
     qml/glsl/edge.frag \
-    qml/glsl/warhol.frag
+    qml/glsl/warhol.frag \
+    qml/glsl/toon.frag
 
 TRANSLATIONS += i18n/*.ts
 
