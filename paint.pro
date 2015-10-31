@@ -154,7 +154,8 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/warhol.frag \
     qml/glsl/toon.frag \
     qml/glsl/adjust-rgb.frag \
-    qml/glsl/adjust-gamma.frag
+    qml/glsl/adjust-gamma.frag \
+    qml/glsl/emboss.frag
 
 TRANSLATIONS += i18n/*.ts
 
