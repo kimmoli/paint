@@ -127,7 +127,8 @@ Page
             else
                 angle = a
 
-            previewCanvas.requestPaint()
+            if (textEditPending)
+                previewCanvas.requestPaint()
         }
     }
 
@@ -519,8 +520,6 @@ Page
         anchors.fill: parent
         enabled: drawMode == Painter.Shader
         visible: enabled
-
-        onVisibleChanged: previewCanvas.clear()
 
         property var source: shaderSource
         property var mask: maskSource

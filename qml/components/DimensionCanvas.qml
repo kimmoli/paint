@@ -16,11 +16,6 @@ Canvas
     function clear()
     {
         clearNow = true
-        if (insertImagePath.length>0)
-        {
-            unloadImage(insertImagePath)
-            insertImagePath = ""
-        }
         requestPaint()
     }
     
