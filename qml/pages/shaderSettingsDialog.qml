@@ -71,6 +71,8 @@ Page
                 ShaderEffect
                 {
                     id: previewShader
+                    anchors.fill: parent
+
                     property var source: Image
                     {
                         source: "../icons/sample-image.png"
@@ -79,42 +81,33 @@ Page
                     {
                         source: "../icons/sample-mask.png"
                     }
-                    property var param1: shaderParam[0]
-                    property var param2: shaderParam[1]
-                    property var param3: shaderParam[2]
-                    anchors.fill: parent
-                    fragmentShader: Shaders.getFragmentShader(activeShader)
-                    vertexShader: Shaders.getVertexShader(activeShader)
+
+                    property var param1: Shaders.get(activeShader).parameters.count > 0 ? Shaders.get(activeShader).parameters.get(0).now : 0.5
+                    property var param2: Shaders.get(activeShader).parameters.count > 1 ? Shaders.get(activeShader).parameters.get(1).now : 0.5
+                    property var param3: Shaders.get(activeShader).parameters.count > 2 ? Shaders.get(activeShader).parameters.get(2).now : 0.5
+
+                    fragmentShader: Shaders.get(activeShader).fragmentShader
+                    vertexShader: Shaders.get(activeShader).vertexShader
                 }
             }
         }
         Repeater
         {
             id: paramRepeater
-            enabled: Shaders.getParameters(activeShader).length > 0
-            model: 0
+            model: Shaders.get(activeShader).parameters
 
             Slider
             {
                 id: paramSlider
-                visible: Shaders.getParameters(activeShader)[4*index+0].length > 0
-                label: Shaders.getParameters(activeShader)[4*index+0]
-                value: (typeof shaderParam[index] !== 'undefined') ? shaderParam[index] : 0
+                label: object.name
                 valueText: value.toFixed(2)
-                minimumValue: Shaders.getParameters(activeShader)[4*index+1]
-                maximumValue: Shaders.getParameters(activeShader)[4*index+2]
+                minimumValue: object.min
+                maximumValue: object.max
                 stepSize: 0.01
                 width: headerCol.width - 2*Theme.paddingLarge
                 anchors.horizontalCenter: headerCol.horizontalCenter
-                onValueChanged:
-                {
-                    if (shaderParam[index] !== value)
-                    {
-                        var temp = shaderParam
-                        temp[index] = value
-                        shaderParam = temp
-                    }
-                }
+                onValueChanged: object.now = value
+                Component.onCompleted: value = object.now
             }
         }
 
@@ -176,20 +169,19 @@ Page
                 text:
                 {
                     var msg
+
                     if (fragmentShader.length > 0)
                         msg = "fragmentShader"
-                    else
-                        msg = "ERROR! No fragment shader!"
 
                     if (vertexShader.length > 0)
                         msg += ", vertexShader"
 
-                    if (parameters.length > 0)
-                        msg += ", adjustable: " + parameters[0]
-
-                    for (var i = 4; i < parameters.length ; i=i+4)
-                        if (parameters[i].length > 0)
-                            msg += ", " + parameters[i]
+                    if (parameters.count > 0)
+                    {
+                        msg += ", Parameters: "
+                        for (var i = 0; i < parameters.count ; i++)
+                            msg += ", " + parameters.get(i).name + " (" + parameters.get(i).now.toFixed(2) + ")"
+                    }
 
                     return msg
                 }
@@ -203,18 +195,9 @@ Page
 
             onClicked:
             {
-                var temp = []
-                paramRepeater.model = 0
-                for (var i = 0; i < parameters.length ; i=i+4)
-                {
-                    temp[i/4] = parameters[i+3]
-                }
-                shaderParam = temp
                 activeShader = index
-                paramRepeater.model = 3
             }
         }
-        Component.onCompleted: paramRepeater.model = 3
     }
 }
 

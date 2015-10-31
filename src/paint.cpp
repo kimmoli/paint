@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
 
     if (GetSailfishVersion().at(1) > 0 || GetSailfishVersion().at(0) > 1)
     {
-        qDebug() << "Setting persistence";
         /* Revert some defaults due Sailfish moving to Qt5.2 not to allow releasing graphics resources.
          * source https://lists.sailfishos.org/pipermail/devel/2014-May/004123.html */
         view->setPersistentOpenGLContext(true);
@@ -95,7 +94,6 @@ QList<int> GetSailfishVersion()
        }
        inputFile.close();
     }
-    qDebug() << "version is" << version;
 
     return version;
 }

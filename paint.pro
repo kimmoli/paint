@@ -26,7 +26,10 @@ SOURCES += src/paint.cpp \
     src/helper.cpp \
     src/nemoimagemetadata.cpp \
     src/BrushModel.cpp \
-    src/ShaderModel.cpp
+    src/ShaderModel.cpp \
+    src/ShaderItem.cpp \
+    src/ShaderParameterModel.cpp \
+    src/ShaderParameterItem.cpp
 	
 HEADERS += \
     src/PainterClass.h \
@@ -36,7 +39,10 @@ HEADERS += \
     src/ImageProvider.h \
     src/BrushProvider.h \
     src/BrushModel.h \
-    src/ShaderModel.h
+    src/ShaderModel.h \
+    src/ShaderItem.h \
+    src/ShaderParameterModel.h \
+    src/ShaderParameterItem.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \

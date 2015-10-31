@@ -2,53 +2,43 @@
 #define SHADERMODEL_H
 
 #include <QAbstractListModel>
-#include <QStringList>
-#include <QVariantList>
-
-class Shader
-{
-public:
-    Shader(const QString &name, const QString &fragment, const QString &vertex, const QVariantList &params);
-
-    QString name() const;
-    QString fragment() const;
-    QString vertex() const;
-    QVariantList params() const;
-
-private:
-    QString _name;
-    QString _fragment;
-    QString _vertex;
-    QVariantList _params;
-};
+#include <QObject>
+#include "ShaderItem.h"
 
 class ShaderModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+
 public:
     enum ShaderRoles
     {
-        NameRole = Qt::UserRole+1,
-        FragmentRole,
-        VertexRole,
-        ParamsRole
+        ObjectRole = Qt::UserRole+1,
+        NameRole,
+        FragmentShaderRole,
+        VertexShaderRole,
+        ParametersRole
     };
+
+    int count() const;
 
     ShaderModel(QObject *parent = 0);
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    Q_INVOKABLE QString getName(quint32 shaderId) const;
-    Q_INVOKABLE QString getFragmentShader(quint32 shaderId) const;
-    Q_INVOKABLE QString getVertexShader(quint32 shaderId) const;
-    Q_INVOKABLE QVariantList getParameters(quint32 shaderId) const;
+    Q_INVOKABLE QVariant get(const quint32 &shaderId) const;
+
+signals:
+    void countChanged();
 
 protected:
     QHash<int, QByteArray> roleNames() const;
 
 private:
-    QList<Shader> _shaders;
+    QList<ShaderItem *> _shaders;
     QString readFile(QString filename);
 
 };
+
+Q_DECLARE_METATYPE(ShaderModel *)
 
 #endif // ShaderMODEL_H

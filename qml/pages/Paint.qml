@@ -524,12 +524,13 @@ Page
 
         property var source: shaderSource
         property var mask: maskSource
-        property var param1: shaderParam[0]
-        property var param2: shaderParam[1]
-        property var param3: shaderParam[2]
 
-        fragmentShader: Shaders.getFragmentShader(activeShader)
-        vertexShader: Shaders.getVertexShader(activeShader)
+        property var param1: Shaders.get(activeShader).parameters.count > 0 ? Shaders.get(activeShader).parameters.get(0).now : 0.5
+        property var param2: Shaders.get(activeShader).parameters.count > 1 ? Shaders.get(activeShader).parameters.get(1).now : 0.5
+        property var param3: Shaders.get(activeShader).parameters.count > 2 ? Shaders.get(activeShader).parameters.get(2).now : 0.5
+
+        fragmentShader: Shaders.get(activeShader).fragmentShader
+        vertexShader: Shaders.get(activeShader).vertexShader
         smooth: true
 
         ShaderEffectSource
