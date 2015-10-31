@@ -147,13 +147,14 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/gray_average.frag \
     qml/glsl/gray_lightness.frag \
     qml/glsl/gray_luminosity.frag \
-    qml/glsl/gamma_adjust.frag \
     qml/glsl/swap_RGB-BRG.frag \
     qml/glsl/pixelate.frag \
     qml/glsl/sepia.frag \
     qml/glsl/edge.frag \
     qml/glsl/warhol.frag \
-    qml/glsl/toon.frag
+    qml/glsl/toon.frag \
+    qml/glsl/adjust-rgb.frag \
+    qml/glsl/adjust-gamma.frag
 
 TRANSLATIONS += i18n/*.ts
 
