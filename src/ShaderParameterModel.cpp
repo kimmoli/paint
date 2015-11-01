@@ -39,6 +39,9 @@ QVariant ShaderParameterModel::data(const QModelIndex &index, int role) const
     case MaxRole:
         return parameter->max();
         break;
+    case StepRole:
+        return parameter->step();
+        break;
     case NowRole:
         return parameter->now();
         break;
@@ -59,6 +62,7 @@ QHash<int, QByteArray> ShaderParameterModel::roleNames() const
     roles[NameRole] =   "name";
     roles[MinRole] =    "min";
     roles[MaxRole] =    "max";
+    roles[StepRole] =   "step";
     roles[NowRole] =    "now";
 
     return roles;
@@ -85,7 +89,7 @@ void ShaderParameterModel::append(ShaderParameterItem * const p)
     emit countChanged();
 }
 
-void ShaderParameterModel::append(const QString name, const double min, const double max)
+void ShaderParameterModel::append(const QString name, const double min, const double max, const double step)
 {
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
 
@@ -94,6 +98,7 @@ void ShaderParameterModel::append(const QString name, const double min, const do
     param->setName(name);
     param->setMin(min);
     param->setMax(max);
+    param->setStep(step);
     param->setNow((min + max)/2.0);
 
     _shaderParameters.append(param);

@@ -7,6 +7,11 @@ Page
 
     allowedOrientations: Orientation.All
 
+    function decimalPlaces(number)
+    {
+      return ((+number).toFixed(3)).replace(/^-?\d*\.?|0+$/g, '').length;
+    }
+
     Column
     {
         id: headerCol
@@ -100,10 +105,10 @@ Page
             {
                 id: paramSlider
                 label: object.name
-                valueText: value.toFixed(2)
+                valueText: value.toFixed(decimalPlaces(object.step))
                 minimumValue: object.min
                 maximumValue: object.max
-                stepSize: 0.01
+                stepSize: object.step.toFixed(3)
                 width: headerCol.width - 2*Theme.paddingLarge
                 anchors.horizontalCenter: headerCol.horizontalCenter
                 onValueChanged: object.now = value
@@ -180,7 +185,8 @@ Page
                     {
                         msg += ", Parameters: "
                         for (var i = 0; i < parameters.count ; i++)
-                            msg += ", " + parameters.get(i).name + " (" + parameters.get(i).now.toFixed(2) + ")"
+                            msg += ", " + parameters.get(i).name +
+                                    " (" + parameters.get(i).now.toFixed(decimalPlaces(parameters.get(i).step)) + ")"
                     }
 
                     return msg

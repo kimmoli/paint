@@ -1,7 +1,7 @@
 #include "ShaderParameterItem.h"
 
 ShaderParameterItem::ShaderParameterItem(QObject *parent) :
-    QObject(parent), _name(QString()), _min(0.0), _max(1.0), _now(0.0)
+    QObject(parent), _name(QString()), _min(0.0), _max(1.0), _step(0.01), _now(0.0)
 {
 }
 
@@ -33,6 +33,16 @@ void ShaderParameterItem::setMax(const double &v)
 {
     _max = v;
     emit maxChanged();
+}
+
+double ShaderParameterItem::step() const
+{
+    return _step;
+}
+void ShaderParameterItem::setStep(const double &v)
+{
+    _step = v;
+    emit stepChanged();
 }
 
 double ShaderParameterItem::now() const

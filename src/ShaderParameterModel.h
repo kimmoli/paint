@@ -17,6 +17,7 @@ public:
         NameRole,
         MinRole,
         MaxRole,
+        StepRole,
         NowRole
     };
 
@@ -26,7 +27,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     void append(ShaderParameterItem * const p);
-    void append(const QString name, const double min, const double max);
+    void append(const QString name, const double min, const double max, const double step = 0.01);
     Q_INVOKABLE QVariant get(const quint32 &paramId) const;
 
 signals:

@@ -55,7 +55,10 @@ ShaderModel::ShaderModel(QObject *parent)
 
             for (; i < pars.count(); i=i+3)
             {
-                parameters->append(pars.at(i), pars.at(i+1).toDouble(), pars.at(i+2).toDouble());
+                double step = 0.01;
+                if (!pars.at(i+1).contains(".") && !pars.at(i+2).contains("."))
+                    step = 1.0;
+                parameters->append(pars.at(i), pars.at(i+1).toDouble(), pars.at(i+2).toDouble(), step);
             }
         }
 
