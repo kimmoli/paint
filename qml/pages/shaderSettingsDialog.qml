@@ -43,17 +43,8 @@ Page
             height: previewImage.height + 2*Theme.paddingLarge
             Label
             {
-                text: qsTr("Original")
-                anchors.right: previewImage.horizontalCenter
-                anchors.rightMargin: Theme.paddingMedium
-                anchors.bottom: previewImage.top
-                anchors.bottomMargin: Theme.paddingSmall
-            }
-            Label
-            {
-                text: qsTr("Processed")
-                anchors.left: previewImage.horizontalCenter
-                anchors.leftMargin: Theme.paddingMedium
+                text: Shaders.get(activeShader).name
+                anchors.horizontalCenter: previewImage.horizontalCenter
                 anchors.bottom: previewImage.top
                 anchors.bottomMargin: Theme.paddingSmall
             }
@@ -78,14 +69,8 @@ Page
                     id: previewShader
                     anchors.fill: parent
 
-                    property var source: Image
-                    {
-                        source: "../icons/sample-image.png"
-                    }
-                    property var mask: Image
-                    {
-                        source: "../icons/sample-mask.png"
-                    }
+                    property var source: Image { source: "../icons/sample-image.png" }
+                    property var mask: Image { source: "../icons/sample-mask.png" }
 
                     property var param1: Shaders.get(activeShader).parameters.count > 0 ? Shaders.get(activeShader).parameters.get(0).now : 0.5
                     property var param2: Shaders.get(activeShader).parameters.count > 1 ? Shaders.get(activeShader).parameters.get(1).now : 0.5
@@ -141,8 +126,9 @@ Page
 
         anchors.fill: parent
 
-        header: Item
-        {
+        Component.onCompleted: positionViewAtBeginning()
+
+        header: Item {
             id: headerItem
             width: parent.width
             height: headerCol.height
@@ -154,8 +140,7 @@ Page
 
         model: Shaders
 
-        delegate: BackgroundItem
-        {
+        delegate: BackgroundItem {
             id: shaderDelegate
 
             width: flick.width
@@ -202,7 +187,14 @@ Page
             onClicked:
             {
                 activeShader = index
+                scrolltimer.start()
             }
+        }
+        Timer
+        {
+            id: scrolltimer
+            interval: 250
+            onTriggered: flick.scrollToTop()
         }
     }
 }
