@@ -140,7 +140,6 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-geom-freehand-closed-filled.png \
     qml/glsl/invert.frag \
     qml/components/Toolbar5.qml \
-    qml/glsl/test.vsh \
     qml/pages/shaderSettingsDialog.qml \
     qml/icons/sample-image.png \
     qml/icons/sample-mask.png \
@@ -155,7 +154,9 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/toon.frag \
     qml/glsl/adjust-rgb.frag \
     qml/glsl/adjust-gamma.frag \
-    qml/glsl/emboss.frag
+    qml/glsl/emboss.frag \
+    qml/glsl/contrast.frag \
+    qml/glsl/blur.frag
 
 TRANSLATIONS += i18n/*.ts
 

@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStreamFunction>
 #include <QQmlEngine>
+#include <QDebug>
 #include "ShaderModel.h"
 
 ShaderModel::ShaderModel(QObject *parent)
@@ -27,9 +28,6 @@ ShaderModel::ShaderModel(QObject *parent)
         QString name = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(0);
         name.remove(0, 3);
 
-        /* 2nd row comment are adjustable parameters, name;min;max separated with semicolon */
-        QString par = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(1);
-
         ShaderItem *shader = new ShaderItem();
         QQmlEngine::setObjectOwnership(shader, QQmlEngine::CppOwnership);
 
@@ -40,11 +38,21 @@ ShaderModel::ShaderModel(QObject *parent)
         ShaderParameterModel *parameters = new ShaderParameterModel();
         QQmlEngine::setObjectOwnership(parameters, QQmlEngine::CppOwnership);
 
+        /* 2nd row comment are adjustable parameters, name;min;max separated with semicolon */
+        QString par = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(1);
+
         int i = 0;
         if (par.startsWith("// "))
         {
             par.remove(0, 3);
-            QStringList pars = par.split(";");
+            QStringList pars = par.split(";", QString::SkipEmptyParts);
+            if (((pars.count() % 3) != 0) || (pars.count() > 9))
+            {
+                qWarning() << "Fragment shader" << fs << "has error in its parameter definitions";
+                fragmentShaders.removeAt(0);
+                continue;
+            }
+
             for (; i < pars.count(); i=i+3)
             {
                 parameters->append(pars.at(i), pars.at(i+1).toDouble(), pars.at(i+2).toDouble());
