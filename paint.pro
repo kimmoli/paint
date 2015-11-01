@@ -156,7 +156,8 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/adjust-gamma.frag \
     qml/glsl/emboss.frag \
     qml/glsl/contrast.frag \
-    qml/glsl/blur.frag
+    qml/glsl/blur.frag \
+    qml/components/ShaderPopup.qml
 
 TRANSLATIONS += i18n/*.ts
 

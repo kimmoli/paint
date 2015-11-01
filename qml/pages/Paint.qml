@@ -183,6 +183,12 @@ Page
             }
             AnchorChanges
             {
+                target: shaderPopup
+                anchors.top: undefined
+                anchors.bottom: toolBox.top
+            }
+            AnchorChanges
+            {
                 target: toolBoxBackground
                 anchors.top: undefined
                 anchors.bottom: page.bottom
@@ -225,7 +231,8 @@ Page
         width: page.width
         height: toolBox.height +
                 (geometryPopup.opacity != 0 ? geometryPopup.height : 0) +
-                (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0)
+                (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0) +
+                (shaderPopup.opacity != 0 ? shaderPopup.height : 0)
         color: Theme.highlightDimmerColor
         opacity: Math.max(0.0, toolBox.opacity - 0.15)
 
@@ -331,6 +338,17 @@ Page
                 dimensionMoveMode = false
                 dimensionCanvas.requestPaint()
             }
+        Behavior on opacity { FadeAnimation {} }
+        z: opacity != 0 ? 15 : 0
+    }
+
+    ShaderPopup
+    {
+        id: shaderPopup
+
+        anchors.top: toolBox.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        opacity: (shaderPopupVisible && (drawMode === Painter.Shader)) ? 1.0 : 0.0
         Behavior on opacity { FadeAnimation {} }
         z: opacity != 0 ? 15 : 0
     }

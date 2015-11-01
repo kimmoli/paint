@@ -20,6 +20,7 @@ ApplicationWindow
 
     property bool geometryPopupVisible: false
     property bool dimensionPopupVisible: false
+    property bool shaderPopupVisible: false
     property bool geometryFill: false
 
     property int drawColor: 0

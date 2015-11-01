@@ -1,16 +1,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import "../code/drawinghelpers.js" as Draw
+
 Page
 {
     id: shadersPage
 
     allowedOrientations: Orientation.All
-
-    function decimalPlaces(number)
-    {
-      return ((+number).toFixed(3)).replace(/^-?\d*\.?|0+$/g, '').length;
-    }
 
     Column
     {
@@ -90,7 +87,7 @@ Page
             {
                 id: paramSlider
                 label: object.name
-                valueText: value.toFixed(decimalPlaces(object.step))
+                valueText: value.toFixed(Draw.decimalPlaces(object.step))
                 minimumValue: object.min
                 maximumValue: object.max
                 stepSize: object.step.toFixed(3)
@@ -171,7 +168,7 @@ Page
                         msg += ", Parameters: "
                         for (var i = 0; i < parameters.count ; i++)
                             msg += ", " + parameters.get(i).name +
-                                    " (" + parameters.get(i).now.toFixed(decimalPlaces(parameters.get(i).step)) + ")"
+                                    " (" + parameters.get(i).now.toFixed(Draw.decimalPlaces(parameters.get(i).step)) + ")"
                     }
 
                     return msg

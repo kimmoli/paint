@@ -45,6 +45,7 @@ Item
     {
         dimensionPopupVisible = false
         geometryPopupVisible = false
+        shaderPopupVisible = false
         cancelPendingFunctions()
 
         remorse.execute(qsTr("Clearing"), function()

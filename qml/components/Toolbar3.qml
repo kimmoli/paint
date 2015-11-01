@@ -135,6 +135,7 @@ Item
                 cancelPendingFunctions()
                 geometryPopupVisible = false
                 dimensionPopupVisible = false
+                shaderPopupvisible = false
 
                 dimensionCanvas.requestPaint()
                 drawingCanvas.saveActive()

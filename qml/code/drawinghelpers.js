@@ -469,3 +469,8 @@ function drawFreehandClosed(ctx, points, lineThick, lineColor, fill)
 
     ctx.stroke()
 }
+
+function decimalPlaces(number)
+{
+    return ((+number).toFixed(3)).replace(/^-?\d*\.?|0+$/g, '').length;
+}

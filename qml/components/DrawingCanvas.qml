@@ -269,6 +269,7 @@ Canvas
             {
                 geometryPopupVisible = false
                 dimensionPopupVisible = false
+                shaderPopupVisible = false
                 pressedAndHolded = true
             }
 

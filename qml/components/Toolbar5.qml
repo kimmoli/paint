@@ -58,6 +58,17 @@ Item
         ToolbarButton
         {
             icon.source: "image://theme/icon-m-developer-mode"
+            enabled: Shaders.get(activeShader).parameters.count > 0
+
+            onClicked:
+            {
+                shaderPopupVisible = !shaderPopupVisible
+            }
+        }
+
+        ToolbarButton
+        {
+            icon.source: "image://theme/icon-m-developer-mode"
             enabled: true
 
             onClicked:
