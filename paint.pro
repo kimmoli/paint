@@ -158,7 +158,8 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/contrast.frag \
     qml/glsl/blur.frag \
     qml/components/ShaderPopup.qml \
-    qml/glsl/oilpainting.frag
+    qml/glsl/oilpainting.frag \
+    qml/glsl/colorspace8.frag
 
 TRANSLATIONS += i18n/*.ts
 

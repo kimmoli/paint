@@ -1,6 +1,10 @@
 // Oil painting
 // Radius;1;10
 
+// Source: http://stackoverflow.com/a/9402041/4537127
+// Anisotropic Kuwahara Filtering on the GPU
+// by Jan Eric Kyprianidis <www.kyprianidis.com>
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;
