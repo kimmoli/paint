@@ -64,6 +64,13 @@ ShaderModel::ShaderModel(QObject *parent)
 
         shader->addParameters(parameters);
 
+        /* Third row is imageSource */
+        QString ims = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(2);
+        if (ims.startsWith("// imageSource"))
+        {
+            shader->setImageSource(ims.split(";").at(1));
+        }
+
         _shaders.append(shader);
 
         fragmentShaders.removeAt(0);

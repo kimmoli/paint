@@ -2,7 +2,7 @@
 #include "ShaderItem.h"
 
 ShaderItem::ShaderItem(QObject *parent)
-    : QObject(parent), _name(QString()), _fragmentShader(QString()), _vertexShader(QString()), _parameters(0)
+    : QObject(parent), _name(QString()), _fragmentShader(QString()), _vertexShader(QString()), _imageSource(QString()), _parameters(0)
 {
 }
 
@@ -34,6 +34,16 @@ void ShaderItem::setVertexShader(const QString &v)
 {
     _vertexShader = v;
     emit vertexShaderChanged();
+}
+
+QString ShaderItem::imageSource() const
+{
+    return _imageSource;
+}
+void ShaderItem::setImageSource(const QString &s)
+{
+    _imageSource = s;
+    emit imageSourceChanged();
 }
 
 QVariant ShaderItem::parameters() const

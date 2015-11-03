@@ -69,6 +69,10 @@ Page
                     property var source: Image { source: "../icons/sample-image.png" }
                     property var mask: Image { source: "../icons/sample-mask.png" }
 
+                    property var imageSource: Image { source: Shaders.get(activeShader).imageSource }
+                    property var imageSourceWidth: imageSource.width
+                    property var imageSourceHeight: imageSource.height
+
                     property var param1: Shaders.get(activeShader).parameters.count > 0 ? Shaders.get(activeShader).parameters.get(0).now : 0.5
                     property var param2: Shaders.get(activeShader).parameters.count > 1 ? Shaders.get(activeShader).parameters.get(1).now : 0.5
                     property var param3: Shaders.get(activeShader).parameters.count > 2 ? Shaders.get(activeShader).parameters.get(2).now : 0.5

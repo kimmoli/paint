@@ -159,7 +159,8 @@ OTHER_FILES += qml/paint.qml \
     qml/glsl/blur.frag \
     qml/components/ShaderPopup.qml \
     qml/glsl/oilpainting.frag \
-    qml/glsl/colorspace8.frag
+    qml/glsl/colorspace8.frag \
+    qml/glsl/jolla-glasseffect.frag
 
 TRANSLATIONS += i18n/*.ts
 
