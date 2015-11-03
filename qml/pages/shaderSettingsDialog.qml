@@ -190,6 +190,11 @@ Page
                 activeShader = index
                 scrolltimer.start()
             }
+
+            onPressAndHold:
+            {
+                pageStack.push(Qt.resolvedUrl("shaderEditor.qml"), { index: index })
+            }
         }
         Timer
         {

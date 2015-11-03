@@ -14,6 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <QVariant>
 #include <QStringList>
 #include <QList>
+#include <QQuickTextDocument>
+#include "highlighter.h"
 
 class PainterClass : public QObject
 {
@@ -45,6 +47,8 @@ public:
                                 QList<int> cropArea);
 
     Q_INVOKABLE bool fileExists(QString filename);
+
+    Q_INVOKABLE void setHighlightTarget(QQuickItem *target);
 
     enum Mode
     {
@@ -82,7 +86,9 @@ signals:
 
 private:
     QStringList fontFamilies;
-
+    Highlighter *_hl;
+    QQuickItem *_hlTarget;
+    QTextDocument *_hlDoc;
 };
 
 

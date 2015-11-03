@@ -22,6 +22,8 @@ PainterClass::PainterClass(QObject *parent) :
     QObject(parent)
 {
     fontFamilies = QFontDatabase().families();
+    _hl = 0;
+    _hlDoc = 0;
 }
 
 QString PainterClass::readVersion()
@@ -181,4 +183,28 @@ bool PainterClass::fileExists(QString filename)
     QFile test(filepath);
 
     return test.exists();
+}
+
+void PainterClass::setHighlightTarget(QQuickItem *target)
+{
+    if (_hl)
+        delete _hl;
+
+    _hlDoc = 0;
+    _hl = 0;
+
+    _hlTarget = target;
+
+    if (!_hlTarget)
+        return;
+
+    QVariant doc = _hlTarget->property("textDocument");
+
+    if (doc.canConvert<QQuickTextDocument*>())
+    {
+        QQuickTextDocument *qqdoc = doc.value<QQuickTextDocument*>();
+        if (qqdoc)
+            _hlDoc = qqdoc->textDocument();
+            _hl = new Highlighter(_hlDoc);
+    }
 }

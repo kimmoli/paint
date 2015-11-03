@@ -29,7 +29,8 @@ SOURCES += src/paint.cpp \
     src/ShaderModel.cpp \
     src/ShaderItem.cpp \
     src/ShaderParameterModel.cpp \
-    src/ShaderParameterItem.cpp
+    src/ShaderParameterItem.cpp \
+    src/highlighter.cpp
 	
 HEADERS += \
     src/PainterClass.h \
@@ -42,7 +43,8 @@ HEADERS += \
     src/ShaderModel.h \
     src/ShaderItem.h \
     src/ShaderParameterModel.h \
-    src/ShaderParameterItem.h
+    src/ShaderParameterItem.h \
+    src/highlighter.h
 
 OTHER_FILES += qml/paint.qml \
     qml/cover/CoverPage.qml \
@@ -160,7 +162,8 @@ OTHER_FILES += qml/paint.qml \
     qml/components/ShaderPopup.qml \
     qml/glsl/oilpainting.frag \
     qml/glsl/colorspace8.frag \
-    qml/glsl/jolla-glasseffect.frag
+    qml/glsl/jolla-glasseffect.frag \
+    qml/pages/shaderEditor.qml
 
 TRANSLATIONS += i18n/*.ts
 
