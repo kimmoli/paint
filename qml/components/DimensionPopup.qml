@@ -5,7 +5,7 @@ import harbour.paint.PainterClass 1.0
 Row
 {
     id: dimensionPopup
-    spacing: (parent.width - children.length*80)/(children.length+1)
+    spacing: (parent.width - children.length*Theme.iconSizeLarge )/(children.length+1)
     anchors.horizontalCenter: parent.horizontalCenter
 
     IconButton

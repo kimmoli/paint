@@ -13,7 +13,7 @@ Item
 
     Row
     {
-        spacing: (parent.width - children.length*80)/(children.length+1)
+        spacing: (parent.width - children.length*Theme.iconSizeLarge )/(children.length+1)
         anchors.horizontalCenter: parent.horizontalCenter
 
         ToolbarButton

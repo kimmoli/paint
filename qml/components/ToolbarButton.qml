@@ -8,6 +8,9 @@ IconButton
 
     highlighted: drawMode === mode
     anchors.bottom: parent.bottom
+    icon.width: Theme.iconSizeMedium
+    icon.height: Theme.iconSizeMedium
+
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
 }

@@ -8,6 +8,9 @@ IconButton
     property bool autohide: true
 
     anchors.bottom: parent.bottom
+    icon.width: Theme.iconSizeMedium
+    icon.height: Theme.iconSizeMedium
+
     highlighted: (drawMode === Painter.Geometrics) && (geometricsMode === mode) && !geometryFillToggled
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
