@@ -5,6 +5,7 @@ import harbour.paint.PainterClass 1.0
 Column
 {
     id: geometryPopup
+    width: parent.width
 
     property bool geometryFillToggled: false
 
