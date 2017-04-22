@@ -31,7 +31,7 @@ public:
                 painter.end();
             }
 
-        if (requestedSize.width() > 0 && requestedSize.height() > 0)
+        if (requestedSize.isValid())
             return sourcePixmap.scaled(requestedSize.width(), requestedSize.height(), Qt::IgnoreAspectRatio);
         else
             return sourcePixmap;

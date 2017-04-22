@@ -93,7 +93,10 @@ public:
         if (meta.orientation() != NemoImageMetadata::TopLeft)
             img = rotate(img, meta.orientation());
 
-        return img;
+        if (requestedSize.isValid())
+            return img.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
+        else
+            return img;
     }
 };
 

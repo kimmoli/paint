@@ -160,6 +160,8 @@ Dialog
                             source: bgImagePath
                             height: bgImageRotate ? parent.width : parent.height
                             width: bgImageRotate ? parent.height : parent.width
+                            sourceSize.height: height
+                            sourceSize.width: width
                             anchors.centerIn: parent
                             clip: true
                             smooth: true

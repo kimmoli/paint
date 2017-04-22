@@ -370,6 +370,8 @@ Page
         source: backgroundImagePath
         height: backgroundImageRotate ? bg.width : bg.height
         width: backgroundImageRotate ? bg.height : bg.width
+        sourceSize.height: height
+        sourceSize.width: width
         anchors.centerIn: bg
         clip: true
         smooth: true
@@ -493,6 +495,8 @@ Page
         scale: pinchScale
         rotation: accelerometer.angle * (180/Math.PI)
         source: insertImagePath
+        sourceSize.width: 3000
+        sourceSize.height: 3000
         // Calculate scale so the image fits, and center it on screen
         onStatusChanged: if (status == Image.Ready) pinchtarget.scale = Math.min(1.0, Screen.width/Math.max(insertedImage.width, insertedImage.height))
     }
