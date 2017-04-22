@@ -15,7 +15,6 @@ Canvas
     {
         width = parent.width
         height = parent.height
-        tileSize = Qt.size(width/10, height/10)
         setBrush()
         requestPaint()
     }

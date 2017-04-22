@@ -389,7 +389,6 @@ Page
             {
                 width = window.width
                 height = window.height
-                tileSize = Qt.size(width/10, height/10)
                 requestPaint()
             }
             z: layers.count - index

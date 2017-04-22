@@ -11,7 +11,6 @@ Canvas
     anchors.fill: drawingCanvas
     antialiasing: true
     opacity: 1.0
-    tileSize: Qt.size(width/10, height/10)
     
     property real downX
     property real downY
