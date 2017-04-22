@@ -199,6 +199,7 @@ Canvas
             break;
 
         case Painter.Shader:
+            shaderSelectAll = false
             Draw.clear(ctx)
             pointData.push({x:drawingCanvas.areagMouseX, y:drawingCanvas.areagMouseY})
             Draw.drawFreehandClosed(ctx, pointData, 1, "white", true)

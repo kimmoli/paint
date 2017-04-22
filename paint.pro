@@ -169,3 +169,6 @@ TRANSLATIONS += i18n/*.ts
 
 RESOURCES +=
 
+DISTFILES += \
+    qml/components/ClipboardCanvas.qml
+

@@ -45,6 +45,8 @@ Item
                 }
                 else
                 {
+                    insertImagePath = clipboardCanvas.toDataURL()
+
                     cancelPendingFunctions()
                     drawMode = Painter.Clipboard
                     previewCanvas.clear()

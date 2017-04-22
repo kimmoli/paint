@@ -322,7 +322,7 @@ function drawImageData(ctx, imageData, x, y, angle, scale)
     ctx.translate(x, y)
     ctx.rotate( angle )
     ctx.scale(scale, scale)
-    ctx.putImageData(imageData, -imageData.width/2, -imageData.height/2)
+    ctx.drawImage(imageData, -imageData.width/2, -imageData.height/2)
     ctx.restore()
 }
 

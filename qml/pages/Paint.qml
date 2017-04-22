@@ -527,6 +527,11 @@ Page
         id: drawingCanvas
     }
 
+    ClipboardCanvas
+    {
+        id: clipboardCanvas
+    }
+
     LoupeCanvas
     {
         id: loupeCanvas
