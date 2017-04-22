@@ -77,6 +77,7 @@ ApplicationWindow
 
     property var shaderEditPending: false
     property int activeShader: 0
+    property bool shaderSelectAll: false
 
     property int activeLayer: 0
     property var pointData: []

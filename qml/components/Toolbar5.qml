@@ -28,7 +28,7 @@ Item
         ToolbarButton
         {
             icon.source: "image://theme/icon-m-enter-accept"
-            enabled: shaderEditPending
+            enabled: shaderEditPending && drawMode == Painter.Shader
 
             onClicked:
             {
@@ -41,24 +41,24 @@ Item
         {
             icon.source: "image://theme/icon-m-display"
             enabled: drawMode == Painter.Shader
-            property bool selectAll: true
+            highlighted: drawMode == Painter.Shader && shaderSelectAll
 
             onClicked:
             {
+                shaderSelectAll = !shaderSelectAll
                 var ctx = previewCanvas.getContext('2d')
                 Draw.clear(ctx)
-                shaderEditPending = selectAll
-                if (selectAll)
+                shaderEditPending = shaderSelectAll
+                if (shaderSelectAll)
                     Draw.drawRectangle(ctx, 0, 0, Screen.width, Screen.height, 0, "white", true)
                 previewCanvas.justPaint()
-                selectAll = !selectAll
             }
         }
 
         ToolbarButton
         {
-            icon.source: "image://theme/icon-m-developer-mode"
-            enabled: Shaders.get(activeShader).parameters.count > 0
+            icon.source: "image://theme/icon-s-developer"
+            enabled: Shaders.get(activeShader).parameters.count > 0 && drawMode == Painter.Shader
 
             onClicked:
             {
@@ -69,7 +69,7 @@ Item
         ToolbarButton
         {
             icon.source: "image://theme/icon-m-developer-mode"
-            enabled: true
+            enabled: drawMode == Painter.Shader
 
             onClicked:
             {
