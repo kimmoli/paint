@@ -6,7 +6,7 @@ import "../code/drawinghelpers.js" as Draw
 Canvas
 {
     id: gridCanvas
-    z: 7
+    z: 13
     anchors.fill: drawingCanvas
     antialiasing: true
     

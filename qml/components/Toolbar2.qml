@@ -112,6 +112,7 @@ Item
         ToolbarButton
         {
             icon.source: "image://paintIcons/icon-m-grid"
+            highlighted: gridVisible
 
             onClicked: toggleGridVisibility()
         }
