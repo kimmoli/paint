@@ -24,7 +24,7 @@ Item
             {
                 pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"),
                                       { "version": painter.version,
-                                        "year": "2015",
+                                        "year": "2014-2017",
                                         "name": "Paint",
                                         "language": painter.getLanguage(),
                                         "imagelocation": "/usr/share/icons/hicolor/86x86/apps/harbour-paint.png"} )
