@@ -14,6 +14,7 @@ Page
         id: headerCol
         width: parent.width
         spacing: Theme.paddingSmall
+        clip: true
 
         PageHeader
         {
@@ -182,6 +183,9 @@ Page
                 anchors.left: parent.left
                 anchors.leftMargin: Theme.horizontalPageMargin
                 anchors.top: namelabel.bottom
+                anchors.right: parent.right
+                anchors.rightMargin: Theme.horizontalPageMargin
+                truncationMode: TruncationMode.Fade
                 color: activeShader == index ? Theme.highlightColor : Theme.primaryColor
             }
 
