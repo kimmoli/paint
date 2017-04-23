@@ -112,13 +112,17 @@ Dialog
                 IconButton
                 {
                     icon.source: "image://paintIcons/icon-m-toolsettings"
+                    icon.width: Theme.iconSizeMedium
+                    icon.height: Theme.iconSizeMedium
                     enabled: textBalloonize
                     opacity: textBalloonize ? 1.0 : 0.6
+
                     onClicked:
                     {
                         var SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
                                                                { "currentColor": drawColor,
-                                                                 "currentThickness": 0 })
+                                                                 "currentThickness": 0,
+                                                                 "showAllSettings": false })
 
                         SettingsDialog.accepted.connect(function()
                         {
@@ -136,6 +140,8 @@ Dialog
                 IconButton
                 {
                     icon.source: "image://paintIcons/icon-m-textsettings"
+                    icon.width: Theme.iconSizeMedium
+                    icon.height: Theme.iconSizeMedium
 
                     onClicked:
                     {

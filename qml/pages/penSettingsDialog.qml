@@ -18,6 +18,7 @@ Dialog
     property int currentPenStyle: 0
     property var brush: "image://paintBrush/" + Brushes.getName(currentPenStyle) + "?" + colors[currentColor]
     property bool brushContinuous: false
+    property bool showAllSettings: true
 
     onDone:
     {
@@ -77,7 +78,7 @@ Dialog
             SectionHeader
             {
                 text: qsTr("Pen width")
-                visible: currentThickness > 0
+                visible: currentThickness > 0 && showAllSettings
             }
 
             Canvas
@@ -85,7 +86,7 @@ Dialog
                 id: penPreviewCanvas
                 height: Theme.itemSizeLarge
                 width: parent.width
-                visible: drawMode == Painter.Pen
+                visible: drawMode == Painter.Pen && showAllSettings
 
                 Image
                 {
@@ -114,7 +115,7 @@ Dialog
                 color: "transparent"
                 height: Theme.itemSizeMedium
                 width: parent.width
-                visible: drawMode != Painter.Pen
+                visible: drawMode != Painter.Pen && showAllSettings
 
                 Rectangle
                 {
@@ -129,7 +130,7 @@ Dialog
             Slider
             {
                 id: thicknessSlider
-                visible: currentThickness > 0
+                visible: currentThickness > 0 && showAllSettings
                 value: currentThickness
                 valueText: value
                 minimumValue: 1
@@ -143,14 +144,14 @@ Dialog
             SectionHeader
             {
                 text: qsTr("Brush style")
-                visible: drawMode == Painter.Pen
+                visible: drawMode == Painter.Pen && showAllSettings
             }
 
             Item
             {
                 width: parent.width
                 height: Theme.itemSizeMedium
-                visible: drawMode == Painter.Pen
+                visible: drawMode == Painter.Pen && showAllSettings
 
                 Row
                 {
@@ -183,7 +184,7 @@ Dialog
 
             Repeater
             {
-                model: (drawMode == Painter.Pen) ? Brushes : 0
+                model: (drawMode == Painter.Pen && showAllSettings) ? Brushes : 0
 
                 Item
                 {
