@@ -5,7 +5,8 @@ Item
 {
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.topMargin: Theme.paddingMedium
-    anchors.bottomMargin: Theme.paddingMedium
+    anchors.bottomMargin: -Theme.paddingMedium
+    height: layerNameLabelBg.height
 
     Label
     {
