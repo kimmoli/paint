@@ -64,6 +64,8 @@ Row
     IconButton
     {
         icon.source: "image://paintIcons/icon-m-move"
+        icon.width: Theme.iconSizeMedium
+        icon.height: Theme.iconSizeMedium
         anchors.bottom: parent.bottom
         enabled: dimensionModel.count > 0
         highlighted: dimensionMoveMode
