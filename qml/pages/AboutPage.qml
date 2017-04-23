@@ -178,7 +178,13 @@ Page
                         text: helptext
                         anchors.verticalCenter: bim.verticalCenter
                         anchors.left: bim.right
+                        anchors.right: parent.right
                         anchors.leftMargin: Theme.paddingSmall
+                        horizontalAlignment: image ? Text.AlignLeft : Text.AlignRight
+                        font.pixelSize: image ? Theme.fontSizeMedium : Theme.fontSizeSmall
+                        truncationMode: TruncationMode.Fade
+                        color: image ? Theme.primaryColor : Theme.highlightColor
+
                     }
                 }
             }
