@@ -170,5 +170,22 @@ TRANSLATIONS += i18n/*.ts
 RESOURCES +=
 
 DISTFILES += \
-    qml/components/ClipboardCanvas.qml
+    qml/components/ClipboardCanvas.qml \
+    qml/components/MainToolbar.qml \
+    qml/tools/ToolDraw.qml \
+    qml/tools/ToolEraser.qml \
+    qml/tools/ToolGeometrics.qml \
+    qml/tools/ToolSpray.qml \
+    qml/tools/ToolAbout.qml \
+    qml/tools/ToolBackground.qml \
+    qml/tools/ToolClear.qml \
+    qml/tools/ToolClipboard.qml \
+    qml/tools/ToolDimensioning.qml \
+    qml/tools/ToolGrid.qml \
+    qml/tools/ToolImage.qml \
+    qml/tools/ToolLayers.qml \
+    qml/tools/ToolSave.qml \
+    qml/tools/ToolSettings.qml \
+    qml/tools/ToolShader.qml \
+    qml/tools/ToolText.qml
 

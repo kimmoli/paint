@@ -8,18 +8,31 @@ Item
 
     ListModel
     {
-        id: toolbarModel
-        ListElement { name: "Toolbar3.qml" }
-        ListElement { name: "Toolbar4.qml" }
-        ListElement { name: "Toolbar5.qml" }
-        ListElement { name: "Toolbar1.qml" }
-        ListElement { name: "Toolbar2.qml" }
+        id: menuModel
+        ListElement { name: "../tools/ToolAbout.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolBackground.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolClear.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolClipboard.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolDimensioning.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolDraw.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolEraser.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolGeometrics.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolGrid.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolImage.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolLayers.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolSave.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolSettings.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolShader.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolSpray.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolText.qml";       menu: "ToolDrawMenu.qml" }
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
-    height: Theme.itemSizeMedium
+    height: Theme.itemSizeMedium + (showAllTools ? toolboxView.height : 0)
     width: parent.width
     clip: true
+
+    property bool showAllTools: false
 
     signal showMessage(string message, int delay)
 
@@ -191,11 +204,6 @@ Item
             shaderEditCancel()
     }
 
-    Behavior on opacity
-    {
-        FadeAnimation {}
-    }
-
     RemorsePopup
     {
         id: remorse
@@ -230,29 +238,31 @@ Item
         }
     }
 
-    PathView
+    SilicaGridView
     {
         id: toolboxView
-        anchors.fill: parent
-        preferredHighlightBegin: 1/model.count
-        preferredHighlightEnd: 2/model.count
-        offset: 2.0
-        model: toolbarModel
+        width: parent.width
+        height: Theme.itemSizeMedium * Math.ceil(menuModel.count/6)
+        cellWidth: Theme.itemSizeMedium
+        cellHeight: Theme.itemSizeMedium
+
+        anchors.bottom: mainToolBar.top
+        visible: showAllTools
+
+        model: menuModel
         delegate: Loader
         {
-            width: toolboxView.width
-            height: toolboxView.height
+            width: Theme.itemSizeMedium
+            height: Theme.itemSizeMedium
             source: Qt.resolvedUrl(name)
         }
-        path: Path
-        {
-            startX: - (toolboxView.width / 2)
-            startY: toolboxView.height / 2
-            PathLine
-            {
-                x: (toolboxView.model.count * toolboxView.width) - (toolboxView.width / 2)
-                y: toolboxView.height / 2
-            }
-        }
+    }
+
+    MainToolbar
+    {
+        id: mainToolBar
+        width: parent.width
+        height: Theme.itemSizeMedium
+        anchors.bottom: parent.bottom
     }
 }
