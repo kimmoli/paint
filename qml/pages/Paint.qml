@@ -177,12 +177,6 @@ Page
             }
             AnchorChanges
             {
-                target: dimensionPopup
-                anchors.top: undefined
-                anchors.bottom: toolBox.top
-            }
-            AnchorChanges
-            {
                 target: shaderPopup
                 anchors.top: undefined
                 anchors.bottom: toolBox.top
@@ -231,7 +225,6 @@ Page
         width: page.width
         height: toolBox.height +
                 (geometryPopup.opacity != 0 ? geometryPopup.height : 0) +
-                (dimensionPopup.opacity != 0 ? dimensionPopup.height : 0) +
                 (shaderPopup.opacity != 0 ? shaderPopup.height : 0)
         color: Theme.highlightDimmerColor
         opacity: Math.max(0.0, toolBox.opacity - 0.15)
@@ -321,23 +314,6 @@ Page
         anchors.top: toolBox.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         opacity: (geometryPopupVisible && (drawMode === Painter.Geometrics)) ? 1.0 : 0.0
-        Behavior on opacity { FadeAnimation {} }
-        z: opacity != 0 ? 15 : 0
-    }
-
-    DimensionPopup
-    {
-        id: dimensionPopup
-
-        anchors.top: toolBox.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        opacity: (dimensionPopupVisible && (drawMode === Painter.Dimensioning)) ? 1.0 : 0.0
-        onOpacityChanged:
-            if ((opacity == 0.0 || opacity == 1.0) && (drawMode !== Painter.Dimensioning))
-            {
-                dimensionMoveMode = false
-                dimensionCanvas.requestPaint()
-            }
         Behavior on opacity { FadeAnimation {} }
         z: opacity != 0 ? 15 : 0
     }
@@ -470,7 +446,7 @@ Page
     SequentialAnimation
     {
          id: textEditActiveAnimation
-         running: (textEditPending || dimensionPopupVisible) && !drawingCanvas.areaPressed
+         running: textEditPending && !drawingCanvas.areaPressed
          loops: Animation.Infinite
 
          NumberAnimation { target: previewCanvas; property: "opacity"; to: 0.6; duration: 500; easing.type: Easing.InOutCubic }

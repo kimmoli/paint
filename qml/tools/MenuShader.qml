@@ -3,52 +3,59 @@ import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
 import "../components"
+import "../code/drawinghelpers.js" as Draw
 
 MenuBase
 {
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-certificates"
+        icon.source: "image://theme/icon-m-enter-accept"
+        enabled: shaderEditPending && drawMode == Painter.Shader
 
         onClicked:
         {
-            
+            if (shaderEditPending)
+                shaderEditAccept()
         }
     }
+
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-battery"
+        icon.source: "image://theme/icon-m-display"
+        enabled: drawMode == Painter.Shader
+        highlighted: drawMode == Painter.Shader && shaderSelectAll
 
         onClicked:
         {
-
+            shaderSelectAll = !shaderSelectAll
+            var ctx = previewCanvas.getContext('2d')
+            Draw.clear(ctx)
+            shaderEditPending = shaderSelectAll
+            if (shaderSelectAll)
+                Draw.drawRectangle(ctx, 0, 0, Screen.width, Screen.height, 0, "white", true)
+            previewCanvas.justPaint()
         }
     }
+
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-keyboard"
+        icon.source: "image://theme/icon-s-developer"
+        enabled: Shaders.get(activeShader).parameters.count > 0 && drawMode == Painter.Shader
 
         onClicked:
         {
-
+            shaderPopupVisible = !shaderPopupVisible
         }
     }
+
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-imaging"
+        icon.source: "image://theme/icon-m-developer-mode"
+        enabled: drawMode == Painter.Shader
 
         onClicked:
         {
-
-        }
-    }
-    ToolbarButton
-    {
-        icon.source: "image://theme/icon-m-mouse"
-
-        onClicked:
-        {
-
+            pageStack.push(Qt.resolvedUrl("../pages/shaderSettingsDialog.qml"))
         }
     }
 }

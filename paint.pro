@@ -90,7 +90,6 @@ OTHER_FILES += qml/paint.qml \
     qml/icons/icon-m-eraser.png \
     qml/icons/icon-m-dimensiontool.png \
     qml/pages/dimensionDialog.qml \
-    qml/components/DimensionPopup.qml \
     qml/icons/icon-m-move.png \
     qml/icons/icon-m-grid.png \
     qml/icons/icon-m-geom-ellipse.png \

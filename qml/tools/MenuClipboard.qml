@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
 import "../components"
+import "../code/drawinghelpers.js" as Draw
 
 MenuBase
 {
