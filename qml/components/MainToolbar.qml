@@ -2,30 +2,32 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import harbour.paint.PainterClass 1.0
 
+import "../tools"
+
 Item
 {
     id: mainToolbar
+    width: parent.width
+    height: Theme.itemSizeMedium
 
-    Row
+    property alias submenusource: submenuloader.source
+
+    Loader
     {
-        spacing: (parent.width - children.length*Theme.iconSizeLarge )/(children.length+1)
-        anchors.horizontalCenter: parent.horizontalCenter
+        id: submenuloader
+        width: parent.width
+        height: parent.height
+    }
 
-        Rectangle { width: Theme.itemSizeMedium; height: Theme.itemSizeMedium }
-        Rectangle { width: Theme.itemSizeMedium; height: Theme.itemSizeMedium }
-        Rectangle { width: Theme.itemSizeMedium; height: Theme.itemSizeMedium }
-        Rectangle { width: Theme.itemSizeMedium; height: Theme.itemSizeMedium }
-        Rectangle { width: Theme.itemSizeMedium; height: Theme.itemSizeMedium }
+    ToolbarButton
+    {
+        anchors.right: parent.right
 
-        ToolbarButton
+        icon.source: "image://theme/icon-m-menu"
+
+        onClicked:
         {
-            icon.source: "image://theme/icon-m-menu"
-
-            onClicked:
-            {
-                showAllTools = !showAllTools
-            }
+            showAllTools = !showAllTools
         }
-
     }
 }

@@ -9,22 +9,22 @@ Item
     ListModel
     {
         id: menuModel
-        ListElement { name: "../tools/ToolAbout.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolBackground.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolClear.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolClipboard.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolDimensioning.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolDraw.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolEraser.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolGeometrics.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolGrid.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolImage.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolLayers.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolSave.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolSettings.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolShader.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolSpray.qml";       menu: "ToolDrawMenu.qml" }
-        ListElement { name: "../tools/ToolText.qml";       menu: "ToolDrawMenu.qml" }
+        ListElement { name: "../tools/ToolAbout.qml";        submenu: "" }
+        ListElement { name: "../tools/ToolBackground.qml";   submenu: "" }
+        ListElement { name: "../tools/ToolClear.qml";        submenu: "" }
+        ListElement { name: "../tools/ToolClipboard.qml";    submenu: "../tools/MenuClipboard.qml" }
+        ListElement { name: "../tools/ToolDimensioning.qml"; submenu: "../tools/MenuDimensioning.qml" }
+        ListElement { name: "../tools/ToolDraw.qml";         submenu: "../tools/MenuDraw.qml" }
+        ListElement { name: "../tools/ToolEraser.qml";       submenu: "../tools/MenuEraser.qml" }
+        ListElement { name: "../tools/ToolGeometrics.qml";   submenu: "../tools/MenuGeometrics.qml" }
+        ListElement { name: "../tools/ToolGrid.qml";         submenu: "" }
+        ListElement { name: "../tools/ToolImage.qml";        submenu: "../tools/MenuImage.qml" }
+        ListElement { name: "../tools/ToolLayers.qml";       submenu: "../tools/MenuLayers.qml" }
+        ListElement { name: "../tools/ToolSave.qml";         submenu: "" }
+        ListElement { name: "../tools/ToolSettings.qml";     submenu: "" }
+        ListElement { name: "../tools/ToolShader.qml";       submenu: "../tools/MenuShader.qml" }
+        ListElement { name: "../tools/ToolSpray.qml";        submenu: "../tools/MenuSpray.qml" }
+        ListElement { name: "../tools/ToolText.qml";         submenu: "../tools/MenuText.qml" }
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
@@ -243,7 +243,7 @@ Item
         id: toolboxView
         width: parent.width
         height: Theme.itemSizeMedium * Math.ceil(menuModel.count/6)
-        cellWidth: Theme.itemSizeMedium
+        cellWidth: width/6
         cellHeight: Theme.itemSizeMedium
 
         anchors.bottom: mainToolBar.top
@@ -252,8 +252,8 @@ Item
         model: menuModel
         delegate: Loader
         {
-            width: Theme.itemSizeMedium
-            height: Theme.itemSizeMedium
+            width: parent.cellWidth
+            height: parent.cellHeight
             source: Qt.resolvedUrl(name)
         }
     }
@@ -261,8 +261,7 @@ Item
     MainToolbar
     {
         id: mainToolBar
-        width: parent.width
-        height: Theme.itemSizeMedium
         anchors.bottom: parent.bottom
+        property variant menu: 0
     }
 }

@@ -187,5 +187,16 @@ DISTFILES += \
     qml/tools/ToolSave.qml \
     qml/tools/ToolSettings.qml \
     qml/tools/ToolShader.qml \
-    qml/tools/ToolText.qml
+    qml/tools/ToolText.qml \
+    qml/tools/MenuDraw.qml \
+    qml/tools/MenuDimensioning.qml \
+    qml/tools/MenuEraser.qml \
+    qml/tools/MenuGeometrics.qml \
+    qml/tools/MenuImage.qml \
+    qml/tools/MenuLayers.qml \
+    qml/tools/MenuShader.qml \
+    qml/tools/MenuSpray.qml \
+    qml/tools/MenuText.qml \
+    qml/tools/MenuBase.qml \
+    qml/tools/MenuClipboard.qml
 

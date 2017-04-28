@@ -9,12 +9,17 @@ IconButton
     highlighted: drawMode === mode
     icon.width: Theme.iconSizeMedium
     icon.height: Theme.iconSizeMedium
+    anchors.verticalCenter: parent.verticalCenter
 
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
     onClicked:
     {
+        if (typeof submenu !== "undefined" && submenu != "")
+        {
+            mainToolBar.submenusource = submenu
+        }
         console.log("clicked")
     }
 }
