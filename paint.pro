@@ -196,5 +196,6 @@ DISTFILES += \
     qml/tools/MenuSpray.qml \
     qml/tools/MenuText.qml \
     qml/tools/MenuBase.qml \
-    qml/tools/MenuClipboard.qml
+    qml/tools/MenuClipboard.qml \
+    qml/tools/ToolCamera.qml
 

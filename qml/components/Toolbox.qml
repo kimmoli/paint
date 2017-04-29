@@ -25,6 +25,7 @@ Item
         ListElement { name: "../tools/ToolShader.qml";       submenu: "../tools/MenuShader.qml" }
         ListElement { name: "../tools/ToolSpray.qml";        submenu: "../tools/MenuSpray.qml" }
         ListElement { name: "../tools/ToolText.qml";         submenu: "../tools/MenuText.qml" }
+        ListElement { name: "../tools/ToolCamera.qml";       submenu: "" }
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
