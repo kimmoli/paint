@@ -174,12 +174,6 @@ Page
             }
             AnchorChanges
             {
-                target: toolBoxBackground
-                anchors.top: undefined
-                anchors.bottom: page.bottom
-            }
-            AnchorChanges
-            {
                 target: toolbarHintLabel
                 anchors.top: undefined
                 anchors.bottom: toolBox.top
@@ -201,32 +195,12 @@ Page
         Behavior on width { SmoothedAnimation { duration: 500 } }
     }
 
-    Rectangle
-    {
-        id: toolBoxBackground
-        z: 15
-
-        anchors.top: page.top
-        width: page.width
-        height: toolBox.height +
-                (geometryPopup.opacity != 0 ? geometryPopup.height : 0) +
-                (shaderPopup.opacity != 0 ? shaderPopup.height : 0)
-        color: Theme.highlightDimmerColor
-        opacity: Math.max(0.0, toolBox.opacity - 0.15)
-
-        MouseArea
-        {
-            // block missed presses from drawing on canvas behind
-            anchors.fill: parent
-        }
-    }
-
     Toolbox
     {
         id: toolBox
         z: 16
 
-        opacity: drawingCanvas.areaPressedAndHolded || pageStack.busy ? 0.0 : 1.0
+        hide: drawingCanvas.areaPressedAndHolded || pageStack.busy
         anchors.top: page.top
         onShowMessage: messagebox.showMessage(message, delay)
         onPreviewCanvasDrawText: { checkPinchHint("text"); insertNewText(); }

@@ -28,11 +28,11 @@ Item
     }
 
     anchors.horizontalCenter: parent.horizontalCenter
-    height: Theme.itemSizeMedium + (showAllTools ? toolboxView.height : 0)
+    height: mainToolBar.height + toolboxView.height
     width: parent.width
-    clip: true
 
     property bool showAllTools: false
+    property bool hide: false
 
     signal showMessage(string message, int delay)
 
@@ -242,12 +242,14 @@ Item
     {
         id: toolboxView
         width: parent.width
-        height: Theme.itemSizeMedium * Math.ceil(menuModel.count/6)
+        height: showAllTools ? Theme.itemSizeMedium * Math.ceil(menuModel.count/6) : 0
         cellWidth: width/6
         cellHeight: Theme.itemSizeMedium
+        clip: true
 
         anchors.bottom: mainToolBar.top
-        visible: showAllTools
+
+        Behavior on height { NumberAnimation { duration: 200 } }
 
         model: menuModel
         delegate: Loader
@@ -261,7 +263,24 @@ Item
     MainToolbar
     {
         id: mainToolBar
+        clip: true
+        height: hide ? 0 : Theme.itemSizeMedium
+
         anchors.bottom: parent.bottom
-        property variant menu: 0
     }
+
+    Rectangle
+    {
+        z: -1
+        anchors.fill: parent
+
+        color: Theme.highlightDimmerColor
+        opacity: 0.85
+
+        MouseArea
+        {
+            anchors.fill: parent
+        }
+    }
+
 }

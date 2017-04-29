@@ -5,6 +5,7 @@ import harbour.paint.PainterClass 1.0
 IconButton
 {
     property int mode: Painter.None
+    property bool hideAllTools: true
 
     highlighted: drawMode === mode
     icon.width: Theme.iconSizeMedium
@@ -21,5 +22,8 @@ IconButton
             mainToolBar.submenusource = submenu
         }
         console.log("clicked")
+
+        if (hideAllTools)
+            showAllTools = false
     }
 }

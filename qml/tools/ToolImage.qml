@@ -8,23 +8,4 @@ ToolbarButton
 {
     icon.source: "image://paintIcons/icon-m-addimage"
     mode: Painter.Image
-
-    onClicked:
-    {
-        if (insertImagePending)
-        {
-            insertImageCancel()
-        }
-        else
-        {
-            cancelPendingFunctions()
-            var imagePicker = pageStack.push("Sailfish.Pickers.ImagePickerPage", { "allowedOrientations" : Orientation.All });
-            imagePicker.selectedContentChanged.connect(function()
-            {
-                insertImagePath = "image://paintImage/" + imagePicker.selectedContent
-                drawMode = mode
-                previewCanvasDrawImage()
-            });
-        }
-    }
 }

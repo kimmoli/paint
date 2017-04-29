@@ -8,7 +8,6 @@ Item
 {
     id: mainToolbar
     width: parent.width
-    height: Theme.itemSizeMedium
 
     property alias submenusource: submenuloader.source
 
@@ -22,6 +21,7 @@ Item
     ToolbarButton
     {
         anchors.right: parent.right
+        hideAllTools: false
 
         icon.source: "image://theme/icon-m-menu"
 
