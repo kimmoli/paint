@@ -127,7 +127,6 @@ OTHER_FILES += qml/paint.qml \
     qml/pages/layersDialog.qml \
     qml/icons/icon-m-visible.png \
     qml/icons/icon-m-visible-not.png \
-    qml/components/LayersNameLabel.qml \
     qml/brush/g4161.png \
     qml/brush/g4197.png \
     qml/brush/path4138.png \

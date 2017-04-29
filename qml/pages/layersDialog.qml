@@ -166,6 +166,8 @@ Page
                         IconButton
                         {
                             icon.source: "image://paintIcons/icon-m-visible" + (show ? "" : "-not")
+                            icon.width: Theme.itemSizeSmall
+                            icon.height: Theme.itemSizeSmall
                             onClicked: layers.setProperty(index, "show", !show)
                         }
                         IconButton

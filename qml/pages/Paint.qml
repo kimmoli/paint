@@ -51,15 +51,6 @@ Page
          }
     }
 
-    LayersNameLabel
-    {
-        id: layersNameLabel
-        anchors.bottom: parent.bottom
-        z: 1000
-        visible: layers.count > 1
-        opacity: toolBox.opacity
-    }
-
     BusyIndicator
     {
         id: busyInd
@@ -192,12 +183,6 @@ Page
                 target: toolbarHintLabel
                 anchors.top: undefined
                 anchors.bottom: toolBox.top
-            }
-            AnchorChanges
-            {
-                target: layersNameLabel
-                anchors.bottom: undefined
-                anchors.top: parent.top
             }
             PropertyChanges
             {

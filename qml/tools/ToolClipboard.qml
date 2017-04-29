@@ -7,13 +7,4 @@ import "../components"
 ToolbarButton
 {
     icon.source: "image://theme/icon-m-clipboard"
-    mode: Painter.Clipboard
-
-    onClicked:
-    {
-        cancelPendingFunctions()
-        cropArea = [ 0,0,0,0 ]
-        drawMode = mode
-        previewCanvas.requestPaint()
-    }
 }

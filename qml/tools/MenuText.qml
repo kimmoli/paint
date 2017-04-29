@@ -8,6 +8,17 @@ MenuBase
 {
     ToolbarButton
     {
+        icon.source: "image://theme/icon-m-enter-accept"
+        enabled: textEditPending
+
+        onClicked:
+        {
+            textEditAccept()
+        }
+    }
+
+    ToolbarButton
+    {
         icon.source: "image://paintIcons/icon-m-textsettings"
 
         onClicked:

@@ -91,4 +91,34 @@ MenuBase
 
         }
     }
+
+    Label
+    {
+        text: layers.get(activeLayer).name
+        visible: layers.count > 1
+        anchors.verticalCenter: parent.verticalCenter
+        font.pixelSize: Theme.fontSizeMedium
+        font.bold: true
+        truncationMode: TruncationMode.Fade
+        rotation: rotationSensor.angle == 180 ? 180 : 0
+        width: Math.min(paintedWidth, Theme.itemSizeHuge )
+    }
+
+    Item
+    {
+        width: Theme.itemSizeMedium
+        height: Theme.itemSizeMedium
+        anchors.verticalCenter: parent.verticalCenter
+
+        Image
+        {
+            source: "image://paintIcons/icon-m-visible" + (layers.get(activeLayer).show ? "" : "-not")
+            visible: layers.count > 1
+            anchors.centerIn: parent
+            width: Theme.itemSizeSmall
+            height: Theme.itemSizeSmall
+            rotation: rotationSensor.angle
+            Behavior on rotation { SmoothedAnimation { duration: 500 } }
+        }
+    }
 }

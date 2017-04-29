@@ -8,47 +8,12 @@ MenuBase
 {
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-certificates"
+        icon.source: "image://theme/icon-m-enter-accept"
+        enabled: insertImagePending
 
         onClicked:
         {
-            
-        }
-    }
-    ToolbarButton
-    {
-        icon.source: "image://theme/icon-m-battery"
-
-        onClicked:
-        {
-
-        }
-    }
-    ToolbarButton
-    {
-        icon.source: "image://theme/icon-m-keyboard"
-
-        onClicked:
-        {
-
-        }
-    }
-    ToolbarButton
-    {
-        icon.source: "image://theme/icon-m-imaging"
-
-        onClicked:
-        {
-
-        }
-    }
-    ToolbarButton
-    {
-        icon.source: "image://theme/icon-m-mouse"
-
-        onClicked:
-        {
-
+            insertImageAccept()
         }
     }
 }
