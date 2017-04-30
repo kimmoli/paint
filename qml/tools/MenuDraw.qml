@@ -16,6 +16,7 @@ MenuBase
     {
         icon.source: "image://paintIcons/icon-m-eraser"
         mode: Painter.Eraser
+        property variant submenu: "../tools/MenuEraser.qml"
     }
 
     ToolbarButton
