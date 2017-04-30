@@ -9,7 +9,7 @@ MenuBase
 {
     ToolbarButton
     {
-        icon.source: "image://theme/icon-m-scale"
+        icon.source: "image://theme/icon-m-crop"
         mode: Painter.Clipboard
 
         onClicked:

@@ -69,7 +69,7 @@ MenuBase
 
         onClicked:
         {
-            showToolSettings()
+            showToolSettings(Painter.Geometrics)
         }
     }
 }

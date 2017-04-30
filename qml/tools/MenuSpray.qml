@@ -8,11 +8,17 @@ MenuBase
 {
     ToolbarButton
     {
+        icon.source: "image://paintIcons/icon-m-spray"
+        mode: Painter.Spray
+    }
+
+    ToolbarButton
+    {
         icon.source: "image://paintIcons/icon-m-toolsettings"
 
         onClicked:
         {
-            showToolSettings()
+            showToolSettings(Painter.Spray)
         }
     }
 }

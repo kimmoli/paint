@@ -39,7 +39,7 @@ MenuBase
 
         onClicked:
         {
-            showToolSettings()
+            showToolSettings(Painter.Text)
         }
     }
 

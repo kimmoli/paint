@@ -77,11 +77,11 @@ Item
         })
     }
 
-    function showToolSettings()
+    function showToolSettings(forTool)
     {
         var SettingsDialog
 
-        switch (drawMode)
+        switch (forTool)
         {
         case Painter.Eraser :
             SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/eraserSettingsDialog.qml"),
@@ -120,7 +120,6 @@ Item
 
             break;
 
-        case Painter.Geometrics:
         case Painter.Pen :
             SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
                                                    { "currentColor": drawColor,
@@ -172,6 +171,7 @@ Item
                 }
             })
             break;
+        case Painter.Geometrics:
         case Painter.Dimensioning:
             SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
                                                    { "currentColor": drawColor,

@@ -25,7 +25,7 @@ MenuBase
 
         onClicked:
         {
-            showToolSettings()
+            showToolSettings(Painter.Eraser)
         }
     }
 }
