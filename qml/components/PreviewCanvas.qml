@@ -58,38 +58,38 @@ Canvas
             switch(geometricsMode)
             {
             case Painter.Line :
-                Draw.drawLine(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor])
+                Draw.drawLine(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor])
                 break;
             case Painter.Circle :
-                Draw.drawCircle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawCircle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Rectangle :
-                Draw.drawRectangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawRectangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Ellipse :
-                Draw.drawEllipse(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawEllipse(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Square :
-                Draw.drawSquare(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawSquare(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.EquilateralTriangle:
-                Draw.drawEquilateralTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawEquilateralTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.RightIsoscelesTriangle:
-                Draw.drawRightIsoscelesTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawRightIsoscelesTriangle(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Polygon:
-                Draw.drawPolygon(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawPolygon(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Polygram:
-                Draw.drawPolygram(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawPolygram(ctx, polyVertices, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colorslineColor, geometryFill)
                 break;
             case Painter.Arrow:
-                Draw.drawArrow(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawArrow(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.FreehandClosed:
                 pointData.push({x:drawingCanvas.areagMouseX, y:drawingCanvas.areagMouseY})
-                Draw.drawFreehandClosed(ctx, pointData, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawFreehandClosed(ctx, pointData, lineThickness, colors[lineColor], geometryFill)
                 break;
 
             default:
@@ -171,7 +171,7 @@ Canvas
                 {
                     /* Draw the new one */
                     Draw.drawDimensionLine(ctx, downX, downY, drawingCanvas.areagMouseX, drawingCanvas.areagMouseY,
-                                           textColor, textFont, textFontSize, drawColor, drawThickness,
+                                           textColor, textFont, textFontSize, lineColor, lineThickness,
                                            colors, dimensionScale)
                 }
                 if ((dimensionPopupVisible || drawingCanvas.areaPressed) && dimensionModel.count > 0)

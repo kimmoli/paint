@@ -154,37 +154,37 @@ Canvas
             switch(geometricsMode)
             {
             case Painter.Line :
-                Draw.drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor])
+                Draw.drawLine(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor])
                 break;
             case Painter.Circle :
-                Draw.drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawCircle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Rectangle :
-                Draw.drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawRectangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Ellipse:
-                Draw.drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawEllipse(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Square:
-                Draw.drawSquare(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawSquare(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.EquilateralTriangle:
-                Draw.drawEquilateralTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawEquilateralTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.RightIsoscelesTriangle:
-                Draw.drawRightIsoscelesTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawRightIsoscelesTriangle(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Polygon:
-                Draw.drawPolygon(ctx, polyVertices, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawPolygon(ctx, polyVertices, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Polygram:
-                Draw.drawPolygram(ctx, polyVertices, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawPolygram(ctx, polyVertices, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.Arrow:
-                Draw.drawArrow(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawArrow(ctx, previewCanvas.downX, previewCanvas.downY, area.gMouseX, area.gMouseY, lineThickness, colors[lineColor], geometryFill)
                 break;
             case Painter.FreehandClosed:
-                Draw.drawFreehandClosed(ctx, pointData, drawThickness, colors[drawColor], geometryFill)
+                Draw.drawFreehandClosed(ctx, pointData, lineThickness, colors[lineColor], geometryFill)
                 pointData = []
                 break;
 
@@ -382,8 +382,8 @@ Canvas
                                                   "font": textFont,
                                                   "fontSize": textFontSize,
                                                   "fontColor": textColor,
-                                                  "lineColor": drawColor,
-                                                  "lineThickness": drawThickness})
+                                                  "lineColor": lineColor,
+                                                  "lineThickness": lineThickness})
                         /* Make the newest dimension line selected */
                         selectedDimension = dimensionModel.count - 1
                     }

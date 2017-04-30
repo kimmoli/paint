@@ -174,16 +174,16 @@ Item
         case Painter.Geometrics:
         case Painter.Dimensioning:
             SettingsDialog = pageStack.push(Qt.resolvedUrl("../pages/penSettingsDialog.qml"),
-                                                   { "currentColor": drawColor,
-                                                     "currentThickness": drawThickness })
+                                                   { "currentColor": lineColor,
+                                                     "currentThickness": lineThickness })
 
             SettingsDialog.accepted.connect(function() {
-                drawColor = SettingsDialog.currentColor
-                drawThickness = SettingsDialog.currentThickness
+                lineColor = SettingsDialog.currentColor
+                lineThickness = SettingsDialog.currentThickness
                 if (rememberToolSettings)
                 {
-                    painter.setToolSetting("drawColor", drawColor)
-                    painter.setToolSetting("drawThickness", drawThickness)
+                    painter.setToolSetting("lineColor", lineColor)
+                    painter.setToolSetting("lineThickness", lineThickness)
                 }
             })
             break;

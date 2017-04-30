@@ -25,6 +25,8 @@ ApplicationWindow
 
     property int drawColor: 0
     property int drawThickness: 3
+    property int lineColor: 0
+    property int lineThickness: 3
     property int penStyle: 0
     property bool brushContinuous: false
     property int eraserThickness: 15
@@ -129,6 +131,8 @@ ApplicationWindow
             /* Get tool settings */
             drawColor = painter.getToolSetting("drawColor", 0)
             drawThickness = painter.getToolSetting("drawThickness", 3)
+            lineColor = painter.getToolSetting("lineColor", 0)
+            lineThickness = painter.getToolSetting("lineThickness", 3)
             penStyle = painter.getToolSetting("penStyle", 0)
             brushContinuous = (painter.getToolSetting("brushContinuous", 0) === 1)
             eraserThickness = painter.getToolSetting("eraserThickness", 15)
