@@ -170,32 +170,32 @@ RESOURCES +=
 DISTFILES += \
     qml/components/ClipboardCanvas.qml \
     qml/components/MainToolbar.qml \
-    qml/tools/ToolDraw.qml \
-    qml/tools/ToolEraser.qml \
-    qml/tools/ToolGeometrics.qml \
-    qml/tools/ToolSpray.qml \
-    qml/tools/ToolAbout.qml \
-    qml/tools/ToolBackground.qml \
-    qml/tools/ToolClear.qml \
-    qml/tools/ToolClipboard.qml \
-    qml/tools/ToolDimensioning.qml \
-    qml/tools/ToolGrid.qml \
-    qml/tools/ToolImage.qml \
-    qml/tools/ToolLayers.qml \
-    qml/tools/ToolSave.qml \
-    qml/tools/ToolSettings.qml \
-    qml/tools/ToolShader.qml \
-    qml/tools/ToolText.qml \
-    qml/tools/MenuDraw.qml \
-    qml/tools/MenuDimensioning.qml \
-    qml/tools/MenuEraser.qml \
-    qml/tools/MenuGeometrics.qml \
-    qml/tools/MenuImage.qml \
-    qml/tools/MenuLayers.qml \
-    qml/tools/MenuShader.qml \
-    qml/tools/MenuSpray.qml \
-    qml/tools/MenuText.qml \
-    qml/tools/MenuBase.qml \
-    qml/tools/MenuClipboard.qml \
-    qml/tools/ToolCamera.qml
+    qml/components/MenuBase.qml \
+    qml/tools/toolDraw.qml \
+    qml/tools/toolEraser.qml \
+    qml/tools/toolGeometrics.qml \
+    qml/tools/toolSpray.qml \
+    qml/tools/toolAbout.qml \
+    qml/tools/toolBackground.qml \
+    qml/tools/toolClear.qml \
+    qml/tools/toolClipboard.qml \
+    qml/tools/toolDimensioning.qml \
+    qml/tools/toolGrid.qml \
+    qml/tools/toolImage.qml \
+    qml/tools/toolLayers.qml \
+    qml/tools/toolSave.qml \
+    qml/tools/toolSettings.qml \
+    qml/tools/toolShader.qml \
+    qml/tools/toolText.qml \
+    qml/tools/toolCamera.qml \
+    qml/tools/menuDraw.qml \
+    qml/tools/menuDimensioning.qml \
+    qml/tools/menuEraser.qml \
+    qml/tools/menuGeometrics.qml \
+    qml/tools/menuImage.qml \
+    qml/tools/menuLayers.qml \
+    qml/tools/menuShader.qml \
+    qml/tools/menuSpray.qml \
+    qml/tools/menuText.qml \
+    qml/tools/menuClipboard.qml
 

@@ -9,23 +9,23 @@ Item
     ListModel
     {
         id: menuModel
-        ListElement { name: "../tools/ToolAbout.qml";        submenu: "" }
-        ListElement { name: "../tools/ToolBackground.qml";   submenu: "" }
-        ListElement { name: "../tools/ToolClear.qml";        submenu: "" }
-        ListElement { name: "../tools/ToolClipboard.qml";    submenu: "../tools/MenuClipboard.qml" }
-        ListElement { name: "../tools/ToolDimensioning.qml"; submenu: "../tools/MenuDimensioning.qml" }
-        ListElement { name: "../tools/ToolDraw.qml";         submenu: "../tools/MenuDraw.qml" }
-        ListElement { name: "../tools/ToolEraser.qml";       submenu: "../tools/MenuEraser.qml" }
-        ListElement { name: "../tools/ToolGeometrics.qml";   submenu: "../tools/MenuGeometrics.qml" }
-        ListElement { name: "../tools/ToolGrid.qml";         submenu: "" }
-        ListElement { name: "../tools/ToolImage.qml";        submenu: "../tools/MenuImage.qml" }
-        ListElement { name: "../tools/ToolLayers.qml";       submenu: "../tools/MenuLayers.qml" }
-        ListElement { name: "../tools/ToolSave.qml";         submenu: "" }
-        ListElement { name: "../tools/ToolSettings.qml";     submenu: "" }
-        ListElement { name: "../tools/ToolShader.qml";       submenu: "../tools/MenuShader.qml" }
-        ListElement { name: "../tools/ToolSpray.qml";        submenu: "../tools/MenuSpray.qml" }
-        ListElement { name: "../tools/ToolText.qml";         submenu: "../tools/MenuText.qml" }
-        ListElement { name: "../tools/ToolCamera.qml";       submenu: "" }
+        ListElement { name: "../tools/toolAbout.qml";        submenu: "" }
+        ListElement { name: "../tools/toolBackground.qml";   submenu: "" }
+        ListElement { name: "../tools/toolClear.qml";        submenu: "" }
+        ListElement { name: "../tools/toolClipboard.qml";    submenu: "../tools/menuClipboard.qml" }
+        ListElement { name: "../tools/toolDimensioning.qml"; submenu: "../tools/menuDimensioning.qml" }
+        ListElement { name: "../tools/toolDraw.qml";         submenu: "../tools/menuDraw.qml" }
+        ListElement { name: "../tools/toolEraser.qml";       submenu: "../tools/menuEraser.qml" }
+        ListElement { name: "../tools/toolGeometrics.qml";   submenu: "../tools/menuGeometrics.qml" }
+        ListElement { name: "../tools/toolGrid.qml";         submenu: "" }
+        ListElement { name: "../tools/toolImage.qml";        submenu: "../tools/menuImage.qml" }
+        ListElement { name: "../tools/toolLayers.qml";       submenu: "../tools/menuLayers.qml" }
+        ListElement { name: "../tools/toolSave.qml";         submenu: "" }
+        ListElement { name: "../tools/toolSettings.qml";     submenu: "" }
+        ListElement { name: "../tools/toolShader.qml";       submenu: "../tools/menuShader.qml" }
+        ListElement { name: "../tools/toolSpray.qml";        submenu: "../tools/menuSpray.qml" }
+        ListElement { name: "../tools/toolText.qml";         submenu: "../tools/menuText.qml" }
+        ListElement { name: "../tools/toolCamera.qml";       submenu: "" }
     }
 
     anchors.horizontalCenter: parent.horizontalCenter

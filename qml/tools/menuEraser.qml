@@ -16,7 +16,7 @@ MenuBase
     {
         icon.source: "image://theme/icon-m-edit"
         mode: Painter.Pen
-        property variant submenu: "../tools/MenuDraw.qml"
+        property variant submenu: "../tools/menuDraw.qml"
     }
 
     ToolbarButton
