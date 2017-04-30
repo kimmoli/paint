@@ -12,6 +12,5 @@ ToolbarButton
     onClicked:
     {
         cancelPendingFunctions(1)
-        drawMode = mode
     }
 }

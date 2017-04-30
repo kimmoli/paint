@@ -15,7 +15,7 @@ ApplicationWindow
 
     property int vkbCloseInterval: 1000
 
-    property int drawMode : Painter.Pen
+    property int drawMode : Painter.None
     property int geometricsMode : Painter.Line
 
     property bool geometryPopupVisible: false
@@ -81,6 +81,8 @@ ApplicationWindow
 
     property int activeLayer: 0
     property var pointData: []
+
+    property bool showAllTools: true
 
     /*****************************************************/
 

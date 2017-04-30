@@ -232,6 +232,10 @@ Canvas
 
         case Painter.Clipboard:
             break;
+
+        case Painter.None:
+            console.log("No tool selected")
+            break;
             
         default:
             console.error("Unimplemented feature")

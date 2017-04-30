@@ -4,7 +4,7 @@ import harbour.paint.PainterClass 1.0
 
 IconButton
 {
-    property int mode: Painter.None
+    property int mode: Painter.NotSet
     property bool hideAllTools: true
 
     highlighted: drawMode === mode
@@ -17,11 +17,18 @@ IconButton
 
     onClicked:
     {
+        if (mode !== Painter.NotSet)
+        {
+            if (drawMode === mode)
+                drawMode = Painter.None
+            else
+                drawMode = mode
+        }
+
         if (typeof submenu !== "undefined" && submenu != "")
         {
             mainToolBar.submenusource = submenu
         }
-        console.log("clicked")
 
         if (hideAllTools)
             showAllTools = false

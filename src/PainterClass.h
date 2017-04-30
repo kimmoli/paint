@@ -52,6 +52,7 @@ public:
 
     enum Mode
     {
+        NotSet = -2,
         None = -1,
         Eraser = 0,
         Pen,

@@ -11,25 +11,9 @@ ToolbarButton
 
     onClicked:
     {
-        if (drawMode != mode)
-        {
-            drawingCanvas.saveActive()
-            dimensionPopupVisible = true
-        }
-        else
-        {
-            dimensionPopupVisible = !dimensionPopupVisible
-        }
-
+        drawingCanvas.saveActive()
         cancelPendingFunctions()
-        drawMode = mode
-
-        if (!dimensionPopupVisible)
-            dimensionMoveMode = false
-
         previewCanvas.requestPaint()
         dimensionCanvas.requestPaint()
     }
-
-    onHighlightedChanged: if (!highlighted) dimensionPopupVisible = false
 }

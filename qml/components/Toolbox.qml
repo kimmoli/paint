@@ -32,7 +32,6 @@ Item
     height: mainToolBar.height + toolboxView.height
     width: parent.width
 
-    property bool showAllTools: false
     property bool hide: false
 
     signal showMessage(string message, int delay)

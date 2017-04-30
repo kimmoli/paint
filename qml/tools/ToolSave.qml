@@ -12,6 +12,7 @@ ToolbarButton
     property bool pageStackBusy : pageStack.busy
     property bool doSave : false
     property string saveFileName: ""
+    property bool cropPending: false
 
     Timer
     {
