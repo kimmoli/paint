@@ -9,8 +9,8 @@ Name:       harbour-paint
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Paint
-Version:    0.8.devel
-Release:    20
+Version:    0.8.2
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 URL:        http://example.org/
@@ -26,6 +26,20 @@ BuildRequires:  desktop-file-utils
 
 %description
 Really simple native drawing application
+
+%if "%{?vendor}" == "chum"
+PackageName: Paint
+Type: desktop-application
+Categories:
+ - Graphics
+DeveloperName: Kimmo Lindholm
+Custom:
+ - Repo: https://github.com/kimmoli/paint
+Icon: https://raw.githubusercontent.com/kimmoli/paint/master/appicons/256x256/apps/harbour-paint.png
+Screenshots:
+Url:
+  Donation:
+%endif
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -46,9 +60,9 @@ desktop-file-install --delete-original       \
    %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}
+%defattr(-,root,root,-)
+%{_bindir}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/%{name}/qml
 %{_datadir}/icons/hicolor/
-
