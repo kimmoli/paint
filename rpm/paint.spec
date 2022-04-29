@@ -12,8 +12,8 @@ Summary:    Paint
 Version:    0.8.2
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    MIT
+URL:        https://github.com/kimmoli/paint
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   qt5-qtdeclarative-import-sensors
