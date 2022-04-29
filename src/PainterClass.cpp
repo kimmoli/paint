@@ -203,8 +203,11 @@ void PainterClass::setHighlightTarget(QQuickItem *target)
     if (doc.canConvert<QQuickTextDocument*>())
     {
         QQuickTextDocument *qqdoc = doc.value<QQuickTextDocument*>();
-        if (qqdoc)
+
+        if (qqdoc) {
             _hlDoc = qqdoc->textDocument();
             _hl = new Highlighter(_hlDoc);
+
+        }
     }
 }

@@ -1,3 +1,7 @@
+#ifdef GL_ES
+precision highp float;
+#endif
+
 // Adjust RGB
 // Red;-1.0;1.0;Green;-1.0;1.0;Blue;-1.0;1.0
 
