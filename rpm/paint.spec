@@ -33,11 +33,14 @@ Type: desktop-application
 Categories:
  - Graphics
 DeveloperName: Kimmo Lindholm
+PackagerName: Mark Washeim (poetaster)
 Custom:
  - Repo: https://github.com/kimmoli/paint
+ - PackagingRepo: https://github.com/poetaster/paint
 Icon: https://raw.githubusercontent.com/kimmoli/paint/master/appicons/256x256/apps/harbour-paint.png
 Screenshots:
 Url:
+ - Bugtracker: https://github.com/poetaster/paint/issues
   Donation:
 %endif
 
