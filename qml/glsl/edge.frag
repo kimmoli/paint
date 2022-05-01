@@ -1,6 +1,8 @@
 // Edge detection
 // Threshold;0.0;1.0;Margin;0.0;0.5;Mix;0.0;1.0
 
+precision mediump float;
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;

@@ -1,5 +1,7 @@
 // Emboss
 
+precision mediump float;
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;

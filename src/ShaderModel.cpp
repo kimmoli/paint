@@ -26,6 +26,7 @@ ShaderModel::ShaderModel(QObject *parent)
 
         /* First row comment is used as name of the shader */
         QString name = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(0);
+        qWarning() << "Fragment NAME " << name;
         name.remove(0, 3);
 
         ShaderItem *shader = new ShaderItem();
@@ -41,6 +42,7 @@ ShaderModel::ShaderModel(QObject *parent)
         /* 2nd row comment are adjustable parameters, name;min;max separated with semicolon */
         QString par = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(1);
 
+        qWarning() << "Fragment params " << par;
         int i = 0;
         if (par.startsWith("// "))
         {
@@ -68,6 +70,7 @@ ShaderModel::ShaderModel(QObject *parent)
         QString ims = sFragmentShader.split(QRegExp("[\r\n]"), QString::SkipEmptyParts).at(2);
         if (ims.startsWith("// imageSource"))
         {
+            qWarning() << "Fragment img " << name;
             shader->setImageSource(ims.split(";").at(1));
         }
 
