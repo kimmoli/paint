@@ -170,5 +170,8 @@ TRANSLATIONS += i18n/*.ts
 RESOURCES +=
 
 DISTFILES += \
-    qml/components/ClipboardCanvas.qml
+    qml/components/ClipboardCanvas.qml \
+    qml/glsl/swap_RGB-BGR.frag \
+    qml/glsl/swap_RGB-GBR.frag \
+    qml/glsl/swap_RGB-RBG.frag
 
