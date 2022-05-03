@@ -1,15 +1,13 @@
 // Pixelate
 // Granularity;5.0;50.0
 
-precision mediump float;
-
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;
 uniform lowp float qt_Opacity;
-uniform highp float param1;
 uniform highp float width;
 uniform highp float height;
+uniform lowp float param1;
 
 void main()
 {

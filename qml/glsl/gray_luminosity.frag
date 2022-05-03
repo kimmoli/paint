@@ -1,6 +1,5 @@
 // Grayscale, luminosity
 
-precision mediump float;
 
 uniform sampler2D source;
 uniform sampler2D mask;

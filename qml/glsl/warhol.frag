@@ -27,4 +27,3 @@ void main(void)
         gl_FragColor = texture2D(source, qt_TexCoord0.st) * qt_Opacity;
     }
 }
-

@@ -1,5 +1,6 @@
 // Grayscale, lightness
 
+
 precision mediump float;
 
 uniform sampler2D source;
