@@ -342,6 +342,7 @@ Canvas
             
             onReleased:
             {
+
                 pressedAndHolded = false
                 if (gridVisible && gridSnapTo)
                 {
@@ -353,7 +354,8 @@ Canvas
                     area.gMouseX = Math.round(mouseX)
                     area.gMouseY = Math.round(mouseY)
                 }
-
+                // undo
+                idSaveCanvastimer.start()
                 switch (drawMode)
                 {
                 case Painter.Eraser:
