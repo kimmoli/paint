@@ -34,6 +34,10 @@ Canvas
     property alias areagMouseX: area.gMouseX
     property alias areagMouseY: area.gMouseY
 
+    // try some
+    renderTarget: Canvas.FramebufferObject // default slower: Canvas.Image
+    renderStrategy: Canvas.Immediate // less memory: Canvas.Cooperative
+
     property var brush
 
     Connections
@@ -354,8 +358,10 @@ Canvas
                     area.gMouseX = Math.round(mouseX)
                     area.gMouseY = Math.round(mouseY)
                 }
-                // undo
+
+                // begin undo
                 idSaveCanvastimer.start()
+
                 switch (drawMode)
                 {
                 case Painter.Eraser:

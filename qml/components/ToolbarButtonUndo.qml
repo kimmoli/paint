@@ -15,7 +15,7 @@ IconButton
     icon.source: "../icons/icon-m-undo.svg"
     icon.width: Theme.iconSizeMedium
     icon.height: Theme.iconSizeMedium
-
+    height: parent.height
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
 
