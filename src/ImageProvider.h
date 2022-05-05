@@ -87,18 +87,18 @@ public:
             *size = originalSize;
 
         img = ir.read();
-        QImage converted;
-        converted = img.convertToFormat(img.Format_RGB888);
+
+        // @attah's concise solution to r<->b channel swap issues
+        img = img.convertToFormat(QImage::Format_RGB888);
+
         NemoImageMetadata meta(filename, format);
 
         if (meta.orientation() != NemoImageMetadata::TopLeft)
-            //img = rotate(img, meta.orientation());
-            converted = rotate(converted, meta.orientation());
-
+            img = rotate(img, meta.orientation());
         if (requestedSize.isValid())
-            return converted.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
+            return img.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
         else
-            return converted;
+            return img;
     }
 };
 
