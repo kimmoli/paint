@@ -87,16 +87,18 @@ public:
             *size = originalSize;
 
         img = ir.read();
-
+        QImage converted;
+        converted = img.convertToFormat(img.Format_RGB888);
         NemoImageMetadata meta(filename, format);
 
         if (meta.orientation() != NemoImageMetadata::TopLeft)
-            img = rotate(img, meta.orientation());
+            //img = rotate(img, meta.orientation());
+            converted = rotate(converted, meta.orientation());
 
         if (requestedSize.isValid())
-            return img.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
+            return converted.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
         else
-            return img;
+            return converted;
     }
 };
 
