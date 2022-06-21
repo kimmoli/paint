@@ -1,6 +1,9 @@
 // Adjust RGB
 // Red;-1.0;1.0;Green;-1.0;1.0;Blue;-1.0;1.0
 
+
+precision mediump float;
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;

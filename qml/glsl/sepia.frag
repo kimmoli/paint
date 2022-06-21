@@ -1,6 +1,8 @@
 // Sepia
 // Intensity;0.0;1.0
 
+precision mediump float;
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;

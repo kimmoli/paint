@@ -8,6 +8,8 @@ import "../code/drawinghelpers.js" as Draw
 
 Page
 {
+
+
     id: page
 
     anchors.fill: parent
@@ -32,6 +34,10 @@ Page
             pinchHintSlave.start()
         }
     }
+
+    // undo variables
+    property var imageData : []
+    property var cStep : -1
 
     Connections
     {
@@ -394,6 +400,45 @@ Page
             z: layers.count - index
         }
     }
+    /* begin  undo */
+    Timer {
+        id: idSaveCanvastimer
+        running: false
+        repeat: false
+        interval: 5
+        onTriggered: {
+            saveCurrentCanvas()
+        }
+    }
+    Timer {
+        id: idRefreshCanvastimer
+        running: false
+        repeat: false
+        interval: 10
+        onTriggered: {
+            drawingCanvas.visible = true
+        }
+    }
+
+    function saveCurrentCanvas() {
+        cStep++
+        var ctx = drawingCanvas.getContext('2d')
+        imageData[cStep+1] = ctx.getImageData( 0, 0, drawingCanvas.width, drawingCanvas.height )
+    }
+
+    function undo_draw() {
+        cStep--
+        var ctx = drawingCanvas.getContext('2d')
+        ctx.clearRect( 0, 0, drawingCanvas.width, drawingCanvas.height )
+        if ( (cStep+1) > 0) {
+            ctx.drawImage( imageData[cStep+1], 0, 0, drawingCanvas.width, drawingCanvas.height )
+
+        }
+        drawingCanvas.requestPaint()
+        drawingCanvas.visible = false
+        idRefreshCanvastimer.start() // needs to reload canvas, to show clear screen
+    }
+    /* end undo */
 
     function textAccept()
     {

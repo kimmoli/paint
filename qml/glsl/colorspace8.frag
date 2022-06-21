@@ -1,6 +1,7 @@
 // Change colorspace, 8 colors
 // Pre brightness;0.0;2.0
 
+
 uniform sampler2D source;
 uniform sampler2D mask;
 varying highp vec2 qt_TexCoord0;

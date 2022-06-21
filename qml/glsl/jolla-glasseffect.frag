@@ -1,6 +1,8 @@
 // Jolla glasseffect
 // Mix;0.0;2.0
-// imageSource;image://theme/graphic-shader-texture
+// imageSource;image://paintIcons/graphic-shader-texture
+
+precision mediump float;
 
 uniform sampler2D source;
 uniform sampler2D mask;

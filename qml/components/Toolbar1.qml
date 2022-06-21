@@ -11,6 +11,17 @@ Item
         spacing: (parent.width - children.length*Theme.iconSizeLarge )/(children.length+1)
         anchors.horizontalCenter: parent.horizontalCenter
 
+        ToolbarButtonUndo
+        {
+            mode: Painter.Pen
+            onClicked:
+            {
+                cancelPendingFunctions()
+                undo_draw()
+                drawMode = mode
+            }
+        }
+
         ToolbarButton
         {
             icon.source: "image://theme/icon-m-edit"

@@ -34,6 +34,10 @@ Canvas
     property alias areagMouseX: area.gMouseX
     property alias areagMouseY: area.gMouseY
 
+    // try some
+    renderTarget: Canvas.FramebufferObject // default slower: Canvas.Image
+    renderStrategy: Canvas.Immediate // less memory: Canvas.Cooperative
+
     property var brush
 
     Connections
@@ -342,6 +346,7 @@ Canvas
             
             onReleased:
             {
+
                 pressedAndHolded = false
                 if (gridVisible && gridSnapTo)
                 {
@@ -353,6 +358,9 @@ Canvas
                     area.gMouseX = Math.round(mouseX)
                     area.gMouseY = Math.round(mouseY)
                 }
+
+                // begin undo
+                idSaveCanvastimer.start()
 
                 switch (drawMode)
                 {
