@@ -5,6 +5,7 @@
 #include <QQuickImageProvider>
 #include <QImageReader>
 #include "nemoimagemetadata.h"
+#include <QDebug>
 
 class ImageProvider : public QQuickImageProvider
 {
@@ -88,9 +89,12 @@ public:
 
         img = ir.read();
 
+        qDebug() << Q_FUNC_INFO << "image format:" << format;
+
         // @attah's concise solution to r<->b channel swap issues
         img = img.convertToFormat(QImage::Format_RGB888);
 
+        //img.convertToFormat()
         NemoImageMetadata meta(filename, format);
 
         if (meta.orientation() != NemoImageMetadata::TopLeft)

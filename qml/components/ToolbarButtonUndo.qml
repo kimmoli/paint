@@ -15,17 +15,18 @@ IconButton
     icon.source: "../icons/icon-m-undo.svg"
     icon.width: Theme.iconSizeMedium
     icon.height: Theme.iconSizeMedium
+
     height: parent.height
     rotation: rotationSensor.angle
     Behavior on rotation { SmoothedAnimation { duration: 500 } }
-
-    Image {
-        opacity: (idUndoButton.enabled) ? 1 : 0.4
-        anchors.centerIn: parent
-        source: "image://theme/icon-m-delete"
-        mirror:  true
-        scale: 0.45
+    Label {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        font.pixelSize: Theme.fontSizeSmall
+        text: cStep + 1
+        scale: 1/1.5
     }
+
     /*
     onClicked: {
         toolThicknessVisible = false

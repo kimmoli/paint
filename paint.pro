@@ -175,6 +175,8 @@ DISTFILES += \
     qml/glsl/compoundeye.frag \
     qml/glsl/crosshatch.frag \
     qml/glsl/mirror.frag \
+    qml/glsl/mosaic.frag \
+    qml/glsl/mosaic.vert \
     qml/glsl/swap_RGB-BGR.frag \
     qml/glsl/swap_RGB-GBR.frag \
     qml/glsl/swap_RGB-RBG.frag \

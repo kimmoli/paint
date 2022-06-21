@@ -10,6 +10,7 @@ Item
     {
         spacing: (parent.width - children.length*Theme.iconSizeLarge )/(children.length+1)
         anchors.horizontalCenter: parent.horizontalCenter
+
         ToolbarButtonUndo
         {
             mode: Painter.Pen
